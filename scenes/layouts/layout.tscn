@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dr4m6m0xi2ow6"]
+
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="1_gf7p7"]
+
+[node name="Layout" type="TileMapLayer" unique_id=1689394485]
+script = ExtResource("1_gf7p7")
+metadata/_custom_type_script = "uid://byvdvujagvico"
