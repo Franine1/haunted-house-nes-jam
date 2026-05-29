@@ -11,8 +11,16 @@ config_version=5
 [application]
 
 config/name="haunted house NES jam"
+run/main_scene="uid://qgm28a3hyeaq"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icon.svg"
+
+[display]
+
+window/size/viewport_width=256
+window/size/viewport_height=224
+window/size/sharp_corners=true
+window/stretch/mode="viewport"
 
 [physics]
 
