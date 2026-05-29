@@ -47,7 +47,12 @@ func fade(in_or_out: bool) -> void:
 func on_fadeout() -> void:
 	var goal: float = 1.0 if fade_mode else 0.0
 	modulate = Color(1.0,1.0,1.0,goal)
+	enabled = fade_mode
 
 func set_show_area(input: Area2D = null) -> void:
 	show_area = input
-	
+
+func instant_fade(input: bool) -> void:
+	fade_mode = input
+	fade_time.stop()
+	on_fadeout.call_deferred()

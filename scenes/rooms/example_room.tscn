@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://kieurj215av1"]
+
+[ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="1_55qrh"]
+[ext_resource type="PackedScene" uid="uid://dhtcehmotawpt" path="res://scenes/layouts/example_layout.tscn" id="2_mpiqb"]
+
+[node name="Room" type="Area2D" unique_id=1460610347]
+script = ExtResource("1_55qrh")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="example layout" parent="." unique_id=1566797145 instance=ExtResource("2_mpiqb")]
+
+[node name="room bounds" type="CollisionPolygon2D" parent="." unique_id=754923214]
+polygon = PackedVector2Array(-15, -32, -63, -31, -63, 47, 47, 47, 47, -32, 0, -32, 0, -65, -16, -65)

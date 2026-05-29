@@ -1,0 +1,10 @@
+[gd_scene format=4 uid="uid://dhtcehmotawpt"]
+
+[ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="1_0d0ab"]
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="2_3ofsw"]
+
+[node name="example layout" type="TileMapLayer" unique_id=1566797145]
+tile_map_data = PackedByteArray("AAD8//7/AAAAAAAAAAD8////AAAAAAEAAAD8/wAAAAAAAAEAAAD8/wEAAAAAAAIAAAD8/wIAAAABAAIAAAD9//7/AAABAAAAAAD9////AAABAAEAAAD9/wAAAAABAAEAAAD9/wEAAAABAAEAAAD9/wIAAAABAAIAAAD+//7/AAABAAAAAAD+////AAABAAEAAAD+/wAAAAABAAEAAAD+/wEAAAABAAEAAAD+/wIAAAABAAIAAAD///7/AAAFAAAAAAD/////AAABAAEAAAD//wAAAAABAAEAAAD//wEAAAABAAEAAAD//wIAAAABAAIAAAAAAP7/AAABAAAAAAAAAP//AAABAAEAAAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAIAAAABAP7/AAABAAAAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAABAAEAAAABAAEAAAABAAIAAAABAAIAAAACAP7/AAACAAAAAAACAP//AAACAAEAAAACAAAAAAACAAEAAAACAAEAAAACAAIAAAACAAIAAAABAAIAAAA=")
+tile_set = ExtResource("1_0d0ab")
+script = ExtResource("2_3ofsw")
+metadata/_custom_type_script = "uid://byvdvujagvico"
