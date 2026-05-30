@@ -5,7 +5,7 @@ extends CharacterBody2D
 var current_axis: Vector2 = Vector2.RIGHT
 const SPEED: float = 16.0
 @onready var input_delay: Timer = %"input delay"
-@export var speed_scale: float = 4.0
+@export var speed_scale: float = 5.0
 @export var room_id: String = ""
 var axis_shift: float = 0.0
 var seamless: bool = false
@@ -17,6 +17,7 @@ func _ready() -> void:
 	input_delay.timeout.connect(shift_axis)
 	shift_axis()
 	z_index = 5
+	seamless_warp()
 
 func _physics_process(delta: float) -> void:
 	if input_delay.is_stopped():

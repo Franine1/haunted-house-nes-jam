@@ -13,6 +13,6 @@ extends Portal
 @export var target_node: Node2D
 
 func activate(body_rid: RID, body: Node2D) -> void:
-	body.global_position = target_node.global_position.round() + (16.0 * warp_offset) + Vector2(8.0,8.0)
+	body.global_position = ((target_node.global_position/16.0).round() + Vector2(warp_offset) + Vector2(0.5,0.5)) * 16.0
 	if body.has_method("seamless_warp"):
 		body.seamless_warp()

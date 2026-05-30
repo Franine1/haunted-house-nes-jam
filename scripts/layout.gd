@@ -40,7 +40,7 @@ func update_fading_mode(instant_override: bool = false):
 		var c: Array[Node2D] = show_area.get_overlapping_bodies()
 		
 		var check: bool = (c.size() > 0)
-		var instant_fading: bool = instant_override
+		var instant_fading: bool = instant_override and fade_time.is_stopped()
 		
 		
 		for node in c:
