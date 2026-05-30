@@ -12,6 +12,7 @@ func _ready() -> void:
 	input_delay.one_shot = true
 	input_delay.timeout.connect(shift_axis)
 	shift_axis()
+	z_index = 5
 
 func _physics_process(delta: float) -> void:
 	if input_delay.is_stopped():

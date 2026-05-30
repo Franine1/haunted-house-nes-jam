@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dlxeq7stlbroq"]
+
+[ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="1_hu6fl"]
+[ext_resource type="PackedScene" uid="uid://dhtcehmotawpt" path="res://scenes/layouts/example_layout.tscn" id="2_0yqos"]
+[ext_resource type="PackedScene" uid="uid://dwxnl1rgn63s6" path="res://scenes/layouts/test_layout2.tscn" id="3_geole"]
+
+[node name="Room" type="Area2D" unique_id=64040167]
+script = ExtResource("1_hu6fl")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="example layout" parent="." unique_id=1566797145 instance=ExtResource("2_0yqos")]
+
+[node name="Layout" parent="." unique_id=2061416448 instance=ExtResource("3_geole")]
+position = Vector2(-16, -32)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1496411778]
+polygon = PackedVector2Array(-64, -32, -64, 48, 48, 48, 48, -32, 32, -32, 32, -80, -48, -80, -48, -32)
