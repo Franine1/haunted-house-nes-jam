@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dhtcehmotawpt" path="res://scenes/layouts/example_layout.tscn" id="2_mpiqb"]
 
 [node name="Room" type="Area2D" unique_id=1460610347]
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("1_55qrh")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 

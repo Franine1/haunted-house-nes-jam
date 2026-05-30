@@ -1,3 +1,12 @@
 [gd_scene format=3 uid="uid://qgm28a3hyeaq"]
 
+[ext_resource type="PackedScene" uid="uid://kieurj215av1" path="res://scenes/rooms/example_room.tscn" id="1_errlg"]
+[ext_resource type="PackedScene" uid="uid://b3sdkigh4r41v" path="res://scenes/characters/player.tscn" id="2_bl13t"]
+
 [node name="Node2D" type="Node2D" unique_id=109567056]
+
+[node name="Room" parent="." unique_id=1460610347 instance=ExtResource("1_errlg")]
+initial_fade_mode = true
+
+[node name="Player" parent="." unique_id=574704302 instance=ExtResource("2_bl13t")]
+position = Vector2(8, 8)
