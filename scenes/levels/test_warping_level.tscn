@@ -48,7 +48,7 @@ warp_offset = Vector2i(4, -4)
 position = Vector2(-16, -80)
 
 [node name="Room" parent="." unique_id=407766097 instance=ExtResource("6_uf13y")]
-position = Vector2(-16, -113)
+position = Vector2(-16, -112)
 
 [node name="hall_room_4" parent="." unique_id=667363776 instance=ExtResource("3_2le8f")]
 position = Vector2(128, -64)

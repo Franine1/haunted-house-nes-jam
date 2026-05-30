@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d0gbm0sirbdm3"]
+[gd_scene format=4 uid="uid://d0gbm0sirbdm3"]
 
 [ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="1_t387o"]
 [ext_resource type="PackedScene" uid="uid://7pqjtgyhnnqp" path="res://scenes/layouts/testhall_1.tscn" id="2_xghft"]
@@ -8,6 +8,7 @@ script = ExtResource("1_t387o")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="testhall1" parent="." unique_id=982988136 instance=ExtResource("2_xghft")]
+tile_map_data = PackedByteArray("AAD//wAAAAABAAEAAAD/////AAABAAEAAAAAAP//AAABAAEAAAAAAAAAAAABAAEAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAAAAAEAAAABAAEAAAD+////AAAAAAEAAAD+//7/AAAAAAAAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAD//wEAAAABAAEAAAABAP7/AAABAAAAAAABAAEAAAACAAEAAAD+/wAAAAAAAAEAAAD+/wEAAAAAAAEAAAD8/wAAAAABAAEAAAD7/wEAAAABAAEAAAD6/wAAAAABAAEAAAD5/wEAAAABAAEAAAD4/wAAAAABAAEAAAD3/wEAAAABAAEAAAD2/wAAAAABAAEAAAD1/wEAAAABAAEAAAD0/wAAAAABAAEAAADz/wEAAAABAAEAAADy/wAAAAABAAEAAADx/wEAAAABAAEAAADw/wAAAAABAAEAAADv/wEAAAABAAEAAADu/wAAAAABAAEAAADt/wEAAAABAAEAAAD2/wIAAAABAAEAAAD1/wMAAAABAAEAAAD2/wQAAAABAAEAAAD1/wUAAAABAAEAAAD2/wYAAAABAAEAAAD1/wcAAAABAAEAAAD2/wgAAAABAAEAAAD1/wkAAAABAAEAAAD1////AAABAAEAAAA=")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1089995101]
-polygon = PackedVector2Array(-32, -32, 96, -32, 96, 32, 32, 32, 32, 88, -32, 88)
+polygon = PackedVector2Array(-318, -32, 96, -32, 96, 32, 32, 32, 28, 156, -315, 165)

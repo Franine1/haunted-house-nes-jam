@@ -19,6 +19,19 @@ func _ready() -> void:
 	z_index = 5
 
 func _physics_process(delta: float) -> void:
+	var direct: int
+	if Input.is_action_just_pressed("Move Down"):
+		direct = 1
+		%playSprite.frame = 0
+	if Input.is_action_just_pressed("Move Up"):
+		direct = 2
+		%playSprite.frame = 3
+	if Input.is_action_just_pressed("Move Left"):
+		direct = 3
+		%playSprite.frame = 6
+	if Input.is_action_just_pressed("Move Right"):
+		direct = 4
+		%playSprite.frame = 9
 	if input_delay.is_stopped():
 		var mvm = Input.get_vector("Move Left","Move Right","Move Up","Move Down")
 		if !mvm:
@@ -40,8 +53,8 @@ func _physics_process(delta: float) -> void:
 		velocity = move * SPEED * speed_scale
 		
 		input_delay.start(1.0/speed_scale)
-	
 	move_and_slide()
+
 
 
 func shift_axis() -> void:
