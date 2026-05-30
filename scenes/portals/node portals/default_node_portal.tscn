@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dhhs6kdiaggyu"]
+
+[ext_resource type="Script" uid="uid://fk3nklf7wnl5" path="res://scripts/node_portal.gd" id="1_lexrx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2p8w"]
+size = Vector2(12, 12)
+
+[node name="default_node_portal" type="Area2D" unique_id=997932458]
+script = ExtResource("1_lexrx")
+metadata/_custom_type_script = "uid://fk3nklf7wnl5"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1948681986]
+shape = SubResource("RectangleShape2D_m2p8w")

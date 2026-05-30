@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://vgkqsy77ky76"]
+
+[ext_resource type="Script" uid="uid://2fxoxwt3c1kf" path="res://scripts/translation_portal.gd" id="1_111lx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33kyj"]
+size = Vector2(12, 12)
+
+[node name="default_translation" type="Area2D" unique_id=159804422]
+script = ExtResource("1_111lx")
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1393337036]
+shape = SubResource("RectangleShape2D_33kyj")

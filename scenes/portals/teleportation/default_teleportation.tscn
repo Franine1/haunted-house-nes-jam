@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://g5xst71l4h5q"]
+
+[ext_resource type="Script" uid="uid://whi3q5tjbrvy" path="res://scripts/teleportation_portal.gd" id="1_fbbkp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6cw1"]
+size = Vector2(12, 12)
+
+[node name="default_teleportation" type="Area2D" unique_id=459036596]
+script = ExtResource("1_fbbkp")
+metadata/_custom_type_script = "uid://whi3q5tjbrvy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111798469]
+shape = SubResource("RectangleShape2D_t6cw1")

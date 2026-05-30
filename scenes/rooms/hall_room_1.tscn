@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d0gbm0sirbdm3"]
+
+[ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="1_t387o"]
+[ext_resource type="PackedScene" uid="uid://7pqjtgyhnnqp" path="res://scenes/layouts/testhall_1.tscn" id="2_xghft"]
+
+[node name="hall_room1" type="Area2D" unique_id=1065853809]
+script = ExtResource("1_t387o")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="testhall1" parent="." unique_id=982988136 instance=ExtResource("2_xghft")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1089995101]
+polygon = PackedVector2Array(-32, -32, 96, -32, 96, 32, 32, 32, 32, 88, -32, 88)

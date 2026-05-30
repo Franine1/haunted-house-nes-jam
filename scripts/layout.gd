@@ -30,13 +30,34 @@ func _process(delta: float) -> void:
 		var fadeout: Color = Color(1.0,1.0,1.0,goal + (fade_time.time_left/denom))
 		
 		modulate = fadeout
+		
 	
+	update_fading_mode()
+
+
+func update_fading_mode(instant_override: bool = false):
 	if is_instance_valid(show_area) and show_area != null:
 		var c: Array[Node2D] = show_area.get_overlapping_bodies()
 		
 		var check: bool = (c.size() > 0)
+		var instant_fading: bool = instant_override
 		
-		fade(check)
+		
+		for node in c:
+			
+			if node is Player:
+				if !node.update_fading.is_connected(update_fading_mode):
+					node.update_fading.connect(update_fading_mode.bind(true))
+			
+			
+			#if node.has_method("get_seamless") and !instant_fading:
+			#	instant_fading = node.get_seamless()
+			
+		
+		if instant_fading:
+			instant_fade(check)
+		else:
+			fade(check)
 
 
 func fade(in_or_out: bool) -> void:

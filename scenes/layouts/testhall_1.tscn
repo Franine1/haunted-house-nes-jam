@@ -1,0 +1,10 @@
+[gd_scene format=4 uid="uid://7pqjtgyhnnqp"]
+
+[ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="1_cgi8b"]
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="2_xmmcr"]
+
+[node name="testhall1" type="TileMapLayer" unique_id=982988136]
+tile_map_data = PackedByteArray("AAD//wAAAAABAAEAAAD/////AAABAAEAAAAAAP//AAABAAEAAAAAAAAAAAABAAEAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAAAAAEAAAABAAEAAAD+////AAAAAAEAAAD+//7/AAAAAAAAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAD//wEAAAABAAEAAAABAP7/AAABAAAAAAABAAEAAAACAAEAAAD+/wAAAAAAAAEAAAD+/wEAAAAAAAEAAAA=")
+tile_set = ExtResource("1_cgi8b")
+script = ExtResource("2_xmmcr")
+metadata/_custom_type_script = "uid://byvdvujagvico"
