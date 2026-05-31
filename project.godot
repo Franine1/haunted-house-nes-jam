@@ -73,6 +73,7 @@ window/stretch/mode="viewport"
 
 [physics]
 
+common/physics_ticks_per_second=65
 3d/physics_engine="Jolt Physics"
 
 [rendering]

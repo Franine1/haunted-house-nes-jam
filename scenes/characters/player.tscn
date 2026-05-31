@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b3sdkigh4r41v"]
 
+[ext_resource type="Script" uid="uid://ciwwxlwb662jo" path="res://scripts/player_container.gd" id="1_76oj4"]
 [ext_resource type="Script" uid="uid://dtt6tt83gs34j" path="res://scripts/player.gd" id="1_yewv4"]
 [ext_resource type="Texture2D" uid="uid://b6cv3edev70l7" path="res://assets/digits.png" id="2_76oj4"]
 
@@ -21,19 +22,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqtwu"]
 size = Vector2(12, 12)
 
-[node name="Player" type="CharacterBody2D" unique_id=574704302]
+[node name="Node2D" type="Node2D" unique_id=1856024105]
+script = ExtResource("1_76oj4")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=574704302]
+unique_name_in_owner = true
 z_index = 5
 collision_layer = 4
 script = ExtResource("1_yewv4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=964948067]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=964948067]
 sprite_frames = SubResource("SpriteFrames_atpat")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=931363550]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=931363550]
 shape = SubResource("RectangleShape2D_kqtwu")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1338080857]
-
-[node name="input delay" type="Timer" parent="." unique_id=1865148790]
+[node name="input delay" type="Timer" parent="Player" unique_id=1865148790]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1338080857]
+unique_name_in_owner = true

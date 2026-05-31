@@ -45,6 +45,7 @@ func update_fading_mode(instant_override: bool = false):
 		
 		for node in c:
 			
+			
 			if node is Player:
 				if !node.update_fading.is_connected(update_fading_mode):
 					node.update_fading.connect(update_fading_mode.bind(true))

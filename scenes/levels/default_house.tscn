@@ -51,7 +51,7 @@ position = Vector2(464, -864)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hallway_F1" unique_id=19014991]
 visible = false
-polygon = PackedVector2Array(408, 208, 656, 208, 656, 144, 592, 144, 592, -48, 608, -48, 608, -112, 592, -112, 592, -224, 528, -224, 528, -112, 512, -112, 512, -48, 528, -48, 528, 0, 464, 0, 464, 144, 408, 144)
+polygon = PackedVector2Array(368, 224, 464, 224, 464, 208, 728, 208, 728, 80, 592, 80, 592, -48, 608, -48, 608, -112, 592, -112, 592, -224, 528, -224, 528, -112, 512, -112, 512, -48, 528, -48, 528, 0, 464, 0, 464, 144, 464, 0, 368, 0)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="hallway_F1" unique_id=130335329]
 visible = false
@@ -66,7 +66,7 @@ position = Vector2(464, 160)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hallway2_F1" unique_id=1272365382]
 visible = false
-polygon = PackedVector2Array(400, 144, 528, 144, 528, -48, 456, -48, 456, -112, 528, -112, 528, -224, 592, -224, 592, -112, 656, -112, 656, -48, 592, -48, 592, 144, 656, 144, 656, 208, 400, 208)
+polygon = PackedVector2Array(464, 64, 462.8203, 144, 528, 144, 528, -48, 384, -48, 384, -208, 528, -208, 528, -224, 592, -224, 592, -208, 736, -208, 736, -48, 592, -48, 592, 80, 736, 80, 736, 208, 463.74564, 208, 464, 240, 360, 240, 360, 64)
 
 [node name="garage" type="Area2D" parent="." unique_id=693538253]
 script = ExtResource("2_ele82")
@@ -91,7 +91,7 @@ position = Vector2(480, -1024)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="stairwell" unique_id=1272745085]
 visible = false
-polygon = PackedVector2Array(432, 208, 432, 144, 464, 144, 464, 0, 528, 0, 528, 104, 592, 104, 592, 144, 624, 144, 624, 208)
+polygon = PackedVector2Array(464, 224, 368, 224, 368, 80, 464, 80.09987, 464, 0, 528, 0, 528, 104, 640, 104, 640, 208, 464, 208)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="stairwell" unique_id=1053424579]
 visible = false
@@ -146,7 +146,7 @@ position = Vector2(0, 736)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="basement_stairs" unique_id=1009312940]
 visible = false
-polygon = PackedVector2Array(-16, -352, 48, -352, 48, -16, 96, -16, 96, 128, -16, 128)
+polygon = PackedVector2Array(-16, -352, 48, -352, 48, -16, 184, -16, 184, 128, -16, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="basement_stairs" unique_id=1419977725]
 visible = false
@@ -181,7 +181,7 @@ position = Vector2(-288, -384)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kitchen" unique_id=2051005331]
 visible = false
-polygon = PackedVector2Array(-304, -400, -112, -400, -112, -416, -48, -416, -48, -400, -16, -400, -16, 80, 64, 80, 64, 144, -16, 144, -16, 240, -304, 240)
+polygon = PackedVector2Array(-304, -400, -112, -400, -112, -416, -48, -416, -48, -400, -16, -400, -16, -16, 128, -16, 128, 240, -16, 240, -304, 240)
 
 [node name="default_translation" parent="." unique_id=159804422 instance=ExtResource("14_chc45")]
 position = Vector2(496, 0)
@@ -200,4 +200,5 @@ position = Vector2(16, 800)
 warp_offset = Vector2i(0, -62)
 
 [node name="Player" parent="." unique_id=574704302 instance=ExtResource("15_gmqn6")]
-speed_scale = 10.0
+position = Vector2(400, 216)
+camera_snap_axis = Vector2(2, 12)
