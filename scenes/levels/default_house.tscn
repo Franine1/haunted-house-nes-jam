@@ -155,7 +155,7 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kitchen" unique_id=223047545]
 visible = false
-polygon = PackedVector2Array(-16, 336, 416, 336, 416, 192, 160, 192, 160, 16, 144, 16, 144, -16, -16, -16)
+polygon = PackedVector2Array(-16, 336, 416, 336, 416, 192, 160, 192, 160, -16, -16, -16)
 
 [node name="downstairs" type="Area2D" parent="." unique_id=989713174]
 position = Vector2(0, -144)
@@ -188,7 +188,7 @@ position = Vector2(0, -512)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="basement" unique_id=302801246]
 visible = false
 position = Vector2(0, -512)
-polygon = PackedVector2Array(-16, 96, -16, -16, 96, -16, 96, 96, 64, 96, 64, 256, 16, 256, 16, 96)
+polygon = PackedVector2Array(16, 48, -16, 48.455734, -16, -16, 96, -16, 96, 96, 64, 96, 64, 256, 16, 256)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="basement" unique_id=1043582128]
 visible = false
