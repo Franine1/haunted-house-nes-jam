@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dycpoesls2te1"]
+
+[ext_resource type="PackedScene" uid="uid://b3sdkigh4r41v" path="res://scenes/characters/player.tscn" id="1_uu0hx"]
+[ext_resource type="PackedScene" uid="uid://bxgfbooamxjm2" path="res://scenes/teto_layouts/foyer.tscn" id="2_uu0hx"]
+[ext_resource type="PackedScene" uid="uid://cq72xn6uaevmw" path="res://scenes/teto_layouts/frontlawn.tscn" id="3_djypv"]
+
+[node name="Tetouse" type="Node2D" unique_id=752668610]
+
+[node name="Player" parent="." unique_id=1856024105 instance=ExtResource("1_uu0hx")]
+
+[node name="Room" parent="." unique_id=240038182 instance=ExtResource("2_uu0hx")]
+
+[node name="Room2" parent="." unique_id=919872996 instance=ExtResource("3_djypv")]
+position = Vector2(0, 224)

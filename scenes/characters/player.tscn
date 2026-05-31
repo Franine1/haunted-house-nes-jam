@@ -2,25 +2,22 @@
 
 [ext_resource type="Script" uid="uid://ciwwxlwb662jo" path="res://scripts/player_container.gd" id="1_76oj4"]
 [ext_resource type="Script" uid="uid://dtt6tt83gs34j" path="res://scripts/player.gd" id="1_yewv4"]
-[ext_resource type="Texture2D" uid="uid://b6cv3edev70l7" path="res://assets/digits.png" id="2_76oj4"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dyp2m"]
-atlas = ExtResource("2_76oj4")
-region = Rect2(192, 304, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_atpat"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dyp2m")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Shader" uid="uid://b7sks3iuk0ea8" path="res://scenes/characters/player.gdshader" id="3_dyp2m"]
+[ext_resource type="Texture2D" uid="uid://yh54yok7708r" path="res://resources/girlsprite.png" id="4_atpat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqtwu"]
-size = Vector2(12, 12)
+size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kqtwu"]
+shader = ExtResource("3_dyp2m")
+shader_parameter/grey1 = Color(1, 1, 1, 1)
+shader_parameter/col1 = Color(0.9764706, 0.827451, 0.7411765, 1)
+shader_parameter/grey2 = Color(0.6627451, 0.6627451, 0.6627451, 1)
+shader_parameter/col2 = Color(0.67481345, 0.0010389865, 0.0005693387, 1)
+shader_parameter/grey3 = Color(0.39607844, 0.39607844, 0.39607844, 1)
+shader_parameter/col3 = Color(0, 0, 0, 1)
+shader_parameter/grey4 = Color(0, 0, 0, 1)
+shader_parameter/col4 = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D" unique_id=1856024105]
 script = ExtResource("1_76oj4")
@@ -31,15 +28,18 @@ z_index = 5
 collision_layer = 4
 script = ExtResource("1_yewv4")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=964948067]
-sprite_frames = SubResource("SpriteFrames_atpat")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=931363550]
 shape = SubResource("RectangleShape2D_kqtwu")
 
 [node name="input delay" type="Timer" parent="Player" unique_id=1865148790]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=79859724]
+material = SubResource("ShaderMaterial_kqtwu")
+texture = ExtResource("4_atpat")
+hframes = 3
+vframes = 4
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1338080857]
 unique_name_in_owner = true
