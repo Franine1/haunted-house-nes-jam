@@ -170,8 +170,7 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 position = Vector2(0, 512)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="downstairs" unique_id=1465123838]
-visible = false
-polygon = PackedVector2Array(-16, 80, 80, 80, 80, 128, 240, 128, 240, 272, -16, 272)
+polygon = PackedVector2Array(-16, 80, 80, 80, 80, 128, 32, 128, 32, 272, -16, 272)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="downstairs" unique_id=1823877993]
 visible = false
@@ -188,6 +187,7 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 position = Vector2(0, -512)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="basement" unique_id=1043582128]
+visible = false
 polygon = PackedVector2Array(-16, 96, -16, 64, -96, 64, -104, 40, -96, 16, -16, 16, -16, -16, 96, -16, 96, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="basement" unique_id=617029273]
