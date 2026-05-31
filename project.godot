@@ -84,6 +84,7 @@ window/stretch/scale_mode="integer"
 
 [physics]
 
+common/physics_ticks_per_second=65
 3d/physics_engine="Jolt Physics"
 
 [rendering]
