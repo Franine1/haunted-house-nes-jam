@@ -12,7 +12,6 @@ var fade_time: Timer
 ## This determines how long it takes for layouts and rooms to fade in or out
 const base_time: float = 0.25
 
-
 func _ready() -> void:
 	fade_time = Timer.new()
 	fade_time.one_shot = true
