@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b8jlb2n6kiqe6"]
+
+[ext_resource type="Shader" uid="uid://b7sks3iuk0ea8" path="res://scenes/characters/player.gdshader" id="1_vcp7b"]
+
+[resource]
+shader = ExtResource("1_vcp7b")
+shader_parameter/grey1 = Color(1, 1, 1, 1)
+shader_parameter/col1 = Color(0.9764706, 0.827451, 0.7411765, 1)
+shader_parameter/grey2 = Color(0.6627451, 0.6627451, 0.6627451, 1)
+shader_parameter/col2 = Color(0.54509807, 0.2901961, 0.078431375, 1)
+shader_parameter/grey3 = Color(0.39607844, 0.39607844, 0.39607844, 1)
+shader_parameter/col3 = Color(0.25531858, 0.076098286, 0.034679927, 1)
+shader_parameter/grey4 = Color(0, 0, 0, 1)
+shader_parameter/col4 = Color(0, 0, 0, 1)
