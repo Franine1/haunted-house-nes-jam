@@ -13,7 +13,31 @@
 [ext_resource type="PackedScene" uid="uid://jplhsnmaxjf2" path="res://scenes/layouts/basement_stairwell.tscn" id="11_53me8"]
 [ext_resource type="PackedScene" uid="uid://ccgnwnx5wnc3v" path="res://scenes/layouts/basement.tscn" id="12_5hg55"]
 [ext_resource type="PackedScene" uid="uid://dx6464qryqnvp" path="res://scenes/layouts/kitchen.tscn" id="13_dkw8a"]
+[ext_resource type="PackedScene" uid="uid://dpdquhpc1kbx" path="res://scenes/layouts/master_bedroom.tscn" id="15_dkw8a"]
 [ext_resource type="PackedScene" uid="uid://b3sdkigh4r41v" path="res://scenes/characters/player.tscn" id="15_gmqn6"]
+[ext_resource type="PackedScene" uid="uid://bd3wgswukgx5" path="res://scenes/layouts/linen_closet.tscn" id="16_chc45"]
+[ext_resource type="PackedScene" uid="uid://b0apypc2eve1p" path="res://scenes/layouts/bathroom.tscn" id="17_rv735"]
+[ext_resource type="PackedScene" uid="uid://b3yj8ioiuvlx8" path="res://scenes/layouts/patio.tscn" id="18_wwnbd"]
+[ext_resource type="PackedScene" uid="uid://cqxgs115t2lvb" path="res://scenes/layouts/hobby_room.tscn" id="19_w4wor"]
+[ext_resource type="PackedScene" uid="uid://upk5cnmhshqo" path="res://scenes/layouts/guest_hallway.tscn" id="20_chc45"]
+[ext_resource type="PackedScene" uid="uid://bkinni5noosol" path="res://scenes/layouts/guest_left.tscn" id="21_wwnbd"]
+[ext_resource type="PackedScene" uid="uid://brkk0mthcxs1y" path="res://scenes/layouts/guest_right.tscn" id="22_w4wor"]
+[ext_resource type="PackedScene" uid="uid://vgkqsy77ky76" path="res://scenes/portals/translation/default_translation.tscn" id="23_w4wor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u00pf"]
+size = Vector2(112, 272)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwnbd"]
+size = Vector2(48, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4wor"]
+size = Vector2(48, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k13on"]
+size = Vector2(432, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlvrc"]
+size = Vector2(432, 128)
 
 [node name="default_house" type="Node2D" unique_id=825320048]
 script = ExtResource("1_couku")
@@ -21,12 +45,25 @@ metadata/_custom_type_script = "uid://56yoruxpggjg"
 
 [node name="Player" parent="." unique_id=574704302 instance=ExtResource("15_gmqn6")]
 position = Vector2(200, 104)
+camera_snap_axis = Vector2(7, 1)
 
 [node name="dining_room" type="Area2D" parent="." unique_id=436585657]
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="dining_room" parent="dining_room" unique_id=306111281 instance=ExtResource("3_qc1xj")]
+
+[node name="dining_room2" parent="dining_room" unique_id=461922189 instance=ExtResource("3_qc1xj")]
+position = Vector2(0, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dining_room" unique_id=1377793521]
+visible = false
+position = Vector2(8, 360)
+shape = SubResource("RectangleShape2D_u00pf")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dining_room" unique_id=1211700572]
+visible = false
+polygon = PackedVector2Array(-16, -192, 32, -192, 32, -16, 240, -16, 240, 64, 336, 64, 336, 112, 240, 112, 240, 128, -192, 128, -192, -224, -16, -224)
 
 [node name="hall1F1" type="Area2D" parent="." unique_id=822867465]
 position = Vector2(240, 64)
@@ -38,12 +75,25 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="hallway_F2" parent="hall1F1" unique_id=460821112 instance=ExtResource("4_u0kpa")]
 position = Vector2(0, -512)
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hall1F1" unique_id=1547251147]
+visible = false
+polygon = PackedVector2Array(-256, -80, 0, -80, 0, -64, 48, -64, 48, -192, 96, -192, 96, -80, 256, -80, 256, 64, 96, 64, 96, 48, 0, 48, 0, 64, -256, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hall1F1" unique_id=1632003905]
+visible = false
+position = Vector2(24, -544)
+shape = SubResource("RectangleShape2D_wwnbd")
+
 [node name="hall2F1" type="Area2D" parent="." unique_id=713830021]
 position = Vector2(224, 176)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="hallway_F1" parent="hall2F1" unique_id=1585282537 instance=ExtResource("5_c0p4i")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hall2F1" unique_id=696747916]
+visible = false
+polygon = PackedVector2Array(-80, -400, 64, -400, 64, -304, 272, -304, 272, -48, 112, -48, 112, -64, 16, -64, 16, -48, -240, -48, -240, -192, 16, -192, 16, -112, 64, -112, 64, -208, -80, -208)
 
 [node name="stairs" type="Area2D" parent="." unique_id=1612055545]
 position = Vector2(256, 0)
@@ -55,12 +105,24 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="main_stairwell2" parent="stairs" unique_id=642691823 instance=ExtResource("7_u11u2")]
 position = Vector2(0, -512)
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="stairs" unique_id=1399939806]
+visible = false
+polygon = PackedVector2Array(-272, -16, 32, -16, 32, -128, 80, -128, 80, -16, 240, -16, 240, 128, 80, 128, 80, 112, -16, 112, -16, 128, -272, 128)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="stairs" unique_id=801443277]
+visible = false
+polygon = PackedVector2Array(-16, -448, 32, -448, 32, -512, 128, -512, 128, -560, -192, -560, -192, -512, -16, -512)
+
 [node name="garage" type="Area2D" parent="." unique_id=1701807272]
 position = Vector2(352, -16)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="garage" parent="garage" unique_id=1665109948 instance=ExtResource("6_xo5id")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="garage" unique_id=540717854]
+visible = false
+polygon = PackedVector2Array(-64, -112, -16, -112, -16, 0, 144, 0, 144, 144, -16, 144, -16, 128, -112, 128, -112, 80, -64, 80)
 
 [node name="laundry" type="Area2D" parent="." unique_id=513050993]
 script = ExtResource("2_ele82")
@@ -69,12 +131,20 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="laundry room" parent="laundry" unique_id=2105000521 instance=ExtResource("9_gmqn6")]
 position = Vector2(352, -112)
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="laundry" unique_id=1597711616]
+visible = false
+polygon = PackedVector2Array(288, -128, 496, -128, 496, -32, 336, -32, 336, 112, 240, 112, 240, 64, 288, 64)
+
 [node name="living" type="Area2D" parent="." unique_id=1665443263]
 position = Vector2(160, -208)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="living_room" parent="living" unique_id=279256798 instance=ExtResource("10_4101l")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="living" unique_id=1588695597]
+visible = false
+polygon = PackedVector2Array(-16, 192, -16, -16, 128, -16, 128, 80, 176, 80, 176, 320, 128, 320, 128, 192)
 
 [node name="kitchen" type="Area2D" parent="." unique_id=866276870]
 position = Vector2(-176, -208)
@@ -83,6 +153,10 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="kitchen" parent="kitchen" unique_id=939096970 instance=ExtResource("13_dkw8a")]
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kitchen" unique_id=223047545]
+visible = false
+polygon = PackedVector2Array(-16, 336, 416, 336, 416, 192, 160, 192, 160, 16, 144, 16, 144, -16, -16, -16)
+
 [node name="downstairs" type="Area2D" parent="." unique_id=989713174]
 position = Vector2(0, -144)
 script = ExtResource("2_ele82")
@@ -90,14 +164,16 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="basement_stairwell" parent="downstairs" unique_id=218581031 instance=ExtResource("11_53me8")]
 
-[node name="basement_stairwell3" parent="downstairs" unique_id=903115021 instance=ExtResource("11_53me8")]
-position = Vector2(0, -128)
-
-[node name="basement_stairwell4" parent="downstairs" unique_id=836060047 instance=ExtResource("11_53me8")]
-position = Vector2(0, 640)
-
 [node name="basement_stairwell2" parent="downstairs" unique_id=380581101 instance=ExtResource("11_53me8")]
 position = Vector2(0, 512)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="downstairs" unique_id=1465123838]
+visible = false
+polygon = PackedVector2Array(-16, -48, 32, -48, 32, 128, 240, 128, 240, 272, -16, 272)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="downstairs" unique_id=1823877993]
+visible = false
+polygon = PackedVector2Array(-16, 640, 32, 640, 32, 480, 64, 480, 64, 368, -48, 368, -48, 480, -16, 480)
 
 [node name="basement" type="Area2D" parent="." unique_id=1301869203]
 position = Vector2(-32, 240)
@@ -107,10 +183,18 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="basement" parent="basement" unique_id=1346770875 instance=ExtResource("12_5hg55")]
 
 [node name="basement2" parent="basement" unique_id=112746493 instance=ExtResource("12_5hg55")]
-position = Vector2(0, -640)
+position = Vector2(0, -512)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="basement" unique_id=302801246]
+visible = false
+position = Vector2(0, -512)
+polygon = PackedVector2Array(-16, 96, -16, -16, 96, -16, 96, 96, 64, 96, 64, 256, 16, 256, 16, 96)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="basement" unique_id=1043582128]
+visible = false
+polygon = PackedVector2Array(-16, 96, -16, -16, 96, -16, 96, 96, 64, 96, 64, 256, 16, 256, 16, 96)
 
 [node name="hallF2" type="Area2D" parent="." unique_id=1990455135]
-visible = false
 position = Vector2(256, -560)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
@@ -119,3 +203,118 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="hallway_F3" parent="hallF2" unique_id=1054040191 instance=ExtResource("8_0p5e4")]
 position = Vector2(0, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hallF2" unique_id=255940997]
+visible = false
+position = Vector2(8, 592)
+shape = SubResource("RectangleShape2D_w4wor")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hallF2" unique_id=325002814]
+visible = false
+polygon = PackedVector2Array(-16, 112, -16, 48, -448, 48, -448, -160, -192, -160, -192, -112, -96, -112, -96, -160, 32, -160, 32, -80, 240, -80, 240, 176, 32, 176, 32, 112)
+
+[node name="master" type="Area2D" parent="." unique_id=1025662522]
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="master_bedroom" parent="master" unique_id=125640778 instance=ExtResource("15_dkw8a")]
+position = Vector2(80, -704)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="master" unique_id=2011195665]
+visible = false
+polygon = PackedVector2Array(64, -512, 384, -512, 384, -560, 288, -560, 288, -720, 160, -720, 160, -672, 64, -672)
+
+[node name="linen" type="Area2D" parent="." unique_id=1287363892]
+position = Vector2(304, -624)
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="linen_closet" parent="linen" unique_id=1386052871 instance=ExtResource("16_chc45")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="linen" unique_id=1527805765]
+visible = false
+polygon = PackedVector2Array(80, -16, -16, -16, -16, 64, -240, 64, -240, 112, 80, 112)
+
+[node name="bathroom" type="Area2D" parent="." unique_id=133635026]
+position = Vector2(400, -672)
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="bathroom" parent="bathroom" unique_id=1733979637 instance=ExtResource("17_rv735")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="bathroom" unique_id=623476075]
+visible = false
+polygon = PackedVector2Array(-16, 32, 96, 32, 96, 160, -336, 160, -336, 112, -16, 112)
+
+[node name="patio" type="Area2D" parent="." unique_id=1681905463]
+position = Vector2(304, -496)
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="patio" parent="patio" unique_id=1037466481 instance=ExtResource("18_wwnbd")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="patio" unique_id=1591401229]
+visible = false
+polygon = PackedVector2Array(-240, -64, 80, -64, 80, -16, 192, -16, 192, 112, -16, 112, -16, -16, -240, -16)
+
+[node name="hobby room" type="Area2D" parent="." unique_id=1364746277]
+position = Vector2(-176, -720)
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="hobby_room" parent="hobby room" unique_id=1048350017 instance=ExtResource("19_w4wor")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hobby room" unique_id=1903180130]
+visible = false
+polygon = PackedVector2Array(560, 208, 560, 160, 240, 160, 240, 0, -16, 0, -16, 208, 176, 208, 176, 336, 224, 336, 224, 208)
+
+[node name="hall_guest" type="Area2D" parent="." unique_id=1495108025]
+position = Vector2(16, -640)
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="guest_hallway" parent="hall_guest" unique_id=1546665390 instance=ExtResource("20_chc45")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hall_guest" unique_id=1435641196]
+visible = false
+polygon = PackedVector2Array(-208, 256, -208, -80, 48, -80, 48, 128, 224, 128, 224, 256)
+
+[node name="left_guest" type="Area2D" parent="." unique_id=962823236]
+position = Vector2(-176, -496)
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="guest_left" parent="left_guest" unique_id=1032323222 instance=ExtResource("21_wwnbd")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_guest" unique_id=330283357]
+visible = false
+position = Vector2(200, 48)
+shape = SubResource("RectangleShape2D_k13on")
+
+[node name="right_guest" type="Area2D" parent="." unique_id=1055200096]
+position = Vector2(64, -496)
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="guest_left" parent="right_guest" unique_id=2145665624 instance=ExtResource("22_w4wor")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_guest" unique_id=1355409795]
+visible = false
+position = Vector2(-40, 48)
+shape = SubResource("RectangleShape2D_xlvrc")
+
+[node name="default_translation" parent="." unique_id=159804422 instance=ExtResource("23_w4wor")]
+position = Vector2(264, 8)
+warp_offset = Vector2i(0, -32)
+
+[node name="default_translation2" parent="." unique_id=1210402310 instance=ExtResource("23_w4wor")]
+position = Vector2(264, -456)
+warp_offset = Vector2i(0, 32)
+
+[node name="default_translation3" parent="." unique_id=418709588 instance=ExtResource("23_w4wor")]
+position = Vector2(8, -168)
+warp_offset = Vector2i(0, 32)
+
+[node name="default_translation4" parent="." unique_id=222115559 instance=ExtResource("23_w4wor")]
+position = Vector2(8, 488)
+warp_offset = Vector2i(0, -32)
