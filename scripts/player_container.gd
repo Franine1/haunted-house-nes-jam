@@ -23,6 +23,6 @@ func set_snap_axis(value: Vector2) -> void:
 		print("fail")
 		get_tree().create_timer(0.1).timeout.connect(set_snap_axis.bind(value))
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("A button"):
-		camera_snap_axis += Vector2.ONE
+#func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed("A button"):
+	#	camera_snap_axis += Vector2.ONE
