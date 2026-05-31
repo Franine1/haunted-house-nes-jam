@@ -20,8 +20,8 @@ config/icon="res://assets/icon.svg"
 window/size/viewport_width=256
 window/size/viewport_height=224
 window/size/sharp_corners=true
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/window_width_override=1016
+window/size/window_height_override=896
 window/stretch/mode="viewport"
 window/stretch/scale_mode="integer"
 

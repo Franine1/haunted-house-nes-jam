@@ -18,6 +18,7 @@ func _ready() -> void:
 	shift_axis()
 	z_index = 5
 
+#i have no idea what bro was smoking to make this movement code
 func _physics_process(delta: float) -> void:
 	var direct: int
 	if Input.is_action_just_pressed("Move Down"):
@@ -53,6 +54,15 @@ func _physics_process(delta: float) -> void:
 		velocity = move * SPEED * speed_scale
 		
 		input_delay.start(1.0/speed_scale)
+		#match direct:
+		#	1:
+		#		%playerAnim.play("down")
+		#	2:
+		#		%playerAnim.play("up")
+		#	3:
+		#		%playerAnim.play("left")
+		#	4:
+		#		%playerAnim.play("right")
 	move_and_slide()
 
 

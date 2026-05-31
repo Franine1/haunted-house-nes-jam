@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://kieurj215av1" path="res://scenes/rooms/example_room.tscn" id="7_y4yao"]
 [ext_resource type="PackedScene" uid="uid://dlxeq7stlbroq" path="res://scenes/rooms/room1.tscn" id="8_y4yao"]
 [ext_resource type="Script" uid="uid://2fxoxwt3c1kf" path="res://scripts/translation_portal.gd" id="9_k2nqe"]
+[ext_resource type="PackedScene" uid="uid://djaa5orrptfw3" path="res://scenes/rooms/tetoroomcol.tscn" id="10_5jaec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4yao"]
 size = Vector2(59, 65)
@@ -71,3 +72,6 @@ metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportationPortal" unique_id=949610671]
 position = Vector2(152, -128)
 shape = SubResource("RectangleShape2D_5jaec")
+
+[node name="Room5" parent="." unique_id=1348055527 instance=ExtResource("10_5jaec")]
+position = Vector2(176, 144)
