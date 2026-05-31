@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://nrl32a5tkx60"]
+
+[ext_resource type="Script" uid="uid://dhyvdqgu87oml" path="res://scripts/game_manager.gd" id="1_01db0"]
+
+[node name="game manager" type="Control" unique_id=604842194]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_01db0")
+
+[node name="container" type="SubViewportContainer" parent="." unique_id=1981681289]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="game world" type="SubViewport" parent="container" unique_id=105587520]
+
+[node name="vbox" type="VBoxContainer" parent="." unique_id=1332029361]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="textbox stuff" type="Control" parent="vbox" unique_id=835145720]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Panel" type="Panel" parent="vbox/textbox stuff" unique_id=703317297]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="vbox/textbox stuff" unique_id=1041331078]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 6
+
+[node name="Control" type="Control" parent="vbox" unique_id=188079722]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 11.0

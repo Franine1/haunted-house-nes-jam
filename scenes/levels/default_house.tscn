@@ -95,7 +95,7 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hall2F1" unique_id=696747916]
 visible = false
-polygon = PackedVector2Array(-96, -400, 16, -400, 16, -272, 272, -272, 272, -48, 112, -48, 112, -64, 16, -64, 16, -48, -240, -48, -240, -192, 16, -192, 16, -112, 64, -112, 64, -200, -96, -200)
+polygon = PackedVector2Array(-96, -400, 16, -400, 16, -272, 272, -272, 272, -192, 112, -192, 112, -64, 16, -64, 16, -48, -240, -48, -240, -192, 16, -192, 16, -112, 64, -112, 64, -200, -96, -200)
 
 [node name="stairs" type="Area2D" parent="." unique_id=1612055545]
 position = Vector2(256, 0)
@@ -170,7 +170,8 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 position = Vector2(0, 512)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="downstairs" unique_id=1465123838]
-polygon = PackedVector2Array(-16, 80, 80, 80, 80, 128, 32, 128, 32, 272, -16, 272)
+visible = false
+polygon = PackedVector2Array(-16, 80, 80, 80, 80, 128, 240, 128, 240, 272, -16, 272)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="downstairs" unique_id=1823877993]
 visible = false
@@ -267,7 +268,7 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hobby room" unique_id=1903180130]
 visible = false
-polygon = PackedVector2Array(560, 208, 560, 160, 160, 160, 160, 0, -16, 0, -16, 208, 160, 208, 160, 336, 208, 336, 208, 208)
+polygon = PackedVector2Array(560, 208, 560, 160, 160, 160, 160, 0, -16, 0, -16, 208, 160, 208, 160, 288, 208, 288, 208, 208)
 
 [node name="hall_guest" type="Area2D" parent="." unique_id=1495108025]
 position = Vector2(16, -640)

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dtt6tt83gs34j" path="res://scripts/player.gd" id="1_yewv4"]
 [ext_resource type="Material" uid="uid://dn1kold33mxhc" path="res://resources/palettes/playerpallete.tres" id="3_dyp2m"]
 [ext_resource type="Texture2D" uid="uid://yh54yok7708r" path="res://assets/girlsprite.png" id="4_atpat"]
+[ext_resource type="Script" uid="uid://c35esgc0k2q4m" path="res://scripts/camera2D.gd" id="5_atpat"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqtwu"]
 size = Vector2(12, 12)
@@ -139,3 +140,5 @@ animation = &"up"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1338080857]
 unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("5_atpat")

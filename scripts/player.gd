@@ -23,6 +23,7 @@ func _ready() -> void:
 	
 	z_index = 5
 	seamless_warp()
+	fix_camera(true)
 
 func _physics_process(delta: float) -> void:
 	if walk_time <= 0.0:
@@ -90,7 +91,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func fix_camera() -> void:
+func fix_camera(instant: bool = false) -> void:
 	var translate: Vector2 = global_position
 	translate /= 16.0
 	translate -= camera_snap_axis
@@ -99,7 +100,11 @@ func fix_camera() -> void:
 	translate = translate.round()
 	translate += camera_snap_axis
 	translate *= 16.0
-	camera.global_position = translate
+	if instant:
+		camera.warp(translate)
+	elif camera.target != translate:
+		camera.glide(translate)
+		print("set")
 
 func shift_axis() -> void:
 	current_axis = (current_axis.orthogonal()).abs()
@@ -125,6 +130,7 @@ func final_position() -> Vector2:
 func teleport(target: Vector2) -> void:
 	var difference: Vector2 = target - global_position
 	camera_snap_axis += difference/16.0 
+	camera.shift(difference)
 	global_position = target
 
 func set_seamless(input: bool) -> void:

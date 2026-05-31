@@ -81,6 +81,7 @@ window/stretch/scale_mode="integer"
 2d_physics/layer_1="Physics"
 2d_physics/layer_2="Rooms"
 2d_physics/layer_3="Player"
+2d_physics/layer_4="Interaction"
 
 [physics]
 

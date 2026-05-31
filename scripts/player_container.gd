@@ -23,18 +23,15 @@ func get_player() -> Player:
 
 func set_snap_axis(value: Vector2) -> void:
 	if pl != null and pl.is_node_ready():
-		print(value)
 		pl.camera_snap_axis = value
+		pl.fix_camera(true)
 	else:
-		print("fail")
 		get_tree().create_timer(0.1).timeout.connect(set_snap_axis.bind(value))
 
 func set_speed_scale(value: float) -> void:
 	if pl != null and pl.is_node_ready():
-		print(value)
 		pl.speed_scale = value
 	else:
-		print("fail")
 		get_tree().create_timer(0.1).timeout.connect(set_speed_scale.bind(value))
 
 #func _process(delta: float) -> void:

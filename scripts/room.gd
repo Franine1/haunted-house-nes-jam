@@ -10,6 +10,6 @@ func _ready() -> void:
 			child.instant_fade.call_deferred(initial_fade_mode)
 			child.set_show_area.call_deferred(self)
 	
-	collision_layer = 0
+	collision_layer = 2
 	collision_mask = 4
 	z_index = show_layer
