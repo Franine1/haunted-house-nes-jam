@@ -7,10 +7,12 @@ var current_axis: Vector2 = Vector2.RIGHT
 const SPEED: float = 16.0
 @onready var input_delay: Timer = %"input delay"
 @onready var camera: Camera2D = %Camera2D
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
 @export var speed_scale: float = 5.0
-@export var room_id: String = ""
 var axis_shift: float = 0.0
 var seamless: bool = false
+var walk_time: float = 0.0
+var initial_walk_time: float = 0.0
 
 signal update_fading()
 
@@ -23,7 +25,18 @@ func _ready() -> void:
 	seamless_warp()
 
 func _physics_process(delta: float) -> void:
+	if walk_time <= 0.0:
+		walk_time = 0.0
+		sprite.frame = 0
+	else:
+		walk_time -= delta
+		const anim_speed = 0.9
+		sprite.frame = (floori((initial_walk_time - walk_time)*speed_scale * anim_speed) % 2) + 1
+	
+	
 	if input_delay.is_stopped():
+		correct_position()
+		
 		var mvm = Input.get_vector("Move Left","Move Right","Move Up","Move Down")
 		if mvm:
 		
@@ -31,8 +44,11 @@ func _physics_process(delta: float) -> void:
 			
 			var move: Vector2 = current_axis * snapped
 			
+			var axis_swapped: bool = false
+			
 			if move.length_squared() <= 0.1:
 				shift_axis()
+				axis_swapped = true
 				move = current_axis * snapped
 			
 			if move.length_squared() <= 0.1:
@@ -40,9 +56,32 @@ func _physics_process(delta: float) -> void:
 			else:
 				move = move.normalized()
 			
-			velocity = move * SPEED * speed_scale
+			var collision: KinematicCollision2D = move_and_collide(move * SPEED, true)
 			
-			input_delay.start(1.0/speed_scale)
+			const directions: Dictionary[Vector2,String] = {
+				Vector2.LEFT: "left"
+				,Vector2.RIGHT: "right"
+				,Vector2.UP: "up"
+				,Vector2.DOWN: "down"
+			}
+			
+			if directions.has(move) and (axis_swapped or !collision):
+				sprite.animation = directions[move]
+			
+			if collision:
+				velocity = Vector2.ZERO
+				shift_axis()
+			else:
+				velocity = move * SPEED * speed_scale
+				var dur: float = 1.0/speed_scale
+				if walk_time <= 0:
+					initial_walk_time = dur + 0.04
+				else:
+					initial_walk_time += dur
+				walk_time = dur + 0.04
+				input_delay.start(dur)
+			
+			
 			
 		else:
 			velocity = Vector2.ZERO
@@ -64,6 +103,9 @@ func fix_camera() -> void:
 
 func shift_axis() -> void:
 	current_axis = (current_axis.orthogonal()).abs()
+	correct_position()
+
+func correct_position() -> void:
 	global_position = (16.0 * ((global_position-Vector2(8.0,8.0))/16.0).round()) + Vector2(8.0,8.0)
 
 func seamless_warp() -> void:
@@ -83,7 +125,7 @@ func final_position() -> Vector2:
 func teleport(target: Vector2) -> void:
 	var difference: Vector2 = target - global_position
 	camera_snap_axis += difference/16.0 
-	global_position += difference
+	global_position = target
 
 func set_seamless(input: bool) -> void:
 	seamless = input
