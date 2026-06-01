@@ -1,6 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://dyv6sm6km8i56"]
 
 [ext_resource type="FontFile" uid="uid://c5rlreg5wffq" path="res://resources/themes/pixel font 3.png" id="1_k7ng0"]
+[ext_resource type="FontFile" uid="uid://d4m6mcfsfpbun" path="res://resources/themes/newfont.png" id="2_m85mw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v60m8"]
 content_margin_left = 0.0
@@ -89,7 +90,7 @@ RichTextLabel/fonts/bold_font = ExtResource("1_k7ng0")
 RichTextLabel/fonts/bold_italics_font = ExtResource("1_k7ng0")
 RichTextLabel/fonts/italics_font = ExtResource("1_k7ng0")
 RichTextLabel/fonts/mono_font = ExtResource("1_k7ng0")
-RichTextLabel/fonts/normal_font = ExtResource("1_k7ng0")
+RichTextLabel/fonts/normal_font = ExtResource("2_m85mw")
 RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_3hk2r")
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_gwa0u")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_r0b4b")
