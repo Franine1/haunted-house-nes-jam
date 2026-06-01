@@ -8,7 +8,7 @@ const textbox: PackedScene = preload("res://scenes/UI/textbox.tscn")
 var dialogue_script: Dialogue = null
 var current_state: game_state = game_state.MENU
 var stored_text: Array[String] = []
-
+var textbox_delay: Timer
 
 enum game_state {
 	MENU,
@@ -44,7 +44,9 @@ func _process(delta: float) -> void:
 	
 
 func _ready() -> void:
-	pass
+	textbox_delay = Timer.new()
+	add_child(textbox_delay)
+	textbox_delay.one_shot = true
 
 
 func menu_behavior(delta: float) -> void:
@@ -75,8 +77,8 @@ func dialogue_behavior(delta: float) -> void:
 			
 			substate = 2
 		2:
-			var read_a: bool = Input.is_action_just_pressed("A button")
-			var read_b: bool = Input.is_action_just_pressed("B button")
+			var read_a: bool = Input.is_action_just_pressed("A button") or (textbox_delay.is_stopped() and Input.is_action_pressed("A button"))
+			var read_b: bool = Input.is_action_pressed("B button")
 			var read_s: bool = Input.is_action_just_pressed("Select button")
 			
 			if read_s:
@@ -98,11 +100,15 @@ func dialogue_behavior(delta: float) -> void:
 				var possible: bool = true
 				for child in text_holder.get_children():
 					if child is Textbox:
+						if !possible:
+							break
+						
 						if !child.is_full():
 							possible = false
 							break
 				if possible:
 					dialogue_script.A_reaction()
+					textbox_delay.start(0.5)
 					substate = 1
 		3:
 			fill_dialogue(0.01,true)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ckpkp4jh0klc8"]
 
 [ext_resource type="Script" uid="uid://56yoruxpggjg" path="res://scripts/level.gd" id="1_couku"]
+[ext_resource type="Material" uid="uid://b8jlb2n6kiqe6" path="res://resources/palettes/brownpallete.tres" id="1_u00pf"]
 [ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="2_ele82"]
 [ext_resource type="PackedScene" uid="uid://bjvtdgu7ftc6w" path="res://scenes/layouts/dining_room.tscn" id="3_qc1xj"]
 [ext_resource type="PackedScene" uid="uid://b20xsj60jdjvy" path="res://scenes/layouts/hallway_f1.tscn" id="4_u0kpa"]
@@ -43,7 +44,11 @@ size = Vector2(400, 128)
 size = Vector2(400, 128)
 
 [node name="default_house" type="Node2D" unique_id=825320048]
+material = ExtResource("1_u00pf")
 script = ExtResource("1_couku")
+default_palette = Dictionary[int, ShaderMaterial]({
+0: ExtResource("1_u00pf")
+})
 metadata/_custom_type_script = "uid://56yoruxpggjg"
 
 [node name="Player" parent="." unique_id=574704302 instance=ExtResource("15_gmqn6")]

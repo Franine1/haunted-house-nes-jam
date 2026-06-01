@@ -2,6 +2,7 @@ class_name Layout
 extends TileMapLayer
 
 var fade_time: Timer 
+@export var material_layer: int = 0
 @export var fade_mode: bool = false
 @export var show_area: Area2D = null:
 	set(value):
@@ -80,3 +81,9 @@ func instant_fade(input: bool) -> void:
 	fade_mode = input
 	fade_time.stop()
 	on_fadeout.call_deferred()
+
+func change_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:
+	if input.has(material_layer):
+		material = input[material_layer]
+	elif clear_non_included:
+		material = null

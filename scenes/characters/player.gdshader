@@ -27,5 +27,4 @@ void fragment() {
 		COLOR = col4;
 	else
 		COLOR = current_pixel;
-		//COLOR = vec4(0.0,0.0,0.0,1.0);
 }
