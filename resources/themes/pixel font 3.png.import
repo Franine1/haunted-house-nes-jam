@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://c5rlreg5wffq"
+path="res://.godot/imported/pixel font 3.png-d9444acf338eeb90e94a07ec9028aa5f.fontdata"
+
+[deps]
+
+source_file="res://resources/themes/pixel font 3.png"
+dest_files=["res://.godot/imported/pixel font 3.png-d9444acf338eeb90e94a07ec9028aa5f.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-31", "32-32 -3", "33-34 -3 -2", "35-38 -1", "39-39 -6 -1", "40-42 -3", "43-43 -1", "44-44 -3 -1", "45-45 -1", "46-46 -4", "47-47 -1", "48-48 -1 -1", "49-49 -2 -2", "50-57 -1 -1", "58-58 -4", "59-59 -3 -1", "60-63 -1", "64-65", "66-66 -1", "67-67 -2", "68-68 -1", "69-70 -2", "71-71 -1", "72-72 -2", "73-73 -1", "74-75 -2", "76-76 -3", "77-77 -1", "78-79 -2", "80-81 -1", "82-82 -2", "83-90 -1", "91-91 -4", "92-92 -1", "93-93 -4", "94-94 -3", "95-95", "96-96 -3", "97-97 -2", "98-98 -2 -1", "99-104 -3", "105-105 -5", "106-107 -3", "108-108 -4", "109-109 -1", "110-111 -2", "112-116 -3", "117-117 -2", "118-118 -3", "119-119 -1", "120-121 -3", "122-122 -2", "123-125 -3", "126-127")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2
