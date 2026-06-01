@@ -7,10 +7,10 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0, 0, 0, 0.7058824)
+bg_color = Color(0, 0, 0, 1)
 corner_detail = 2
 
-[sub_resource type="Image" id="Image_g34qj"]
+[sub_resource type="Image" id="Image_k7ng0"]
 data = {
 "data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
 "format": "RGBA8",
@@ -20,7 +20,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_3hk2r"]
-image = SubResource("Image_g34qj")
+image = SubResource("Image_k7ng0")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwa0u"]
 content_margin_left = 4.0
