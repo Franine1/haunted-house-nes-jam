@@ -17,8 +17,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="game world" type="SubViewport" parent="container" unique_id=105587520]
+handle_input_locally = false
+render_target_update_mode = 4
 
 [node name="vbox" type="VBoxContainer" parent="." unique_id=1332029361]
+z_index = 50
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,29 +29,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="textbox stuff" type="Control" parent="vbox" unique_id=835145720]
+[node name="HBoxContainer" type="HBoxContainer" parent="vbox" unique_id=737062695]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
-
-[node name="Panel" type="Panel" parent="vbox/textbox stuff" unique_id=703317297]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GridContainer" type="GridContainer" parent="vbox/textbox stuff" unique_id=1041331078]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-columns = 6
 
 [node name="Control" type="Control" parent="vbox" unique_id=188079722]
 layout_mode = 2

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DialogueOption" format=3 uid="uid://djtnuyq2gff0u"]
+
+[ext_resource type="Script" uid="uid://c3d6px7rbndui" path="res://scripts/dialogue.gd" id="1_bbghw"]
+[ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="2_dmcf8"]
+[ext_resource type="Resource" uid="uid://fg0kvccv2pu1" path="res://resources/dialogue/reusables/thats_cool.tres" id="2_omxnn"]
+[ext_resource type="Resource" uid="uid://bprso0lto0ymr" path="res://resources/dialogue/reusables/^u^.tres" id="3_pqsmd"]
+
+[resource]
+script = ExtResource("2_dmcf8")
+choices = Array[ExtResource("1_bbghw")]([ExtResource("2_omxnn"), ExtResource("3_pqsmd")])
+metadata/_custom_type_script = "uid://djmjjs20dmaub"

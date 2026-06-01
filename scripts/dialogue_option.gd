@@ -17,14 +17,14 @@ func line() -> Array[String]:
 			index += 1
 			index %= choices.size()
 		
-		var ans = []
+		var ans: Array[String] = []
 		for i in choices.size():
 			var choice: Dialogue = choices[i]
 			var temp: Array[String] = choice.line()
 			if temp.size() == 0:
 				continue
 			if i == index:
-				temp[0] = "> " + temp[0]
+				temp[0] = ">" + temp[0]
 			ans.append(temp[0])
 		return ans
 	else:
@@ -37,15 +37,9 @@ func A_reaction():
 	if !choice_made:
 		choice_made = true
 		choices[index].reset_dialogue()
+		choices[index].A_reaction()
 	else:
 		choices[index].A_reaction()
-
-
-func B_reaction():
-	if dialogue_finished():
-		return
-	if choice_made:
-		choices[index].B_reaction()
 
 
 func select_reaction():

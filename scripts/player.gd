@@ -104,7 +104,6 @@ func fix_camera(instant: bool = false) -> void:
 		camera.warp(translate)
 	elif camera.target != translate:
 		camera.glide(translate)
-		print("set")
 
 func shift_axis() -> void:
 	current_axis = (current_axis.orthogonal()).abs()

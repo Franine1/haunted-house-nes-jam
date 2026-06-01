@@ -16,20 +16,16 @@ func line() -> Array[String]:
 func A_reaction():
 	if dialogue_finished():
 		return
+	
+	sections[index].A_reaction()
 	if sections[index].dialogue_finished():
 		index += 1
+		if dialogue_finished():
+			return
 		sections[index].reset_dialogue()
 		while !dialogue_finished() and sections[index].dialogue_finished():
 			index += 1
 			sections[index].reset_dialogue()
-	else:
-		sections[index].A_reaction()
-
-
-func B_reaction():
-	if dialogue_finished():
-		return
-	sections[index].B_reaction()
 
 
 func select_reaction():

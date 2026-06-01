@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://sx0bo70a7fsc"]
+
+[ext_resource type="Theme" uid="uid://dyv6sm6km8i56" path="res://resources/themes/UI_theme.tres" id="1_uo5yn"]
+[ext_resource type="Script" uid="uid://c2kjctcqmabtb" path="res://scripts/textbox.gd" id="1_v60m8"]
+
+[node name="textbox" type="RichTextLabel" unique_id=1143191391]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_uo5yn")
+scroll_active = false
+scroll_following = true
+script = ExtResource("1_v60m8")
+
+[node name="Panel" type="Panel" parent="." unique_id=2001106078]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="letter_timer" type="Timer" parent="." unique_id=1999774709]
+unique_name_in_owner = true
+one_shot = true

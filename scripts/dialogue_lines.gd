@@ -17,9 +17,6 @@ func A_reaction():
 	index += 1
 
 
-func B_reaction():
-	pass
-
 
 func select_reaction():
 	pass

@@ -11,9 +11,6 @@ func line() -> Array[String]:
 func A_reaction():
 	pass
 
-func B_reaction():
-	pass
-
 func select_reaction():
 	pass
 

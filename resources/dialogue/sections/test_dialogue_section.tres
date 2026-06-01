@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogueSection" format=3 uid="uid://djk26rnmebydr"]
+
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="1_kfv6q"]
+[ext_resource type="Script" uid="uid://c3d6px7rbndui" path="res://scripts/dialogue.gd" id="2_istas"]
+[ext_resource type="Resource" uid="uid://dnpqm5u60nih" path="res://resources/dialogue/lines/text_line1.tres" id="3_yvlet"]
+[ext_resource type="Resource" uid="uid://oxffrpcqllu6" path="res://resources/dialogue/lines/test_dialogue.tres" id="4_k745i"]
+[ext_resource type="Resource" uid="uid://cjdyyl1wbusbr" path="res://resources/dialogue/options/test_option1.tres" id="5_go5a5"]
+[ext_resource type="Resource" uid="uid://co6o7eoo82o6a" path="res://resources/dialogue/lines/test_convo2.tres" id="6_pjf32"]
+[ext_resource type="Resource" uid="uid://dpstyu4mit60r" path="res://resources/dialogue/lines/test_convo3.tres" id="7_byxat"]
+[ext_resource type="Resource" uid="uid://djtnuyq2gff0u" path="res://resources/dialogue/options/test_option2.tres" id="8_k745i"]
+
+[resource]
+script = ExtResource("1_kfv6q")
+sections = Array[ExtResource("2_istas")]([ExtResource("4_k745i"), ExtResource("3_yvlet"), ExtResource("5_go5a5"), ExtResource("6_pjf32"), ExtResource("5_go5a5"), ExtResource("7_byxat"), ExtResource("8_k745i")])
+metadata/_custom_type_script = "uid://lrhymco58lj0"

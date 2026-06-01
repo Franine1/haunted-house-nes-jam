@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DialogueLines" format=3 uid="uid://cuher3nj524bi"]
+
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="1_jtgpj"]
+
+[resource]
+script = ExtResource("1_jtgpj")
+lines = Array[String](["Yes"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
