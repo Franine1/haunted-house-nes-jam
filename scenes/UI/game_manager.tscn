@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dhyvdqgu87oml" path="res://scripts/game_manager.gd" id="1_01db0"]
 
 [node name="game manager" type="Control" unique_id=604842194]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,15 +13,22 @@ grow_vertical = 2
 script = ExtResource("1_01db0")
 
 [node name="container" type="SubViewportContainer" parent="." unique_id=1981681289]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+process_mode = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="game world" type="SubViewport" parent="container" unique_id=105587520]
+unique_name_in_owner = true
 handle_input_locally = false
+size = Vector2i(256, 224)
 render_target_update_mode = 4
 
 [node name="vbox" type="VBoxContainer" parent="." unique_id=1332029361]
+process_mode = 3
 z_index = 50
 layout_mode = 1
 anchors_preset = 15

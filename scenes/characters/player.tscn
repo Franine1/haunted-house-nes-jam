@@ -142,3 +142,7 @@ animation = &"up"
 unique_name_in_owner = true
 process_mode = 3
 script = ExtResource("5_atpat")
+
+[node name="glide delay" type="Timer" parent="Camera2D" unique_id=1173503798]
+unique_name_in_owner = true
+one_shot = true

@@ -1,6 +1,7 @@
 extends Control
 
 @onready var text_holder: HBoxContainer = %HBoxContainer
+@onready var game_world: SubViewport = %"game world"
 
 const textbox: PackedScene = preload("res://scenes/UI/textbox.tscn")
 
@@ -47,13 +48,19 @@ func _ready() -> void:
 
 
 func menu_behavior(delta: float) -> void:
-	pass
-	
+	text_holder.hide()
+	get_tree().paused = true
+	game_world.handle_input_locally = false
+
 func game_behavior(delta: float) -> void:
-	pass
+	text_holder.hide()
+	game_world.handle_input_locally = true
 	
 func dialogue_behavior(delta: float) -> void:
 	text_holder.show()
+	get_tree().paused = true
+	game_world.handle_input_locally = false
+	
 	match substate:
 		0:
 			dialogue_script.reset_state()
@@ -99,6 +106,7 @@ func fill_dialogue(delay: float, cancel_delay: bool = false) -> void:
 		child.queue_free()
 	
 	if dialogue_script.dialogue_finished():
+		get_tree().paused = false
 		current_state = game_state.GAME
 		return
 	
@@ -112,4 +120,6 @@ func fill_dialogue(delay: float, cancel_delay: bool = false) -> void:
 			temp.finish_letters()
 
 func paused_behavior(delta: float) -> void:
-	pass
+	text_holder.hide()
+	get_tree().paused = true
+	game_world.handle_input_locally = true
