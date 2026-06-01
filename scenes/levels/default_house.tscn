@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://brkk0mthcxs1y" path="res://scenes/layouts/guest_right.tscn" id="22_w4wor"]
 [ext_resource type="PackedScene" uid="uid://vgkqsy77ky76" path="res://scenes/portals/translation/default_translation.tscn" id="23_w4wor"]
 [ext_resource type="PackedScene" uid="uid://7jcj2u864j4r" path="res://scenes/objects/interaction_zone.tscn" id="25_k13on"]
+[ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="26_tyelw"]
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="27_o1ess"]
+[ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="27_qiytx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u00pf"]
 size = Vector2(32, 48)
@@ -44,6 +47,9 @@ size = Vector2(400, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlvrc"]
 size = Vector2(400, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1ess"]
+size = Vector2(16, 16)
+
 [node name="default_house" type="Node2D" unique_id=825320048]
 material = ExtResource("1_u00pf")
 script = ExtResource("1_couku")
@@ -53,7 +59,7 @@ default_palette = Dictionary[int, ShaderMaterial]({
 metadata/_custom_type_script = "uid://56yoruxpggjg"
 
 [node name="Player" parent="." unique_id=574704302 instance=ExtResource("15_gmqn6")]
-position = Vector2(200, 104)
+position = Vector2(200, 120)
 camera_snap_axis = Vector2(7, 1)
 
 [node name="dining_room" type="Area2D" parent="." unique_id=436585657]
@@ -332,3 +338,39 @@ warp_offset = Vector2i(0, -32)
 position = Vector2(216, 24)
 interact_activation = false
 entry_activation = true
+
+[node name="InteractionZone2" type="Area2D" parent="." unique_id=1214840857]
+script = ExtResource("26_tyelw")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone2" unique_id=716859490]
+position = Vector2(200, 136)
+shape = SubResource("RectangleShape2D_o1ess")
+
+[node name="DialogueSection" type="Node" parent="InteractionZone2" unique_id=427795268]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone2/DialogueSection" unique_id=1672180363]
+script = ExtResource("27_qiytx")
+cue = "x_shift"
+value = 2
+delay = 0.01
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue3" type="Node" parent="InteractionZone2/DialogueSection" unique_id=418594550]
+script = ExtResource("27_qiytx")
+cue = "y_set"
+value = 9
+delay = 0.01
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone2/DialogueSection" unique_id=2123767258]
+script = ExtResource("27_qiytx")
+cue = "level"
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"

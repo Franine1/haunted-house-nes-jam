@@ -2,16 +2,26 @@ class_name GameData
 extends Resource
 
 
+signal data_change(key: String, value: int)
 var data: Dictionary[String,int] = {}
 var dialogue_queue: Array[Dialogue] = []
 
+## NOTE: data values with meaning
+## 
+## "level": sets the level
+## "x_shift", "y_shift": moves the player that many tiles
+## "x_set", "y_set": teleports the player to that spot
+
+
 func set_data(key: String, value: int) -> void:
 	data[key] = value
+	data_change.emit(key,data[key])
 
 func change_data(key: String, value: int) -> void:
 	if !data.has(key):
 		data[key] = 0
 	data[key] += value
+	data_change.emit(key,data[key])
 
 func has_data(key: String) -> bool:
 	return data.has(key)

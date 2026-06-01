@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
 var current_axis: Vector2 = Vector2.RIGHT
 @export var camera_snap_axis: Vector2 = Vector2.ZERO
@@ -123,6 +124,18 @@ func shift_axis() -> void:
 	correct_position()
 
 func correct_position() -> void:
+	if game_data.get_data("x_set") != 0:
+		global_position.x = 16.0 * game_data.get_data("x_set")
+		game_data.set_data("x_set",0)
+	if game_data.get_data("y_set") != 0:
+		global_position.y = 16.0 * game_data.get_data("y_set")
+		game_data.set_data("y_set",0)
+	if game_data.get_data("x_shift") != 0:
+		global_position.x += 16.0 * game_data.get_data("x_shift")
+		game_data.set_data("x_shift",0)
+	if game_data.get_data("y_shift") != 0:
+		global_position.y += 16.0 * game_data.get_data("y_shift")
+		game_data.set_data("y_shift",0)
 	global_position = (16.0 * ((global_position-Vector2(8.0,8.0))/16.0).round()) + Vector2(8.0,8.0)
 
 func seamless_warp() -> void:

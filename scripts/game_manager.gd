@@ -1,10 +1,16 @@
+class_name GameManager
 extends Control
 
 @onready var text_holder: HBoxContainer = %HBoxContainer
 @onready var game_world: SubViewport = %"game world"
+@onready var cue: GameCue = %GameCue
 
 const textbox: PackedScene = preload("res://scenes/UI/textbox.tscn")
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
+const levels: Array[PackedScene] = [
+	preload("res://scenes/levels/tetouse.tscn")
+	,preload("res://scenes/levels/default_house.tscn")
+]
 
 var dialogue_script: Dialogue = null
 var current_state: game_state = game_state.MENU
@@ -54,9 +60,27 @@ func _process(delta: float) -> void:
 	
 
 func _ready() -> void:
+	
 	textbox_delay = Timer.new()
 	add_child(textbox_delay)
 	textbox_delay.one_shot = true
+	
+	cue.add_cue("level",Callable(self,"change_level"))
+
+
+func change_level(input: int) -> void:
+	if input < 0 or input >= levels.size():
+		return
+	
+	for child in game_world.get_children():
+		game_world.remove_child(child)
+		child.queue_free()
+	
+	var temp = levels[input].instantiate()
+	
+	game_world.add_child(temp)
+
+
 
 
 func menu_behavior(delta: float) -> void:
@@ -67,6 +91,7 @@ func menu_behavior(delta: float) -> void:
 	current_state = game_state.GAME
 	get_tree().paused = false
 	var dia: Dialogue = load("res://scenes/dialogue/test_dialogue_2.tscn").instantiate()
+	change_level(0)
 	get_tree().create_timer(1.0).timeout.connect(read_dialogue.bind(dia))
 
 func game_behavior(delta: float) -> void:
