@@ -4,6 +4,7 @@ extends Control
 @onready var game_world: SubViewport = %"game world"
 
 const textbox: PackedScene = preload("res://scenes/UI/textbox.tscn")
+const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
 var dialogue_script: Dialogue = null
 var current_state: game_state = game_state.MENU
@@ -38,6 +39,10 @@ func _process(delta: float) -> void:
 		
 		game_state.GAME:
 			game_behavior(delta)
+			
+			var next_dialogue: Dialogue = game_data.next_dialogue()
+			if next_dialogue != null:
+				read_dialogue(next_dialogue)
 		
 		game_state.DIALOGUE:
 			dialogue_behavior(delta)

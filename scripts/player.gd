@@ -8,6 +8,7 @@ const SPEED: float = 16.0
 @onready var input_delay: Timer = %"input delay"
 @onready var camera: Camera2D = %Camera2D
 @onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
+@onready var interaction: RayCast2D = %interaction_ray
 @export var speed_scale: float = 5.0
 var axis_shift: float = 0.0
 var seamless: bool = false
@@ -66,6 +67,8 @@ func _physics_process(delta: float) -> void:
 				,Vector2.DOWN: "down"
 			}
 			
+			interaction.rotation = move.angle()
+			
 			if directions.has(move) and (axis_swapped or !collision):
 				sprite.animation = directions[move]
 			
@@ -86,10 +89,20 @@ func _physics_process(delta: float) -> void:
 			
 		else:
 			velocity = Vector2.ZERO
+			if Input.is_action_just_pressed("A button"):
+				if interaction.is_colliding():
+					var target = interaction.get_collider()
+					if target is InteractionZone:
+						target.interact()
+						toggle_interaction(false)
+						get_tree().create_timer(0.5).timeout.connect(toggle_interaction.bind(true))
+			
 	
 	fix_camera()
 	move_and_slide()
 
+func toggle_interaction(mode: bool = !interaction.enabled) -> void:
+	interaction.enabled = mode
 
 func fix_camera(instant: bool = false) -> void:
 	var translate: Vector2 = global_position

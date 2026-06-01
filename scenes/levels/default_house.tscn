@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bkinni5noosol" path="res://scenes/layouts/guest_left.tscn" id="21_wwnbd"]
 [ext_resource type="PackedScene" uid="uid://brkk0mthcxs1y" path="res://scenes/layouts/guest_right.tscn" id="22_w4wor"]
 [ext_resource type="PackedScene" uid="uid://vgkqsy77ky76" path="res://scenes/portals/translation/default_translation.tscn" id="23_w4wor"]
+[ext_resource type="PackedScene" uid="uid://7jcj2u864j4r" path="res://scenes/objects/interaction_zone.tscn" id="25_k13on"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u00pf"]
 size = Vector2(32, 48)
@@ -326,3 +327,8 @@ warp_offset = Vector2i(0, 32)
 [node name="default_translation4" parent="." unique_id=222115559 instance=ExtResource("23_w4wor")]
 position = Vector2(8, 488)
 warp_offset = Vector2i(0, -32)
+
+[node name="InteractionZone" parent="." unique_id=2114011832 instance=ExtResource("25_k13on")]
+position = Vector2(216, 24)
+interact_activation = false
+entry_activation = true

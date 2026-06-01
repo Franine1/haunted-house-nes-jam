@@ -13,7 +13,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_uo5yn")
 scroll_active = false
-scroll_following = true
+scroll_following_visible_characters = true
 script = ExtResource("1_v60m8")
 
 [node name="Panel" type="Panel" parent="." unique_id=2001106078]
