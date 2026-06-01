@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bxgfbooamxjm2"]
 
 [ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="1_nfa6f"]
-[ext_resource type="Material" uid="uid://b8jlb2n6kiqe6" path="res://resources/palettes/brownpallete.tres" id="2_cq2gy"]
+[ext_resource type="Material" uid="uid://b7qhrmcdja4mi" path="res://resources/palettes/bluepallete.tres" id="2_cq2gy"]
 [ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="2_d5v5x"]
 [ext_resource type="Material" uid="uid://dn1kold33mxhc" path="res://resources/palettes/playerpallete.tres" id="4_oo8kp"]
 

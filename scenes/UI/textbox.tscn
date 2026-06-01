@@ -4,9 +4,10 @@
 [ext_resource type="Script" uid="uid://c2kjctcqmabtb" path="res://scripts/textbox.gd" id="1_v60m8"]
 
 [node name="textbox" type="RichTextLabel" unique_id=1143191391]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.99999994
+offset_bottom = 1.5258789e-05
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -15,6 +16,7 @@ theme = ExtResource("1_uo5yn")
 scroll_active = false
 scroll_following_visible_characters = true
 script = ExtResource("1_v60m8")
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="." unique_id=2001106078]
 unique_name_in_owner = true
