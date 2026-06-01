@@ -136,7 +136,7 @@ one_shot = true
 unique_name_in_owner = true
 material = ExtResource("3_dyp2m")
 sprite_frames = SubResource("SpriteFrames_xrqxk")
-animation = &"up"
+animation = &"down"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1338080857]
 unique_name_in_owner = true

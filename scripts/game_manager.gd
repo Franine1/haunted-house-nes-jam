@@ -44,13 +44,17 @@ func _process(delta: float) -> void:
 	
 
 func _ready() -> void:
-	read_dialogue(preload("res://resources/dialogue/sections/test_dialogue_section.tres"))
+	pass
 
 
 func menu_behavior(delta: float) -> void:
 	text_holder.hide()
 	get_tree().paused = true
 	game_world.handle_input_locally = false
+	
+	current_state = game_state.GAME
+	get_tree().paused = false
+	get_tree().create_timer(1.0).timeout.connect(read_dialogue.bind(preload("res://resources/dialogue/sections/test_dialogue_section.tres")))
 
 func game_behavior(delta: float) -> void:
 	text_holder.hide()
@@ -91,8 +95,15 @@ func dialogue_behavior(delta: float) -> void:
 					if box is Textbox:
 						box.finish_letters()
 			if read_a:
-				dialogue_script.A_reaction()
-				substate = 1
+				var possible: bool = true
+				for child in text_holder.get_children():
+					if child is Textbox:
+						if !child.is_full():
+							possible = false
+							break
+				if possible:
+					dialogue_script.A_reaction()
+					substate = 1
 		3:
 			fill_dialogue(0.01,true)
 			
@@ -107,6 +118,7 @@ func fill_dialogue(delay: float, cancel_delay: bool = false) -> void:
 	
 	if dialogue_script.dialogue_finished():
 		get_tree().paused = false
+		stored_text = []
 		current_state = game_state.GAME
 		return
 	

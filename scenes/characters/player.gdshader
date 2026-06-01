@@ -15,6 +15,8 @@ uniform vec4 col4:source_color;
 void fragment() {
 	vec4 current_pixel = texture(TEXTURE, UV);
 	
+
+	
 	if (current_pixel == grey1)
 		COLOR = col1;
 	else if (current_pixel == grey2)
@@ -25,4 +27,5 @@ void fragment() {
 		COLOR = col4;
 	else
 		COLOR = current_pixel;
+		//COLOR = vec4(0.0,0.0,0.0,1.0);
 }
