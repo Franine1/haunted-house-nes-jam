@@ -5,7 +5,6 @@ extends Resource
 var data: Dictionary[String,Variant] = {}
 
 
-
 func set_data(key: String, value) -> void:
 	data[key] = value
 

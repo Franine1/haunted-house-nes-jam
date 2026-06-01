@@ -4,6 +4,7 @@ extends RichTextLabel
 
 
 @onready var letters: Timer = %letter_timer
+@onready var back: Panel = %Panel
 var duration: float = 0.1
 
 func display(input: String, speed: float = 0.1) -> void:
@@ -13,16 +14,15 @@ func display(input: String, speed: float = 0.1) -> void:
 	var read_text: String = input
 	var select: bool = read_text[0] == ">"
 	if select:
-		#read_text = read_text.substr(1)
+		read_text = read_text.substr(1)
 		pass
 	
 	text = read_text
 	
 	if select:
-		push_bold()
-		push_bgcolor(Color(0.5,0.5,0.5))
+		back.theme_type_variation = "SelectedPanel"
 	else:
-		push_normal()
+		back.theme_type_variation = "Panel"
 	
 	
 	visible_characters = 0

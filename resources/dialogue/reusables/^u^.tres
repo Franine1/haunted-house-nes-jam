@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_fimf5")
-lines = Array[String](["Fuck you"])
+lines = Array[String](["Fuck you", "What a rude thing to say!", "Fix your fucking language, that's not a fucking nice thing to say.", "^U^", "Alr lil bru"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

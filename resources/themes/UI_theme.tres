@@ -5,12 +5,8 @@ content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+bg_color = Color(0, 0, 0, 0.7058824)
+corner_detail = 2
 
 [sub_resource type="Image" id="Image_1yfe4"]
 data = {
@@ -645,6 +641,15 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yfe4"]
+bg_color = Color(0.0627451, 0.0627451, 0.0627451, 0.7058824)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3529412, 0.3529412, 0.3529412, 0.7058824)
+corner_detail = 2
+
 [resource]
 Panel/styles/panel = SubResource("StyleBoxFlat_v60m8")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
@@ -680,3 +685,5 @@ RichTextLabel/fonts/normal_font = SubResource("FontFile_k7ng0")
 RichTextLabel/icons/horizontal_rule = SubResource("ImageTexture_3hk2r")
 RichTextLabel/styles/focus = SubResource("StyleBoxFlat_gwa0u")
 RichTextLabel/styles/normal = SubResource("StyleBoxEmpty_r0b4b")
+SelectedPanel/base_type = &"Panel"
+SelectedPanel/styles/panel = SubResource("StyleBoxFlat_1yfe4")

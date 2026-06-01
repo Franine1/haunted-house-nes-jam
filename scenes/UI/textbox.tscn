@@ -17,6 +17,7 @@ scroll_following = true
 script = ExtResource("1_v60m8")
 
 [node name="Panel" type="Panel" parent="." unique_id=2001106078]
+unique_name_in_owner = true
 z_index = -5
 layout_mode = 1
 anchors_preset = 15
@@ -24,6 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_uo5yn")
 
 [node name="letter_timer" type="Timer" parent="." unique_id=1999774709]
 unique_name_in_owner = true
