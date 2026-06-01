@@ -2,7 +2,7 @@ class_name DialogueOption
 extends Dialogue
 
 
-@export var choices: Array[Dialogue]
+var choices: Array[Dialogue] = []
 var index: int = 0
 var choice_made: bool = false
 
@@ -63,6 +63,13 @@ func reset_dialogue() -> void:
 	index = 0
 	
 	choice_made = false
+	
+	choices = []
+	
+	for child in get_children():
+		if child is Dialogue:
+			choices.append(child)
+	
 	for choice in choices:
 		choice.reset_dialogue()
 	

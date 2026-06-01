@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueLines" format=3 uid="uid://dnpqm5u60nih"]
-
-[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="1_io2uh"]
-
-[resource]
-script = ExtResource("1_io2uh")
-lines = Array[String](["Did you have a nice day today?"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

@@ -1,5 +1,5 @@
 @abstract class_name Dialogue
-extends Resource
+extends Node
 
 
 @abstract func line() -> Array[String]

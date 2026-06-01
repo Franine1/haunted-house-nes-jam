@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://cjm1b878t3s74"]
+
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="1_cfs2v"]
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="2_kxhmm"]
+[ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="3_kyaup"]
+
+[node name="DialogueSection" type="Node" unique_id=1197638041]
+script = ExtResource("1_cfs2v")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="." unique_id=21044210]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["This is another test, of course.", "I've changed the base class of dialogue for the sake of convenience, as they say.", "Plus, I added in a new variant that should make up for the downsides of this change.", "The ups of all dialogue just being scene trees is simply too worth it!"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="." unique_id=2110629329]
+script = ExtResource("3_kyaup")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="DialogueOption" unique_id=943378944]
+script = ExtResource("1_cfs2v")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="DialogueOption/DialogueSection" unique_id=2140454982]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Amazing", "So how are you doing today, my friend?"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="DialogueOption/DialogueSection" unique_id=1840271155]
+script = ExtResource("3_kyaup")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueLines" type="Node" parent="DialogueOption/DialogueSection/DialogueOption" unique_id=1564780125]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Pretty good", "I hope your day gets significantly worse, then!", "Anyway really looking forward to the upcoming changes as is colloquially said."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueSection" type="Node" parent="DialogueOption/DialogueSection/DialogueOption" unique_id=69661256]
+script = ExtResource("1_cfs2v")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines2" type="Node" parent="DialogueOption/DialogueSection/DialogueOption/DialogueSection" unique_id=936597240]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Pretty bad", "Are you saying this before or after learning I blew up your house?"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="DialogueOption/DialogueSection/DialogueOption/DialogueSection" unique_id=260133534]
+script = ExtResource("3_kyaup")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueLines" type="Node" parent="DialogueOption/DialogueSection/DialogueOption/DialogueSection/DialogueOption" unique_id=955652824]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Before", "You know what they say, you blow up something new a day, the doctor closes and another bridge opens."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="DialogueOption/DialogueSection/DialogueOption/DialogueSection/DialogueOption" unique_id=90766488]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["After", "Hey, don't be upset, it's just a very minor prank."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines3" type="Node" parent="DialogueOption/DialogueSection/DialogueOption" unique_id=1786654921]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Please sybau"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueSection2" type="Node" parent="DialogueOption" unique_id=89583833]
+script = ExtResource("1_cfs2v")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="DialogueOption/DialogueSection2" unique_id=999878792]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Didn't ask", "Fun fact!", "I am 400 meters from your location and rapidly approaching."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="DialogueOption/DialogueSection2" unique_id=1966297099]
+script = ExtResource("3_kyaup")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueLines" type="Node" parent="DialogueOption/DialogueSection2/DialogueOption" unique_id=2005388995]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Run"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="DialogueOption/DialogueSection2/DialogueOption" unique_id=478998254]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Run"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines3" type="Node" parent="DialogueOption/DialogueSection2/DialogueOption" unique_id=122591048]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Run"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines4" type="Node" parent="DialogueOption/DialogueSection2/DialogueOption" unique_id=1228455238]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Run"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="DialogueOption/DialogueSection2" unique_id=1314175930]
+script = ExtResource("2_kxhmm")
+lines = Array[String](["Ok ts shit lwk dumb asf js play this fuckass game"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

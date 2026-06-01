@@ -2,7 +2,7 @@ class_name DialogueSection
 extends Dialogue
 
 
-@export var sections: Array[Dialogue]
+var sections: Array[Dialogue]
 var index: int = 0
 
 
@@ -40,4 +40,12 @@ func dialogue_finished() -> bool:
 
 func reset_dialogue() -> void:
 	index = 0
-	sections[index].reset_dialogue()
+	
+	sections = []
+	
+	for child in get_children():
+		if child is Dialogue:
+			sections.append(child)
+			child.reset_dialogue()
+	
+	#sections[index].reset_dialogue()

@@ -17,4 +17,6 @@ func has_data(key: String) -> bool:
 	return data.has(key)
 
 func get_data(key: String) -> int:
+	if !data.has(key):
+		return 0
 	return data[key]

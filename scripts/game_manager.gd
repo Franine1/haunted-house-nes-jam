@@ -22,7 +22,12 @@ var substate: int = 0
 
 func read_dialogue(input: Dialogue) -> void:
 	current_state = game_state.DIALOGUE
+	if dialogue_script != null and is_instance_valid(dialogue_script) and get_children().has(dialogue_script):
+		remove_child(dialogue_script)
+		dialogue_script.queue_free()
 	dialogue_script = input
+	if dialogue_script.get_parent() == null:
+		add_child(dialogue_script)
 	substate = 0
 
 func _process(delta: float) -> void:
@@ -56,7 +61,8 @@ func menu_behavior(delta: float) -> void:
 	
 	current_state = game_state.GAME
 	get_tree().paused = false
-	get_tree().create_timer(1.0).timeout.connect(read_dialogue.bind(preload("res://resources/dialogue/sections/test_dialogue_section.tres")))
+	var dia: Dialogue = load("res://scenes/dialogue/test_dialogue_2.tscn").instantiate()
+	get_tree().create_timer(1.0).timeout.connect(read_dialogue.bind(dia))
 
 func game_behavior(delta: float) -> void:
 	text_holder.hide()
@@ -69,7 +75,7 @@ func dialogue_behavior(delta: float) -> void:
 	
 	match substate:
 		0:
-			dialogue_script.reset_state()
+			dialogue_script.reset_dialogue()
 			substate = 1
 		1:
 			 
