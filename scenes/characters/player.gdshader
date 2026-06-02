@@ -12,6 +12,9 @@ uniform vec4 col3:source_color;
 uniform vec4 grey4:source_color;
 uniform vec4 col4:source_color;
 
+uniform float opacity = 1.0;
+uniform bool opacity_enabled = false;
+
 void fragment() {
 	vec4 current_pixel = texture(TEXTURE, UV);
 	
@@ -27,4 +30,6 @@ void fragment() {
 		COLOR = col4;
 	else
 		COLOR = current_pixel;
+	
+	if (opacity_enabled) COLOR.a *= opacity;
 }

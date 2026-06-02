@@ -38,8 +38,15 @@ func _ready() -> void:
 	z_index = 5
 	seamless_warp()
 	fix_camera(true)
+	
 
 func _physics_process(delta: float) -> void:
+	
+	# ensure the player is visible
+	if material is ShaderMaterial:
+		material.set_shader_parameter("opacity",1.0)
+		material.set_shader_parameter("opacity_enabled",false)
+	
 	# determine the correct frame in our animation
 	if walk_time <= 0.0:
 		walk_time = 0.0

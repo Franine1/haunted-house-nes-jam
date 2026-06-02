@@ -30,9 +30,12 @@ func _process(delta: float) -> void:
 	if !fade_time.is_stopped():
 		var goal: float = 1.0 if fade_mode else 0.0
 		var denom: float = -base_time if fade_mode else base_time
-		var fadeout: Color = Color(1.0,1.0,1.0,goal + (fade_time.time_left/denom))
+		var opacity: float = goal + (fade_time.time_left/denom)
+		var fadeout: Color = Color(1.0,1.0,1.0,opacity)
 		
 		modulate = fadeout
+		if material is ShaderMaterial:
+			material.set_shader_parameter("opacity",opacity)
 		
 	
 	update_fading_mode()
@@ -75,6 +78,8 @@ func fade(in_or_out: bool) -> void:
 func on_fadeout() -> void:
 	var goal: float = 1.0 if fade_mode else 0.0
 	modulate = Color(1.0,1.0,1.0,goal)
+	if material is ShaderMaterial:
+		material.set_shader_parameter("opacity",goal)
 	enabled = fade_mode
 
 func set_show_area(input: Area2D = null) -> void:
@@ -87,6 +92,7 @@ func instant_fade(input: bool) -> void:
 
 func change_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:
 	if input.has(material_layer):
-		material = input[material_layer]
+		material = input[material_layer].duplicate()
+		material.set_shader_parameter("opacity_enabled",true)
 	elif clear_non_included:
 		material = null
