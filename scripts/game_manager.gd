@@ -18,6 +18,13 @@ var stored_text: Array[String] = []
 var textbox_delay: Timer
 var level_change_delay: Timer
 
+var current_pallete: Dictionary[int,ShaderMaterial] = {
+	0: preload("res://resources/palettes/brownpallete.tres")
+	,1: preload("res://resources/palettes/grasspallete.tres")
+	,2: preload("res://resources/palettes/playerpallete.tres")
+	,3: preload("res://resources/palettes/bluepallete.tres")
+}
+
 enum game_state {
 	MENU,
 	GAME,
@@ -73,6 +80,10 @@ func _ready() -> void:
 
 
 func change_level(input: int) -> void:
+	if current_state == game_state.DIALOGUE:
+		get_tree().create_timer(0.02).timeout.connect(change_level.bind(input))
+		return
+	
 	if !level_change_delay.is_stopped():
 		return
 	print("level changing")
@@ -103,6 +114,8 @@ func change_level(input: int) -> void:
 	game_data.remove_data("y_shift")
 	game_data.remove_data("reposition")
 	
+	if temp is Level:
+		get_tree().create_timer(0.01).timeout.connect(temp.distribute_palette.bind(current_pallete))
 
 
 
@@ -114,9 +127,7 @@ func menu_behavior(delta: float) -> void:
 	
 	current_state = game_state.GAME
 	get_tree().paused = false
-	var dia: Dialogue = load("res://scenes/dialogue/test_dialogue_2.tscn").instantiate()
 	change_level(0)
-	get_tree().create_timer(1.0).timeout.connect(read_dialogue.bind(dia))
 
 func game_behavior(delta: float) -> void:
 	text_holder.hide()

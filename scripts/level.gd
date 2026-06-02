@@ -6,7 +6,7 @@ extends Node2D
 
 
 func _ready() -> void:
-	get_tree().create_timer(0.1).timeout.connect(distribute_palette.bind(default_palette))
+	get_tree().create_timer(0.01).timeout.connect(distribute_palette.bind(default_palette))
 	pass
 
 func distribute_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:

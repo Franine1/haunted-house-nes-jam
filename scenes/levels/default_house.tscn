@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://bkinni5noosol" path="res://scenes/layouts/guest_left.tscn" id="21_wwnbd"]
 [ext_resource type="PackedScene" uid="uid://brkk0mthcxs1y" path="res://scenes/layouts/guest_right.tscn" id="22_w4wor"]
 [ext_resource type="PackedScene" uid="uid://vgkqsy77ky76" path="res://scenes/portals/translation/default_translation.tscn" id="23_w4wor"]
-[ext_resource type="PackedScene" uid="uid://7jcj2u864j4r" path="res://scenes/objects/interaction_zone.tscn" id="25_k13on"]
 [ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="26_tyelw"]
 [ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="27_o1ess"]
 [ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="27_qiytx"]
@@ -334,14 +333,8 @@ warp_offset = Vector2i(0, 32)
 position = Vector2(8, 488)
 warp_offset = Vector2i(0, -32)
 
-[node name="InteractionZone" parent="." unique_id=2114011832 instance=ExtResource("25_k13on")]
-position = Vector2(216, 24)
-interact_activation = false
-entry_activation = true
-
 [node name="InteractionZone2" type="Area2D" parent="." unique_id=1214840857]
 script = ExtResource("26_tyelw")
-interact_activation = false
 entry_activation = true
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 

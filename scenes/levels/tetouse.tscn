@@ -6,9 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://cq72xn6uaevmw" path="res://scenes/teto_layouts/frontlawn.tscn" id="3_djypv"]
 [ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="4_00j8x"]
 [ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="5_gmymq"]
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="6_vg15a"]
+[ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="7_38uu6"]
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="7_w6pbh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6pbh"]
 size = Vector2(30, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmymq"]
+size = Vector2(32, 32)
 
 [node name="Tetouse" type="Node2D" unique_id=2053973878]
 script = ExtResource("1_gmymq")
@@ -30,9 +36,65 @@ metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 position = Vector2(0, 135)
 shape = SubResource("RectangleShape2D_w6pbh")
 
-[node name="DialogueCue" type="Node" parent="InteractionZone" unique_id=999196486]
+[node name="DialogueSection" type="Node" parent="InteractionZone" unique_id=270900554]
+script = ExtResource("6_vg15a")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueToggle2" type="Node" parent="InteractionZone/DialogueSection" unique_id=1609919575]
+script = ExtResource("7_38uu6")
+cue = "forced"
+value = -2
+compare_type = 3
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone/DialogueSection/DialogueToggle2" unique_id=999196486]
 script = ExtResource("5_gmymq")
 cue = "level"
 value = 1
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone/DialogueSection" unique_id=1564547996]
+script = ExtResource("7_38uu6")
+cue = "forced"
+value = -1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone/DialogueSection/DialogueToggle" unique_id=1537078271]
+script = ExtResource("7_w6pbh")
+lines = Array[String](["You softly knock.", "...", "You knock harder. The door swings open on its own. ", "I guess when you live in the middle of nowhere you don't need to lock your door.", "Hopefully it's fine if you just go in."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone/DialogueSection/DialogueToggle" unique_id=389630574]
+script = ExtResource("5_gmymq")
+cue = "forced"
+value = -2
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone2" type="Area2D" parent="." unique_id=1080149569]
+script = ExtResource("4_00j8x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone2" unique_id=126638935]
+position = Vector2(0, 160)
+shape = SubResource("RectangleShape2D_gmymq")
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone2" unique_id=1778428533]
+script = ExtResource("7_38uu6")
+cue = "forced"
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone2/DialogueToggle" unique_id=807802424]
+script = ExtResource("7_w6pbh")
+lines = Array[String](["...", "Even though you were invited, the house seems empty.", "Maybe you should knock?"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone2/DialogueToggle" unique_id=1002348186]
+script = ExtResource("5_gmymq")
+cue = "forced"
+value = -1
 additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
