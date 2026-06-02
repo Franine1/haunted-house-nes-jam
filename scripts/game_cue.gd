@@ -1,3 +1,12 @@
+## GameCues are designed to "filter" through the changes
+## in the GameData library so that you can choose which changes
+## you actually care about. A different GameCue node is expected
+## for each thing reacting to game data changes, and they are expected
+## to be a child node of what they are alerting. To set up a cue,
+## the parent class should call 
+## GameCue.add_cue(datapoint_to_check,function_to_call_in_response) 
+## and the GameCue will simply call the correct function from its parent
+## when that datapoint changes. 
 class_name GameCue
 extends Node
 

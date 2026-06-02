@@ -1,3 +1,7 @@
+## abstract class that all dialogue inherits from.
+## all dialogue can react to the A or select button,
+## and can both be reset or know if it's finished.
+## you can also get the next line from all dialogue.
 @abstract class_name Dialogue
 extends Node
 

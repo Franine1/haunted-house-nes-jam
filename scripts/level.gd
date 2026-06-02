@@ -1,3 +1,8 @@
+## A level is meant to contain a collection of rooms and a player.
+## Portals and interaction zones are also expected to be children
+## of the currently active level and would be managed by it.
+## Levels should perform any logic that does not persist between
+## Level transitions.
 class_name Level
 extends Node2D
 

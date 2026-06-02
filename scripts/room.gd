@@ -1,3 +1,10 @@
+## A room is meant to batch multiple layouts into the same
+## show area. Any layouts that could potentially have different
+## palettes, positions, or anything else but should show and
+## hide at the same time should be in the same room.
+## One useful application is when teleporting the player to an
+## identical room, if they are both considered the same "room" 
+## then they will show and hide together.
 class_name Room
 extends Area2D
 

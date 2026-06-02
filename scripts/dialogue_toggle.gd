@@ -1,3 +1,10 @@
+## Expands upon the capabilities of a DialogueSection by having the bonus of
+## being able to skip itself if it finds a boolean expression to be
+## false. It only does integer comparisons, based on a datapoint
+## in the central game_data resource of your choosing. Could be used to make
+## the same interaction point give different text based on how many
+## times you interact, or to make an interaction only happen if 
+## the player did something elsewhere in the world.
 class_name DialogueToggle
 extends DialogueSection
 
@@ -15,6 +22,9 @@ enum compare {
 	,GREATER_OR_EQUAL
 }
 
+## Same as a DialogueSection's dialogue_finished, except
+## if it's boolean comparison is found to be false, the dialogue
+## automatically is declared to be finished.
 func dialogue_finished() -> bool:
 	var temp: int = game_data.get_data(cue)
 	var valid: bool = false

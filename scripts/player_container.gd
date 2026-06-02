@@ -1,3 +1,5 @@
+## The PlayerContainer is used to store both the player and
+## the player camera. It's used to prevent them moving with each other.
 class_name PlayerContainer
 extends Node2D
 

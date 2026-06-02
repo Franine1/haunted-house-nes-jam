@@ -1,3 +1,8 @@
+## Textbox Control nodes are meant to be instantiated from
+## the textbox scene, and can display text data with all formatting
+## prepackaged in the scene. They come with panels in the back
+## and the ability to display their text letter by letter, 
+## and can interpret when a textbox is supposed to be selected.
 class_name Textbox
 extends RichTextLabel
 
@@ -7,6 +12,8 @@ extends RichTextLabel
 @onready var back: Panel = %Panel
 var duration: float = 0.1
 
+## This takes in an input string and time delay value between letters, then
+## sets up the text box correctly from that
 func display(input: String, speed: float = 0.1) -> void:
 	duration = speed
 	#bbcode_enabled = true
@@ -32,14 +39,18 @@ func display(input: String, speed: float = 0.1) -> void:
 	
 	letters.start(duration)
 
+## This function is automatically executed by the textbox to
+## fill out its letters over time
 func next_letter() -> void:
 	visible_characters += 1
 	if visible_ratio < 1.0:
 		letters.start(duration)
 
+## This function can be used to order the textbox to finish filling letters
 func finish_letters() -> void:
 	letters.stop()
 	visible_ratio = 1.0
 
+## This function returns whether or not the textbox has completely filled.
 func is_full() -> bool:
 	return visible_ratio >= 1.0

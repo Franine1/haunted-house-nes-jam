@@ -1,3 +1,10 @@
+## The game manager is expected to be THE main scene. It contains all 
+## of the game UI and lets the player interact with any game scenes
+## through the medium of a viewport. It has the tools to change and load 
+## levels, set up color palettes to the level, load and read dialogue, 
+## manage the main menu and pause menu, and it should be the container
+## with all of the arbitrary scripting the game requires for any ultra-specific
+## interactions needed.
 class_name GameManager
 extends Control
 
@@ -5,19 +12,27 @@ extends Control
 @onready var game_world: SubViewport = %"game world"
 @onready var cue: GameCue = %GameCue
 
+## Used to create textboxes
 const textbox: PackedScene = preload("res://scenes/UI/textbox.tscn")
+## the GameData resource to read data changes from
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
+## List of which levels it can switch between
 const levels: Array[PackedScene] = [
 	preload("res://scenes/levels/tetouse.tscn")
 	,preload("res://scenes/levels/default_house.tscn")
 ]
-
+## Current dialogue script
 var dialogue_script: Dialogue = null
+## Current state of the game
 var current_state: game_state = game_state.MENU
+## Current text from a dialogue script that's being displayed on screen
 var stored_text: Array[String] = []
+## Delay to prevent uncontrollable dialogue skipping
 var textbox_delay: Timer
+## Currently unused delay between multiple level switches
 var level_change_delay: Timer
 
+## A default palette that all levels are set to
 var current_pallete: Dictionary[int,ShaderMaterial] = {
 	0: preload("res://resources/palettes/brownpallete.tres")
 	,1: preload("res://resources/palettes/grasspallete.tres")
@@ -25,6 +40,7 @@ var current_pallete: Dictionary[int,ShaderMaterial] = {
 	,3: preload("res://resources/palettes/bluepallete.tres")
 }
 
+## The allowed game states
 enum game_state {
 	MENU,
 	GAME,
@@ -32,9 +48,10 @@ enum game_state {
 	PAUSED
 }
 
+## A second measure of what is ocurring in the current game state
 var substate: int = 0
 
-
+## Sets up the input dialogue to be displayed on screen
 func read_dialogue(input: Dialogue) -> void:
 	current_state = game_state.DIALOGUE
 	if dialogue_script != null and is_instance_valid(dialogue_script) and get_children().has(dialogue_script):
@@ -47,6 +64,7 @@ func read_dialogue(input: Dialogue) -> void:
 
 func _process(delta: float) -> void:
 	
+	# swaps to the currect behavior based on the current game state
 	match current_state:
 		game_state.MENU:
 			menu_behavior(delta)
@@ -54,6 +72,7 @@ func _process(delta: float) -> void:
 		game_state.GAME:
 			game_behavior(delta)
 			
+			# reads any queued dialogue from the game data
 			var next_dialogue: Dialogue = game_data.next_dialogue()
 			if next_dialogue != null:
 				read_dialogue(next_dialogue)
@@ -68,7 +87,7 @@ func _process(delta: float) -> void:
 	
 
 func _ready() -> void:
-	
+	# sets up the level change and textbox timers
 	textbox_delay = Timer.new()
 	add_child(textbox_delay)
 	textbox_delay.one_shot = true
@@ -76,29 +95,37 @@ func _ready() -> void:
 	add_child(level_change_delay)
 	level_change_delay.one_shot = true
 	
+	# sets up to receive a game cue when the level parameter changes
 	cue.add_cue("level",Callable(self,"change_level"))
 
-
+## deletes the old level and replaces it with the new one.
+## Automatically activates if the "level" datapoint changes 
+## in the GameData resource.
 func change_level(input: int) -> void:
 	if current_state == game_state.DIALOGUE:
+		# waits until any open dialogue finishes
 		get_tree().create_timer(0.02).timeout.connect(change_level.bind(input))
 		return
 	
 	if !level_change_delay.is_stopped():
+		# does nothing if it's on level change cooldown
 		return
-	print("level changing")
+	
+	# if the requested level isn't in the list of levels, do nothing
 	if input < 0 or input >= levels.size():
 		return
 	
+	# deletes the current game world
 	for child in game_world.get_children():
 		game_world.remove_child(child)
 		child.queue_free()
 	
+	# creates the next game world and puts it in the same spot
 	var temp = levels[input].instantiate()
-	
 	game_world.add_child(temp)
 	#level_change_delay.start(0.1)
 	
+	# looks for the player and changes their position if the GameData requests it
 	for child in temp.get_children():
 		if child is PlayerContainer:
 			print("player found")
@@ -114,12 +141,15 @@ func change_level(input: int) -> void:
 	game_data.remove_data("y_shift")
 	game_data.remove_data("reposition")
 	
+	# sets up the palette in the level after a brief delay
 	if temp is Level:
 		get_tree().create_timer(0.01).timeout.connect(temp.distribute_palette.bind(current_pallete))
 
 
 
-
+## Right now it instantly starts the game, but this should later on
+## be changed to include the expected options along with a few different
+## save slots.
 func menu_behavior(delta: float) -> void:
 	text_holder.hide()
 	get_tree().paused = true
@@ -129,27 +159,36 @@ func menu_behavior(delta: float) -> void:
 	get_tree().paused = false
 	change_level(0)
 
+## Lets the player play in the game world. Any extra logic needed for
+## the gameplay should be added here.
 func game_behavior(delta: float) -> void:
 	text_holder.hide()
 	game_world.handle_input_locally = true
-	
+
+## performs all the logic for dialogue to display correctly. 
 func dialogue_behavior(delta: float) -> void:
 	text_holder.show()
 	get_tree().paused = true
 	game_world.handle_input_locally = false
 	
 	match substate:
-		0:
+		0: # starts the dialogue fresh
+			
 			dialogue_script.reset_dialogue()
 			substate = 1
-		1:
-			 
-			fill_dialogue(0.01)
 			
+		1: # requests the correct dialogue boxes to appear 
+			
+			fill_dialogue(0.01)
 			substate = 2
-		2:
+			
+		2: # checks for player input while dialogue is filing/is completely filled
+			
+			# the textbox delay only kicks in if A is being held instead of pressed
 			var read_a: bool = Input.is_action_just_pressed("A button") or (textbox_delay.is_stopped() and Input.is_action_pressed("A button"))
+			# finishes filling dialogue, if possible
 			var read_b: bool = Input.is_action_pressed("B button")
+			# tabs through options in an option menu
 			var read_s: bool = Input.is_action_just_pressed("Select button")
 			
 			if read_s:
@@ -181,18 +220,23 @@ func dialogue_behavior(delta: float) -> void:
 					dialogue_script.A_reaction()
 					textbox_delay.start(0.5)
 					substate = 1
-		3:
-			fill_dialogue(0.01,true)
 			
+		3: # skips the delay between different letters
+			
+			fill_dialogue(0.01,true)
 			substate = 2
-		_:
+			
+		_: # unknown substates redirect to the beginning of dialogue
 			substate = 0
 
+## deletes old dialogue boxes and adds in new ones based on the current needs
 func fill_dialogue(delay: float, cancel_delay: bool = false) -> void:
 	for child in text_holder.get_children():
 		text_holder.remove_child(child)
 		child.queue_free()
 	
+	# if the current dialogue is done, simply delete these old textboxes
+	# and go back to the game instead. 
 	if dialogue_script.dialogue_finished():
 		get_tree().paused = false
 		stored_text = []
@@ -208,6 +252,8 @@ func fill_dialogue(delay: float, cancel_delay: bool = false) -> void:
 		if cancel_delay:
 			temp.finish_letters()
 
+
+## any logic done in the pause menu would go here.
 func paused_behavior(delta: float) -> void:
 	text_holder.hide()
 	get_tree().paused = true

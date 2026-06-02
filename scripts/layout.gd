@@ -1,3 +1,6 @@
+## A Layout is a TileMapLayer with additional code that allows it to
+## be shown and hidden with a fadeout and definable show areas, meant
+## to be preset pieces that can be connected to create rooms and levels.
 class_name Layout
 extends TileMapLayer
 
