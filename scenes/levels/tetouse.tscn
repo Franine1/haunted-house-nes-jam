@@ -21,7 +21,7 @@ script = ExtResource("1_gmymq")
 metadata/_custom_type_script = "uid://56yoruxpggjg"
 
 [node name="Player" parent="." unique_id=1856024105 instance=ExtResource("1_uu0hx")]
-position = Vector2(-32, 296)
+position = Vector2(-32, 410)
 
 [node name="Room" parent="." unique_id=240038182 instance=ExtResource("2_uu0hx")]
 
