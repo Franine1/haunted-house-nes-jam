@@ -31,6 +31,8 @@ var stored_text: Array[String] = []
 var textbox_delay: Timer
 ## Currently unused delay between multiple level switches
 var level_change_delay: Timer
+## Forces occassional color refreshed
+var color_timer: Timer
 
 ## A default palette that all levels are set to
 var current_pallete: Dictionary[int,ShaderMaterial] = {
@@ -94,6 +96,9 @@ func _ready() -> void:
 	level_change_delay = Timer.new()
 	add_child(level_change_delay)
 	level_change_delay.one_shot = true
+	color_timer = Timer.new()
+	add_child(color_timer)
+	color_timer.one_shot = true
 	
 	# sets up to receive a game cue when the level parameter changes
 	cue.add_cue("level",Callable(self,"change_level"))
@@ -128,12 +133,8 @@ func change_level(input: int) -> void:
 	# looks for the player and changes their position if the GameData requests it
 	for child in temp.get_children():
 		if child is PlayerContainer:
-			print("player found")
 			if game_data.has_data("reposition") and (game_data.get_data("reposition") != 0):
-				print("reposition attempted")
 				child.global_position = Vector2(game_data.get_data("x_set"),game_data.get_data("y_set"))
-			else:
-				print("default position")
 			child.global_position += 16.0 * Vector2(game_data.get_data("x_shift"),game_data.get_data("y_shift"))
 	game_data.remove_data("x_set")
 	game_data.remove_data("y_set")
@@ -164,6 +165,12 @@ func menu_behavior(delta: float) -> void:
 func game_behavior(delta: float) -> void:
 	text_holder.hide()
 	game_world.handle_input_locally = true
+	
+	if color_timer.is_stopped():
+		for child in game_world.get_children():
+			if child is Level:
+				child.distribute_palette.bind(current_pallete)
+		color_timer.start(1.0)
 
 ## performs all the logic for dialogue to display correctly. 
 func dialogue_behavior(delta: float) -> void:

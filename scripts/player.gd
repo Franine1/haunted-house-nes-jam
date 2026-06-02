@@ -103,6 +103,9 @@ func _physics_process(delta: float) -> void:
 				# don't move if we would have collided
 				velocity = Vector2.ZERO
 				shift_axis()
+				var wall = collision.get_collider()
+				if wall is Blockade:
+					wall.bump(self)
 			else:
 				# move if the target position is free
 				velocity = move * SPEED * speed_scale
@@ -126,6 +129,11 @@ func _physics_process(delta: float) -> void:
 						target.interact()
 						toggle_interaction(false)
 						get_tree().create_timer(0.5).timeout.connect(toggle_interaction.bind(true))
+					elif target is Blockade:
+						target.interact()
+						toggle_interaction(false)
+						get_tree().create_timer(0.5).timeout.connect(toggle_interaction.bind(true))
+						
 			
 	
 	fix_camera()
@@ -190,3 +198,8 @@ func set_seamless(input: bool) -> void:
 ## returns the value of seamless
 func get_seamless() -> bool:
 	return seamless
+
+func delay_interaction() -> void:
+	if interaction:
+		toggle_interaction(false)
+		get_tree().create_timer(0.5).timeout.connect(toggle_interaction.bind(true))

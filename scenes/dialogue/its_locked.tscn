@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://lnva3dskhrkq"]
+
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="1_57nl8"]
+
+[node name="its_locked" type="Node" unique_id=1818288429]
+script = ExtResource("1_57nl8")
+lines = Array[String](["It's locked."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

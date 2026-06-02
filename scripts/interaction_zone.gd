@@ -13,6 +13,7 @@ extends Area2D
 ## Set to a negative number if there is no interaction limit
 @export var max_interactions: int = -1
 var interactions: int = 0
+var interact_allowed: bool = true
 
 ## path to the GameData resource
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
@@ -21,11 +22,15 @@ const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
 ## when the player presses A on it, sends its dialogue if interact_Activation is true
 func interact() -> void:
-	if interact_activation and (max_interactions < 0 or interactions < max_interactions):
+	if interact_activation and interact_allowed and (max_interactions < 0 or interactions < max_interactions):
 		send_dialogue()
 
 ## Gathers any child Dialogue nodes and queues them up to be read.
 func send_dialogue() -> void:
+	if !interact_allowed:
+		return
+	interact_allowed = false
+	get_tree().create_timer(0.5).timeout.connect(set_interaction)
 	var temp: Array[Dialogue]
 	for child in get_children():
 		if child is Dialogue:
@@ -45,5 +50,8 @@ func _ready() -> void:
 
 ## when the player walks into it, send its dialogue if entry_activation is true
 func detected_player(body_rid: RID, body: Node2D) -> void:
-	if entry_activation and (max_interactions < 0 or interactions < max_interactions):
+	if entry_activation and interact_allowed and (max_interactions < 0 or interactions < max_interactions):
 		send_dialogue()
+
+func set_interaction(input: bool = true) -> void:
+	interact_allowed = input

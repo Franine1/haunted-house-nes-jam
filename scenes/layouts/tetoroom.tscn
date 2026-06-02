@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dtwuj0b1r6kal"]
 
-[ext_resource type="Shader" uid="uid://b7sks3iuk0ea8" path="res://scenes/characters/player.gdshader" id="1_2ir0p"]
+[ext_resource type="Shader" uid="uid://b7sks3iuk0ea8" path="res://scripts/player.gdshader" id="1_2ir0p"]
 [ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="1_ra18e"]
 [ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="2_2ir0p"]
 

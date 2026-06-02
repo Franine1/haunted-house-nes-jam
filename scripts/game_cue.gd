@@ -23,7 +23,6 @@ func _init() -> void:
 
 func check_cues(key: String, value: int) -> void:
 	if cues.has(key):
-		print(key + ": " + str(value))
 		cues[key].call(value)
 
 

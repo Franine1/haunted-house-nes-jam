@@ -1,0 +1,10 @@
+[gd_scene format=4 uid="uid://da7j5q8e7m46k"]
+
+[ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="1_57df8"]
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="2_r0gi3"]
+
+[node name="basement" type="TileMapLayer" unique_id=1346770875]
+tile_map_data = PackedByteArray("AAD//wEAAAACAAAAAAD//wIAAAACAAEAAAD//wMAAAACAAEAAAD//wQAAAACAAEAAAD//wUAAAACAAIAAAD+/wIAAAABAAEAAAD9/wIAAAAFAAAAAFD9/wEAAAABAAAAAAD+/wEAAAABAAAAAAD+/wMAAAAFAAAAADD9/wMAAAAAAAEAAAD+/wQAAAAFAAAAADD+/wUAAAABAAEAAAD9/wQAAAAAAAEAAAD9/wUAAAAAAAIAAAD9/wYAAAACAAYAAAD+/wYAAAAHAAAAAAD//wYAAAABAAYAAAA=")
+tile_set = ExtResource("1_57df8")
+script = ExtResource("2_r0gi3")
+metadata/_custom_type_script = "uid://byvdvujagvico"

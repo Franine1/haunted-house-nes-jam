@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cq4x0ycv2do41"]
+
+[ext_resource type="Script" uid="uid://ckgko44c6nyac" path="res://scripts/blockade.gd" id="1_bjsrk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjsrk"]
+size = Vector2(12, 12)
+
+[node name="tile_blockade" type="StaticBody2D" unique_id=276737309]
+script = ExtResource("1_bjsrk")
+interact_activation = true
+collide_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2117570129]
+shape = SubResource("RectangleShape2D_bjsrk")
