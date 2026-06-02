@@ -17,13 +17,17 @@ func select_reaction():
 	pass
 
 func dialogue_finished() -> bool:
-	if !additive:
-		game_data.set_data(cue,0)
 	if delay <= 0:
-		game_data.change_data(cue,value)
+		if !additive:
+			game_data.set_data(cue,value)
+		else:
+			game_data.change_data(cue,value)
 	else:
 		var source = get_tree().current_scene
-		source.get_tree().create_timer(delay).timeout.connect(game_data.change_data.bind(cue,value))
+		if !additive:
+			source.get_tree().create_timer(delay).timeout.connect(game_data.set_data.bind(cue,value))
+		else:
+			source.get_tree().create_timer(delay).timeout.connect(game_data.change_data.bind(cue,value))
 	return true
 
 func reset_dialogue() -> void:

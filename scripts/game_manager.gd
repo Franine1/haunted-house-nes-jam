@@ -16,6 +16,7 @@ var dialogue_script: Dialogue = null
 var current_state: game_state = game_state.MENU
 var stored_text: Array[String] = []
 var textbox_delay: Timer
+var level_change_delay: Timer
 
 enum game_state {
 	MENU,
@@ -64,11 +65,17 @@ func _ready() -> void:
 	textbox_delay = Timer.new()
 	add_child(textbox_delay)
 	textbox_delay.one_shot = true
+	level_change_delay = Timer.new()
+	add_child(level_change_delay)
+	level_change_delay.one_shot = true
 	
 	cue.add_cue("level",Callable(self,"change_level"))
 
 
 func change_level(input: int) -> void:
+	if !level_change_delay.is_stopped():
+		return
+	print("level changing")
 	if input < 0 or input >= levels.size():
 		return
 	
@@ -79,6 +86,23 @@ func change_level(input: int) -> void:
 	var temp = levels[input].instantiate()
 	
 	game_world.add_child(temp)
+	#level_change_delay.start(0.1)
+	
+	for child in temp.get_children():
+		if child is PlayerContainer:
+			print("player found")
+			if game_data.has_data("reposition") and (game_data.get_data("reposition") != 0):
+				print("reposition attempted")
+				child.global_position = Vector2(game_data.get_data("x_set"),game_data.get_data("y_set"))
+			else:
+				print("default position")
+			child.global_position += 16.0 * Vector2(game_data.get_data("x_shift"),game_data.get_data("y_shift"))
+	game_data.remove_data("x_set")
+	game_data.remove_data("y_set")
+	game_data.remove_data("x_shift")
+	game_data.remove_data("y_shift")
+	game_data.remove_data("reposition")
+	
 
 
 

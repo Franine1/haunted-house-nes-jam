@@ -10,7 +10,8 @@ var dialogue_queue: Array[Dialogue] = []
 ## 
 ## "level": sets the level
 ## "x_shift", "y_shift": moves the player that many tiles
-## "x_set", "y_set": teleports the player to that spot
+## "x_set", "y_set": teleports the player to that spot in world coordinates
+## "reposition": the x and y shift and set parameters are only checked if this value is not zero
 
 
 func set_data(key: String, value: int) -> void:
@@ -30,6 +31,9 @@ func get_data(key: String) -> int:
 	if !data.has(key):
 		return 0
 	return data[key]
+
+func remove_data(key: String) -> void:
+	data.erase(key)
 
 func queue_dialogue(input: Dialogue) -> void:
 	var temp: Array[Dialogue] = [input]

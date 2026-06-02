@@ -48,7 +48,7 @@ size = Vector2(400, 128)
 size = Vector2(400, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1ess"]
-size = Vector2(16, 16)
+size = Vector2(80, 80)
 
 [node name="default_house" type="Node2D" unique_id=825320048]
 material = ExtResource("1_u00pf")
@@ -346,7 +346,7 @@ entry_activation = true
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone2" unique_id=716859490]
-position = Vector2(200, 136)
+position = Vector2(200, 168)
 shape = SubResource("RectangleShape2D_o1ess")
 
 [node name="DialogueSection" type="Node" parent="InteractionZone2" unique_id=427795268]
@@ -355,17 +355,21 @@ metadata/_custom_type_script = "uid://lrhymco58lj0"
 
 [node name="DialogueCue2" type="Node" parent="InteractionZone2/DialogueSection" unique_id=1672180363]
 script = ExtResource("27_qiytx")
-cue = "x_shift"
-value = 2
-delay = 0.01
+cue = "x_set"
 additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueCue3" type="Node" parent="InteractionZone2/DialogueSection" unique_id=418594550]
 script = ExtResource("27_qiytx")
 cue = "y_set"
-value = 9
-delay = 0.01
+value = 152
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue4" type="Node" parent="InteractionZone2/DialogueSection" unique_id=1369700060]
+script = ExtResource("27_qiytx")
+cue = "reposition"
+value = 1
 additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 

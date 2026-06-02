@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dycpoesls2te1"]
 
+[ext_resource type="Script" uid="uid://56yoruxpggjg" path="res://scripts/level.gd" id="1_gmymq"]
 [ext_resource type="PackedScene" uid="uid://b3sdkigh4r41v" path="res://scenes/characters/player.tscn" id="1_uu0hx"]
 [ext_resource type="PackedScene" uid="uid://bxgfbooamxjm2" path="res://scenes/teto_layouts/foyer.tscn" id="2_uu0hx"]
 [ext_resource type="PackedScene" uid="uid://cq72xn6uaevmw" path="res://scenes/teto_layouts/frontlawn.tscn" id="3_djypv"]
@@ -9,7 +10,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6pbh"]
 size = Vector2(30, 14)
 
-[node name="Tetouse" type="Node2D" unique_id=752668610]
+[node name="Tetouse" type="Node2D" unique_id=2053973878]
+script = ExtResource("1_gmymq")
+metadata/_custom_type_script = "uid://56yoruxpggjg"
 
 [node name="Player" parent="." unique_id=1856024105 instance=ExtResource("1_uu0hx")]
 position = Vector2(-32, 296)
