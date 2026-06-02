@@ -28,6 +28,8 @@ var walk_time: float = 0.0
 ## Used to continue the current animation if the player is holding down a movement direction
 var initial_walk_time: float = 0.0
 
+var input_allowed: bool = true
+
 signal update_fading()
 
 func _ready() -> void:
@@ -38,7 +40,7 @@ func _ready() -> void:
 	z_index = 5
 	seamless_warp()
 	fix_camera(true)
-	
+	interaction.rotation = PI/2
 
 func _physics_process(delta: float) -> void:
 	
@@ -62,7 +64,7 @@ func _physics_process(delta: float) -> void:
 		correct_position()
 		
 		var mvm = Input.get_vector("Move Left","Move Right","Move Up","Move Down")
-		if mvm:
+		if mvm and input_allowed:
 			# rounds all components of the movement vector
 			var snapped: Vector2 = mvm.round()
 			
@@ -122,7 +124,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			# if we aren't moving, allow the player to interact
 			velocity = Vector2.ZERO
-			if Input.is_action_just_pressed("A button"):
+			if Input.is_action_just_pressed("A button") and input_allowed:
 				if interaction.is_colliding():
 					var target = interaction.get_collider()
 					if target is InteractionZone:

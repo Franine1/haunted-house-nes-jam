@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://brkk0mthcxs1y" path="res://scenes/layouts/guest_right.tscn" id="22_w4wor"]
 [ext_resource type="PackedScene" uid="uid://vgkqsy77ky76" path="res://scenes/portals/translation/default_translation.tscn" id="23_w4wor"]
 [ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="26_tyelw"]
+[ext_resource type="Script" uid="uid://ckgko44c6nyac" path="res://scripts/blockade.gd" id="27_e8k17"]
 [ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="27_o1ess"]
 [ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="27_qiytx"]
 [ext_resource type="PackedScene" uid="uid://cq4x0ycv2do41" path="res://scenes/objects/tile_blockade.tscn" id="28_qiytx"]
@@ -365,10 +366,11 @@ warp_offset = Vector2i(0, 32)
 position = Vector2(8, 488)
 warp_offset = Vector2i(0, -32)
 
-[node name="InteractionZone2" type="Area2D" parent="." unique_id=1214840857]
-script = ExtResource("26_tyelw")
-entry_activation = true
-metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+[node name="InteractionZone2" type="StaticBody2D" parent="." unique_id=1143945196]
+script = ExtResource("27_e8k17")
+interact_activation = true
+collide_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone2" unique_id=716859490]
 position = Vector2(200, 168)

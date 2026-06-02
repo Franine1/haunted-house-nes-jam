@@ -33,6 +33,10 @@ var textbox_delay: Timer
 var level_change_delay: Timer
 ## Forces occassional color refreshed
 var color_timer: Timer
+## a reference to the player
+var player: Player
+## whether to check for dialogue or not
+var dialogue_enabled: bool = true
 
 ## A default palette that all levels are set to
 var current_pallete: Dictionary[int,ShaderMaterial] = {
@@ -55,6 +59,15 @@ var substate: int = 0
 
 ## Sets up the input dialogue to be displayed on screen
 func read_dialogue(input: Dialogue) -> void:
+	dialogue_enabled = true
+	if player != null:
+		player.input_allowed = false
+		if !player.input_delay.is_stopped():
+			get_tree().create_timer(player.input_delay.time_left + 0.025).timeout.connect(read_dialogue.bind(input))
+			dialogue_enabled = false
+			return
+	
+	
 	current_state = game_state.DIALOGUE
 	if dialogue_script != null and is_instance_valid(dialogue_script) and get_children().has(dialogue_script):
 		remove_child(dialogue_script)
@@ -75,9 +88,10 @@ func _process(delta: float) -> void:
 			game_behavior(delta)
 			
 			# reads any queued dialogue from the game data
-			var next_dialogue: Dialogue = game_data.next_dialogue()
-			if next_dialogue != null:
-				read_dialogue(next_dialogue)
+			if dialogue_enabled:
+				var next_dialogue: Dialogue = game_data.next_dialogue()
+				if next_dialogue != null:
+					read_dialogue(next_dialogue)
 		
 		game_state.DIALOGUE:
 			dialogue_behavior(delta)
@@ -136,6 +150,9 @@ func change_level(input: int) -> void:
 			if game_data.has_data("reposition") and (game_data.get_data("reposition") != 0):
 				child.global_position = Vector2(game_data.get_data("x_set"),game_data.get_data("y_set"))
 			child.global_position += 16.0 * Vector2(game_data.get_data("x_shift"),game_data.get_data("y_shift"))
+			for sub in child.get_children():
+				if sub is Player:
+					player = sub
 	game_data.remove_data("x_set")
 	game_data.remove_data("y_set")
 	game_data.remove_data("x_shift")
@@ -166,11 +183,12 @@ func game_behavior(delta: float) -> void:
 	text_holder.hide()
 	game_world.handle_input_locally = true
 	
+	# attempts to refresh the color pallete every so often
 	if color_timer.is_stopped():
 		for child in game_world.get_children():
 			if child is Level:
 				child.distribute_palette.bind(current_pallete)
-		color_timer.start(1.0)
+		color_timer.start(2.5)
 
 ## performs all the logic for dialogue to display correctly. 
 func dialogue_behavior(delta: float) -> void:
@@ -247,6 +265,7 @@ func fill_dialogue(delay: float, cancel_delay: bool = false) -> void:
 	if dialogue_script.dialogue_finished():
 		get_tree().paused = false
 		stored_text = []
+		player.input_allowed = true
 		current_state = game_state.GAME
 		return
 	
