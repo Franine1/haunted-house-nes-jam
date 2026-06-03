@@ -49,9 +49,9 @@ unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 50.0
 
 [node name="Control" type="Control" parent="vbox" unique_id=188079722]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 11.0
+size_flags_stretch_ratio = 176.0
