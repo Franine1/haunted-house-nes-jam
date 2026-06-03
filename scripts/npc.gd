@@ -17,12 +17,13 @@ var input_delay: Timer
 ## Cooldown for player interaction
 var interact_delay: Timer
 ## The sprite of the character
-var sprite: AnimatedSprite2D
+var sprites: Array[AnimatedSprite2D]
 ## The ray that checks what the character is interacting with
 var interaction: RayCast2D
 ## A modifier to the player speed
-@export var speed_scale: float = 5.0
-
+var speed_scale: float = 5.0
+## An exported default speed value for NPCs
+@export var default_speed: float = 5.0
 
 ## the ID the game uses to specifically identify this NPC
 @export var NPC_ID: int = 0
@@ -34,6 +35,8 @@ var seamless: bool = false
 var walk_time: float = 0.0
 ## Used to continue the current animation if the character is holding down a movement direction
 var initial_walk_time: float = 0.0
+## Used as a list for NPCs to check for whether to be visible or not
+var fade_in_checks: Array[Layout] = []
 
 var input_allowed: bool = true
 ## list of movements to perform
@@ -59,33 +62,45 @@ func _ready() -> void:
 	interact_delay.timeout.connect(toggle_interaction.bind(true))
 	shift_axis()
 	
-	sprite = AnimatedSprite2D.new()
-	add_child(sprite)
+	sprites = []
 	for child in get_children():
 		if child is AnimatedSprite2D:
-			remove_child(sprite)
-			sprite.queue_free()
-			sprite = child
+			sprites.append(child)
 			break
 	
 	z_index = 5
 	interaction.rotation = PI/2
 	
+	ready_behavior()
 
-func progress_animation(delta: float) -> void:
+
+func ready_behavior() -> void:
+	pass
+
+func process_behavior(delta: float) -> void:
+	pass
+
+
+func progress_animation(delta: float, opacity: float = -1.0) -> void:
+	
+	var do_opacity: bool = opacity >= 0.0
+	var result_opacity: float = opacity if do_opacity else 1.0
 	# ensure the character is visible
-	if material is ShaderMaterial:
-		material.set_shader_parameter("opacity",1.0)
-		material.set_shader_parameter("opacity_enabled",false)
+	for sprite in sprites:
+		if sprite.material is ShaderMaterial:
+			sprite.material.set_shader_parameter("opacity",result_opacity)
+			sprite.material.set_shader_parameter("opacity_enabled",do_opacity)
 	
 	# determine the correct frame in our animation
 	if walk_time <= 0.0:
 		walk_time = 0.0
-		sprite.frame = 0
+		for sprite in sprites:
+			sprite.frame = 0
 	else:
 		walk_time -= delta
 		const anim_speed = 0.9
-		sprite.frame = (floori((initial_walk_time - walk_time)*speed_scale * anim_speed) % 2) + 1
+		for sprite in sprites:
+			sprite.frame = (floori((initial_walk_time - walk_time)*speed_scale * anim_speed) % 2) + 1
 
 
 func upkeep(delta: float) -> void:
@@ -93,16 +108,22 @@ func upkeep(delta: float) -> void:
 	var temp: Array[CutscenePath] = game_data.accept_movement(NPC_ID)
 	temp.append_array(movement_queue)
 	movement_queue = temp
-	print(temp.size())
 	
 
 func _physics_process(delta: float) -> void:
-	collision_layer = 0
+	collision_layer = 16
 	collision_mask = 5
+	
+	process_behavior(delta)
 	
 	upkeep(delta)
 	
-	progress_animation(delta)
+	
+	var best: float = 0.0
+	for layout in fade_in_checks:
+		if layout.overlaps(self):
+			best = max(best,layout.recent_opacity)
+	progress_animation(delta, best)
 	
 	if input_delay.is_stopped():
 		# movement inputs are allowed
@@ -168,9 +189,11 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO) -> Vecto
 	# skips setting the animation if we move at an angle against a wall
 	if (axis_swapped or !collision):
 		if directions.has(move):
-			sprite.animation = directions[move]
+			for sprite in sprites:
+				sprite.animation = directions[move]
 		if directions.has(dir_override):
-			sprite.animation = directions[dir_override]
+			for sprite in sprites:
+				sprite.animation = directions[dir_override]
 			
 	
 	

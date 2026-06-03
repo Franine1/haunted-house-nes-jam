@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 				else:
 					movement_queue.pop_back()
 		else:
-			speed_scale = 5.0
+			speed_scale = default_speed
 		if mvm:
 			
 			var reduce: Vector2i = enact_movement(mvm, dir)

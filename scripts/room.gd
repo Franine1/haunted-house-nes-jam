@@ -18,7 +18,7 @@ func _ready() -> void:
 			child.set_show_area.call_deferred(self)
 	
 	collision_layer = 2
-	collision_mask = 4
+	collision_mask = 20
 	z_index = show_layer
 
 func distribute_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:

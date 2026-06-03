@@ -34,6 +34,9 @@
 [ext_resource type="PackedScene" uid="uid://lnva3dskhrkq" path="res://scenes/dialogue/its_locked.tscn" id="29_o1ess"]
 [ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="31_fyonw"]
 [ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="32_gbo60"]
+[ext_resource type="PackedScene" uid="uid://bfkkjw5qomv61" path="res://scenes/characters/npc_1.tscn" id="35_7mm63"]
+[ext_resource type="Material" uid="uid://b7qhrmcdja4mi" path="res://resources/palettes/bluepallete.tres" id="36_4lh72"]
+[ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="37_oahe5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u00pf"]
 size = Vector2(32, 48)
@@ -470,3 +473,19 @@ cue = "forced"
 value = -3
 additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone/DialogueSection" unique_id=2039939693]
+script = ExtResource("27_qiytx")
+cue = "host"
+value = 1
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="npc1" parent="InteractionZone/DialogueSection" unique_id=1242705272 instance=ExtResource("35_7mm63")]
+position = Vector2(-1440, -16)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="InteractionZone/DialogueSection/npc1" unique_id=256701549]
+material = ExtResource("36_4lh72")
+position = Vector2(0, 512)
+sprite_frames = ExtResource("37_oahe5")
+animation = &"down"
