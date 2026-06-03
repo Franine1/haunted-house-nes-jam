@@ -12,10 +12,10 @@ extends Area2D
 @export var show_layer: int = 0
 
 func _ready() -> void:
-	for child in get_children():
-		if child is Layout:
-			child.instant_fade.call_deferred(initial_fade_mode)
-			child.set_show_area.call_deferred(self)
+	##for child in get_children():
+	##	if child is Layout:
+	##		child.instant_fade.call_deferred(initial_fade_mode)
+	##		child.set_show_area.call_deferred(self)
 	
 	collision_layer = 2
 	collision_mask = 4

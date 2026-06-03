@@ -15,7 +15,7 @@ var duration: float = 0.1
 ## This takes in an input string and time delay value between letters, then
 ## sets up the text box correctly from that
 func display(input: String, speed: float) -> void:
-	duration = 0.1
+	duration = 0.000001
 	#bbcode_enabled = true
 	
 	var read_text: String = input
