@@ -1,3 +1,5 @@
+## NPC nodes contain movement rules and interaction and collision
+## logic that is true for both the player and non player characters.
 class_name NPC
 extends CharacterBody2D
 
@@ -11,13 +13,21 @@ var current_axis: Vector2 = Vector2.RIGHT
 const SPEED: float = 16.0
 ## Delay between inputs to force the player to wait for the 
 ## previous input to complete
-@onready var input_delay: Timer
+var input_delay: Timer
+## Cooldown for player interaction
+var interact_delay: Timer
 ## The sprite of the character
-@onready var sprite: AnimatedSprite2D
+var sprite: AnimatedSprite2D
 ## The ray that checks what the character is interacting with
-@onready var interaction: RayCast2D
+var interaction: RayCast2D
 ## A modifier to the player speed
 @export var speed_scale: float = 5.0
+
+
+## the ID the game uses to specifically identify this NPC
+@export var NPC_ID: int = 0
+
+
 ## Forces rooms to instantly fade in or out when active
 var seamless: bool = false
 ## Used to determine what frame the animation should be on
@@ -42,7 +52,11 @@ func _ready() -> void:
 	input_delay = Timer.new()
 	input_delay.one_shot = true
 	add_child(input_delay)
+	interact_delay = Timer.new()
+	interact_delay.one_shot = true
+	add_child(interact_delay)
 	input_delay.timeout.connect(shift_axis)
+	interact_delay.timeout.connect(toggle_interaction.bind(true))
 	shift_axis()
 	
 	sprite = AnimatedSprite2D.new()
@@ -75,6 +89,11 @@ func progress_animation(delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	collision_layer = 0
+	collision_mask = 5
+	interact_delay.paused = !input_allowed
+	
+	
 	
 	progress_animation(delta)
 	
@@ -82,11 +101,15 @@ func _physics_process(delta: float) -> void:
 		# movement inputs are allowed
 		correct_position()
 		
-		var mvm = Vector2.ZERO
+		var mvm = movement_queue.front() if movement_queue.size() > 0 else Vector2.ZERO
 		if mvm:
 			
-			enact_movement(mvm)
+			var reduce: Vector2i = enact_movement(mvm)
 			
+			movement_queue[0] -= reduce
+			
+			if !movement_queue[0]:
+				movement_queue.pop_front()
 			
 		else:
 			# if we aren't moving, allow the player to interact
@@ -96,7 +119,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func enact_movement(mvm: Vector2) -> void:
+func enact_movement(mvm: Vector2) -> Vector2i:
 	# rounds all components of the movement vector
 	var snapped: Vector2 = mvm.normalized().round()
 	
@@ -150,6 +173,9 @@ func enact_movement(mvm: Vector2) -> void:
 			initial_walk_time += dur
 		walk_time = dur + 0.04
 		input_delay.start(dur)
+	
+	var ans: Vector2i = Vector2i(velocity)
+	return ans
 
 
 
@@ -184,4 +210,4 @@ func final_position() -> Vector2:
 func delay_interaction() -> void:
 	if interaction:
 		toggle_interaction(false)
-		get_tree().create_timer(0.5).timeout.connect(toggle_interaction.bind(true))
+		interact_delay.start(0.25)

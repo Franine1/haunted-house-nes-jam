@@ -193,7 +193,6 @@ func game_behavior(delta: float) -> void:
 ## performs all the logic for dialogue to display correctly. 
 func dialogue_behavior(delta: float) -> void:
 	text_holder.show()
-	get_tree().paused = true
 	game_world.handle_input_locally = false
 	
 	match substate:
@@ -276,7 +275,6 @@ func fill_dialogue(delay: float, match_letters: bool = false) -> void:
 	# if the current dialogue is done, simply delete these old textboxes
 	# and go back to the game instead. 
 	if dialogue_script.dialogue_finished():
-		get_tree().paused = false
 		stored_text = []
 		player.input_allowed = true
 		current_state = game_state.GAME

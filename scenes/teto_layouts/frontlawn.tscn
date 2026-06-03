@@ -7,11 +7,14 @@
 [ext_resource type="Material" uid="uid://b8jlb2n6kiqe6" path="res://resources/palettes/brownpallete.tres" id="4_s1yhe"]
 [ext_resource type="Texture2D" uid="uid://67vb6pab6cw" path="res://assets/car.png" id="6_fnaax"]
 [ext_resource type="Material" uid="uid://fdknrie3lpxi" path="res://resources/palettes/redpallete.tres" id="6_x8jcr"]
-[ext_resource type="PackedScene" uid="uid://cq4x0ycv2do41" path="res://scenes/objects/tile_blockade.tscn" id="8_qw784"]
-[ext_resource type="PackedScene" uid="uid://lnva3dskhrkq" path="res://scenes/dialogue/its_locked.tscn" id="9_8f71u"]
+[ext_resource type="Script" uid="uid://ckgko44c6nyac" path="res://scripts/blockade.gd" id="8_qw784"]
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="9_8f71u"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_s1yhe"]
 distance = 541.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l00pn"]
+size = Vector2(28, 44)
 
 [node name="Room" type="Area2D" unique_id=240038182]
 script = ExtResource("1_ehqi5")
@@ -41,9 +44,15 @@ position = Vector2(-40, 208)
 rotation = 1.5707964
 texture = ExtResource("6_fnaax")
 
-[node name="tile_blockade" parent="Car" unique_id=276737309 instance=ExtResource("8_qw784")]
-position = Vector2(0, 7.6319157e-07)
-scale = Vector2(2, 3)
+[node name="Blockade" type="StaticBody2D" parent="Car" unique_id=1032553211]
+script = ExtResource("8_qw784")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
-[node name="its_locked" parent="Car/tile_blockade" unique_id=1818288429 instance=ExtResource("9_8f71u")]
-lines = Array[String](["That's my car."])
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car/Blockade" unique_id=1937972957]
+shape = SubResource("RectangleShape2D_l00pn")
+
+[node name="DialogueLines" type="Node" parent="Car/Blockade" unique_id=314975956]
+script = ExtResource("9_8f71u")
+lines = Array[String](["It's your car."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

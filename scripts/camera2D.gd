@@ -21,6 +21,7 @@ const glide_delay: float = 0.15
 
 func _ready() -> void:
 	# connects the timer to the try_unpause function
+	blackout_sprite.z_index = 1000
 	glide_timer.timeout.connect(try_unpause)
 	get_tree().create_timer(0.1).timeout.connect(set_blackout.bind(false))
 

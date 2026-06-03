@@ -17,7 +17,8 @@ signal data_change(key: String, value: int)
 var data: Dictionary[String,int] = {}
 ## List of currently queued dialogue.
 var dialogue_queue: Array[Dialogue] = []
-
+## List of the movement queues listed for different NPC IDs
+var movement_queues: Dictionary[int,Array] = {}
 
 
 ## IMPORTANT: data values with meaning
@@ -84,3 +85,14 @@ func queue_dialogue_array(input: Array[Dialogue]) -> void:
 ## and removes it from the queue.
 func next_dialogue() -> Dialogue:
 	return dialogue_queue.pop_back()
+
+
+## This function queues NPC nodes with the corresponding NPC ID
+## to navigate the requested movement directions
+func queue_movement(input: Array[CutscenePath], npc_id: int) -> void:
+	movement_queues[npc_id] = input
+
+func accept_movement(npc_id: int) -> Array[CutscenePath]:
+	var ans: Array[CutscenePath] = movement_queues[npc_id]
+	movement_queues.erase(npc_id)
+	return ans

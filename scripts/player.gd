@@ -11,6 +11,8 @@ var camera_instant: bool = false
 
 func _physics_process(delta: float) -> void:
 	
+	interact_delay.paused = !input_allowed
+	
 	progress_animation(delta)
 	
 	
@@ -19,24 +21,30 @@ func _physics_process(delta: float) -> void:
 		correct_position()
 		
 		var mvm = Input.get_vector("Move Left","Move Right","Move Up","Move Down")
-		if mvm and input_allowed:
+		if !input_allowed:
+			mvm = movement_queue.front() if movement_queue.size() > 0 else Vector2.ZERO
+		
+		if mvm:
 			
-			enact_movement(mvm)
+			var reduce: Vector2i = enact_movement(mvm)
+			
+			if !input_allowed:
+				movement_queue[0] -= reduce
+				if !movement_queue[0]:
+					movement_queue.pop_front()
 			
 		else:
 			# if we aren't moving, allow the player to interact
 			velocity = Vector2.ZERO
-			if Input.is_action_just_pressed("A button") and input_allowed:
+			if Input.is_action_just_pressed("A button") and input_allowed and interact_delay.is_stopped():
 				if interaction.is_colliding():
 					var target = interaction.get_collider()
 					if target is InteractionZone:
 						target.interact()
-						toggle_interaction(false)
-						get_tree().create_timer(0.5).timeout.connect(toggle_interaction.bind(true))
+						delay_interaction()
 					elif target is Blockade:
 						target.interact()
-						toggle_interaction(false)
-						get_tree().create_timer(0.5).timeout.connect(toggle_interaction.bind(true))
+						delay_interaction()
 						
 			
 	
