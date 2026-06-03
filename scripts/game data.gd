@@ -26,10 +26,10 @@ var dialogue_queue: Array[Dialogue] = []
 ## INFO: "x_shift", "y_shift": moves the player that many tiles
 ## INFO: "x_set", "y_set": teleports the player to that spot in world coordinates
 ## INFO: "reposition": the x and y shift and set parameters are only checked if this value is not zero
-##
+## 
 ## INFO: "forced": meant to indicate the current level of progression in scripted scenes.
 ## this value decreases by 1 every time the next scripted sequence is performed.
-##
+## 
 ## INFO: "letters": this indicates the speed at which letters should appear at.
 ## The min speed is 0.01, and this value is multiplied by that for the resulting speed.
 ## INFO: "skip": The value of this int is the number of times the game will automatically finish dialogue.

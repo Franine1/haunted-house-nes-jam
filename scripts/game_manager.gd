@@ -151,7 +151,7 @@ func change_level(input: int) -> void:
 			if game_data.has_data("reposition") and (game_data.get_data("reposition") != 0):
 				child.global_position = Vector2(game_data.get_data("x_set"),game_data.get_data("y_set"))
 			child.global_position += 16.0 * Vector2(game_data.get_data("x_shift"),game_data.get_data("y_shift"))
-			child.cm.arrived = true
+			child.pl.finish_camera_glide()
 			player = child.pl
 	game_data.remove_data("x_set")
 	game_data.remove_data("y_set")

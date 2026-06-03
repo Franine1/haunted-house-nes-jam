@@ -24,6 +24,14 @@ func _ready() -> void:
 	fade_time.timeout.connect(on_fadeout)
 	if show_area != null:
 		set_show_area(show_area)
+		
+	
+	
+	for child in get_children():
+		if child is CanvasItem:
+			child.material = child.material.duplicate()
+			if child.material is ShaderMaterial:
+				material.set_shader_parameter("opacity_enabled",true)
 
 func _process(delta: float) -> void:
 	
@@ -31,11 +39,9 @@ func _process(delta: float) -> void:
 		var goal: float = 1.0 if fade_mode else 0.0
 		var denom: float = -base_time if fade_mode else base_time
 		var opacity: float = goal + (fade_time.time_left/denom)
-		var fadeout: Color = Color(1.0,1.0,1.0,opacity)
 		
-		modulate = fadeout
-		if material is ShaderMaterial:
-			material.set_shader_parameter("opacity",opacity)
+		correct_opacity(opacity)
+		
 		
 	
 	update_fading_mode()
@@ -77,9 +83,7 @@ func fade(in_or_out: bool) -> void:
 
 func on_fadeout() -> void:
 	var goal: float = 1.0 if fade_mode else 0.0
-	modulate = Color(1.0,1.0,1.0,goal)
-	if material is ShaderMaterial:
-		material.set_shader_parameter("opacity",goal)
+	correct_opacity(goal)
 	enabled = fade_mode
 
 func set_show_area(input: Area2D = null) -> void:
@@ -93,6 +97,22 @@ func instant_fade(input: bool) -> void:
 func change_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:
 	if input.has(material_layer):
 		material = input[material_layer].duplicate()
-		material.set_shader_parameter("opacity_enabled",true)
+		if material is ShaderMaterial:
+			material.set_shader_parameter("opacity_enabled",true)
 	elif clear_non_included:
 		material = null
+	
+	
+
+## sets this node and all child nodes to the correct opacity
+func correct_opacity(input: float) -> void:
+	
+	modulate = Color(1.0,1.0,1.0,input)
+	if material is ShaderMaterial:
+		material.set_shader_parameter("opacity",input)
+	
+	for child in get_children():
+		if child is CanvasItem:
+			child.modulate = modulate
+			if child.material is ShaderMaterial:
+				material.set_shader_parameter("opacity",input)
