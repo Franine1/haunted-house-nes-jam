@@ -93,7 +93,7 @@ func upkeep(delta: float) -> void:
 	var temp: Array[CutscenePath] = game_data.accept_movement(NPC_ID)
 	temp.append_array(movement_queue)
 	movement_queue = temp
-	print(temp.size())
+	#print(temp.size())
 	
 
 func _physics_process(delta: float) -> void:

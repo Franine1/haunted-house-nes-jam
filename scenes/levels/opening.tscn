@@ -20,5 +20,5 @@ position = Vector2(128, 112)
 
 [node name="Car" type="Sprite2D" parent="." unique_id=107883568]
 material = ExtResource("2_e0oev")
-position = Vector2(72, 136)
+position = Vector2(64, 136)
 texture = ExtResource("3_l1ccp")
