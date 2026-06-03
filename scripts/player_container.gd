@@ -4,6 +4,7 @@ class_name PlayerContainer
 extends Node2D
 
 @onready var pl: Player = %Player
+@onready var cm: Camera2D = %Camera2D
 @export var camera_snap_axis: Vector2 = Vector2.ZERO:
 	set(value):
 		camera_snap_axis = value

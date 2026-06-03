@@ -14,8 +14,8 @@ var duration: float = 0.1
 
 ## This takes in an input string and time delay value between letters, then
 ## sets up the text box correctly from that
-func display(input: String, speed: float) -> void:
-	duration = 0.1
+func display(input: String, speed: float = 0.01, initial_visible: int = 0) -> void:
+	duration = speed
 	#bbcode_enabled = true
 	
 	var read_text: String = input
@@ -32,7 +32,7 @@ func display(input: String, speed: float) -> void:
 		back.theme_type_variation = "Panel"
 	
 	
-	visible_characters = 0
+	visible_characters = initial_visible
 	
 	if !letters.timeout.is_connected(next_letter):
 		letters.timeout.connect(next_letter)

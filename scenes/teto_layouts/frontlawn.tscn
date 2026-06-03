@@ -44,9 +44,6 @@ texture = ExtResource("6_fnaax")
 [node name="tile_blockade" parent="Car" unique_id=276737309 instance=ExtResource("8_qw784")]
 position = Vector2(0, 7.6319157e-07)
 scale = Vector2(2, 3)
-cue = "forced"
-value = -2
-compare_type = 4
 
 [node name="its_locked" parent="Car/tile_blockade" unique_id=1818288429 instance=ExtResource("9_8f71u")]
 lines = Array[String](["That's my car."])

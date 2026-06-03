@@ -42,4 +42,7 @@ func dialogue_finished() -> bool:
 	
 	if !valid:
 		return true
+	
+	while index < sections.size()-1 and sections[index].dialogue_finished():
+		index += 1
 	return (index >= sections.size() or index < 0 or (index == (sections.size()-1) and sections[index].dialogue_finished()))

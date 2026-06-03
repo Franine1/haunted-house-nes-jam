@@ -151,9 +151,8 @@ func change_level(input: int) -> void:
 			if game_data.has_data("reposition") and (game_data.get_data("reposition") != 0):
 				child.global_position = Vector2(game_data.get_data("x_set"),game_data.get_data("y_set"))
 			child.global_position += 16.0 * Vector2(game_data.get_data("x_shift"),game_data.get_data("y_shift"))
-			for sub in child.get_children():
-				if sub is Player:
-					player = sub
+			child.cm.arrived = true
+			player = child.pl
 	game_data.remove_data("x_set")
 	game_data.remove_data("y_set")
 	game_data.remove_data("x_shift")
@@ -205,7 +204,7 @@ func dialogue_behavior(delta: float) -> void:
 			
 		1: # requests the correct dialogue boxes to appear 
 			
-			fill_dialogue(0.01)
+			fill_dialogue(0.01 * clamp(game_data.get_data("letters"),1,1000))
 			substate = 2
 			
 		2: # checks for player input while dialogue is filing/is completely filled
@@ -216,6 +215,22 @@ func dialogue_behavior(delta: float) -> void:
 			var read_b: bool = Input.is_action_pressed("B button")
 			# tabs through options in an option menu
 			var read_s: bool = Input.is_action_just_pressed("Select button")
+			
+			# determines whether or not the text boxes are all full
+			var possible: bool = true
+			for child in text_holder.get_children():
+				if child is Textbox:
+					if !possible:
+						break
+					
+					if !child.is_full():
+						possible = false
+						break
+			
+			
+			if game_data.get_data("skip") > 0 and !possible:
+				game_data.change_data("skip",-1)
+				read_b = true
 			
 			if read_s:
 				dialogue_script.select_reaction()
@@ -232,16 +247,8 @@ func dialogue_behavior(delta: float) -> void:
 				for box in text_holder.get_children():
 					if box is Textbox:
 						box.finish_letters()
+				possible = true
 			if read_a:
-				var possible: bool = true
-				for child in text_holder.get_children():
-					if child is Textbox:
-						if !possible:
-							break
-						
-						if !child.is_full():
-							possible = false
-							break
 				if possible:
 					dialogue_script.A_reaction()
 					textbox_delay.start(0.5)
@@ -249,15 +256,20 @@ func dialogue_behavior(delta: float) -> void:
 			
 		3: # skips the delay between different letters
 			
-			fill_dialogue(0.01,true)
+			fill_dialogue(0.01 * clamp(game_data.get_data("letters"),1,1000),true)
 			substate = 2
 			
 		_: # unknown substates redirect to the beginning of dialogue
 			substate = 0
 
 ## deletes old dialogue boxes and adds in new ones based on the current needs
-func fill_dialogue(delay: float, cancel_delay: bool = false) -> void:
+func fill_dialogue(delay: float, match_letters: bool = false) -> void:
+	var let: Array[int] = []
 	for child in text_holder.get_children():
+		if match_letters and child is Textbox:
+			var temp = let
+			let = [child.visible_characters]
+			let.append_array(temp)
 		text_holder.remove_child(child)
 		child.queue_free()
 	
@@ -275,9 +287,11 @@ func fill_dialogue(delay: float, cancel_delay: bool = false) -> void:
 	for line in stored_text:
 		var temp: Textbox = textbox.instantiate()
 		text_holder.add_child(temp)
-		temp.display(line,delay)
-		if cancel_delay:
-			temp.finish_letters()
+		var initial: int = 0
+		if let.size() > 0:
+			initial = let.pop_back()
+		temp.display(line,delay,initial)
+		
 
 
 ## any logic done in the pause menu would go here.

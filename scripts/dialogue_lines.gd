@@ -6,12 +6,16 @@ extends Dialogue
 
 ## The actual lines of dialogue
 @export var lines: Array[String]
+## Speed that the letters display at
+@export var display_speed: float = 0.01
 ## Which line we're currently on
 var index: int = 0
-
+## Reference to the game data
+const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
 ## provides the current line 
 func line() -> Array[String]:
+	game_data.set_data("letters",roundi(100*display_speed))
 	if dialogue_finished():
 		return []
 	return [lines[index]]
