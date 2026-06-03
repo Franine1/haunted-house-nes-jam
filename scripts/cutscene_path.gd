@@ -20,6 +20,13 @@ static func compile(dir: Array[Vector2i], spd: float = 1.0, look_dir: Vector2i =
 	return ans
 
 
+static func compile_look_direction(input: Vector2i) -> CutscenePath:
+	var ans = CutscenePath.new()
+	ans.speed = 1.0
+	ans.look_direction = input.sign()
+	return ans
+
+
 func direction() -> Vector2i:
 	if directions.size() == 0:
 		return Vector2i.ZERO
@@ -31,3 +38,5 @@ func reduce(input: Vector2i) -> void:
 		directions[directions.size()-1] -= input
 		if !directions.back():
 			directions.pop_back()
+	if directions.size() == 0:
+		look_direction = Vector2i.ZERO

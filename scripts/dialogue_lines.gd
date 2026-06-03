@@ -8,6 +8,10 @@ extends Dialogue
 @export var lines: Array[String]
 ## Speed that the letters display at
 @export var display_speed: float = 0.01
+## A value that adds a name to the start of the dialogue, 
+## reading it from game_data. This allows easily changing names across
+## all dialogue scripts.
+@export var name_id: int = 0
 ## Which line we're currently on
 var index: int = 0
 ## Reference to the game data
@@ -18,7 +22,7 @@ func line() -> Array[String]:
 	game_data.set_data("letters",roundi(100*display_speed))
 	if dialogue_finished():
 		return []
-	return [lines[index]]
+	return [game_data.name(name_id) + lines[index]]
 
 ## goes up one line
 func A_reaction():

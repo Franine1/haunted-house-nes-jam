@@ -37,6 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://bfkkjw5qomv61" path="res://scenes/characters/npc_1.tscn" id="35_7mm63"]
 [ext_resource type="Material" uid="uid://b7qhrmcdja4mi" path="res://resources/palettes/bluepallete.tres" id="36_4lh72"]
 [ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="37_oahe5"]
+[ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="37_tlc6n"]
+[ext_resource type="Script" uid="uid://bbr1g3c52vcnu" path="res://DialogueMovement.gd" id="38_oahe5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u00pf"]
 size = Vector2(32, 48)
@@ -64,6 +66,9 @@ size = Vector2(80, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbo60"]
 size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lh72"]
+size = Vector2(12, 12)
 
 [node name="default_house" type="Node2D" unique_id=825320048]
 material = ExtResource("1_u00pf")
@@ -426,6 +431,7 @@ value = 2
 compare_type = 1
 
 [node name="its_locked" parent="tile_blockade4" unique_id=1942275807 instance=ExtResource("29_o1ess")]
+lines = Array[String](["It's locked. This door goes to the backyard."])
 
 [node name="tile_blockade5" parent="." unique_id=107708510 instance=ExtResource("28_qiytx")]
 position = Vector2(312, -104)
@@ -434,6 +440,7 @@ value = 2
 compare_type = 1
 
 [node name="its_locked" parent="tile_blockade5" unique_id=1418152780 instance=ExtResource("29_o1ess")]
+lines = Array[String](["It's locked. This door goes to the backyard."])
 
 [node name="tile_blockade3" parent="." unique_id=1428575678 instance=ExtResource("28_qiytx")]
 position = Vector2(104, 536)
@@ -444,6 +451,100 @@ compare_type = 1
 [node name="DialogueLines" type="Node" parent="tile_blockade3" unique_id=304255045]
 script = ExtResource("31_fyonw")
 lines = Array[String](["It's locked. The handle is freezing cold."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="npc1" parent="." unique_id=1242705272 instance=ExtResource("35_7mm63")]
+position = Vector2(-1440, -16)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="npc1" unique_id=256701549]
+material = ExtResource("36_4lh72")
+position = Vector2(0, 512)
+sprite_frames = ExtResource("37_oahe5")
+animation = &"down"
+
+[node name="DialogueSection" type="Node" parent="npc1" unique_id=1145369358]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueToggle" type="Node" parent="npc1/DialogueSection" unique_id=108999348]
+script = ExtResource("32_gbo60")
+cue = "forced"
+value = -4
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle" unique_id=1611435341]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Oh!", "Do you want me to tell you that thing now?", "Um, it's pretty important, so if there's anything you want to do first, that's fine.", "But, uh...", "Don't take too long though."])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="npc1/DialogueSection/DialogueToggle" unique_id=1612799082]
+script = ExtResource("27_qiytx")
+cue = "forced"
+value = -5
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle2" type="Node" parent="npc1/DialogueSection" unique_id=209923065]
+script = ExtResource("32_gbo60")
+cue = "forced"
+value = -5
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle2" unique_id=38989450]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Do you want me to tell you now?"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="npc1/DialogueSection/DialogueToggle2" unique_id=1482607723]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption" unique_id=25383631]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=787769031]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Yes"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=328403548]
+script = ExtResource("27_qiytx")
+cue = "host"
+value = 2
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueSection2" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption" unique_id=201819079]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection2" unique_id=959282264]
+script = ExtResource("31_fyonw")
+lines = Array[String](["No"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueMovement" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection2" unique_id=475373004]
+script = ExtResource("38_oahe5")
+NPC_ID = 0
+look_direction = 2
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueToggle3" type="Node" parent="npc1/DialogueSection" unique_id=891698378]
+script = ExtResource("32_gbo60")
+cue = "host"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle3" unique_id=1088100570]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Why don't we sit down?"])
+name_id = 2
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="InteractionZone" type="Area2D" parent="." unique_id=1584585318]
@@ -481,11 +582,63 @@ value = 1
 additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="npc1" parent="InteractionZone/DialogueSection" unique_id=1242705272 instance=ExtResource("35_7mm63")]
-position = Vector2(-1440, -16)
+[node name="InteractionZone3" type="Area2D" parent="." unique_id=1055917915]
+script = ExtResource("26_tyelw")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="InteractionZone/DialogueSection/npc1" unique_id=256701549]
-material = ExtResource("36_4lh72")
-position = Vector2(0, 512)
-sprite_frames = ExtResource("37_oahe5")
-animation = &"down"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone3" unique_id=197421383]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_4lh72")
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone3" unique_id=1844355882]
+script = ExtResource("32_gbo60")
+cue = "forced"
+value = -3
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=474021040]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Oh!"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueMovement" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=2099717065]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(-9, -4)])
+NPC_ID = 0
+speed = 10.0
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueMovement2" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=1552146207]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(2, 1)])
+speed = 3.0
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=261947944]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 16
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=768298001]
+script = ExtResource("31_fyonw")
+lines = Array[String](["I didn't realize you came in!", "Uh, you didn't... open any doors, did you?", "...", "Uh, probably not. Anyway, make yourself at home.", "...I did have something important to tell you, yeah, but you can look around first.", "I mean, if you want to. No pressure.", "..."])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=2075490452]
+script = ExtResource("27_qiytx")
+cue = "forced"
+value = -4
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueMovement3" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=680128970]
+script = ExtResource("38_oahe5")
+NPC_ID = 0
+look_direction = 2
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"

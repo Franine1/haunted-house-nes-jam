@@ -29,11 +29,13 @@ func _physics_process(delta: float) -> void:
 					mvm = movement_queue.back().direction()
 					dir = movement_queue.back().look_direction
 					speed_scale = movement_queue.back().speed
+				elif movement_queue.back().look_direction:
+					dir = movement_queue.back().look_direction
 				else:
 					movement_queue.pop_back()
 		else:
 			speed_scale = default_speed
-		if mvm:
+		if mvm or dir:
 			
 			var reduce: Vector2i = enact_movement(mvm, dir)
 			
@@ -52,7 +54,12 @@ func _physics_process(delta: float) -> void:
 					elif target is Blockade:
 						target.interact()
 						delay_interaction()
+					elif target is Player:
+						pass
+					elif target is NPC:
+						target.interact(self)
 						
+						delay_interaction()
 			
 	
 	fix_camera(camera_instant)

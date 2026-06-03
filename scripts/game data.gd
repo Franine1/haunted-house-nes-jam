@@ -39,6 +39,21 @@ var movement_queues: Dictionary[int,Array] = {}
 
 
 
+const names: Array[String] = [
+	""
+	,"You"
+	,"Lea"
+]
+
+
+func name(input: int) -> String:
+	if input >= names.size() or input < 0:
+		return ""
+	var ans: String = names[input]
+	if ans.length() > 0:
+		ans = ans + ":  "
+	return ans
+
 ## sets a data point in the data library
 func set_data(key: String, value: int) -> void:
 	data[key] = value
@@ -93,7 +108,12 @@ func next_dialogue() -> Dialogue:
 ## This function queues NPC nodes with the corresponding NPC ID
 ## to navigate the requested movement directions
 func queue_movement(input: Array[CutscenePath], npc_id: int) -> void:
-	movement_queues[npc_id] = input
+	if !movement_queues.has(npc_id):
+		movement_queues[npc_id] = input
+	else:
+		var temp = movement_queues[npc_id]
+		movement_queues[npc_id] = input
+		movement_queues[npc_id].append_array(temp)
 
 func accept_movement(npc_id: int) -> Array[CutscenePath]:
 	var ans: Array[CutscenePath] = []

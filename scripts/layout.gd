@@ -80,7 +80,7 @@ func update_fading_mode(instant_override: bool = false):
 
 func overlaps(input: Node2D) -> bool:
 	var spots: Array[Vector2i] = get_used_cells()
-	var approximate: Vector2i = Vector2i((input.global_position / 16.0).floor())
+	var approximate: Vector2i = Vector2i(((input.global_position-global_position) / 16.0).floor())
 	return spots.has(approximate)
 
 
@@ -88,6 +88,7 @@ func fade(in_or_out: bool) -> void:
 	if fade_mode == in_or_out:
 		return
 	enabled = true
+	visible = true
 	var tt = base_time - fade_time.time_left
 	fade_mode = in_or_out
 	fade_time.start(tt)

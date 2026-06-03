@@ -43,6 +43,10 @@ var input_allowed: bool = true
 var movement_queue: Array[CutscenePath] = []
 
 
+## NPC specific variable determining if the player can interact with them
+var interact_allowed: bool = true
+
+
 signal update_fading()
 
 func _ready() -> void:
@@ -50,7 +54,7 @@ func _ready() -> void:
 	interaction.target_position = Vector2(16.0,0.0)
 	add_child(interaction)
 	interaction.collide_with_areas = true
-	interaction.collision_mask = 8
+	interaction.collision_mask = 24
 	
 	input_delay = Timer.new()
 	input_delay.one_shot = true
@@ -73,12 +77,38 @@ func _ready() -> void:
 	
 	ready_behavior()
 
-
+## Used to add logic after _ready without overriding important behavior
 func ready_behavior() -> void:
 	pass
 
+
+## Used to add logic during _physics_process without overriding important behavior
 func process_behavior(delta: float) -> void:
 	pass
+
+
+func set_interaction(input: bool = true) -> void:
+	interact_allowed = input
+
+
+func interact(by: Player) -> void:
+	if interact_allowed:
+		send_dialogue()
+
+
+## Gathers any child Dialogue nodes and queues them up to be read.
+func send_dialogue() -> void:
+	if !interact_allowed:
+		return
+	interact_allowed = false
+	get_tree().create_timer(0.5).timeout.connect(set_interaction)
+	var temp: Array[Dialogue]
+	for child in get_children():
+		if child is Dialogue:
+			temp.append(child)
+	
+	game_data.queue_dialogue_array(temp)
+	
 
 
 func progress_animation(delta: float, opacity: float = -1.0) -> void:
@@ -109,6 +139,7 @@ func upkeep(delta: float) -> void:
 	temp.append_array(movement_queue)
 	movement_queue = temp
 	
+	
 
 func _physics_process(delta: float) -> void:
 	collision_layer = 16
@@ -123,6 +154,7 @@ func _physics_process(delta: float) -> void:
 	for layout in fade_in_checks:
 		if layout.overlaps(self):
 			best = max(best,layout.recent_opacity)
+			print(layout)
 	progress_animation(delta, best)
 	
 	if input_delay.is_stopped():
@@ -136,9 +168,11 @@ func _physics_process(delta: float) -> void:
 				mvm = movement_queue.back().direction()
 				dir = movement_queue.back().look_direction
 				speed_scale = movement_queue.back().speed
+			elif movement_queue.back().look_direction:
+				dir = movement_queue.back().look_direction
 			else:
 				movement_queue.pop_back()
-		if mvm:
+		if mvm or dir:
 			
 			var reduce: Vector2i = enact_movement(mvm, dir)
 			
@@ -183,17 +217,19 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO) -> Vecto
 		,Vector2.DOWN: "down"
 	}
 	
-	# set the interaction direction to our movement direction
-	interaction.rotation = move.angle()
 	
 	# skips setting the animation if we move at an angle against a wall
 	if (axis_swapped or !collision):
 		if directions.has(move):
 			for sprite in sprites:
 				sprite.animation = directions[move]
+				# set the interaction direction to our movement direction
+				interaction.rotation = move.angle()
 		if directions.has(dir_override):
 			for sprite in sprites:
 				sprite.animation = directions[dir_override]
+				# set the interaction direction to our movement direction
+				interaction.rotation = dir_override.angle()
 			
 	
 	
