@@ -14,6 +14,8 @@ extends Dialogue
 @export var speed: float = 5.0
 ## An aim direction override, if needed for the cutscene
 @export var look_direction: direction = direction.DONT_OVERRIDE
+## In case we want to delay the point in time that we send the movement request
+@export var delay: float = 0.0
 
 
 ## reference to the game data
@@ -48,7 +50,11 @@ func dialogue_finished() -> bool:
 	var look_aim: Vector2i = [Vector2i.ZERO,Vector2i.UP,Vector2i.DOWN,Vector2i.LEFT,Vector2i.RIGHT][look_direction]
 	
 	var ans: CutscenePath = CutscenePath.compile(directions,speed,look_aim)
-	game_data.queue_movement([ans],NPC_ID)
+	if delay <= 0:
+		game_data.queue_movement([ans],NPC_ID)
+	else:
+		var source = get_tree().current_scene
+		source.get_tree().create_timer(delay).timeout.connect(game_data.queue_movement.bind([ans],NPC_ID))
 	
 	return true
 
