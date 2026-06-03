@@ -33,6 +33,8 @@ var textbox_delay: Timer
 var level_change_delay: Timer
 ## Forces occassional color refreshed
 var color_timer: Timer
+## Tracks how long the level needs to wait before resuming dialogue.
+var dialogue_timer: Timer
 ## a reference to the player
 var player: Player
 ## whether to check for dialogue or not
@@ -114,9 +116,20 @@ func _ready() -> void:
 	color_timer = Timer.new()
 	add_child(color_timer)
 	color_timer.one_shot = true
+	dialogue_timer = Timer.new()
+	add_child(dialogue_timer)
+	dialogue_timer.one_shot = true
 	
 	# sets up to receive a game cue when the level parameter changes
-	cue.add_cue("level",Callable(self,"change_level"))
+	cue.add_cue("level",Callable(change_level))
+	cue.add_cue("delay",Callable(pause_dialogue))
+
+
+func pause_dialogue(input: int) -> void:
+	if dialogue_timer.is_stopped() and input > 0:
+		dialogue_timer.start(0.1 * input)
+		game_data.set_data("delay",0)
+
 
 ## deletes the old level and replaces it with the new one.
 ## Automatically activates if the "level" datapoint changes 
@@ -192,8 +205,12 @@ func game_behavior(delta: float) -> void:
 
 ## performs all the logic for dialogue to display correctly. 
 func dialogue_behavior(delta: float) -> void:
-	text_holder.show()
+	text_holder.visible = dialogue_timer.is_stopped()
 	game_world.handle_input_locally = false
+	
+	if !dialogue_timer.is_stopped():
+		substate = 1
+		return
 	
 	match substate:
 		0: # starts the dialogue fresh

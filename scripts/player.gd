@@ -11,7 +11,7 @@ var camera_instant: bool = false
 
 func _physics_process(delta: float) -> void:
 	
-	interact_delay.paused = !input_allowed
+	upkeep(delta)
 	
 	progress_animation(delta)
 	
@@ -20,18 +20,25 @@ func _physics_process(delta: float) -> void:
 		# movement inputs are allowed
 		correct_position()
 		
-		var mvm = Input.get_vector("Move Left","Move Right","Move Up","Move Down")
+		var mvm: Vector2 = Input.get_vector("Move Left","Move Right","Move Up","Move Down")
+		var dir = Vector2.ZERO
 		if !input_allowed:
-			mvm = movement_queue.front() if movement_queue.size() > 0 else Vector2.ZERO
-		
+			mvm = Vector2.ZERO
+			if movement_queue.size() > 0:
+				if movement_queue.back().direction():
+					mvm = movement_queue.back().direction()
+					dir = movement_queue.back().look_direction
+					speed_scale = movement_queue.back().speed
+				else:
+					movement_queue.pop_back()
+		else:
+			speed_scale = 5.0
 		if mvm:
 			
-			var reduce: Vector2i = enact_movement(mvm)
+			var reduce: Vector2i = enact_movement(mvm, dir)
 			
 			if !input_allowed:
-				movement_queue[0] -= reduce
-				if !movement_queue[0]:
-					movement_queue.pop_front()
+				movement_queue.back().reduce(reduce)
 			
 		else:
 			# if we aren't moving, allow the player to interact

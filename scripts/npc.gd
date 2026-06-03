@@ -37,7 +37,7 @@ var initial_walk_time: float = 0.0
 
 var input_allowed: bool = true
 ## list of movements to perform
-var movement_queue: Array[Vector2i] = []
+var movement_queue: Array[CutscenePath] = []
 
 
 signal update_fading()
@@ -88,12 +88,19 @@ func progress_animation(delta: float) -> void:
 		sprite.frame = (floori((initial_walk_time - walk_time)*speed_scale * anim_speed) % 2) + 1
 
 
+func upkeep(delta: float) -> void:
+	interact_delay.paused = !input_allowed
+	var temp: Array[CutscenePath] = game_data.accept_movement(NPC_ID)
+	temp.append_array(movement_queue)
+	movement_queue = temp
+	print(temp.size())
+	
+
 func _physics_process(delta: float) -> void:
 	collision_layer = 0
 	collision_mask = 5
-	interact_delay.paused = !input_allowed
 	
-	
+	upkeep(delta)
 	
 	progress_animation(delta)
 	
@@ -101,15 +108,21 @@ func _physics_process(delta: float) -> void:
 		# movement inputs are allowed
 		correct_position()
 		
-		var mvm = movement_queue.front() if movement_queue.size() > 0 else Vector2.ZERO
+		var mvm = Vector2.ZERO
+		var dir = Vector2.ZERO
+		if movement_queue.size() > 0:
+			if movement_queue.back().direction():
+				mvm = movement_queue.back().direction()
+				dir = movement_queue.back().look_direction
+				speed_scale = movement_queue.back().speed
+			else:
+				movement_queue.pop_back()
 		if mvm:
 			
-			var reduce: Vector2i = enact_movement(mvm)
+			var reduce: Vector2i = enact_movement(mvm, dir)
 			
-			movement_queue[0] -= reduce
+			movement_queue.back().reduce(reduce)
 			
-			if !movement_queue[0]:
-				movement_queue.pop_front()
 			
 		else:
 			# if we aren't moving, allow the player to interact
@@ -119,7 +132,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func enact_movement(mvm: Vector2) -> Vector2i:
+func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO) -> Vector2i:
 	# rounds all components of the movement vector
 	var snapped: Vector2 = mvm.normalized().round()
 	
@@ -153,11 +166,17 @@ func enact_movement(mvm: Vector2) -> Vector2i:
 	interaction.rotation = move.angle()
 	
 	# skips setting the animation if we move at an angle against a wall
-	if directions.has(move) and (axis_swapped or !collision):
-		sprite.animation = directions[move]
+	if (axis_swapped or !collision):
+		if directions.has(move):
+			sprite.animation = directions[move]
+		if directions.has(dir_override):
+			sprite.animation = directions[dir_override]
+			
+	
 	
 	if collision:
 		# don't move if we would have collided
+		move = Vector2.ZERO
 		velocity = Vector2.ZERO
 		shift_axis()
 		var wall = collision.get_collider()
@@ -174,7 +193,7 @@ func enact_movement(mvm: Vector2) -> Vector2i:
 		walk_time = dur + 0.04
 		input_delay.start(dur)
 	
-	var ans: Vector2i = Vector2i(velocity)
+	var ans: Vector2i = Vector2i(move)
 	return ans
 
 

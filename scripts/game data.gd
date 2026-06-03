@@ -34,6 +34,9 @@ var movement_queues: Dictionary[int,Array] = {}
 ## INFO: "letters": this indicates the speed at which letters should appear at.
 ## The min speed is 0.01, and this value is multiplied by that for the resulting speed.
 ## INFO: "skip": The value of this int is the number of times the game will automatically finish dialogue.
+## INFO: "delay": forces the game manager to wait a certain amount of time before resuming dialogue. 
+## These are measured in tenths of seconds.
+
 
 
 ## sets a data point in the data library
@@ -93,6 +96,8 @@ func queue_movement(input: Array[CutscenePath], npc_id: int) -> void:
 	movement_queues[npc_id] = input
 
 func accept_movement(npc_id: int) -> Array[CutscenePath]:
-	var ans: Array[CutscenePath] = movement_queues[npc_id]
-	movement_queues.erase(npc_id)
+	var ans: Array[CutscenePath] = []
+	if movement_queues.has(npc_id):
+		ans = movement_queues[npc_id]
+		movement_queues.erase(npc_id)
 	return ans
