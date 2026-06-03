@@ -23,7 +23,7 @@ var interaction: RayCast2D
 ## A modifier to the player speed
 var speed_scale: float = 5.0
 ## An exported default speed value for NPCs
-@export var default_speed: float = 5.0
+@export var default_speed: float = 15.0
 
 ## the ID the game uses to specifically identify this NPC
 @export var NPC_ID: int = 0
@@ -41,6 +41,8 @@ var fade_in_checks: Array[Layout] = []
 var input_allowed: bool = true
 ## list of movements to perform
 var movement_queue: Array[CutscenePath] = []
+## current mode of movement. Makes movement look uglier but better at arriving.
+var movement_mode_switch: bool = false
 
 
 ## NPC specific variable determining if the player can interact with them
@@ -154,42 +156,57 @@ func _physics_process(delta: float) -> void:
 	for layout in fade_in_checks:
 		if layout.overlaps(self):
 			best = max(best,layout.recent_opacity)
-			print(layout)
 	progress_animation(delta, best)
 	
 	if input_delay.is_stopped():
 		# movement inputs are allowed
 		correct_position()
 		
-		var mvm = Vector2.ZERO
-		var dir = Vector2.ZERO
-		if movement_queue.size() > 0:
-			if movement_queue.back().direction():
-				mvm = movement_queue.back().direction()
-				dir = movement_queue.back().look_direction
-				speed_scale = movement_queue.back().speed
-			elif movement_queue.back().look_direction:
-				dir = movement_queue.back().look_direction
-			else:
-				movement_queue.pop_back()
-		if mvm or dir:
-			
-			var reduce: Vector2i = enact_movement(mvm, dir)
-			
-			movement_queue.back().reduce(reduce)
-			
-			
-		else:
-			# if we aren't moving, allow the player to interact
+		var mvm = compile_movement_queue()
+		
+		if !mvm:
+			# if we aren't moving, stay still
 			velocity = Vector2.ZERO
 	
 	
 	move_and_slide()
 
 
-func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO) -> Vector2i:
+func compile_movement_queue() -> Vector2:
+	var mvm = Vector2.ZERO
+	var dir = Vector2.ZERO
+	var local: Vector2i = Vector2i((global_position/16.0).floor())
+	var relative_shift: bool = false
+	if movement_queue.size() > 0:
+		if movement_queue.back().direction(local):
+			mvm = Vector2(movement_queue.back().direction(local))
+			relative_shift = !movement_queue.back().relative
+			dir = movement_queue.back().look_direction
+			speed_scale = movement_queue.back().speed
+		elif movement_queue.back().look_direction:
+			dir = movement_queue.back().look_direction
+		else:
+			movement_queue.pop_back()
+	if mvm or dir:
+		
+		var reduce: Vector2i = enact_movement(mvm, dir, movement_mode_switch) 
+		movement_mode_switch = !reduce
+		if relative_shift:
+			reduce = local
+		
+		
+		movement_queue.back().reduce(reduce)
+	
+	return mvm
+
+
+func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_any: bool = false) -> Vector2i:
 	# rounds all components of the movement vector
-	var snapped: Vector2 = mvm.normalized().round()
+	var snapped: Vector2
+	if accept_any:
+		snapped = mvm.sign()
+	else:
+		snapped = mvm.normalized().round()
 	
 	# snaps the vector to the currect axis
 	var move: Vector2 = current_axis * snapped

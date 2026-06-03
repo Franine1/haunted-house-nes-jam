@@ -107,13 +107,26 @@ func next_dialogue() -> Dialogue:
 
 ## This function queues NPC nodes with the corresponding NPC ID
 ## to navigate the requested movement directions
-func queue_movement(input: Array[CutscenePath], npc_id: int) -> void:
+func queue_movement(input: CutscenePath, npc_id: int) -> void:
+	var sub: Array[CutscenePath] = [input]
+	if !movement_queues.has(npc_id):
+		movement_queues[npc_id] = sub
+	else:
+		var temp = movement_queues[npc_id]
+		movement_queues[npc_id] = sub
+		movement_queues[npc_id].append_array(temp)
+
+
+## Same as above, except it queues an array of CutscenePaths
+func queue_movement_array(input: Array[CutscenePath], npc_id: int) -> void:
 	if !movement_queues.has(npc_id):
 		movement_queues[npc_id] = input
 	else:
 		var temp = movement_queues[npc_id]
 		movement_queues[npc_id] = input
 		movement_queues[npc_id].append_array(temp)
+
+
 
 func accept_movement(npc_id: int) -> Array[CutscenePath]:
 	var ans: Array[CutscenePath] = []

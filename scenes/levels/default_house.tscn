@@ -547,6 +547,158 @@ lines = Array[String](["Why don't we sit down?"])
 name_id = 2
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
+[node name="intro" type="Node" parent="npc1/DialogueSection/DialogueToggle3" unique_id=2114782346]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueMovement" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=779444978]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(3, 3)])
+relative = false
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueMovement2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=2047637190]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(10, 3)])
+NPC_ID = 0
+delay = 0.7
+relative = false
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=532867617]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 25
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueMovement3" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=1481645146]
+script = ExtResource("38_oahe5")
+look_direction = 4
+delay = 2.6
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueMovement4" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=1318925743]
+script = ExtResource("38_oahe5")
+NPC_ID = 0
+look_direction = 3
+delay = 2.6
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="conversation" type="Node" parent="npc1/DialogueSection/DialogueToggle3" unique_id=1873696311]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=1231199372]
+script = ExtResource("31_fyonw")
+lines = Array[String](["...", "How was the drive to here?"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=718828861]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption" unique_id=474203019]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Terrible"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption" unique_id=1746470607]
+script = ExtResource("31_fyonw")
+lines = Array[String](["So many potholes"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines3" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption" unique_id=223717747]
+script = ExtResource("31_fyonw")
+lines = Array[String](["I got three different flat tires"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines3" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=1655619794]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's definitely off the beaten track, yeah.", "Did I ever tell you about my family's history with this house?"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=2141677444]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption2" unique_id=713297408]
+script = ExtResource("31_fyonw")
+lines = Array[String](["No"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueSection" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption2" unique_id=861807975]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption2/DialogueSection" unique_id=1975920037]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It came to me in a dream"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption2/DialogueSection" unique_id=387767535]
+script = ExtResource("31_fyonw")
+lines = Array[String](["..."])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines4" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=1142686410]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Well, it's been in our family for seven generations. And before that, it was government property.", "The thing is, we've been trying to give it back for years. But we can't sell it at all."])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=1081862455]
+script = ExtResource("27_qiytx")
+cue = "sink"
+value = 1
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines5" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=2012305532]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Before this house was built, these grounds were...", "Uh, wait. You hear that?", "Uh, one sec. Let me go turn off the faucet.", "Excuse me!"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="outro" type="Node" parent="npc1/DialogueSection/DialogueToggle3" unique_id=1098376287]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueMovement" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=2039563135]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(-5, -2), Vector2i(-5, 2), Vector2i(-5, 0)])
+NPC_ID = 0
+speed = 15.0
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=2072226013]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 15
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines6" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=1009080256]
+script = ExtResource("31_fyonw")
+lines = Array[String](["That was weird."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue3" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=1970211092]
+script = ExtResource("27_qiytx")
+cue = "forced"
+value = -6
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue4" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=330258636]
+script = ExtResource("27_qiytx")
+cue = "host"
+value = 3
+additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="InteractionZone" type="Area2D" parent="." unique_id=1584585318]
 script = ExtResource("26_tyelw")
 interact_activation = false
