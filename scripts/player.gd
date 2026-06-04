@@ -21,26 +21,15 @@ func _physics_process(delta: float) -> void:
 		correct_position()
 		
 		var mvm: Vector2 = Input.get_vector("Move Left","Move Right","Move Up","Move Down")
-		var dir = Vector2.ZERO
 		if !input_allowed:
-			mvm = Vector2.ZERO
-			if movement_queue.size() > 0:
-				if movement_queue.back().direction():
-					mvm = movement_queue.back().direction()
-					dir = movement_queue.back().look_direction
-					speed_scale = movement_queue.back().speed
-				else:
-					movement_queue.pop_back()
+			mvm = compile_movement_queue()
 		else:
-			speed_scale = 5.0
-		if mvm:
+			speed_scale = default_speed
 			
-			var reduce: Vector2i = enact_movement(mvm, dir)
+			if mvm:
+				enact_movement(mvm) 
 			
-			if !input_allowed:
-				movement_queue.back().reduce(reduce)
-			
-		else:
+		if !mvm:
 			# if we aren't moving, allow the player to interact
 			velocity = Vector2.ZERO
 			if Input.is_action_just_pressed("A button") and input_allowed and interact_delay.is_stopped():
@@ -52,7 +41,12 @@ func _physics_process(delta: float) -> void:
 					elif target is Blockade:
 						target.interact()
 						delay_interaction()
+					elif target is Player:
+						pass
+					elif target is NPC:
+						target.interact(self)
 						
+						delay_interaction()
 			
 	
 	fix_camera(camera_instant)

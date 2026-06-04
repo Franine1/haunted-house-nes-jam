@@ -17,12 +17,13 @@ var input_delay: Timer
 ## Cooldown for player interaction
 var interact_delay: Timer
 ## The sprite of the character
-var sprite: AnimatedSprite2D
+var sprites: Array[AnimatedSprite2D]
 ## The ray that checks what the character is interacting with
 var interaction: RayCast2D
 ## A modifier to the player speed
-@export var speed_scale: float = 5.0
-
+var speed_scale: float = 5.0
+## An exported default speed value for NPCs
+@export var default_speed: float = 5.0
 
 ## the ID the game uses to specifically identify this NPC
 @export var NPC_ID: int = 0
@@ -34,10 +35,18 @@ var seamless: bool = false
 var walk_time: float = 0.0
 ## Used to continue the current animation if the character is holding down a movement direction
 var initial_walk_time: float = 0.0
+## Used as a list for NPCs to check for whether to be visible or not
+var fade_in_checks: Array[Layout] = []
 
 var input_allowed: bool = true
 ## list of movements to perform
 var movement_queue: Array[CutscenePath] = []
+## current mode of movement. Makes movement look uglier but better at arriving.
+var movement_mode_switch: bool = false
+
+
+## NPC specific variable determining if the player can interact with them
+var interact_allowed: bool = true
 
 
 signal update_fading()
@@ -47,7 +56,7 @@ func _ready() -> void:
 	interaction.target_position = Vector2(16.0,0.0)
 	add_child(interaction)
 	interaction.collide_with_areas = true
-	interaction.collision_mask = 8
+	interaction.collision_mask = 24
 	
 	input_delay = Timer.new()
 	input_delay.one_shot = true
@@ -59,33 +68,70 @@ func _ready() -> void:
 	interact_delay.timeout.connect(toggle_interaction.bind(true))
 	shift_axis()
 	
-	sprite = AnimatedSprite2D.new()
-	add_child(sprite)
+	sprites = []
 	for child in get_children():
 		if child is AnimatedSprite2D:
-			remove_child(sprite)
-			sprite.queue_free()
-			sprite = child
-			break
+			sprites.append(child)
 	
 	z_index = 5
 	interaction.rotation = PI/2
 	
+	ready_behavior()
 
-func progress_animation(delta: float) -> void:
+## Used to add logic after _ready without overriding important behavior
+func ready_behavior() -> void:
+	pass
+
+
+## Used to add logic during _physics_process without overriding important behavior
+func process_behavior(delta: float) -> void:
+	pass
+
+
+func set_interaction(input: bool = true) -> void:
+	interact_allowed = input
+
+
+func interact(by: Player) -> void:
+	if interact_allowed:
+		send_dialogue()
+
+
+## Gathers any child Dialogue nodes and queues them up to be read.
+func send_dialogue() -> void:
+	if !interact_allowed:
+		return
+	interact_allowed = false
+	get_tree().create_timer(0.5).timeout.connect(set_interaction)
+	var temp: Array[Dialogue]
+	for child in get_children():
+		if child is Dialogue:
+			temp.append(child)
+	
+	game_data.queue_dialogue_array(temp)
+	
+
+
+func progress_animation(delta: float, opacity: float = -1.0) -> void:
+	
+	var do_opacity: bool = opacity >= 0.0
+	var result_opacity: float = opacity if do_opacity else 1.0
 	# ensure the character is visible
-	if material is ShaderMaterial:
-		material.set_shader_parameter("opacity",1.0)
-		material.set_shader_parameter("opacity_enabled",false)
+	for sprite in sprites:
+		if sprite.material is ShaderMaterial:
+			sprite.material.set_shader_parameter("opacity",result_opacity)
+			sprite.material.set_shader_parameter("opacity_enabled",do_opacity)
 	
 	# determine the correct frame in our animation
 	if walk_time <= 0.0:
 		walk_time = 0.0
-		sprite.frame = 0
+		for sprite in sprites:
+			sprite.frame = 0
 	else:
 		walk_time -= delta
 		const anim_speed = 0.9
-		sprite.frame = (floori((initial_walk_time - walk_time)*speed_scale * anim_speed) % 2) + 1
+		for sprite in sprites:
+			sprite.frame = (floori((initial_walk_time - walk_time)*speed_scale * anim_speed) % 2) + 1
 
 
 func upkeep(delta: float) -> void:
@@ -93,48 +139,74 @@ func upkeep(delta: float) -> void:
 	var temp: Array[CutscenePath] = game_data.accept_movement(NPC_ID)
 	temp.append_array(movement_queue)
 	movement_queue = temp
-	#print(temp.size())
+	
 	
 
 func _physics_process(delta: float) -> void:
-	collision_layer = 0
+	collision_layer = 16
 	collision_mask = 5
+	
+	process_behavior(delta)
 	
 	upkeep(delta)
 	
-	progress_animation(delta)
+	
+	var best: float = 0.0
+	for layout in fade_in_checks:
+		if layout.overlaps(self):
+			best = max(best,layout.recent_opacity)
+	progress_animation(delta, best)
 	
 	if input_delay.is_stopped():
 		# movement inputs are allowed
 		correct_position()
 		
-		var mvm = Vector2.ZERO
-		var dir = Vector2.ZERO
-		if movement_queue.size() > 0:
-			if movement_queue.back().direction():
-				mvm = movement_queue.back().direction()
-				dir = movement_queue.back().look_direction
-				speed_scale = movement_queue.back().speed
-			else:
-				movement_queue.pop_back()
-		if mvm:
-			
-			var reduce: Vector2i = enact_movement(mvm, dir)
-			
-			movement_queue.back().reduce(reduce)
-			
-			
-		else:
-			# if we aren't moving, allow the player to interact
+		var mvm = compile_movement_queue()
+		
+		if !mvm:
+			# if we aren't moving, stay still
 			velocity = Vector2.ZERO
 	
 	
 	move_and_slide()
 
 
-func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO) -> Vector2i:
+func compile_movement_queue() -> Vector2:
+	var mvm = Vector2.ZERO
+	var dir = Vector2.ZERO
+	var local: Vector2i = Vector2i((global_position/16.0).floor())
+	var relative_shift: bool = false
+	if movement_queue.size() > 0:
+		if movement_queue.back().direction(local):
+			mvm = Vector2(movement_queue.back().direction(local))
+			relative_shift = !movement_queue.back().relative
+			dir = movement_queue.back().look_direction
+			speed_scale = movement_queue.back().speed
+		elif movement_queue.back().look_direction:
+			dir = movement_queue.back().look_direction
+		else:
+			if !movement_queue.back().next_pathway():
+				movement_queue.pop_back()
+	if mvm or dir:
+		
+		var reduce: Vector2i = enact_movement(mvm, dir, movement_mode_switch) 
+		movement_mode_switch = !reduce
+		if relative_shift:
+			reduce = local
+		
+		
+		movement_queue.back().reduce(reduce)
+	
+	return mvm
+
+
+func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_any: bool = false) -> Vector2i:
 	# rounds all components of the movement vector
-	var snapped: Vector2 = mvm.normalized().round()
+	var snapped: Vector2
+	if accept_any:
+		snapped = mvm.sign()
+	else:
+		snapped = mvm.normalized().round()
 	
 	# snaps the vector to the currect axis
 	var move: Vector2 = current_axis * snapped
@@ -162,15 +234,19 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO) -> Vecto
 		,Vector2.DOWN: "down"
 	}
 	
-	# set the interaction direction to our movement direction
-	interaction.rotation = move.angle()
 	
 	# skips setting the animation if we move at an angle against a wall
 	if (axis_swapped or !collision):
 		if directions.has(move):
-			sprite.animation = directions[move]
+			for sprite in sprites:
+				sprite.animation = directions[move]
+				# set the interaction direction to our movement direction
+				interaction.rotation = move.angle()
 		if directions.has(dir_override):
-			sprite.animation = directions[dir_override]
+			for sprite in sprites:
+				sprite.animation = directions[dir_override]
+				# set the interaction direction to our movement direction
+				interaction.rotation = dir_override.angle()
 			
 	
 	

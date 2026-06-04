@@ -216,6 +216,7 @@ func dialogue_behavior(delta: float) -> void:
 		0: # starts the dialogue fresh
 			
 			dialogue_script.reset_dialogue()
+			textbox_delay.start(0.5)
 			substate = 1
 			
 		1: # requests the correct dialogue boxes to appear 

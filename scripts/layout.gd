@@ -5,6 +5,7 @@ class_name Layout
 extends TileMapLayer
 
 var fade_time: Timer 
+var recent_opacity: float = 1.0
 @export var material_layer: int = 0
 @export var fade_mode: bool = false
 @export var show_area: Area2D = null:
@@ -51,7 +52,7 @@ func update_fading_mode(instant_override: bool = false):
 	if is_instance_valid(show_area) and show_area != null:
 		var c: Array[Node2D] = show_area.get_overlapping_bodies()
 		
-		var check: bool = (c.size() > 0)
+		var check: bool = false
 		var instant_fading: bool = instant_override and fade_time.is_stopped()
 		
 		
@@ -59,9 +60,19 @@ func update_fading_mode(instant_override: bool = false):
 			
 			
 			if node is Player:
+				check = true
 				if !node.update_fading.is_connected(update_fading_mode):
 					node.update_fading.connect(update_fading_mode.bind(true))
-			
+			elif node is NPC:
+				if !node.update_fading.is_connected(empty_function):
+					node.update_fading.connect(empty_function)
+					node.fade_in_checks.append(self)
+			elif node is Blockade:
+				#print("detected blockade")
+				if!node.empty_signal.is_connected(empty_function):
+					#print("connecting blockade")
+					node.empty_signal.connect(empty_function)
+					node.fade_in_checks.append(self)
 			
 			#if node.has_method("get_seamless") and !instant_fading:
 			#	instant_fading = node.get_seamless()
@@ -73,10 +84,17 @@ func update_fading_mode(instant_override: bool = false):
 			fade(check)
 
 
+func overlaps(input: Node2D) -> bool:
+	var spots: Array[Vector2i] = get_used_cells()
+	var approximate: Vector2i = Vector2i(((input.global_position-global_position) / 16.0).floor())
+	return spots.has(approximate)
+
+
 func fade(in_or_out: bool) -> void:
 	if fade_mode == in_or_out:
 		return
 	enabled = true
+	visible = true
 	var tt = base_time - fade_time.time_left
 	fade_mode = in_or_out
 	fade_time.start(tt)
@@ -106,6 +124,7 @@ func change_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: b
 
 ## sets this node and all child nodes to the correct opacity
 func correct_opacity(input: float) -> void:
+	recent_opacity = input
 	
 	modulate = Color(1.0,1.0,1.0,input)
 	if material is ShaderMaterial:
@@ -116,3 +135,7 @@ func correct_opacity(input: float) -> void:
 			child.modulate = modulate
 			if child.material is ShaderMaterial:
 				material.set_shader_parameter("opacity",input)
+
+## intentionally does nothing
+func empty_function() -> void:
+	pass

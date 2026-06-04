@@ -1,0 +1,10 @@
+[gd_scene format=4 uid="uid://3upu5onjnbse"]
+
+[ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="1_em8in"]
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="2_wdp2p"]
+
+[node name="garage" type="TileMapLayer" unique_id=1665109948]
+tile_map_data = PackedByteArray("AAD5/wAAAAABAAEAAAD5/wEAAAABAAEAAAD5/wIAAAABAAEAAAD5/wMAAAABAAEAAAD5/wQAAAABAAEAAAD5/wUAAAABAAEAAAD5/wYAAAABAAEAAAD6/wYAAAABAAEAAAD7/wYAAAABAAEAAAD8/wYAAAABAAEAAAD9/wYAAAABAAEAAAD+/wYAAAABAAEAAAD+/wUAAAABAAAAAAD9/wUAAAABAAAAAAD8/wUAAAABAAAAAAD7/wUAAAABAAAAAAD6/wUAAAAGAAEAAAD6/wAAAAACAAEAAAD6/wEAAAACAAEAAAD6/wIAAAACAAEAAAD6/wMAAAACAAEAAAD6/wQAAAACAAEAAAD4/wAAAAAAAAEAAAD4/wEAAAAAAAEAAAD4/wIAAAAAAAEAAAD4/wMAAAAAAAEAAAD4/wQAAAAAAAEAAAD4/wUAAAAAAAEAAAD4/wYAAAAAAAIAAAD+/wcAAAABAAIAAAD9/wcAAAABAAIAAAD8/wcAAAABAAIAAAD7/wcAAAABAAIAAAD6/wcAAAABAAIAAAD5/wcAAAABAAIAAAD4/wcAAAABAAIAAAA=")
+tile_set = ExtResource("1_em8in")
+script = ExtResource("2_wdp2p")
+metadata/_custom_type_script = "uid://byvdvujagvico"

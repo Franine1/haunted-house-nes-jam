@@ -21,29 +21,63 @@ var active: bool = false
 
 var interact_allowed: bool = true
 
+## Any animated sprites linked to this node
+var sprites: Array[CanvasItem]
+## Used as a list for NPCs to check for whether to be visible or not
+var fade_in_checks: Array[Layout] = []
+## used to keep track of the layer this object is in for the color palettes
+@export var material_layer: int = 0
+
+
+## only used to determine if a blockade is linked to a layout
+signal empty_signal()
 
 enum compare {
-	EQUAL
-	,LESS
-	,GREATER
-	,LESS_OR_EQUAL
-	,GREATER_OR_EQUAL
-	,ALWAYS
+	EQUAL ## The values must be equivalent
+	,NOT_EQUAL ## The values must not be equivalent
+	,LESS ## The cue must be less than the value
+	,GREATER ## The cue must be greater than the value
+	,LESS_OR_EQUAL ## The cue must not be greater than the value
+	,GREATER_OR_EQUAL ## The cue must not be less than the value
+	,ALWAYS ## This blockade is always active
 }
 
 func _process(delta: float) -> void:
 	active = (compare_type == compare.ALWAYS)
 	if (game_data.get_data(cue) == value):
 		active = active or [compare.EQUAL,compare.LESS_OR_EQUAL,compare.GREATER_OR_EQUAL].has(compare_type)
+	else:
+		active = active or [compare.NOT_EQUAL].has(compare_type)
 	if (game_data.get_data(cue) < value):
 		active = active or [compare.LESS,compare.LESS_OR_EQUAL].has(compare_type)
 	if (game_data.get_data(cue) > value):
 		active = active or [compare.GREATER,compare.GREATER_OR_EQUAL].has(compare_type)
 	
-	collision_layer = 1 if active else 0
-	if interact_activation:
+	collision_layer = 33 if active else 0
+	if interact_activation and active:
 		collision_layer += 8
-	collision_mask = 0
+	collision_mask = 2
+	
+	
+	var best: float = 0.0
+	for layout in fade_in_checks:
+		if layout.overlaps(self):
+			best = max(best,layout.recent_opacity)
+	progress_animation(delta, best)
+	
+	
+
+
+func change_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:
+	for sprite in sprites:
+		if input.has(material_layer):
+			sprite.material = input[material_layer].duplicate()
+			if sprite.material is ShaderMaterial:
+				sprite.material.set_shader_parameter("opacity_enabled",true)
+		elif clear_non_included:
+			sprite.material = null
+	
+
 
 ## when the player presses A on it, sends its dialogue if interact_Activation is true
 func interact() -> void:
@@ -64,11 +98,34 @@ func send_dialogue() -> void:
 	game_data.queue_dialogue_array(temp)
 	
 ## when the player bumps into it, sends its dialogue if collide_Activation is true
-func bump(source: Player = null) -> void:
-	if collide_activation and interact_allowed and active:
+func bump(source: NPC = null) -> void:
+	if source is Player and collide_activation and interact_allowed and active:
 		if source != null:
 			source.delay_interaction()
 		send_dialogue()
 
 func set_interaction(input: bool = true) -> void:
 	interact_allowed = input
+
+func progress_animation(delta: float, opacity: float = -1.0) -> void:
+	
+	var do_opacity: bool = opacity >= 0.0
+	var result_opacity: float = opacity if do_opacity else 1.0
+	if !active:
+		result_opacity = 0.0
+	# ensure the blockade is visible
+	for sprite in sprites:
+		if sprite.material is ShaderMaterial:
+			sprite.material.set_shader_parameter("opacity",result_opacity)
+	
+	if false:
+		print(str(fade_in_checks.size()) + " | " + str(result_opacity))
+
+
+
+func _ready() -> void:
+	sprites = []
+	for child in get_children():
+		if child is CanvasItem:
+			sprites.append(child)
+			child.z_index = 2

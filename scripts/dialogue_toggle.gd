@@ -16,6 +16,7 @@ const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
 enum compare {
 	EQUAL
+	,NOT_EQUAL
 	,LESS
 	,GREATER
 	,LESS_OR_EQUAL
@@ -31,7 +32,10 @@ func dialogue_finished() -> bool:
 	if temp == value:
 		if [compare.EQUAL,compare.LESS_OR_EQUAL,compare.GREATER_OR_EQUAL].has(compare_type):
 			valid = true
-	
+	else:
+		if [compare.NOT_EQUAL].has(compare_type):
+			valid = true
+		
 	if temp < value:
 		if [compare.LESS,compare.LESS_OR_EQUAL].has(compare_type):
 			valid = true

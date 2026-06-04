@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bfkkjw5qomv61"]
 
-[ext_resource type="Script" uid="uid://wqtobb22r6fk" path="res://scripts/npc.gd" id="1_kbhas"]
+[ext_resource type="Script" uid="uid://cfjnigs2opyra" path="res://scripts/npc_host.gd" id="1_kbhas"]
 [ext_resource type="Material" uid="uid://b7qhrmcdja4mi" path="res://resources/palettes/bluepallete.tres" id="2_xf57r"]
 [ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="3_inili"]
 

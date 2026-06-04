@@ -1,0 +1,10 @@
+[gd_scene format=4 uid="uid://cg0ct4b2t7lxr"]
+
+[ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="1_ejstk"]
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="2_m4a3j"]
+
+[node name="basement_stairwell" type="TileMapLayer" unique_id=218581031]
+tile_map_data = PackedByteArray("AAAAAAUAAAABAAAAAAAAAAcAAAAEAAAAAAABAAUAAAABAAAAAAABAAYAAAAFAAAAAGABAAcAAAACAAEAAAD//wcAAAAAAAEAAAD//wYAAAAAAAEAAAD//wUAAAAAAAAAAAAAAAYAAAABAAEAAAACAAYAAAAFAAAAAGADAAYAAAAFAAAAAGAEAAYAAAAFAAAAAGACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAEAAcAAAABAAIAAAADAAcAAAABAAIAAAACAAcAAAABAAIAAAAAAAgAAAAEAAAAAAD//wgAAAAAAAEAAAABAAgAAAACAAEAAAAAAAkAAAAEAAAAAAAAAAoAAAAEAAAAAAD//wkAAAAAAAEAAAD//woAAAAAAAEAAAABAAkAAAACAAEAAAABAAoAAAACAAEAAAA=")
+tile_set = ExtResource("1_ejstk")
+script = ExtResource("2_m4a3j")
+metadata/_custom_type_script = "uid://byvdvujagvico"

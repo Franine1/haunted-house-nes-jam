@@ -44,14 +44,13 @@ metadata/_custom_type_script = "uid://lrhymco58lj0"
 script = ExtResource("7_38uu6")
 cue = "forced"
 value = -2
-compare_type = 3
+compare_type = 4
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueCue" type="Node" parent="InteractionZone/DialogueSection/DialogueToggle2" unique_id=999196486]
 script = ExtResource("5_gmymq")
 cue = "level"
 value = 1
-additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueToggle" type="Node" parent="InteractionZone/DialogueSection" unique_id=1564547996]
@@ -69,7 +68,6 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 script = ExtResource("5_gmymq")
 cue = "forced"
 value = -2
-additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="InteractionZone2" type="Area2D" parent="." unique_id=1080149569]
@@ -96,5 +94,4 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 script = ExtResource("5_gmymq")
 cue = "forced"
 value = -1
-additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"

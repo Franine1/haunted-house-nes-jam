@@ -6,22 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://bjvtdgu7ftc6w" path="res://scenes/layouts/dining_room.tscn" id="3_qc1xj"]
 [ext_resource type="PackedScene" uid="uid://b20xsj60jdjvy" path="res://scenes/layouts/hallway_f1.tscn" id="4_u0kpa"]
 [ext_resource type="PackedScene" uid="uid://lisfmj0ysant" path="res://scenes/layouts/hallway2_f1.tscn" id="5_c0p4i"]
+[ext_resource type="PackedScene" uid="uid://d1vo0embkmoh6" path="res://scenes/layouts/alt_dining_room.tscn" id="6_opnxm"]
 [ext_resource type="PackedScene" uid="uid://catgrcqopf85r" path="res://scenes/layouts/garage.tscn" id="6_xo5id"]
 [ext_resource type="PackedScene" uid="uid://r71xuihq71kn" path="res://scenes/layouts/main_stairwell.tscn" id="7_u11u2"]
 [ext_resource type="PackedScene" uid="uid://bwb4fkp68sdne" path="res://scenes/layouts/hallway_f2.tscn" id="8_0p5e4"]
+[ext_resource type="PackedScene" uid="uid://s8smev10qjsi" path="res://scenes/layouts/alt_hallway_f_1.tscn" id="8_lgvcu"]
+[ext_resource type="PackedScene" uid="uid://3upu5onjnbse" path="res://scenes/layouts/garage_hall.tscn" id="9_70hek"]
 [ext_resource type="PackedScene" uid="uid://bnp6f556tdk1b" path="res://scenes/layouts/laundry_room.tscn" id="9_gmqn6"]
 [ext_resource type="PackedScene" uid="uid://ccnb71h1jwig8" path="res://scenes/layouts/living_room.tscn" id="10_4101l"]
 [ext_resource type="PackedScene" uid="uid://jplhsnmaxjf2" path="res://scenes/layouts/basement_stairwell.tscn" id="11_53me8"]
 [ext_resource type="PackedScene" uid="uid://ccgnwnx5wnc3v" path="res://scenes/layouts/basement.tscn" id="12_5hg55"]
 [ext_resource type="PackedScene" uid="uid://dx6464qryqnvp" path="res://scenes/layouts/kitchen.tscn" id="13_dkw8a"]
+[ext_resource type="PackedScene" uid="uid://fu5snxmhdjvt" path="res://scenes/layouts/alt_kitchen.tscn" id="14_pjw54"]
 [ext_resource type="PackedScene" uid="uid://dpdquhpc1kbx" path="res://scenes/layouts/master_bedroom.tscn" id="15_dkw8a"]
 [ext_resource type="PackedScene" uid="uid://b3sdkigh4r41v" path="res://scenes/characters/player.tscn" id="15_gmqn6"]
 [ext_resource type="PackedScene" uid="uid://da7j5q8e7m46k" path="res://scenes/layouts/basement_locked.tscn" id="15_ssivo"]
 [ext_resource type="PackedScene" uid="uid://bd3wgswukgx5" path="res://scenes/layouts/linen_closet.tscn" id="16_chc45"]
 [ext_resource type="PackedScene" uid="uid://b0apypc2eve1p" path="res://scenes/layouts/bathroom.tscn" id="17_rv735"]
 [ext_resource type="PackedScene" uid="uid://b3yj8ioiuvlx8" path="res://scenes/layouts/patio.tscn" id="18_wwnbd"]
+[ext_resource type="PackedScene" uid="uid://bo8a6drvptyxa" path="res://scenes/layouts/loop_stairs1.tscn" id="19_jwrd1"]
 [ext_resource type="PackedScene" uid="uid://cqxgs115t2lvb" path="res://scenes/layouts/hobby_room.tscn" id="19_w4wor"]
 [ext_resource type="PackedScene" uid="uid://upk5cnmhshqo" path="res://scenes/layouts/guest_hallway.tscn" id="20_chc45"]
+[ext_resource type="PackedScene" uid="uid://cg0ct4b2t7lxr" path="res://scenes/layouts/loop_stairs2.tscn" id="21_rleir"]
 [ext_resource type="PackedScene" uid="uid://brjandfjsu2wy" path="res://scenes/layouts/fence_patio.tscn" id="21_v2ery"]
 [ext_resource type="PackedScene" uid="uid://bkinni5noosol" path="res://scenes/layouts/guest_left.tscn" id="21_wwnbd"]
 [ext_resource type="PackedScene" uid="uid://brkk0mthcxs1y" path="res://scenes/layouts/guest_right.tscn" id="22_w4wor"]
@@ -34,6 +40,16 @@
 [ext_resource type="PackedScene" uid="uid://lnva3dskhrkq" path="res://scenes/dialogue/its_locked.tscn" id="29_o1ess"]
 [ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="31_fyonw"]
 [ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="32_gbo60"]
+[ext_resource type="PackedScene" uid="uid://bfkkjw5qomv61" path="res://scenes/characters/npc_1.tscn" id="35_7mm63"]
+[ext_resource type="Material" uid="uid://b7qhrmcdja4mi" path="res://resources/palettes/bluepallete.tres" id="36_4lh72"]
+[ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="37_oahe5"]
+[ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="37_tlc6n"]
+[ext_resource type="Script" uid="uid://bbr1g3c52vcnu" path="res://DialogueMovement.gd" id="38_oahe5"]
+[ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="40_wahft"]
+[ext_resource type="Shape2D" uid="uid://bbvt0g7t3h4t5" path="res://resources/shapes/default_collider.tres" id="41_xovbb"]
+[ext_resource type="Script" uid="uid://2fxoxwt3c1kf" path="res://scripts/translation_portal.gd" id="42_5l7pq"]
+[ext_resource type="PackedScene" uid="uid://vk0mkiy4dsq0" path="res://scenes/layouts/alt_3_hallway.tscn" id="48_4dvlw"]
+[ext_resource type="PackedScene" uid="uid://buaxnuy5nlg77" path="res://scenes/layouts/window.tscn" id="49_mfmey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u00pf"]
 size = Vector2(32, 48)
@@ -41,14 +57,23 @@ size = Vector2(32, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwnbd"]
 size = Vector2(48, 45)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rleir"]
+size = Vector2(160, 80)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssivo"]
 size = Vector2(112, 112)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fyonw"]
 size = Vector2(52, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvlw"]
+size = Vector2(104, 80)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4wor"]
 size = Vector2(48, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mfmey"]
+size = Vector2(112, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k13on"]
 size = Vector2(400, 128)
@@ -61,6 +86,48 @@ size = Vector2(80, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbo60"]
 size = Vector2(6, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4lh72"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xovbb"]
+size = Vector2(80, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wahft"]
+atlas = ExtResource("40_wahft")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xovbb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wahft")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xovbb"]
+atlas = ExtResource("40_wahft")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5l7pq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xovbb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5l7pq"]
+size = Vector2(96, 96.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70hek"]
+size = Vector2(48, 176)
 
 [node name="default_house" type="Node2D" unique_id=825320048]
 material = ExtResource("1_u00pf")
@@ -83,13 +150,29 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="dining_room2" parent="dining_room" unique_id=461922189 instance=ExtResource("3_qc1xj")]
 position = Vector2(0, 512)
 
+[node name="dining_room3" parent="dining_room" unique_id=1051297968 instance=ExtResource("6_opnxm")]
+position = Vector2(1024, 512)
+
+[node name="dining_room4" parent="dining_room" unique_id=597146333 instance=ExtResource("6_opnxm")]
+position = Vector2(1024, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dining_room" unique_id=1377793521]
 visible = false
 position = Vector2(0, 472)
 shape = SubResource("RectangleShape2D_u00pf")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="dining_room" unique_id=1255856580]
+visible = false
+position = Vector2(1024, 472)
+shape = SubResource("RectangleShape2D_u00pf")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="dining_room" unique_id=1211700572]
 visible = false
+polygon = PackedVector2Array(-16, -64, 16, -64, 16, -16, 240, -16, 240, 64, 336, 64, 336, 112, 240, 112, 240, 128, -192, 128, -192, -224, -16, -224)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="dining_room" unique_id=1989329619]
+visible = false
+position = Vector2(1024, 0)
 polygon = PackedVector2Array(-16, -64, 16, -64, 16, -16, 240, -16, 240, 64, 336, 64, 336, 112, 240, 112, 240, 128, -192, 128, -192, -224, -16, -224)
 
 [node name="hall1F1" type="Area2D" parent="." unique_id=822867465]
@@ -102,6 +185,12 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="hallway_F2" parent="hall1F1" unique_id=460821112 instance=ExtResource("4_u0kpa")]
 position = Vector2(0, -512)
 
+[node name="hallway_F3" parent="hall1F1" unique_id=930802426 instance=ExtResource("8_lgvcu")]
+position = Vector2(1024, 0)
+
+[node name="hallway_F4" parent="hall1F1" unique_id=727896008 instance=ExtResource("8_lgvcu")]
+position = Vector2(768, 224)
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hall1F1" unique_id=1547251147]
 visible = false
 polygon = PackedVector2Array(-256, -80, 0, -80, 0, -64, 48, -64, 48, -96, 0, -96, 0, -144, 48, -144, 48, -160, 96, -160, 96, -80, 256, -80, 256, 64, 96, 64, 96, 48, 0, 48, 0, 64, -256, 64)
@@ -110,6 +199,10 @@ polygon = PackedVector2Array(-256, -80, 0, -80, 0, -64, 48, -64, 48, -96, 0, -96
 visible = false
 position = Vector2(24, -540)
 shape = SubResource("RectangleShape2D_wwnbd")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="hall1F1" unique_id=367283513]
+visible = false
+polygon = PackedVector2Array(1168, 224, 1216, 224, 1216, 48, 1360, 48, 1360, 64, 1384, 72, 1408, 64, 1408, 48, 1424, 48, 1424, 192, 1536, 192, 1544, 168, 1536, 144, 1472, 144, 1472, 48, 1536, 48, 1544, 24, 1536, 0, 1472, 0, 1472, -160, 1424, -160, 1424, -112, 1344, -112, 1344, -16, 1072, -16, 1072, -160, 1024, -160, 1024, 8, 1016, 24, 1024, 40, 1024, 48, 1168, 48)
 
 [node name="hall2F1" type="Area2D" parent="." unique_id=713830021]
 position = Vector2(224, 176)
@@ -129,6 +222,12 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="main_stairwell" parent="stairs" unique_id=288932441 instance=ExtResource("7_u11u2")]
 
+[node name="main_stairwell3" parent="stairs" unique_id=1313567090 instance=ExtResource("7_u11u2")]
+position = Vector2(1024, 0)
+
+[node name="main_stairwell4" parent="stairs" unique_id=43507472 instance=ExtResource("7_u11u2")]
+position = Vector2(768, 224)
+
 [node name="main_stairwell2" parent="stairs" unique_id=642691823 instance=ExtResource("7_u11u2")]
 position = Vector2(0, -512)
 
@@ -140,16 +239,36 @@ polygon = PackedVector2Array(-272, -16, 32, -16, 32, -32, -16, -32, -16, -80, 32
 visible = false
 polygon = PackedVector2Array(-16, -448, 32, -448, 32, -512, 128, -512, 128, -560, -192, -560, -192, -512, -16, -512)
 
-[node name="garage" type="Area2D" parent="." unique_id=1701807272]
-position = Vector2(352, -16)
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="stairs" unique_id=1070380870]
+visible = false
+polygon = PackedVector2Array(1008, 112, 1008, -96, 1056, -96, 1056, 64, 1344, 64, 1344, 112)
+
+[node name="kitchen" type="Area2D" parent="." unique_id=866276870]
+position = Vector2(-176, -208)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
-[node name="garage" parent="garage" unique_id=1665109948 instance=ExtResource("6_xo5id")]
+[node name="kitchen" parent="kitchen" unique_id=939096970 instance=ExtResource("13_dkw8a")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="garage" unique_id=540717854]
+[node name="kitchen2" parent="kitchen" unique_id=1563252876 instance=ExtResource("14_pjw54")]
+position = Vector2(1024, 0)
+
+[node name="kitchen3" parent="kitchen" unique_id=468610414 instance=ExtResource("14_pjw54")]
+position = Vector2(2048, 224)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kitchen" unique_id=223047545]
 visible = false
-polygon = PackedVector2Array(-64, -80, -16, -80, -16, 0, 144, 0, 144, 144, -16, 144, -16, 128, -112, 128, -112, 80, -64, 80, -64, -16, -112, -16, -112, -64, -64, -64)
+polygon = PackedVector2Array(-16, 336, 416, 336, 416, 192, 160, 192, 160, -16, -16, -16)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="kitchen" unique_id=2020539810]
+visible = false
+position = Vector2(1024, 0)
+polygon = PackedVector2Array(-16, 336, 416, 336, 416, 192, 160, 192, 160, -16, -16, -16, -16, 112, -272, 112, -272, 176, -16, 176)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="kitchen" unique_id=798127685]
+visible = false
+position = Vector2(-64, 0)
+polygon = PackedVector2Array(1840, 272, 1888, 272, 1888, 368, 1840, 368)
 
 [node name="laundry" type="Area2D" parent="." unique_id=513050993]
 script = ExtResource("2_ele82")
@@ -158,9 +277,38 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="laundry room" parent="laundry" unique_id=2105000521 instance=ExtResource("9_gmqn6")]
 position = Vector2(352, -112)
 
+[node name="laundry room2" parent="laundry" unique_id=1364679656 instance=ExtResource("9_gmqn6")]
+position = Vector2(1792, 32)
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="laundry" unique_id=1597711616]
 visible = false
 polygon = PackedVector2Array(240, -96, 496, -96, 496, -32, 336, -32, 336, 112, 240, 112, 240, 64, 288, 64, 288, -32, 240, -32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="laundry" unique_id=475205260]
+visible = false
+position = Vector2(1856, 88)
+shape = SubResource("RectangleShape2D_rleir")
+
+[node name="garage" type="Area2D" parent="." unique_id=1701807272]
+position = Vector2(352, -16)
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="garage" parent="garage" unique_id=2035740649 instance=ExtResource("6_xo5id")]
+
+[node name="garage2" parent="garage" unique_id=232038112 instance=ExtResource("6_xo5id")]
+position = Vector2(1440, 144)
+
+[node name="garage3" parent="garage" unique_id=1665109948 instance=ExtResource("9_70hek")]
+position = Vector2(1440, 144)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="garage" unique_id=540717854]
+visible = false
+polygon = PackedVector2Array(-64, -80, -16, -80, -16, 0, 144, 0, 144, 144, -16, 144, -16, 128, -112, 128, -112, 80, -64, 80, -64, -16, -112, -16, -112, -64, -64, -64)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="garage" unique_id=1382697442]
+visible = false
+polygon = PackedVector2Array(1312, 144, 1336, 136, 1360, 144, 1360, 224, 1424, 224, 1424, 144, 1584, 144, 1584, 288, 1424, 288, 1424, 272, 1312, 272)
 
 [node name="living" type="Area2D" parent="." unique_id=1665443263]
 position = Vector2(160, -208)
@@ -173,17 +321,6 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 visible = false
 polygon = PackedVector2Array(-32, 192, -32, -16, 80, -16, 80, 112, 176, 112, 176, 320, 128, 320, 128, 192)
 
-[node name="kitchen" type="Area2D" parent="." unique_id=866276870]
-position = Vector2(-176, -208)
-script = ExtResource("2_ele82")
-metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
-
-[node name="kitchen" parent="kitchen" unique_id=939096970 instance=ExtResource("13_dkw8a")]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kitchen" unique_id=223047545]
-visible = false
-polygon = PackedVector2Array(-16, 336, 416, 336, 416, 192, 160, 192, 160, -16, -16, -16)
-
 [node name="downstairs" type="Area2D" parent="." unique_id=989713174]
 position = Vector2(0, -144)
 script = ExtResource("2_ele82")
@@ -194,13 +331,36 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="basement_stairwell2" parent="downstairs" unique_id=380581101 instance=ExtResource("11_53me8")]
 position = Vector2(0, 512)
 
+[node name="basement_stairwell3" parent="downstairs" unique_id=1684679043 instance=ExtResource("11_53me8")]
+position = Vector2(1024, 512)
+
+[node name="basement_stairwell4" parent="downstairs" unique_id=819794013 instance=ExtResource("11_53me8")]
+position = Vector2(1024, 0)
+
+[node name="basement_stairwell5" parent="downstairs" unique_id=2128167603 instance=ExtResource("11_53me8")]
+position = Vector2(1024, 224)
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="downstairs" unique_id=1465123838]
 visible = false
 polygon = PackedVector2Array(-16, 80, 80, 80, 80, 128, 240, 128, 240, 272, -16, 272)
 
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="downstairs" unique_id=1503968020]
+visible = false
+position = Vector2(1024, 0)
+polygon = PackedVector2Array(-16, 80, 80, 80, 96, 96, 128, 96, 128, 128, 240, 128, 240, 272, -16, 272)
+
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="downstairs" unique_id=1823877993]
 visible = false
 polygon = PackedVector2Array(-16, 640, 80, 640, 80, 672, 128, 672, 128, 592, -16, 592)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="downstairs" unique_id=1126914227]
+visible = false
+position = Vector2(1024, 0)
+polygon = PackedVector2Array(-16, 640, 80, 640, 80, 672, 128, 672, 128, 592, -16, 592)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="downstairs" unique_id=973678065]
+visible = false
+polygon = PackedVector2Array(1104, 352, 1104, 320, 1152, 320, 1152, 352)
 
 [node name="basement" type="Area2D" parent="." unique_id=1301869203]
 position = Vector2(128, 432)
@@ -209,9 +369,17 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="basement" parent="basement" unique_id=1346770875 instance=ExtResource("12_5hg55")]
 
+[node name="basement2" parent="basement" unique_id=1363641789 instance=ExtResource("12_5hg55")]
+position = Vector2(1024, 0)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="basement" unique_id=953740164]
 visible = false
 position = Vector2(-24, 152)
+shape = SubResource("RectangleShape2D_ssivo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="basement" unique_id=810924455]
+visible = false
+position = Vector2(1000, 152)
 shape = SubResource("RectangleShape2D_ssivo")
 
 [node name="locked_basement" type="Area2D" parent="." unique_id=658446032]
@@ -221,16 +389,47 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="basement" parent="locked_basement" unique_id=791678463 instance=ExtResource("15_ssivo")]
 
+[node name="basement3" parent="locked_basement" unique_id=278504674 instance=ExtResource("15_ssivo")]
+position = Vector2(1024, 0)
+
 [node name="basement2" parent="locked_basement" unique_id=2054298984 instance=ExtResource("15_ssivo")]
 position = Vector2(0, -512)
 
+[node name="Layout" parent="locked_basement" unique_id=1378716778 instance=ExtResource("19_jwrd1")]
+position = Vector2(976, -480)
+
+[node name="Layout3" parent="locked_basement" unique_id=1686241630 instance=ExtResource("19_jwrd1")]
+position = Vector2(1232, -480)
+
+[node name="Layout2" parent="locked_basement" unique_id=1353429139 instance=ExtResource("19_jwrd1")]
+position = Vector2(976, -256)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="locked_basement" unique_id=2019685630]
+visible = false
 position = Vector2(-76, -472)
 shape = SubResource("RectangleShape2D_fyonw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="locked_basement" unique_id=941496951]
 visible = false
 polygon = PackedVector2Array(-96, 64, -104, 40, -96, 16, 0, 16, 0, 96, -48, 96, -48, 64)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="locked_basement" unique_id=1585648845]
+visible = false
+position = Vector2(1024, 0)
+polygon = PackedVector2Array(-96, 64, -104, 40, -96, 16, 0, 16, 0, 96, -48, 96, -48, 64)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="locked_basement" unique_id=1362566343]
+visible = false
+polygon = PackedVector2Array(1024, -496, 928, -496, 920, -472, 928, -448, 1024, -448)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="locked_basement" unique_id=1112634605]
+visible = false
+polygon = PackedVector2Array(1216, -480, 1184, -480, 1152, -496, 1136, -528, 1216, -528)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="locked_basement" unique_id=1181949098]
+visible = false
+position = Vector2(972, -264)
+shape = SubResource("RectangleShape2D_4dvlw")
 
 [node name="hallF2" type="Area2D" parent="." unique_id=1990455135]
 position = Vector2(256, -560)
@@ -242,6 +441,12 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="hallway_F3" parent="hallF2" unique_id=1054040191 instance=ExtResource("8_0p5e4")]
 position = Vector2(0, 512)
 
+[node name="basement_stairwell" parent="hallF2" unique_id=1821495274 instance=ExtResource("21_rleir")]
+position = Vector2(768, 608)
+
+[node name="basement_stairwell2" parent="hallF2" unique_id=1551093339 instance=ExtResource("21_rleir")]
+position = Vector2(1024, 384)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hallF2" unique_id=255940997]
 visible = false
 position = Vector2(8, 588)
@@ -250,6 +455,15 @@ shape = SubResource("RectangleShape2D_w4wor")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hallF2" unique_id=325002814]
 visible = false
 polygon = PackedVector2Array(-16, 112, -16, 48, -48, 48, -48, 176, -272, 176, -272, 48, -448, 48, -448, -160, -256, -160, -256, -112, -112, -112, -112, -160, -16, -160, -16, -48, 232, -48, 240, 176, 32, 176, 32, 112)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="hallF2" unique_id=298439743]
+visible = false
+polygon = PackedVector2Array(1008, 672, 1120, 672, 1128, 648, 1120, 624, 1056, 624, 1056, 512, 1088, 512, 1088, 464, 1008, 464)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hallF2" unique_id=547985352]
+visible = false
+position = Vector2(840, 704)
+shape = SubResource("RectangleShape2D_mfmey")
 
 [node name="master" type="Area2D" parent="." unique_id=1025662522]
 script = ExtResource("2_ele82")
@@ -377,34 +591,30 @@ metadata/_custom_type_script = "uid://lrhymco58lj0"
 [node name="DialogueCue2" type="Node" parent="InteractionZone2/DialogueSection" unique_id=1672180363]
 script = ExtResource("27_qiytx")
 cue = "x_set"
-additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueCue3" type="Node" parent="InteractionZone2/DialogueSection" unique_id=418594550]
 script = ExtResource("27_qiytx")
 cue = "y_set"
 value = 152
-additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueCue4" type="Node" parent="InteractionZone2/DialogueSection" unique_id=1369700060]
 script = ExtResource("27_qiytx")
 cue = "reposition"
 value = 1
-additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueCue" type="Node" parent="InteractionZone2/DialogueSection" unique_id=2123767258]
 script = ExtResource("27_qiytx")
 cue = "level"
-additive = false
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="tile_blockade" parent="." unique_id=276737309 instance=ExtResource("28_qiytx")]
 position = Vector2(248, 88)
 cue = "forced"
 value = -2
-compare_type = 4
+compare_type = 5
 
 [node name="its_locked" parent="tile_blockade" unique_id=1818288429 instance=ExtResource("29_o1ess")]
 
@@ -412,36 +622,382 @@ compare_type = 4
 position = Vector2(-24, 56)
 cue = "forced"
 value = -2
-compare_type = 4
+compare_type = 5
 
 [node name="its_locked" parent="tile_blockade2" unique_id=1216520750 instance=ExtResource("29_o1ess")]
 
 [node name="tile_blockade4" parent="." unique_id=998663233 instance=ExtResource("28_qiytx")]
 position = Vector2(-56, -232)
 cue = "key"
-value = 2
-compare_type = 1
+value = 3
+compare_type = 2
 
 [node name="its_locked" parent="tile_blockade4" unique_id=1942275807 instance=ExtResource("29_o1ess")]
+lines = Array[String](["It's locked. This door goes to the backyard."])
+
+[node name="DialogueToggle" type="Node" parent="tile_blockade4" unique_id=739257917]
+script = ExtResource("32_gbo60")
+cue = "wonder"
+value = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="tile_blockade4/DialogueToggle" unique_id=2092324964]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Oh, right. She probably just went out back.", "...Not that you see her through the window or anything."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="tile_blockade4/DialogueToggle" unique_id=2071142785]
+script = ExtResource("27_qiytx")
+cue = "wonder"
+value = -1
+additive = true
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="tile_blockade5" parent="." unique_id=107708510 instance=ExtResource("28_qiytx")]
 position = Vector2(312, -104)
 cue = "key"
-value = 2
-compare_type = 1
+value = 3
+compare_type = 2
 
 [node name="its_locked" parent="tile_blockade5" unique_id=1418152780 instance=ExtResource("29_o1ess")]
+lines = Array[String](["It's locked. This door goes to the backyard."])
 
 [node name="tile_blockade3" parent="." unique_id=1428575678 instance=ExtResource("28_qiytx")]
 position = Vector2(104, 536)
 cue = "key"
-value = 1
-compare_type = 1
+value = 2
+compare_type = 2
 
-[node name="DialogueLines" type="Node" parent="tile_blockade3" unique_id=304255045]
+[node name="DialogueSection" type="Node" parent="tile_blockade3" unique_id=1713251062]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="tile_blockade3/DialogueSection" unique_id=304255045]
 script = ExtResource("31_fyonw")
 lines = Array[String](["It's locked. The handle is freezing cold."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="tile_blockade3/DialogueSection" unique_id=2097555546]
+script = ExtResource("32_gbo60")
+cue = "ominous"
+value = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle2" unique_id=1996891441]
+script = ExtResource("31_fyonw")
+lines = Array[String](["...", "For some reason, you were holding your breath."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle2" unique_id=245556170]
+script = ExtResource("27_qiytx")
+cue = "ominous"
+value = -1
+additive = true
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle3" type="Node" parent="tile_blockade3/DialogueSection" unique_id=1958898040]
+script = ExtResource("32_gbo60")
+cue = "omen"
+value = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle3" unique_id=831926242]
+script = ExtResource("31_fyonw")
+lines = Array[String](["You get a bad feeling looking at this door."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle3" unique_id=447172449]
+script = ExtResource("27_qiytx")
+cue = "omen"
+value = -1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle" type="Node" parent="tile_blockade3/DialogueSection" unique_id=554995457]
+script = ExtResource("32_gbo60")
+cue = "key"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle" unique_id=828530899]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle/DialogueOption" unique_id=798827146]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1701337637]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Use key", "Used the basement key."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=104248558]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 10
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1949547760]
+script = ExtResource("31_fyonw")
+lines = Array[String](["...!!", "It felt like a gust of wind just came out from the door."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=155512484]
+script = ExtResource("27_qiytx")
+cue = "key"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="tile_blockade3/DialogueSection/DialogueToggle/DialogueOption" unique_id=1411971338]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Do not", "You leave the door locked."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="npc1" parent="." unique_id=1242705272 instance=ExtResource("35_7mm63")]
+position = Vector2(-1440, -16)
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="npc1" unique_id=256701549]
+material = ExtResource("36_4lh72")
+position = Vector2(0, 512)
+sprite_frames = ExtResource("37_oahe5")
+animation = &"down"
+
+[node name="DialogueSection" type="Node" parent="npc1" unique_id=1145369358]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueToggle" type="Node" parent="npc1/DialogueSection" unique_id=108999348]
+script = ExtResource("32_gbo60")
+cue = "forced"
+value = -4
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle" unique_id=1611435341]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Oh!", "Do you want me to tell you that thing now?", "Um, it's pretty important, so if there's anything you want to do first, that's fine.", "But, uh...", "Don't take too long though."])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="npc1/DialogueSection/DialogueToggle" unique_id=1612799082]
+script = ExtResource("27_qiytx")
+cue = "forced"
+value = -5
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle2" type="Node" parent="npc1/DialogueSection" unique_id=209923065]
+script = ExtResource("32_gbo60")
+cue = "forced"
+value = -5
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle2" unique_id=38989450]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Do you want me to tell you now?"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="npc1/DialogueSection/DialogueToggle2" unique_id=1482607723]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption" unique_id=25383631]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=787769031]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Yes"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=328403548]
+script = ExtResource("27_qiytx")
+cue = "host"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueSection2" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption" unique_id=201819079]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection2" unique_id=959282264]
+script = ExtResource("31_fyonw")
+lines = Array[String](["No"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueMovement" type="Node" parent="npc1/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection2" unique_id=475373004]
+script = ExtResource("38_oahe5")
+NPC_ID = 0
+look_direction = 2
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueToggle3" type="Node" parent="npc1/DialogueSection" unique_id=891698378]
+script = ExtResource("32_gbo60")
+cue = "host"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="intro" type="Node" parent="npc1/DialogueSection/DialogueToggle3" unique_id=2114782346]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueCue2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=195189402]
+script = ExtResource("27_qiytx")
+cue = "omen"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=1088100570]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Why don't we sit down?"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueMovement" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=779444978]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(3, 0), Vector2i(3, 3)])
+relative = false
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueMovement2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=2047637190]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(10, 3)])
+NPC_ID = 0
+delay = 0.7
+relative = false
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=532867617]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 25
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueMovement3" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=1481645146]
+script = ExtResource("38_oahe5")
+look_direction = 4
+delay = 2.6
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueMovement4" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=1318925743]
+script = ExtResource("38_oahe5")
+NPC_ID = 0
+look_direction = 3
+delay = 2.6
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="conversation" type="Node" parent="npc1/DialogueSection/DialogueToggle3" unique_id=1873696311]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=1231199372]
+script = ExtResource("31_fyonw")
+lines = Array[String](["...", "How was the drive here?"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=718828861]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption" unique_id=474203019]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Terrible"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption" unique_id=1746470607]
+script = ExtResource("31_fyonw")
+lines = Array[String](["So many potholes"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines3" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption" unique_id=223717747]
+script = ExtResource("31_fyonw")
+lines = Array[String](["I got three different flat tires"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines3" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=1655619794]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's definitely off the beaten track, yeah.", "Did I ever tell you about my family's history with this house?"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=2141677444]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption2" unique_id=713297408]
+script = ExtResource("31_fyonw")
+lines = Array[String](["No"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueSection" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption2" unique_id=861807975]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption2/DialogueSection" unique_id=1975920037]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It came to me in a dream"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation/DialogueOption2/DialogueSection" unique_id=387767535]
+script = ExtResource("31_fyonw")
+lines = Array[String](["..."])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines4" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=1142686410]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Well, it's been in our family for seven generations. And before that, it was government property.", "The thing is, we've been trying to give it back for years. But we can't sell it at all."])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=1081862455]
+script = ExtResource("27_qiytx")
+cue = "sink"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines5" type="Node" parent="npc1/DialogueSection/DialogueToggle3/conversation" unique_id=2012305532]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Before this house was built, these grounds were...", "Uh, wait. You hear that?", "Uh, one sec. Let me go turn off the faucet.", "Excuse me!"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="outro" type="Node" parent="npc1/DialogueSection/DialogueToggle3" unique_id=1098376287]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueMovement" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=2039563135]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(-5, -2), Vector2i(-5, 2), Vector2i(-5, 0)])
+NPC_ID = 0
+speed = 15.0
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=2072226013]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 25
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines6" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=1009080256]
+script = ExtResource("31_fyonw")
+lines = Array[String](["That was weird."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue3" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=1970211092]
+script = ExtResource("27_qiytx")
+cue = "forced"
+value = -6
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue4" type="Node" parent="npc1/DialogueSection/DialogueToggle3/outro" unique_id=330258636]
+script = ExtResource("27_qiytx")
+cue = "host"
+value = 3
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="InteractionZone" type="Area2D" parent="." unique_id=1584585318]
 script = ExtResource("26_tyelw")
@@ -468,5 +1024,627 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 script = ExtResource("27_qiytx")
 cue = "forced"
 value = -3
-additive = false
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone/DialogueSection" unique_id=2039939693]
+script = ExtResource("27_qiytx")
+cue = "host"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone3" type="Area2D" parent="." unique_id=1055917915]
+script = ExtResource("26_tyelw")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone3" unique_id=197421383]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_4lh72")
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone3" unique_id=1844355882]
+script = ExtResource("32_gbo60")
+cue = "forced"
+value = -3
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=474021040]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Oh!"])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueMovement" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=2099717065]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(0, -2), Vector2i(-9, -2)])
+NPC_ID = 0
+speed = 10.0
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueMovement2" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=1552146207]
+script = ExtResource("38_oahe5")
+directions = Array[Vector2i]([Vector2i(2, 1)])
+speed = 3.0
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=261947944]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 16
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=768298001]
+script = ExtResource("31_fyonw")
+lines = Array[String](["I didn't realize you came in!", "Uh, you didn't... open any doors, did you?", "...", "Uh, probably not. Anyway, make yourself at home.", "...I did have something important to tell you, yeah, but you can look around first.", "I mean, if you want to. No pressure.", "..."])
+name_id = 2
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=2075490452]
+script = ExtResource("27_qiytx")
+cue = "forced"
+value = -4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueMovement3" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=680128970]
+script = ExtResource("38_oahe5")
+NPC_ID = 0
+look_direction = 2
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue3" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=2104909923]
+script = ExtResource("27_qiytx")
+cue = "omen"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="table" type="StaticBody2D" parent="." unique_id=572683857]
+position = Vector2(112, 56)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+material_layer = 3
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="table" unique_id=216280824]
+shape = SubResource("RectangleShape2D_xovbb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="table" unique_id=2112483606]
+position = Vector2(1024, 0)
+shape = SubResource("RectangleShape2D_xovbb")
+
+[node name="DialogueLines" type="Node" parent="table" unique_id=628313043]
+script = ExtResource("31_fyonw")
+lines = Array[String](["A table."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="table" unique_id=634275327]
+scale = Vector2(0.7, 0.3)
+sprite_frames = SubResource("SpriteFrames_xovbb")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="table" unique_id=1379189618]
+position = Vector2(1024, 0)
+scale = Vector2(0.7, 0.3)
+sprite_frames = SubResource("SpriteFrames_xovbb")
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="table" unique_id=1392506704]
+position = Vector2(1024, 512)
+scale = Vector2(0.7, 0.3)
+sprite_frames = SubResource("SpriteFrames_xovbb")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="table" unique_id=1792440201]
+position = Vector2(0, 512)
+scale = Vector2(0.7, 0.3)
+sprite_frames = SubResource("SpriteFrames_5l7pq")
+
+[node name="InteractionZone4" type="Area2D" parent="." unique_id=495982584]
+position = Vector2(-24, 56)
+script = ExtResource("26_tyelw")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone4" unique_id=805327441]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone4" unique_id=50107096]
+script = ExtResource("32_gbo60")
+cue = "forced"
+value = -6
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone4/DialogueToggle" unique_id=1966430504]
+script = ExtResource("31_fyonw")
+lines = Array[String](["...Huh? Nobody's here."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone4/DialogueToggle" unique_id=654398323]
+script = ExtResource("27_qiytx")
+cue = "forced"
+value = -7
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone4/DialogueToggle" unique_id=1304792183]
+script = ExtResource("27_qiytx")
+cue = "wonder"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="sink" type="StaticBody2D" parent="." unique_id=433407570]
+position = Vector2(-168, 24)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+material_layer = 4
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sink" unique_id=1858999059]
+shape = ExtResource("41_xovbb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="sink" unique_id=242143171]
+position = Vector2(1024, 0)
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueSection" type="Node" parent="sink" unique_id=75111323]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueToggle" type="Node" parent="sink/DialogueSection" unique_id=392692608]
+script = ExtResource("32_gbo60")
+cue = "sink"
+value = 1
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="sink/DialogueSection/DialogueToggle" unique_id=825878081]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a sink."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="sink/DialogueSection" unique_id=1626092827]
+script = ExtResource("32_gbo60")
+cue = "sink"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="sink/DialogueSection/DialogueToggle2" unique_id=531063962]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a sink. The water's running."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="sink/DialogueSection/DialogueToggle2" unique_id=1020777004]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="sink/DialogueSection/DialogueToggle2/DialogueOption" unique_id=88865665]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="sink/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=1994940702]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Turn it off", "You turn the water off. The pipes are rattling.", "For a second, you think you can still hear running water in the distance."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="sink/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=1701826941]
+script = ExtResource("27_qiytx")
+cue = "ominous"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue" type="Node" parent="sink/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=94726745]
+script = ExtResource("27_qiytx")
+cue = "sink"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="sink/DialogueSection/DialogueToggle2/DialogueOption" unique_id=414676609]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Leave it on", "You leave the faucet running."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Sprite2D" type="Sprite2D" parent="sink" unique_id=486318938]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="Sprite2D2" type="Sprite2D" parent="sink" unique_id=911634621]
+position = Vector2(1024, 0)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="bathroom_sink" type="StaticBody2D" parent="." unique_id=551919688]
+position = Vector2(408, -584)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+material_layer = 3
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bathroom_sink" unique_id=51549445]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueSection" type="Node" parent="bathroom_sink" unique_id=985361566]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueToggle" type="Node" parent="bathroom_sink/DialogueSection" unique_id=797476501]
+script = ExtResource("32_gbo60")
+cue = "sink"
+value = 2
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle" unique_id=944342714]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a sink."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="bathroom_sink/DialogueSection" unique_id=348122049]
+script = ExtResource("32_gbo60")
+cue = "sink"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2" unique_id=1771807672]
+script = ExtResource("27_qiytx")
+cue = "ominous"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2" unique_id=1874686007]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a sink. The water's running."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2" unique_id=742639789]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2/DialogueOption" unique_id=675453427]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=1520054452]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Turn it off", "You turn the water off. It sputters its final splash."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=955725385]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 10
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=1155425095]
+script = ExtResource("31_fyonw")
+lines = Array[String](["...?!", "There's a key in the drain. "])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=1433085316]
+script = ExtResource("27_qiytx")
+cue = "key"
+value = -1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue3" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=2019454368]
+script = ExtResource("27_qiytx")
+cue = "sink"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle2/DialogueOption" unique_id=561615883]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Leave it on", "You leave the faucet running."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle3" type="Node" parent="bathroom_sink/DialogueSection" unique_id=1506320976]
+script = ExtResource("32_gbo60")
+cue = "key"
+value = -1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle3" unique_id=547124224]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle3/DialogueOption" unique_id=1727591862]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle3/DialogueOption/DialogueSection" unique_id=1890778271]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Take the key", "Got the basement key."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle3/DialogueOption/DialogueSection" unique_id=1945655103]
+script = ExtResource("27_qiytx")
+cue = "key"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle3/DialogueOption/DialogueSection" unique_id=1444965275]
+script = ExtResource("27_qiytx")
+cue = "wonder"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="bathroom_sink/DialogueSection/DialogueToggle3/DialogueOption" unique_id=627100016]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Leave it", "You leave the key in the drain."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Sprite2D" type="Sprite2D" parent="bathroom_sink" unique_id=502124095]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="InteractionZone5" type="Area2D" parent="." unique_id=1195400103]
+position = Vector2(1024, 0)
+script = ExtResource("26_tyelw")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone5" unique_id=1644936934]
+position = Vector2(104, 583.75)
+shape = SubResource("RectangleShape2D_5l7pq")
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone5" unique_id=2021321908]
+script = ExtResource("32_gbo60")
+cue = "forced"
+value = -7
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone5/DialogueToggle" unique_id=294717431]
+script = ExtResource("31_fyonw")
+lines = Array[String](["...?!!", "The room's empty."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone5/DialogueToggle" unique_id=1655687552]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 10
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="InteractionZone5/DialogueToggle" unique_id=1376935330]
+script = ExtResource("31_fyonw")
+lines = Array[String](["No. There's seals plastered all over the walls.", "From top to bottom it seems this room was built to contain something.", "You... don't like standing in this room."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone5/DialogueToggle" unique_id=894041473]
+script = ExtResource("27_qiytx")
+cue = "forced"
+value = -8
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="TranslationPortal" type="Area2D" parent="." unique_id=1072190072]
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(64, 0)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal" unique_id=1071507920]
+position = Vector2(104, 536)
+shape = ExtResource("41_xovbb")
+
+[node name="TranslationPortal2" type="Area2D" parent="." unique_id=804046826]
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(0, -32)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal2" unique_id=1174745395]
+position = Vector2(1032, 504)
+shape = ExtResource("41_xovbb")
+
+[node name="InteractionZone6" type="Area2D" parent="." unique_id=1305829733]
+script = ExtResource("26_tyelw")
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone6" unique_id=1654564093]
+position = Vector2(1224, 120)
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueLines" type="Node" parent="InteractionZone6" unique_id=56668174]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Wasn't there a door here?"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="InteractionZone7" type="Area2D" parent="." unique_id=1962136255]
+position = Vector2(-256, -336)
+script = ExtResource("26_tyelw")
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone7" unique_id=1161325049]
+position = Vector2(1224, 120)
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueLines" type="Node" parent="InteractionZone7" unique_id=1136134495]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Wasn't there a door here?"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="TranslationPortal3" type="Area2D" parent="." unique_id=1190378688]
+position = Vector2(1128, -56)
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(0, 14)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal3" unique_id=1759518009]
+shape = ExtResource("41_xovbb")
+
+[node name="TranslationPortal5" type="Area2D" parent="." unique_id=57118855]
+position = Vector2(1112, 152)
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(16, -14)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal5" unique_id=662034982]
+position = Vector2(-56, 0)
+shape = ExtResource("41_xovbb")
+
+[node name="TranslationPortal6" type="Area2D" parent="." unique_id=1845942954]
+position = Vector2(1112, 184)
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(0, -14)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal6" unique_id=1193576443]
+shape = ExtResource("41_xovbb")
+
+[node name="TranslationPortal4" type="Area2D" parent="." unique_id=1894535769]
+position = Vector2(1336, -72)
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(-16, 14)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal4" unique_id=361145966]
+shape = ExtResource("41_xovbb")
+
+[node name="TranslationPortal8" type="Area2D" parent="." unique_id=2016450036]
+position = Vector2(1688, -88)
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(-16, 14)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal8" unique_id=474483610]
+shape = ExtResource("41_xovbb")
+
+[node name="TranslationPortal7" type="Area2D" parent="." unique_id=597402183]
+position = Vector2(1384, -88)
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(16, -14)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal7" unique_id=1089681774]
+position = Vector2(48, 368)
+shape = ExtResource("41_xovbb")
+
+[node name="loop_hall" type="Area2D" parent="." unique_id=2094615692]
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="alt3_hallway" parent="loop_hall" unique_id=478049753 instance=ExtResource("48_4dvlw")]
+position = Vector2(1408, 272)
+
+[node name="alt3_hallway2" parent="loop_hall" unique_id=1806944934 instance=ExtResource("48_4dvlw")]
+position = Vector2(1664, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="loop_hall" unique_id=164506804]
+visible = false
+position = Vector2(1432, 200)
+shape = SubResource("RectangleShape2D_70hek")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="loop_hall" unique_id=686597965]
+visible = false
+polygon = PackedVector2Array(1648, 112, 1664, 112, 1664, 128, 1712, 128, 1712, 112, 1776, 112, 1776, 64, 1712, 64, 1712, -96, 1664, -96, 1664, 64, 1648, 64)
+
+[node name="TranslationPortal9" type="Area2D" parent="." unique_id=1979582607]
+position = Vector2(1624, 152)
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(-64, -14)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal9" unique_id=1119541553]
+shape = ExtResource("41_xovbb")
+
+[node name="TranslationPortal10" type="Area2D" parent="." unique_id=1590600345]
+position = Vector2(600, -88)
+script = ExtResource("42_5l7pq")
+warp_offset = Vector2i(64, 14)
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal10" unique_id=692313915]
+shape = ExtResource("41_xovbb")
+
+[node name="window" type="Area2D" parent="." unique_id=1746076960]
+script = ExtResource("2_ele82")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="window" parent="window" unique_id=2028139827 instance=ExtResource("49_mfmey")]
+position = Vector2(1600, 16)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="window" unique_id=1001639758]
+visible = false
+polygon = PackedVector2Array(1584, -48, 1664, -48, 1664, 32, 1648, 32, 1648, 64, 1664, 64, 1664, 112, 1648, 112, 1648, 144, 1600, 144, 1600, 112, 1584, 112, 1584, 64, 1600, 64, 1600, 32, 1584, 32)
+
+[node name="InteractionZone8" type="Area2D" parent="." unique_id=899912846]
+position = Vector2(1624, -40)
+script = ExtResource("26_tyelw")
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone8" unique_id=1136448868]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueSection" type="Node" parent="InteractionZone8" unique_id=128687927]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueToggle2" type="Node" parent="InteractionZone8/DialogueSection" unique_id=1244922557]
+script = ExtResource("32_gbo60")
+cue = "window"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="InteractionZone8/DialogueSection/DialogueToggle2" unique_id=725477485]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="InteractionZone8/DialogueSection/DialogueToggle2/DialogueOption" unique_id=389999175]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone8/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=354887998]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Open the window", "The latch disappears when you blink."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone8/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=135194997]
+script = ExtResource("27_qiytx")
+cue = "window"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone8/DialogueSection/DialogueToggle2/DialogueOption" unique_id=1221396240]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Leave it"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone8/DialogueSection" unique_id=1996377106]
+script = ExtResource("32_gbo60")
+cue = "window"
+value = 1
+compare_type = 2
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone8/DialogueSection/DialogueToggle" unique_id=1586118624]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's night out. "])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone8/DialogueSection/DialogueToggle" unique_id=1384802251]
+script = ExtResource("32_gbo60")
+cue = "window"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone8/DialogueSection/DialogueToggle/DialogueToggle" unique_id=1146076967]
+script = ExtResource("27_qiytx")
+cue = "window"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle3" type="Node" parent="InteractionZone8/DialogueSection" unique_id=540345244]
+script = ExtResource("32_gbo60")
+cue = "window"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone8/DialogueSection/DialogueToggle3" unique_id=1745447358]
+script = ExtResource("27_qiytx")
+cue = "window"
+value = -1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"

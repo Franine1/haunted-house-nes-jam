@@ -14,7 +14,9 @@ extends Resource
 signal data_change(key: String, value: int)
 ## all the global data points. They're identified with a string and always
 ## return an int.
-var data: Dictionary[String,int] = {}
+var data: Dictionary[String,int] = {
+	
+}
 ## List of currently queued dialogue.
 var dialogue_queue: Array[Dialogue] = []
 ## List of the movement queues listed for different NPC IDs
@@ -36,8 +38,33 @@ var movement_queues: Dictionary[int,Array] = {}
 ## INFO: "skip": The value of this int is the number of times the game will automatically finish dialogue.
 ## INFO: "delay": forces the game manager to wait a certain amount of time before resuming dialogue. 
 ## These are measured in tenths of seconds.
+##
+##
+##
+## INFO: "host": meant to indicate different stages of progression for the host, who
+## invited the player.
+## INFO: "sink": indicates when the sink is running, and which one.
+##
+##
+##
+## INFO: "omen", "wonder", "ominous": these tags are meant for limited time interactions
 
 
+
+const names: Array[String] = [
+	""
+	,"You"
+	,"Lea"
+]
+
+
+func name(input: int) -> String:
+	if input >= names.size() or input < 0:
+		return ""
+	var ans: String = names[input]
+	if ans.length() > 0:
+		ans = ans + ":  "
+	return ans
 
 ## sets a data point in the data library
 func set_data(key: String, value: int) -> void:
@@ -92,8 +119,26 @@ func next_dialogue() -> Dialogue:
 
 ## This function queues NPC nodes with the corresponding NPC ID
 ## to navigate the requested movement directions
-func queue_movement(input: Array[CutscenePath], npc_id: int) -> void:
-	movement_queues[npc_id] = input
+func queue_movement(input: CutscenePath, npc_id: int) -> void:
+	var sub: Array[CutscenePath] = [input]
+	if !movement_queues.has(npc_id):
+		movement_queues[npc_id] = sub
+	else:
+		var temp = movement_queues[npc_id]
+		movement_queues[npc_id] = sub
+		movement_queues[npc_id].append_array(temp)
+
+
+## Same as above, except it queues an array of CutscenePaths
+func queue_movement_array(input: Array[CutscenePath], npc_id: int) -> void:
+	if !movement_queues.has(npc_id):
+		movement_queues[npc_id] = input
+	else:
+		var temp = movement_queues[npc_id]
+		movement_queues[npc_id] = input
+		movement_queues[npc_id].append_array(temp)
+
+
 
 func accept_movement(npc_id: int) -> Array[CutscenePath]:
 	var ans: Array[CutscenePath] = []

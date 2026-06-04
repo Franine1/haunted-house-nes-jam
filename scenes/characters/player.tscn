@@ -22,6 +22,7 @@ script = ExtResource("1_76oj4")
 unique_name_in_owner = true
 z_index = 5
 collision_layer = 4
+collision_mask = 17
 script = ExtResource("1_yewv4")
 NPC_ID = -1
 
