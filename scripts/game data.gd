@@ -14,7 +14,9 @@ extends Resource
 signal data_change(key: String, value: int)
 ## all the global data points. They're identified with a string and always
 ## return an int.
-var data: Dictionary[String,int] = {}
+var data: Dictionary[String,int] = {
+	
+}
 ## List of currently queued dialogue.
 var dialogue_queue: Array[Dialogue] = []
 ## List of the movement queues listed for different NPC IDs
