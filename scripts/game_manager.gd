@@ -62,6 +62,10 @@ var substate: int = 0
 
 ## Sets up the input dialogue to be displayed on screen
 func read_dialogue(input: Dialogue) -> void:
+	input.reset_dialogue()
+	if input.dialogue_finished():
+		return
+	
 	dialogue_enabled = true
 	if player != null:
 		player.input_allowed = false

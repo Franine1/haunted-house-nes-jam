@@ -130,6 +130,9 @@ size = Vector2(96, 96.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70hek"]
 size = Vector2(48, 176)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pm3tx"]
+size = Vector2(48, 193)
+
 [node name="default_house" type="Node2D" unique_id=825320048]
 material = ExtResource("1_u00pf")
 script = ExtResource("1_couku")
@@ -203,7 +206,7 @@ shape = SubResource("RectangleShape2D_wwnbd")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="hall1F1" unique_id=367283513]
 visible = false
-polygon = PackedVector2Array(1168, 224, 1216, 224, 1216, 48, 1360, 48, 1360, 64, 1384, 72, 1408, 64, 1408, 48, 1424, 48, 1424, 192, 1536, 192, 1544, 168, 1536, 144, 1472, 144, 1472, 48, 1536, 48, 1544, 24, 1536, 0, 1472, 0, 1472, -160, 1424, -160, 1424, -112, 1344, -112, 1344, -16, 1216, -16, 1216, -80, 1248, -80, 1248, -288, 1136, -288, 1136, -80, 1168, -80, 1168, -16, 1072, -16, 1072, -160, 1024, -160, 1024, 8, 1016, 24, 1024, 40, 1024, 48, 1168, 48)
+polygon = PackedVector2Array(1168, 224, 1216, 224, 1216, 48, 1360, 48, 1360, 72, 1384, 80, 1408, 72, 1408, 48, 1424, 48, 1424, 192, 1536, 192, 1544, 168, 1536, 144, 1472, 144, 1472, 48, 1536, 48, 1552, 24, 1536, 0, 1472, 0, 1472, -160, 1424, -160, 1424, -112, 1344, -112, 1344, -16, 1216, -16, 1216, -80, 1248, -80, 1248, -288, 1136, -288, 1136, -80, 1168, -80, 1168, -16, 1072, -16, 1072, -160, 1024, -160, 1024, 0, 1008, 0, 1008, 48, 1024, 48, 1168, 48)
 
 [node name="hall2F1" type="Area2D" parent="." unique_id=713830021]
 position = Vector2(224, 176)
@@ -1596,9 +1599,17 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="window" parent="window" unique_id=2028139827 instance=ExtResource("49_mfmey")]
 position = Vector2(1600, 16)
 
+[node name="window2" parent="window" unique_id=1735414061 instance=ExtResource("49_mfmey")]
+position = Vector2(1344, 240)
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="window" unique_id=1001639758]
 visible = false
-polygon = PackedVector2Array(1584, -48, 1664, -48, 1664, 32, 1648, 32, 1648, 64, 1664, 64, 1664, 112, 1648, 112, 1648, 144, 1600, 144, 1600, 112, 1584, 112, 1584, 64, 1600, 64, 1600, 32, 1584, 32)
+polygon = PackedVector2Array(1584, -48, 1664, -48, 1664, -96, 1712, -96, 1712, 64, 1776, 64, 1776, 112, 1712, 112, 1712, 144, 1688, 160, 1664, 144, 1664, 112, 1648, 112, 1648, 144, 1624, 160, 1600, 144, 1600, 112, 1456, 112, 1456, 64, 1584, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="window" unique_id=107039812]
+visible = false
+position = Vector2(1432, 192.5)
+shape = SubResource("RectangleShape2D_pm3tx")
 
 [node name="InteractionZone8" type="Area2D" parent="." unique_id=899912846]
 position = Vector2(1624, -40)
