@@ -36,6 +36,11 @@ func direction(input: Vector2i = Vector2i.ZERO) -> Vector2i:
 		diff -= input
 	return diff
 
+func next_pathway() -> bool:
+	if directions.size() > 1:
+		directions.pop_back()
+		return true
+	return false
 
 func reduce(input: Vector2i) -> void:
 	if directions.size() > 0:

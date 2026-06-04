@@ -23,7 +23,7 @@ var interaction: RayCast2D
 ## A modifier to the player speed
 var speed_scale: float = 5.0
 ## An exported default speed value for NPCs
-@export var default_speed: float = 15.0
+@export var default_speed: float = 5.0
 
 ## the ID the game uses to specifically identify this NPC
 @export var NPC_ID: int = 0
@@ -72,7 +72,6 @@ func _ready() -> void:
 	for child in get_children():
 		if child is AnimatedSprite2D:
 			sprites.append(child)
-			break
 	
 	z_index = 5
 	interaction.rotation = PI/2
@@ -186,7 +185,8 @@ func compile_movement_queue() -> Vector2:
 		elif movement_queue.back().look_direction:
 			dir = movement_queue.back().look_direction
 		else:
-			movement_queue.pop_back()
+			if !movement_queue.back().next_pathway():
+				movement_queue.pop_back()
 	if mvm or dir:
 		
 		var reduce: Vector2i = enact_movement(mvm, dir, movement_mode_switch) 

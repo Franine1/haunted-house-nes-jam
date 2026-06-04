@@ -12,7 +12,7 @@ extends Dialogue
 ## In case we want to delay the point in time that we change this value
 @export var delay: float = 0.0
 ## whether we set the parameter, or add var "value" to it
-@export var additive: bool = true
+@export var additive: bool = false
 ## path to the game data
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
 

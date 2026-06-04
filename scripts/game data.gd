@@ -36,6 +36,16 @@ var movement_queues: Dictionary[int,Array] = {}
 ## INFO: "skip": The value of this int is the number of times the game will automatically finish dialogue.
 ## INFO: "delay": forces the game manager to wait a certain amount of time before resuming dialogue. 
 ## These are measured in tenths of seconds.
+##
+##
+##
+## INFO: "host": meant to indicate different stages of progression for the host, who
+## invited the player.
+## INFO: "sink": indicates when the sink is running, and which one.
+##
+##
+##
+## INFO: "omen", "wonder", "ominous": these tags are meant for limited time interactions
 
 
 

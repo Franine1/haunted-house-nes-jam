@@ -67,6 +67,12 @@ func update_fading_mode(instant_override: bool = false):
 				if !node.update_fading.is_connected(empty_function):
 					node.update_fading.connect(empty_function)
 					node.fade_in_checks.append(self)
+			elif node is Blockade:
+				#print("detected blockade")
+				if!node.empty_signal.is_connected(empty_function):
+					#print("connecting blockade")
+					node.empty_signal.connect(empty_function)
+					node.fade_in_checks.append(self)
 			
 			#if node.has_method("get_seamless") and !instant_fading:
 			#	instant_fading = node.get_seamless()
