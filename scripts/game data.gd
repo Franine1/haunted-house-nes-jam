@@ -15,7 +15,8 @@ signal data_change(key: String, value: int)
 ## all the global data points. They're identified with a string and always
 ## return an int.
 var data: Dictionary[String,int] = {
-	
+	"key": 2
+	,"forced": -7
 }
 ## List of currently queued dialogue.
 var dialogue_queue: Array[Dialogue] = []
@@ -33,7 +34,7 @@ var movement_queues: Dictionary[int,Array] = {}
 ## INFO: "forced": meant to indicate the current level of progression in scripted scenes.
 ## this value decreases by 1 every time the next scripted sequence is performed.
 ## 
-## INFO: "letters": this indicates the speed at which letters should appear at.
+## INFO: "lettering": this indicates the speed at which letters should appear at.
 ## The min speed is 0.01, and this value is multiplied by that for the resulting speed.
 ## INFO: "skip": The value of this int is the number of times the game will automatically finish dialogue.
 ## INFO: "delay": forces the game manager to wait a certain amount of time before resuming dialogue. 

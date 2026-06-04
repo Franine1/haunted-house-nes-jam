@@ -221,7 +221,7 @@ func dialogue_behavior(delta: float) -> void:
 			
 		1: # requests the correct dialogue boxes to appear 
 			
-			fill_dialogue(0.01 * clamp(game_data.get_data("letters"),1,1000))
+			fill_dialogue(0.01 * clamp(game_data.get_data("lettering"),1,1000))
 			substate = 2
 			
 		2: # checks for player input while dialogue is filing/is completely filled
@@ -272,8 +272,7 @@ func dialogue_behavior(delta: float) -> void:
 					substate = 1
 			
 		3: # skips the delay between different letters
-			
-			fill_dialogue(0.01 * clamp(game_data.get_data("letters"),1,1000),true)
+			fill_dialogue(0.01 * clamp(game_data.get_data("lettering"),1,1000),true)
 			substate = 2
 			
 		_: # unknown substates redirect to the beginning of dialogue
