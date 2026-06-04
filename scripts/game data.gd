@@ -15,8 +15,6 @@ signal data_change(key: String, value: int)
 ## all the global data points. They're identified with a string and always
 ## return an int.
 var data: Dictionary[String,int] = {
-	"key": 2
-	,"forced": -7
 }
 ## List of currently queued dialogue.
 var dialogue_queue: Array[Dialogue] = []
