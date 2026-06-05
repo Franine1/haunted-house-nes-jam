@@ -1,4 +1,4 @@
-## The DialogueSection class is a container for other dialouge.
+## The DialogueSection class is a container for other dialogue.
 ## Its role is to have multiple Dialogue nodes as its children,
 ## and read all of them, in order, even if they're different kinds of dialogue.
 ## Generally this will be the parent node of a dialogue scene if

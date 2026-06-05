@@ -39,6 +39,12 @@ func display(input: String, speed: float = 0.01, initial_visible: int = 0) -> vo
 	
 	letters.start(duration)
 
+
+## sets the textbox as centered
+func set_centered() -> void:
+	horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+
 ## This function is automatically executed by the textbox to
 ## fill out its letters over time
 func next_letter() -> void:

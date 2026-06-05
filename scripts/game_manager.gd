@@ -18,6 +18,8 @@ extends Control
 @onready var pause_options: VBoxContainer = %VBoxContainer
 ## Automatically signals the game when certain events occur
 @onready var cue: GameCue = %GameCue
+## Dialogue scripts used for the menu system
+@onready var menu_system: Dialogue = %"menu system"
 
 
 
@@ -33,7 +35,7 @@ const levels: Array[PackedScene] = [
 ## Current dialogue script
 var dialogue_script: Dialogue = null
 ## Current state of the game
-var current_state: game_state = game_state.MENU
+var current_state: game_state = game_state.START
 ## Current text from a dialogue script that's being displayed on screen
 var stored_text: Array[String] = []
 ## Delay to prevent uncontrollable dialogue skipping
@@ -49,6 +51,11 @@ var player: Player
 ## whether to check for dialogue or not
 var dialogue_enabled: bool = true
 
+
+## determines whether the menu is a pause or main menu
+var default_menu: int = 0
+
+
 ## A default palette that all levels are set to
 var current_pallete: Dictionary[int,ShaderMaterial] = {
 	0: preload("res://resources/palettes/brownpallete.tres")
@@ -60,10 +67,10 @@ var current_pallete: Dictionary[int,ShaderMaterial] = {
 
 ## The allowed game states
 enum game_state {
-	MENU,
+	START,
 	GAME,
 	DIALOGUE,
-	PAUSED
+	MENU
 }
 
 ## A second measure of what is ocurring in the current game state
@@ -97,8 +104,8 @@ func _process(delta: float) -> void:
 	
 	# swaps to the currect behavior based on the current game state
 	match current_state:
-		game_state.MENU:
-			menu_behavior(delta)
+		game_state.START:
+			start_behavior(delta)
 		
 		game_state.GAME:
 			game_behavior(delta)
@@ -112,8 +119,8 @@ func _process(delta: float) -> void:
 		game_state.DIALOGUE:
 			dialogue_behavior(delta)
 		
-		game_state.PAUSED:
-			paused_behavior(delta)
+		game_state.MENU:
+			menu_behavior(delta)
 		
 	
 	
@@ -194,10 +201,8 @@ func change_level(input: int) -> void:
 
 
 
-## Right now it instantly starts the game, but this should later on
-## be changed to include the expected options along with a few different
-## save slots.
-func menu_behavior(_delta: float) -> void:
+## First thing the game does on startup, any code needed for this will go here
+func start_behavior(_delta: float) -> void:
 	pause_menu.hide()
 	text_holder.hide()
 	get_tree().paused = true
@@ -338,42 +343,102 @@ func fill_dialogue(delay: float, match_letters: bool = false, target: Control = 
 	return true
 
 
-## any logic done in the pause menu would go here.
-func paused_behavior(_delta: float) -> void:
+
+## any logic done in the main menu or pause menu would go here.
+func menu_behavior(_delta: float) -> void:
 	pause_menu.show()
 	text_holder.hide()
 	get_tree().paused = true
 	game_world.handle_input_locally = false
 	
 	
+	var target: Control = pause_options
+	
+	
 	if !dialogue_timer.is_stopped():
 		substate = 1
 		return
-	elif textbox_delay.is_stopped() and substate != 0:
+	elif textbox_delay.is_stopped() and substate != 0 and default_menu == 1:
 		if Input.is_action_just_pressed("Start button"):
 			substate = 4
 	
+	
 	match substate:
-		0:
-			# TODO: set the dialogue script here
-			
-			textbox_delay.start(0.5)
+		0: ## reset the dialogue
+			dialogue_script.reset_dialogue()
+			clear_menu_data()
+			textbox_delay.start(0.25)
 			substate = 1
-		
-		1:
-			pass
-		
-		4:
+			
+		1: ## fill in dialogue into the chosen window
+			var more: bool = fill_dialogue(0.01,false,target)
+			substate = 3
+			## reset if the current dialogue tree ended, otherwise fill all letters
+			if more:
+				for box in target.get_children():
+					if box is Textbox:
+						box.finish_letters()
+						box.set_centered()
+				
+		2:
+			# whether the current option is chosen
+			var read_a: bool = Input.is_action_just_pressed("A button")
+			# tabs through options in an option menu
+			var read_s: bool = Input.is_action_just_pressed("Select button")
+			
+			
+			if read_s:
+				dialogue_script.select_reaction()
+				var temp: Array[String] = dialogue_script.line()
+				
+				if temp.size() != stored_text.size():
+					substate = 1
+				else:
+					for i in temp.size():
+						if temp[i] != stored_text[i]:
+							substate = 1
+							break
+			
+			if read_a:
+				dialogue_script.A_reaction()
+				substate = 1
+		3: ## interpreting the current choices made
+			var default_mode: int = 0 if dialogue_script.dialogue_finished() else 2
+			match game_data.get_data("menu"):
+				0: ## main menu: no special behavior
+					pass
+				1: ## pause menu: no special behavior
+					pass
+				
+				5: ## resumes game
+					if default_menu == 1: ## this is the pause menu
+						default_mode = 4
+					else:
+						# TODO: Create new world
+						pass
+				
+				_: ## if we haven't coded it in yet, go back to the default menu
+					game_data.set_data("menu",default_menu)
+			
+			substate = default_mode
+		4: ## end the menu stage
 			stored_text = []
 			pause_requested(false)
 
 
 ## responds to player requests for pausing the game
 func pause_requested(pausing: bool = true) -> void:
-	
-	current_state = game_state.PAUSED if pausing else game_state.GAME
+	default_menu = 1
+	current_state = game_state.MENU if pausing else game_state.GAME
 	player.input_allowed = !pausing
 	get_tree().paused = pausing
 	substate = 0
+	dialogue_script = menu_system
+	game_data.set_data("menu",default_menu)
+	clear_menu_data()
+
+func clear_menu_data() -> void:
 	
-	
+	game_data.set_data("slot",0)
+	game_data.set_data("confirm",0)
+	game_data.set_data("saved",0)

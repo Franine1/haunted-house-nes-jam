@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://nrl32a5tkx60"]
 
 [ext_resource type="Script" uid="uid://dhyvdqgu87oml" path="res://scripts/game_manager.gd" id="1_01db0"]
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="2_a4601"]
 [ext_resource type="Script" uid="uid://cow5mcybln08" path="res://scripts/game_cue.gd" id="2_aqc0r"]
+[ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="3_hov4v"]
+[ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="3_jgm3m"]
 [ext_resource type="Theme" uid="uid://dyv6sm6km8i56" path="res://resources/themes/UI_theme.tres" id="3_tl5mg"]
+[ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="4_hov4v"]
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="5_34ocb"]
 
 [node name="game manager" type="Control" unique_id=604842194]
 process_mode = 3
@@ -13,6 +18,109 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_01db0")
+
+[node name="menu system" type="Node" parent="." unique_id=883911850]
+unique_name_in_owner = true
+script = ExtResource("2_a4601")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="main menu" type="Node" parent="menu system" unique_id=1707486003]
+script = ExtResource("3_hov4v")
+cue = "menu"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="pause menu2" type="Node" parent="menu system" unique_id=1725792551]
+script = ExtResource("3_hov4v")
+cue = "menu"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="option" type="Node" parent="menu system/pause menu2" unique_id=865116717]
+script = ExtResource("4_hov4v")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="resume" type="Node" parent="menu system/pause menu2/option" unique_id=460488218]
+script = ExtResource("2_a4601")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="menu system/pause menu2/option/resume" unique_id=1864321604]
+script = ExtResource("5_34ocb")
+lines = Array[String](["Resume"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="menu system/pause menu2/option/resume" unique_id=1262147301]
+script = ExtResource("3_jgm3m")
+cue = "menu"
+value = 5
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="save" type="Node" parent="menu system/pause menu2/option" unique_id=868176154]
+script = ExtResource("2_a4601")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="menu system/pause menu2/option/save" unique_id=313760518]
+script = ExtResource("5_34ocb")
+lines = Array[String](["Save"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="menu system/pause menu2/option/save" unique_id=1627724007]
+script = ExtResource("3_jgm3m")
+cue = "menu"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="options" type="Node" parent="menu system/pause menu2/option" unique_id=717282941]
+script = ExtResource("2_a4601")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="menu system/pause menu2/option/options" unique_id=1586911450]
+script = ExtResource("5_34ocb")
+lines = Array[String](["Options"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="menu system/pause menu2/option/options" unique_id=251520677]
+script = ExtResource("3_jgm3m")
+cue = "menu"
+value = 3
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="exit" type="Node" parent="menu system/pause menu2/option" unique_id=367830984]
+script = ExtResource("2_a4601")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="menu system/pause menu2/option/exit" unique_id=1581512899]
+script = ExtResource("5_34ocb")
+lines = Array[String](["Exit to Menu"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="menu system/pause menu2/option/exit" unique_id=899820205]
+script = ExtResource("3_jgm3m")
+cue = "menu"
+value = 4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="game saves" type="Node" parent="menu system" unique_id=1026008301]
+script = ExtResource("3_hov4v")
+cue = "menu"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="options" type="Node" parent="menu system" unique_id=1757334316]
+script = ExtResource("3_hov4v")
+cue = "menu"
+value = 3
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="exit" type="Node" parent="menu system" unique_id=1696877867]
+script = ExtResource("3_hov4v")
+cue = "menu"
+value = 4
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="GameCue" type="Node" parent="." unique_id=1489780554]
 unique_name_in_owner = true
@@ -59,6 +167,7 @@ size_flags_stretch_ratio = 176.0
 
 [node name="pause_menu" type="Control" parent="." unique_id=32964571]
 unique_name_in_owner = true
+z_index = 50
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

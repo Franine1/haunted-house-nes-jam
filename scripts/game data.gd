@@ -24,6 +24,13 @@ var movement_queues: Dictionary[int,Array] = {}
 
 ## IMPORTANT: data values with meaning
 ## 
+##
+## INFO: "menu": used to determine what menu section we're in. 
+## 0: Main menu | 1: Pause menu | 2: game saves | 3: options | 4: exiting game | 5: starting game 
+## INFO: "confirm", "slot", "saved": used to organize the game menu properly
+##
+##
+##
 ## INFO: "level": sets the level
 ## INFO: "x_shift", "y_shift": moves the player that many tiles
 ## INFO: "x_set", "y_set": teleports the player to that spot in world coordinates
