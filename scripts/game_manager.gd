@@ -156,10 +156,12 @@ func pause_dialogue(input: int) -> void:
 ## deletes the old level and replaces it with the new one.
 ## Automatically activates if the "level" datapoint changes 
 ## in the GameData resource.
-func change_level(input: int) -> void:
+func change_level(input: int, force_change: bool = false, use_gamedata_positioning: bool = false) -> void:
 	if current_state == game_state.DIALOGUE:
 		# waits until any open dialogue finishes
 		get_tree().create_timer(0.02).timeout.connect(change_level.bind(input))
+		return
+	elif current_state != game_state.GAME and !force_change:
 		return
 	
 	if !level_change_delay.is_stopped():
@@ -186,9 +188,14 @@ func change_level(input: int) -> void:
 			if game_data.has_data("reposition") and (game_data.get_data("reposition") != 0):
 				child.global_position = Vector2(game_data.get_data("x_set"),game_data.get_data("y_set"))
 			child.global_position += 16.0 * Vector2(game_data.get_data("x_shift"),game_data.get_data("y_shift"))
-			child.pl.finish_camera_glide()
 			player = child.pl
 			player.request_pause.connect(pause_requested)
+			
+			if use_gamedata_positioning:
+				child.global_position = game_data.get_player_position()
+				child.set_snap_axis(game_data.get_player_camera())
+			
+			child.pl.finish_camera_glide()
 	game_data.remove_data("x_set")
 	game_data.remove_data("y_set")
 	game_data.remove_data("x_shift")
@@ -209,9 +216,11 @@ func start_behavior(_delta: float) -> void:
 	get_tree().paused = true
 	game_world.handle_input_locally = false
 	
-	current_state = game_state.GAME
-	get_tree().paused = false
-	change_level(0)
+	substate = 0
+	dialogue_script = menu_system
+	game_data.set_data("menu",default_menu)
+	clear_menu_data()
+	current_state = game_state.MENU
 
 
 
@@ -353,6 +362,7 @@ func menu_behavior(_delta: float) -> void:
 	game_world.handle_input_locally = false
 	
 	
+	
 	var target: Control = pause_options
 	
 	
@@ -410,13 +420,40 @@ func menu_behavior(_delta: float) -> void:
 					pass
 				1: ## pause menu: no special behavior
 					pass
-				
-				5: ## resumes game
+				2: ## saving and loading
+					if default_menu == 1:
+						# save a game
+						if game_data.get_data("confirm") == 1:
+							game_data.save_game(game_data.get_data("slot"))
+							game_data.set_data("menu",default_menu)
+						
+					elif game_data.get_data("confirm") == -1:
+						# load a game
+						var ll: bool = game_data.load_game(game_data.get_data("slot"))
+						if ll:
+							default_mode = 6
+						else:
+							default_mode = 5
+				4: ## exits current context
+					if default_menu == 1:
+						# deletes the current game world, returns to menu
+						for child in game_world.get_children():
+							game_world.remove_child(child)
+							child.queue_free()
+						default_menu = 0
+						default_mode = 0
+						game_data.set_data("menu",default_menu)
+					elif game_data.get_data("confirm") == 1:
+						# exit the game
+						get_tree().quit()
+				5: ## start the game
+					# resumes game
 					if default_menu == 1: ## this is the pause menu
 						default_mode = 4
-					else:
-						# TODO: Create new world
-						pass
+					else: 
+						# creates a new world
+						game_data.reset_game()
+						default_mode = 5
 				
 				_: ## if we haven't coded it in yet, go back to the default menu
 					game_data.set_data("menu",default_menu)
@@ -425,6 +462,14 @@ func menu_behavior(_delta: float) -> void:
 		4: ## end the menu stage
 			stored_text = []
 			pause_requested(false)
+		
+		5: ## create a new world
+			stored_text = []
+			start_game()
+		
+		6: ## load a world
+			stored_text = []
+			start_game(false)
 
 
 ## responds to player requests for pausing the game
@@ -443,3 +488,11 @@ func clear_menu_data() -> void:
 	game_data.set_data("slot",0)
 	game_data.set_data("confirm",0)
 	game_data.set_data("saved",0)
+
+
+func start_game(is_new: bool = true) -> void:
+	current_state =  game_state.GAME
+	get_tree().paused = false
+	change_level(game_data.get_data("level"),true,!is_new)
+	
+	

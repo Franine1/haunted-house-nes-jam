@@ -30,70 +30,6 @@ cue = "menu"
 compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="option2" type="Node" parent="menu system/main menu" unique_id=359917189]
-script = ExtResource("4_hov4v")
-metadata/_custom_type_script = "uid://djmjjs20dmaub"
-
-[node name="new" type="Node" parent="menu system/main menu/option2" unique_id=271645763]
-script = ExtResource("2_a4601")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
-
-[node name="DialogueLines" type="Node" parent="menu system/main menu/option2/new" unique_id=440085177]
-script = ExtResource("5_34ocb")
-lines = Array[String](["New Game"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueCue" type="Node" parent="menu system/main menu/option2/new" unique_id=304195763]
-script = ExtResource("3_jgm3m")
-cue = "menu"
-value = 5
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="load" type="Node" parent="menu system/main menu/option2" unique_id=2086177283]
-script = ExtResource("2_a4601")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
-
-[node name="DialogueLines" type="Node" parent="menu system/main menu/option2/load" unique_id=1743072903]
-script = ExtResource("5_34ocb")
-lines = Array[String](["Load Game"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueCue" type="Node" parent="menu system/main menu/option2/load" unique_id=1230808394]
-script = ExtResource("3_jgm3m")
-cue = "menu"
-value = 2
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="options" type="Node" parent="menu system/main menu/option2" unique_id=1085935555]
-script = ExtResource("2_a4601")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
-
-[node name="DialogueLines" type="Node" parent="menu system/main menu/option2/options" unique_id=1065977038]
-script = ExtResource("5_34ocb")
-lines = Array[String](["Options"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueCue" type="Node" parent="menu system/main menu/option2/options" unique_id=1487910831]
-script = ExtResource("3_jgm3m")
-cue = "menu"
-value = 3
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="exit" type="Node" parent="menu system/main menu/option2" unique_id=611164824]
-script = ExtResource("2_a4601")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
-
-[node name="DialogueLines" type="Node" parent="menu system/main menu/option2/exit" unique_id=195122659]
-script = ExtResource("5_34ocb")
-lines = Array[String](["Quit Game"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueCue" type="Node" parent="menu system/main menu/option2/exit" unique_id=1208451323]
-script = ExtResource("3_jgm3m")
-cue = "menu"
-value = 4
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
 [node name="pause menu2" type="Node" parent="menu system" unique_id=1725792551]
 script = ExtResource("3_hov4v")
 cue = "menu"
@@ -317,30 +253,6 @@ cue = "menu"
 value = 4
 compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueOption" type="Node" parent="menu system/exit" unique_id=1361394943]
-script = ExtResource("4_hov4v")
-metadata/_custom_type_script = "uid://djmjjs20dmaub"
-
-[node name="DialogueLines" type="Node" parent="menu system/exit/DialogueOption" unique_id=1684970724]
-script = ExtResource("5_34ocb")
-lines = Array[String](["Cancel"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueSection" type="Node" parent="menu system/exit/DialogueOption" unique_id=1542670360]
-script = ExtResource("2_a4601")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
-
-[node name="DialogueLines" type="Node" parent="menu system/exit/DialogueOption/DialogueSection" unique_id=844119395]
-script = ExtResource("5_34ocb")
-lines = Array[String](["Quit Game"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueCue" type="Node" parent="menu system/exit/DialogueOption/DialogueSection" unique_id=1550322234]
-script = ExtResource("3_jgm3m")
-cue = "confirm"
-value = 1
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="GameCue" type="Node" parent="." unique_id=1489780554]
 unique_name_in_owner = true

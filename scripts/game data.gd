@@ -20,6 +20,12 @@ var data: Dictionary[String,int] = {
 var dialogue_queue: Array[Dialogue] = []
 ## List of the movement queues listed for different NPC IDs
 var movement_queues: Dictionary[int,Array] = {}
+## initial player transformation
+var player_position: Vector4 = Vector4.ZERO
+## path to save files to
+const savepath: String = "user://savedgames/"
+
+
 
 
 ## IMPORTANT: data values with meaning
@@ -151,3 +157,107 @@ func accept_movement(npc_id: int) -> Array[CutscenePath]:
 		ans = movement_queues[npc_id]
 		movement_queues.erase(npc_id)
 	return ans
+
+
+## resets the game data
+func reset_game() -> void:
+	data.clear()
+	player_position = Vector4.ZERO
+
+
+## saves the game data to a slot
+func save_game(slot: int) -> void:
+	ensure_folder()
+	
+	var file: FileAccess = FileAccess.open(get_slot_name(slot),FileAccess.WRITE)
+	
+	var temp = [player_position[0],player_position[1],player_position[2],player_position[3]]
+	file.store_csv_line(prepare_csv(temp))
+	
+	for key in data.keys():
+		file.store_csv_line(prepare_csv([key,data[key]]))
+	
+	file.close() 
+
+
+## loads a save slot into game data
+func load_game(slot: int) -> bool:
+	ensure_folder()
+	reset_game()
+	
+	var file: FileAccess = FileAccess.open(get_slot_name(slot),FileAccess.READ)
+	if file == null:
+		return false
+	
+	var repos: bool = false
+	
+	while !file.eof_reached():
+		var next: PackedStringArray = file.get_csv_line()
+		
+		if !repos:
+			repos = true
+			var result: Array[float] = []
+			for i in range(4):
+				if i < next.size():
+					result.append(float(next.get(i)))
+				else:
+					result.append(0.0)
+			
+			player_position = Vector4(result[0],result[1],result[2],result[3])
+			#print(player_position)
+			
+		else:
+			if next.size() >= 2:
+				var key: String = next.get(0)
+				var result: int = int(next.get(1))
+				
+				data[key] = result
+	
+	return true
+
+
+## deletes a save slot
+func delete_game(slot: int) -> void:
+	ensure_folder()
+	if DirAccess.dir_exists_absolute(get_slot_name(slot)):
+		DirAccess.remove_absolute(get_slot_name(slot))
+	
+
+
+## ensures the save folder exists
+func ensure_folder() -> void:
+	if !DirAccess.dir_exists_absolute((savepath)):
+		DirAccess.make_dir_recursive_absolute(savepath)
+
+
+## gets the file name for a specific slot
+func get_slot_name(slot: int) -> String:
+	return savepath + "save_" + str(slot) + ".csv"
+
+
+
+## prepares an array of data to become a CSV line
+func prepare_csv(input: Array) -> PackedStringArray:
+	var temp: Array[String] = []
+	
+	for i in input:
+		temp.append(str(i))
+	
+	var ans: PackedStringArray = PackedStringArray(temp)
+	
+	return ans
+	
+
+## lets the player upload their position and camera snap axis
+func accept_player_position(pos: Vector2, snap: Vector2) -> void:
+	player_position = Vector4(pos.x,pos.y,snap.x,snap.y)
+
+
+## returns the global position of the player
+func get_player_position() -> Vector2:
+	return Vector2(player_position[0],player_position[1])
+
+
+## returns the camera snap axis of the player
+func get_player_camera() -> Vector2:
+	return Vector2(player_position[2],player_position[3])

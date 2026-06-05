@@ -13,6 +13,8 @@ signal request_pause()
 
 func _physics_process(delta: float) -> void:
 	
+	game_data.accept_player_position(global_position,camera_snap_axis)
+	
 	upkeep(delta)
 	
 	progress_animation(delta)
