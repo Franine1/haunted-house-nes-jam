@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 	## updates data for players and NPCs every frame, 
 	## but blockades and interaction zones only every second, since they
 	## generally do not move.
-	if intermittent_update.is_stopped():
+	if intermittent_update.is_stopped() or true:
 		update_fading_mode()
 		intermittent_update.start(1.0)
 	else:
