@@ -29,8 +29,6 @@ var fade_in_checks: Array[Layout] = []
 @export var material_layer: int = 0
 
 
-## only used to determine if a blockade is linked to a layout
-signal empty_signal()
 
 enum compare {
 	EQUAL ## The values must be equivalent
@@ -59,7 +57,7 @@ func _process(delta: float) -> void:
 	collision_mask = 2
 	
 	
-	var best: float = 0.0
+	var best: float = 0.0 if fade_in_checks.size() > 0 else 1.0
 	for layout in fade_in_checks:
 		if layout.overlaps(self):
 			best = max(best,layout.recent_opacity)
@@ -107,7 +105,7 @@ func bump(source: NPC = null) -> void:
 func set_interaction(input: bool = true) -> void:
 	interact_allowed = input
 
-func progress_animation(delta: float, opacity: float = -1.0) -> void:
+func progress_animation(_delta: float, opacity: float = -1.0) -> void:
 	
 	var do_opacity: bool = opacity >= 0.0
 	var result_opacity: float = opacity if do_opacity else 1.0

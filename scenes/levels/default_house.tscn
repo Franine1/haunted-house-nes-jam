@@ -134,7 +134,6 @@ size = Vector2(48, 176)
 size = Vector2(48, 193)
 
 [node name="default_house" type="Node2D" unique_id=825320048]
-material = ExtResource("1_u00pf")
 script = ExtResource("1_couku")
 default_palette = Dictionary[int, ShaderMaterial]({
 0: ExtResource("1_u00pf")
@@ -142,10 +141,11 @@ default_palette = Dictionary[int, ShaderMaterial]({
 metadata/_custom_type_script = "uid://56yoruxpggjg"
 
 [node name="Player" parent="." unique_id=574704302 instance=ExtResource("15_gmqn6")]
-position = Vector2(200, 120)
-camera_snap_axis = Vector2(7, 1)
+position = Vector2(216, 216)
+camera_snap_axis = Vector2(8, 7)
 
 [node name="dining_room" type="Area2D" parent="." unique_id=436585657]
+position = Vector2(16, 96)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -180,7 +180,7 @@ position = Vector2(1024, 0)
 polygon = PackedVector2Array(-16, -64, 16, -64, 16, -16, 240, -16, 240, 64, 336, 64, 336, 112, 240, 112, 240, 128, -192, 128, -192, -224, -16, -224)
 
 [node name="hall1F1" type="Area2D" parent="." unique_id=822867465]
-position = Vector2(240, 64)
+position = Vector2(256, 160)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -209,7 +209,7 @@ visible = false
 polygon = PackedVector2Array(1168, 224, 1216, 224, 1216, 48, 1360, 48, 1360, 72, 1384, 80, 1408, 72, 1408, 48, 1424, 48, 1424, 192, 1536, 192, 1544, 168, 1536, 144, 1472, 144, 1472, 48, 1536, 48, 1552, 24, 1536, 0, 1472, 0, 1472, -160, 1424, -160, 1424, -112, 1344, -112, 1344, -16, 1216, -16, 1216, -80, 1248, -80, 1248, -288, 1136, -288, 1136, -80, 1168, -80, 1168, -16, 1072, -16, 1072, -160, 1024, -160, 1024, 0, 1008, 0, 1008, 48, 1024, 48, 1168, 48)
 
 [node name="hall2F1" type="Area2D" parent="." unique_id=713830021]
-position = Vector2(224, 176)
+position = Vector2(240, 272)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -220,7 +220,7 @@ visible = false
 polygon = PackedVector2Array(-96, -400, 16, -400, 16, -272, 272, -272, 272, -192, 112, -192, 112, -64, 16, -64, 16, -48, -240, -48, -240, -192, 16, -192, 16, -112, 64, -112, 64, -200, -96, -200)
 
 [node name="stairs" type="Area2D" parent="." unique_id=1612055545]
-position = Vector2(256, 0)
+position = Vector2(272, 96)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -248,7 +248,7 @@ visible = false
 polygon = PackedVector2Array(1008, 112, 1008, -96, 1056, -96, 1056, 64, 1344, 64, 1344, 112)
 
 [node name="kitchen" type="Area2D" parent="." unique_id=866276870]
-position = Vector2(-176, -208)
+position = Vector2(-160, -112)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -275,6 +275,7 @@ position = Vector2(-64, 0)
 polygon = PackedVector2Array(1840, 272, 1888, 272, 1888, 368, 1840, 368)
 
 [node name="laundry" type="Area2D" parent="." unique_id=513050993]
+position = Vector2(16, 96)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -294,7 +295,7 @@ position = Vector2(1856, 88)
 shape = SubResource("RectangleShape2D_rleir")
 
 [node name="garage" type="Area2D" parent="." unique_id=1701807272]
-position = Vector2(352, -16)
+position = Vector2(368, 80)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -315,7 +316,7 @@ visible = false
 polygon = PackedVector2Array(1312, 144, 1336, 136, 1360, 144, 1360, 224, 1424, 224, 1424, 144, 1584, 144, 1584, 288, 1424, 288, 1424, 272, 1312, 272)
 
 [node name="living" type="Area2D" parent="." unique_id=1665443263]
-position = Vector2(160, -208)
+position = Vector2(176, -112)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -333,7 +334,7 @@ visible = false
 polygon = PackedVector2Array(1248, 336, 1248, 320, 1232, 320, 1232, 272, 1248, 272, 1248, 176, 1216, 176, 1216, -32, 1328, -32, 1328, 176, 1296, 176, 1296, 272, 1312, 272, 1312, 320, 1296, 320, 1296, 336)
 
 [node name="downstairs" type="Area2D" parent="." unique_id=989713174]
-position = Vector2(0, -144)
+position = Vector2(16, -48)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -374,7 +375,7 @@ visible = false
 polygon = PackedVector2Array(1104, 352, 1104, 320, 1152, 320, 1152, 352)
 
 [node name="basement" type="Area2D" parent="." unique_id=1301869203]
-position = Vector2(128, 432)
+position = Vector2(144, 528)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -394,7 +395,7 @@ position = Vector2(1000, 152)
 shape = SubResource("RectangleShape2D_ssivo")
 
 [node name="locked_basement" type="Area2D" parent="." unique_id=658446032]
-position = Vector2(128, 432)
+position = Vector2(144, 528)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -443,7 +444,7 @@ position = Vector2(972, -264)
 shape = SubResource("RectangleShape2D_4dvlw")
 
 [node name="hallF2" type="Area2D" parent="." unique_id=1990455135]
-position = Vector2(256, -560)
+position = Vector2(272, -464)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -477,6 +478,7 @@ position = Vector2(840, 704)
 shape = SubResource("RectangleShape2D_mfmey")
 
 [node name="master" type="Area2D" parent="." unique_id=1025662522]
+position = Vector2(16, 96)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -488,7 +490,7 @@ visible = false
 polygon = PackedVector2Array(-16, -512, 384, -512, 384, -560, 240, -560, 240, -720, 144, -720, 144, -672, -16, -672)
 
 [node name="linen" type="Area2D" parent="." unique_id=1287363892]
-position = Vector2(304, -624)
+position = Vector2(320, -528)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -499,7 +501,7 @@ visible = false
 polygon = PackedVector2Array(80, -16, -16, -16, -16, 64, -240, 64, -240, 112, 80, 112)
 
 [node name="bathroom" type="Area2D" parent="." unique_id=133635026]
-position = Vector2(400, -672)
+position = Vector2(416, -576)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -510,7 +512,7 @@ visible = false
 polygon = PackedVector2Array(-16, 32, 96, 32, 96, 160, -336, 160, -336, 112, -16, 112)
 
 [node name="patio" type="Area2D" parent="." unique_id=1681905463]
-position = Vector2(304, -496)
+position = Vector2(320, -400)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -523,7 +525,7 @@ polygon = PackedVector2Array(-240, -64, 80, -64, 80, -16, 192, -16, 192, 112, -1
 [node name="patio2" parent="patio" unique_id=763644378 instance=ExtResource("21_v2ery")]
 
 [node name="hobby room" type="Area2D" parent="." unique_id=1364746277]
-position = Vector2(-176, -720)
+position = Vector2(-160, -624)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -534,7 +536,7 @@ visible = false
 polygon = PackedVector2Array(560, 208, 560, 160, 160, 160, 160, 0, -16, 0, -16, 208, 160, 208, 160, 288, 208, 288, 208, 208)
 
 [node name="hall_guest" type="Area2D" parent="." unique_id=1495108025]
-position = Vector2(16, -640)
+position = Vector2(32, -544)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -546,7 +548,7 @@ visible = false
 polygon = PackedVector2Array(-208, 256, -208, -80, -16, -80, -16, 80, 224, 80, 224, 256)
 
 [node name="left_guest" type="Area2D" parent="." unique_id=962823236]
-position = Vector2(-176, -496)
+position = Vector2(-160, -400)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -558,7 +560,7 @@ position = Vector2(184, 48)
 shape = SubResource("RectangleShape2D_k13on")
 
 [node name="right_guest" type="Area2D" parent="." unique_id=1055200096]
-position = Vector2(64, -496)
+position = Vector2(80, -400)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -570,22 +572,23 @@ position = Vector2(-56, 48)
 shape = SubResource("RectangleShape2D_xlvrc")
 
 [node name="default_translation" parent="." unique_id=159804422 instance=ExtResource("23_w4wor")]
-position = Vector2(264, 8)
+position = Vector2(280, 104)
 warp_offset = Vector2i(0, -32)
 
 [node name="default_translation2" parent="." unique_id=1210402310 instance=ExtResource("23_w4wor")]
-position = Vector2(264, -456)
+position = Vector2(280, -360)
 warp_offset = Vector2i(0, 32)
 
 [node name="default_translation3" parent="." unique_id=418709588 instance=ExtResource("23_w4wor")]
-position = Vector2(72, -40)
+position = Vector2(88, 56)
 warp_offset = Vector2i(0, 32)
 
 [node name="default_translation4" parent="." unique_id=222115559 instance=ExtResource("23_w4wor")]
-position = Vector2(8, 488)
+position = Vector2(24, 584)
 warp_offset = Vector2i(0, -32)
 
 [node name="InteractionZone2" type="StaticBody2D" parent="." unique_id=1143945196]
+position = Vector2(16, 96)
 script = ExtResource("27_e8k17")
 interact_activation = true
 collide_activation = true
@@ -622,7 +625,7 @@ cue = "level"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="tile_blockade" parent="." unique_id=276737309 instance=ExtResource("28_qiytx")]
-position = Vector2(248, 88)
+position = Vector2(264, 184)
 cue = "forced"
 value = -2
 compare_type = 5
@@ -630,7 +633,7 @@ compare_type = 5
 [node name="its_locked" parent="tile_blockade" unique_id=1818288429 instance=ExtResource("29_o1ess")]
 
 [node name="tile_blockade2" parent="." unique_id=297810825 instance=ExtResource("28_qiytx")]
-position = Vector2(-24, 56)
+position = Vector2(-8, 152)
 cue = "forced"
 value = -2
 compare_type = 5
@@ -638,7 +641,7 @@ compare_type = 5
 [node name="its_locked" parent="tile_blockade2" unique_id=1216520750 instance=ExtResource("29_o1ess")]
 
 [node name="tile_blockade4" parent="." unique_id=998663233 instance=ExtResource("28_qiytx")]
-position = Vector2(-56, -232)
+position = Vector2(-40, -136)
 cue = "key"
 value = 3
 compare_type = 2
@@ -665,7 +668,7 @@ additive = true
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="tile_blockade5" parent="." unique_id=107708510 instance=ExtResource("28_qiytx")]
-position = Vector2(312, -104)
+position = Vector2(328, -8)
 cue = "key"
 value = 3
 compare_type = 2
@@ -674,7 +677,7 @@ compare_type = 2
 lines = Array[String](["It's locked. This door goes to the backyard."])
 
 [node name="tile_blockade3" parent="." unique_id=1428575678 instance=ExtResource("28_qiytx")]
-position = Vector2(104, 536)
+position = Vector2(120, 632)
 cue = "key"
 value = 2
 compare_type = 2
@@ -766,7 +769,7 @@ lines = Array[String](["Do not", "You leave the door locked."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="npc1" parent="." unique_id=1242705272 instance=ExtResource("35_7mm63")]
-position = Vector2(-1440, -16)
+position = Vector2(-1424, 80)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="npc1" unique_id=256701549]
 material = ExtResource("36_4lh72")
@@ -868,13 +871,13 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueMovement" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=779444978]
 script = ExtResource("38_oahe5")
-directions = Array[Vector2i]([Vector2i(3, 0), Vector2i(3, 3)])
+directions = Array[Vector2i]([Vector2i(4, 6), Vector2i(4, 9)])
 relative = false
 metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
 
 [node name="DialogueMovement2" type="Node" parent="npc1/DialogueSection/DialogueToggle3/intro" unique_id=2047637190]
 script = ExtResource("38_oahe5")
-directions = Array[Vector2i]([Vector2i(10, 3)])
+directions = Array[Vector2i]([Vector2i(11, 9)])
 NPC_ID = 0
 delay = 0.7
 relative = false
@@ -1011,6 +1014,7 @@ value = 3
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="InteractionZone" type="Area2D" parent="." unique_id=1584585318]
+position = Vector2(16, 96)
 script = ExtResource("26_tyelw")
 interact_activation = false
 entry_activation = true
@@ -1044,6 +1048,7 @@ value = 1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="InteractionZone3" type="Area2D" parent="." unique_id=1055917915]
+position = Vector2(16, 96)
 script = ExtResource("26_tyelw")
 interact_activation = false
 entry_activation = true
@@ -1110,7 +1115,7 @@ value = 1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="table" type="StaticBody2D" parent="." unique_id=572683857]
-position = Vector2(112, 56)
+position = Vector2(128, 152)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -1150,7 +1155,7 @@ scale = Vector2(0.7, 0.3)
 sprite_frames = SubResource("SpriteFrames_5l7pq")
 
 [node name="InteractionZone4" type="Area2D" parent="." unique_id=495982584]
-position = Vector2(-24, 56)
+position = Vector2(-8, 152)
 script = ExtResource("26_tyelw")
 interact_activation = false
 entry_activation = true
@@ -1184,7 +1189,7 @@ value = 1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="sink" type="StaticBody2D" parent="." unique_id=433407570]
-position = Vector2(-168, 24)
+position = Vector2(-152, 120)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -1267,7 +1272,7 @@ scale = Vector2(0.12, 0.12)
 texture = ExtResource("40_wahft")
 
 [node name="bathroom_sink" type="StaticBody2D" parent="." unique_id=551919688]
-position = Vector2(408, -584)
+position = Vector2(424, -488)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -1392,7 +1397,7 @@ scale = Vector2(0.12, 0.12)
 texture = ExtResource("40_wahft")
 
 [node name="InteractionZone5" type="Area2D" parent="." unique_id=1195400103]
-position = Vector2(1024, 0)
+position = Vector2(1040, 96)
 script = ExtResource("26_tyelw")
 interact_activation = false
 entry_activation = true
@@ -1455,6 +1460,7 @@ value = -8
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="TranslationPortal" type="Area2D" parent="." unique_id=1072190072]
+position = Vector2(16, 96)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(64, 0)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1464,6 +1470,7 @@ position = Vector2(104, 536)
 shape = ExtResource("41_xovbb")
 
 [node name="TranslationPortal2" type="Area2D" parent="." unique_id=804046826]
+position = Vector2(16, 96)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(0, -32)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1473,6 +1480,7 @@ position = Vector2(1032, 504)
 shape = ExtResource("41_xovbb")
 
 [node name="InteractionZone6" type="Area2D" parent="." unique_id=1305829733]
+position = Vector2(16, 96)
 script = ExtResource("26_tyelw")
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
@@ -1486,7 +1494,7 @@ lines = Array[String](["Wasn't there a door here?"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="InteractionZone7" type="Area2D" parent="." unique_id=1962136255]
-position = Vector2(-256, -336)
+position = Vector2(-240, -240)
 script = ExtResource("26_tyelw")
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
@@ -1500,7 +1508,7 @@ lines = Array[String](["Wasn't there a door here?"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="TranslationPortal3" type="Area2D" parent="." unique_id=1190378688]
-position = Vector2(1128, -56)
+position = Vector2(1144, 40)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(0, 14)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1509,7 +1517,7 @@ metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
 shape = ExtResource("41_xovbb")
 
 [node name="TranslationPortal5" type="Area2D" parent="." unique_id=57118855]
-position = Vector2(1112, 152)
+position = Vector2(1128, 248)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(16, -14)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1519,7 +1527,7 @@ position = Vector2(-56, 0)
 shape = ExtResource("41_xovbb")
 
 [node name="TranslationPortal6" type="Area2D" parent="." unique_id=1845942954]
-position = Vector2(1112, 184)
+position = Vector2(1128, 280)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(0, -14)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1528,7 +1536,7 @@ metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
 shape = ExtResource("41_xovbb")
 
 [node name="TranslationPortal4" type="Area2D" parent="." unique_id=1894535769]
-position = Vector2(1336, -72)
+position = Vector2(1352, 24)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(-16, 14)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1537,7 +1545,7 @@ metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
 shape = ExtResource("41_xovbb")
 
 [node name="TranslationPortal8" type="Area2D" parent="." unique_id=2016450036]
-position = Vector2(1688, -88)
+position = Vector2(1704, 8)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(-16, 14)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1546,7 +1554,7 @@ metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
 shape = ExtResource("41_xovbb")
 
 [node name="TranslationPortal7" type="Area2D" parent="." unique_id=597402183]
-position = Vector2(1384, -88)
+position = Vector2(1400, 8)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(16, -14)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1556,6 +1564,7 @@ position = Vector2(48, 368)
 shape = ExtResource("41_xovbb")
 
 [node name="loop_hall" type="Area2D" parent="." unique_id=2094615692]
+position = Vector2(16, 96)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -1575,7 +1584,7 @@ visible = false
 polygon = PackedVector2Array(1648, 112, 1664, 112, 1664, 128, 1712, 128, 1712, 112, 1776, 112, 1776, 64, 1712, 64, 1712, -96, 1664, -96, 1664, 64, 1648, 64)
 
 [node name="TranslationPortal9" type="Area2D" parent="." unique_id=1979582607]
-position = Vector2(1624, 152)
+position = Vector2(1640, 248)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(-64, -14)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1584,7 +1593,7 @@ metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
 shape = ExtResource("41_xovbb")
 
 [node name="TranslationPortal10" type="Area2D" parent="." unique_id=1590600345]
-position = Vector2(600, -88)
+position = Vector2(616, 8)
 script = ExtResource("42_5l7pq")
 warp_offset = Vector2i(64, 14)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1593,6 +1602,7 @@ metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
 shape = ExtResource("41_xovbb")
 
 [node name="window" type="Area2D" parent="." unique_id=1746076960]
+position = Vector2(16, 96)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
@@ -1612,7 +1622,7 @@ position = Vector2(1432, 192.5)
 shape = SubResource("RectangleShape2D_pm3tx")
 
 [node name="InteractionZone8" type="Area2D" parent="." unique_id=899912846]
-position = Vector2(1624, -40)
+position = Vector2(1640, 56)
 script = ExtResource("26_tyelw")
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
@@ -1692,7 +1702,7 @@ value = -1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="washers" type="StaticBody2D" parent="." unique_id=1907765951]
-position = Vector2(376, -72)
+position = Vector2(392, 24)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -1730,7 +1740,7 @@ position = Vector2(48, 0)
 shape = ExtResource("41_xovbb")
 
 [node name="dryer" type="StaticBody2D" parent="." unique_id=1429830045]
-position = Vector2(392, -72)
+position = Vector2(408, 24)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -1777,7 +1787,7 @@ position = Vector2(48, 0)
 shape = ExtResource("41_xovbb")
 
 [node name="evil_washer" type="StaticBody2D" parent="." unique_id=510865541]
-position = Vector2(1864, 72)
+position = Vector2(1880, 168)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -1801,7 +1811,7 @@ lines = Array[String](["It's a washer. The machine's violently banging around."]
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="toilet" type="StaticBody2D" parent="." unique_id=407966215]
-position = Vector2(440, -584)
+position = Vector2(456, -488)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -1821,7 +1831,7 @@ lines = Array[String](["It's a toilet."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="InteractionZone9" type="Area2D" parent="." unique_id=1514927300]
-position = Vector2(1032, 8)
+position = Vector2(1048, 104)
 script = ExtResource("26_tyelw")
 interact_activation = false
 entry_activation = true

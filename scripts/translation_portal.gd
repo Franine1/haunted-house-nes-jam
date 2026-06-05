@@ -9,7 +9,7 @@
 class_name TranslationPortal
 extends Portal
 
-func activate(body_rid: RID, body: Node2D) -> void:
+func activate(_body_rid: RID, body: Node2D) -> void:
 	var diff = warp_offset * 16.0
 	
 	if body.has_method("seamless_warp"):

@@ -12,17 +12,30 @@ extends Area2D
 @export var show_layer: int = 0
 
 func _ready() -> void:
-	for child in get_children():
-		if child is Layout:
-			child.instant_fade.call_deferred(initial_fade_mode)
-			child.set_show_area.call_deferred(self)
+	replace_area(self)
 	
 	collision_layer = 2
-	collision_mask = 52
+	collision_mask = 60
 	z_index = show_layer
 
 func distribute_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:
 	for child in get_children():
 		if child is Layout:
 			child.change_palette(input, clear_non_included)
-			
+		elif child is Room:
+			child.distribute_palette(input,clear_non_included)
+		elif child is Blockade:
+			child.change_palette(input,clear_non_included)
+		elif child is InteractionZone:
+			child.change_palette(input,clear_non_included)
+		
+
+func replace_area(input: Area2D) -> void:
+	
+	for child in get_children():
+		if child is Layout:
+			child.instant_fade.call_deferred(initial_fade_mode)
+			child.set_show_area.call_deferred(input)
+		elif child is Room:
+			child.initial_fade_mode = initial_fade_mode
+			child.replace_area(input)

@@ -16,7 +16,11 @@ func _ready() -> void:
 
 func distribute_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:
 	for child in get_children():
-		if child is Room:
+		if child is Layout:
+			child.change_palette(input, clear_non_included)
+		elif child is Room:
 			child.distribute_palette(input, clear_non_included)
 		elif child is Blockade:
+			child.change_palette(input,clear_non_included)
+		elif child is InteractionZone:
 			child.change_palette(input,clear_non_included)

@@ -5,6 +5,7 @@ class_name Layout
 extends TileMapLayer
 
 var fade_time: Timer 
+var intermittent_update: Timer
 var recent_opacity: float = 1.0
 @export var material_layer: int = 0
 @export var fade_mode: bool = false
@@ -23,6 +24,10 @@ func _ready() -> void:
 	fade_time.wait_time = base_time
 	add_child(fade_time)
 	fade_time.timeout.connect(on_fadeout)
+	intermittent_update = Timer.new()
+	intermittent_update.one_shot = true
+	add_child(intermittent_update)
+	
 	if show_area != null:
 		set_show_area(show_area)
 		
@@ -33,8 +38,11 @@ func _ready() -> void:
 			child.material = child.material.duplicate()
 			if child.material is ShaderMaterial:
 				material.set_shader_parameter("opacity_enabled",true)
+	
+	
+	update_fading_mode()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if !fade_time.is_stopped():
 		var goal: float = 1.0 if fade_mode else 0.0
@@ -42,13 +50,20 @@ func _process(delta: float) -> void:
 		var opacity: float = goal + (fade_time.time_left/denom)
 		
 		correct_opacity(opacity)
-		
-		
 	
-	update_fading_mode()
+	
+	
+	## updates data for players and NPCs every frame, 
+	## but blockades and interaction zones only every second, since they
+	## generally do not move.
+	if intermittent_update.is_stopped():
+		update_fading_mode()
+		intermittent_update.start(1.0)
+	else:
+		update_fading_mode(false,false)
 
 
-func update_fading_mode(instant_override: bool = false):
+func update_fading_mode(instant_override: bool = false, intermittent: bool = true):
 	if is_instance_valid(show_area) and show_area != null:
 		var c: Array[Node2D] = show_area.get_overlapping_bodies()
 		
@@ -64,15 +79,18 @@ func update_fading_mode(instant_override: bool = false):
 				if !node.update_fading.is_connected(update_fading_mode):
 					node.update_fading.connect(update_fading_mode.bind(true))
 			elif node is NPC:
-				if !node.update_fading.is_connected(empty_function):
-					node.update_fading.connect(empty_function)
+				if !node.update_fading.is_connected(_empty_function):
+					node.update_fading.connect(_empty_function)
 					node.fade_in_checks.append(self)
-			elif node is Blockade:
-				#print("detected blockade")
-				if!node.empty_signal.is_connected(empty_function):
-					#print("connecting blockade")
-					node.empty_signal.connect(empty_function)
-					node.fade_in_checks.append(self)
+			elif intermittent:
+				if node is Blockade:
+					#print("detected blockade")
+					if !node.fade_in_checks.has(self):
+						#print("connecting blockade")
+						node.fade_in_checks.append(self)
+				elif node is InteractionZone:
+					if !node.fade_in_checks.has(self):
+						node.fade_in_checks.append(self)
 			
 			#if node.has_method("get_seamless") and !instant_fading:
 			#	instant_fading = node.get_seamless()
@@ -120,7 +138,7 @@ func change_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: b
 	elif clear_non_included:
 		material = null
 	
-	
+	update_fading_mode()
 
 ## sets this node and all child nodes to the correct opacity
 func correct_opacity(input: float) -> void:
@@ -137,5 +155,5 @@ func correct_opacity(input: float) -> void:
 				material.set_shader_parameter("opacity",input)
 
 ## intentionally does nothing
-func empty_function() -> void:
+func _empty_function() -> void:
 	pass

@@ -8,9 +8,18 @@
 class_name GameManager
 extends Control
 
+## Holds the dialogue popups
 @onready var text_holder: HBoxContainer = %HBoxContainer
+## Holds the game level
 @onready var game_world: SubViewport = %"game world"
+## Displays all pause-menu related icons
+@onready var pause_menu: Control = %pause_menu
+## Holds the pause menu options
+@onready var pause_options: VBoxContainer = %VBoxContainer
+## Automatically signals the game when certain events occur
 @onready var cue: GameCue = %GameCue
+
+
 
 ## Used to create textboxes
 const textbox: PackedScene = preload("res://scenes/UI/textbox.tscn")
@@ -129,6 +138,7 @@ func _ready() -> void:
 	cue.add_cue("delay",Callable(pause_dialogue))
 
 
+## pauses the dialogue window for a specific amount of time
 func pause_dialogue(input: int) -> void:
 	if dialogue_timer.is_stopped() and input > 0:
 		dialogue_timer.start(0.1 * input)
@@ -170,6 +180,7 @@ func change_level(input: int) -> void:
 			child.global_position += 16.0 * Vector2(game_data.get_data("x_shift"),game_data.get_data("y_shift"))
 			child.pl.finish_camera_glide()
 			player = child.pl
+			player.request_pause.connect(pause_requested)
 	game_data.remove_data("x_set")
 	game_data.remove_data("y_set")
 	game_data.remove_data("x_shift")
@@ -182,10 +193,12 @@ func change_level(input: int) -> void:
 
 
 
+
 ## Right now it instantly starts the game, but this should later on
 ## be changed to include the expected options along with a few different
 ## save slots.
-func menu_behavior(delta: float) -> void:
+func menu_behavior(_delta: float) -> void:
+	pause_menu.hide()
 	text_holder.hide()
 	get_tree().paused = true
 	game_world.handle_input_locally = false
@@ -194,9 +207,12 @@ func menu_behavior(delta: float) -> void:
 	get_tree().paused = false
 	change_level(0)
 
+
+
 ## Lets the player play in the game world. Any extra logic needed for
 ## the gameplay should be added here.
-func game_behavior(delta: float) -> void:
+func game_behavior(_delta: float) -> void:
+	pause_menu.hide()
 	text_holder.hide()
 	game_world.handle_input_locally = true
 	
@@ -208,7 +224,8 @@ func game_behavior(delta: float) -> void:
 		color_timer.start(2.5)
 
 ## performs all the logic for dialogue to display correctly. 
-func dialogue_behavior(delta: float) -> void:
+func dialogue_behavior(_delta: float) -> void:
+	pause_menu.hide()
 	text_holder.visible = dialogue_timer.is_stopped()
 	game_world.handle_input_locally = false
 	
@@ -219,14 +236,17 @@ func dialogue_behavior(delta: float) -> void:
 	match substate:
 		0: # starts the dialogue fresh
 			
-			dialogue_script.reset_dialogue()
+			#dialogue_script.reset_dialogue()
 			textbox_delay.start(0.5)
 			substate = 1
 			
 		1: # requests the correct dialogue boxes to appear 
 			
-			fill_dialogue(0.01 * clamp(game_data.get_data("lettering"),1,1000))
-			substate = 2
+			var more: bool = fill_dialogue(0.01 * clamp(game_data.get_data("lettering"),1,1000))
+			if more:
+				substate = 2
+			else:
+				substate = 4
 			
 		2: # checks for player input while dialogue is filing/is completely filled
 			
@@ -276,45 +296,84 @@ func dialogue_behavior(delta: float) -> void:
 					substate = 1
 			
 		3: # skips the delay between different letters
-			fill_dialogue(0.01 * clamp(game_data.get_data("lettering"),1,1000),true)
-			substate = 2
-			
+			var more: bool = fill_dialogue(0.01 * clamp(game_data.get_data("lettering"),1,1000),true)
+			if more:
+				substate = 2
+			else:
+				substate = 4
+		4: # ends the dialogue and returns to the game
+			stored_text = []
+			player.input_allowed = true
+			current_state = game_state.GAME
 		_: # unknown substates redirect to the beginning of dialogue
 			substate = 0
 
 ## deletes old dialogue boxes and adds in new ones based on the current needs
-func fill_dialogue(delay: float, match_letters: bool = false) -> void:
+## return is whether or not there is more dialogue
+func fill_dialogue(delay: float, match_letters: bool = false, target: Control = text_holder) -> bool:
 	var let: Array[int] = []
-	for child in text_holder.get_children():
+	for child in target.get_children():
 		if match_letters and child is Textbox:
 			var temp = let
 			let = [child.visible_characters]
 			let.append_array(temp)
-		text_holder.remove_child(child)
+		target.remove_child(child)
 		child.queue_free()
 	
 	# if the current dialogue is done, simply delete these old textboxes
 	# and go back to the game instead. 
 	if dialogue_script.dialogue_finished():
-		stored_text = []
-		player.input_allowed = true
-		current_state = game_state.GAME
-		return
+		return false
 	
 	stored_text = dialogue_script.line()
 	
 	for line in stored_text:
 		var temp: Textbox = textbox.instantiate()
-		text_holder.add_child(temp)
+		target.add_child(temp)
 		var initial: int = 0
 		if let.size() > 0:
 			initial = let.pop_back()
 		temp.display(line,delay,initial)
-		
+	
+	return true
 
 
 ## any logic done in the pause menu would go here.
-func paused_behavior(delta: float) -> void:
+func paused_behavior(_delta: float) -> void:
+	pause_menu.show()
 	text_holder.hide()
 	get_tree().paused = true
-	game_world.handle_input_locally = true
+	game_world.handle_input_locally = false
+	
+	
+	if !dialogue_timer.is_stopped():
+		substate = 1
+		return
+	elif textbox_delay.is_stopped() and substate != 0:
+		if Input.is_action_just_pressed("Start button"):
+			substate = 4
+	
+	match substate:
+		0:
+			# TODO: set the dialogue script here
+			
+			textbox_delay.start(0.5)
+			substate = 1
+		
+		1:
+			pass
+		
+		4:
+			stored_text = []
+			pause_requested(false)
+
+
+## responds to player requests for pausing the game
+func pause_requested(pausing: bool = true) -> void:
+	
+	current_state = game_state.PAUSED if pausing else game_state.GAME
+	player.input_allowed = !pausing
+	get_tree().paused = pausing
+	substate = 0
+	
+	

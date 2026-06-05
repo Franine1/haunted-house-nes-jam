@@ -14,7 +14,7 @@
 distance = 541.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l00pn"]
-size = Vector2(28, 44)
+size = Vector2(22, 38)
 
 [node name="Room" type="Area2D" unique_id=240038182]
 script = ExtResource("1_ehqi5")
@@ -38,21 +38,24 @@ metadata/_custom_type_script = "uid://byvdvujagvico"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=463542383]
 shape = SubResource("WorldBoundaryShape2D_s1yhe")
 
-[node name="Car" type="Sprite2D" parent="." unique_id=226010141]
-material = ExtResource("6_x8jcr")
+[node name="Blockade" type="StaticBody2D" parent="." unique_id=1032553211]
 position = Vector2(-40, 208)
 rotation = 1.5707964
-texture = ExtResource("6_fnaax")
-
-[node name="Blockade" type="StaticBody2D" parent="Car" unique_id=1032553211]
+collision_layer = 33
+collision_mask = 3
 script = ExtResource("8_qw784")
 interact_activation = true
+material_layer = 4
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Car/Blockade" unique_id=1937972957]
+[node name="Car" type="Sprite2D" parent="Blockade" unique_id=226010141]
+material = ExtResource("6_x8jcr")
+texture = ExtResource("6_fnaax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade" unique_id=1937972957]
 shape = SubResource("RectangleShape2D_l00pn")
 
-[node name="DialogueLines" type="Node" parent="Car/Blockade" unique_id=314975956]
+[node name="DialogueLines" type="Node" parent="Blockade" unique_id=314975956]
 script = ExtResource("9_8f71u")
 lines = Array[String](["It's your car."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

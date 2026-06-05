@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dhyvdqgu87oml" path="res://scripts/game_manager.gd" id="1_01db0"]
 [ext_resource type="Script" uid="uid://cow5mcybln08" path="res://scripts/game_cue.gd" id="2_aqc0r"]
+[ext_resource type="Theme" uid="uid://dyv6sm6km8i56" path="res://resources/themes/UI_theme.tres" id="3_tl5mg"]
 
 [node name="game manager" type="Control" unique_id=604842194]
 process_mode = 3
@@ -18,7 +19,7 @@ unique_name_in_owner = true
 script = ExtResource("2_aqc0r")
 metadata/_custom_type_script = "uid://cow5mcybln08"
 
-[node name="container" type="SubViewportContainer" parent="." unique_id=1981681289]
+[node name="game container" type="SubViewportContainer" parent="." unique_id=1981681289]
 process_mode = 1
 layout_mode = 1
 anchors_preset = 15
@@ -27,14 +28,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="game world" type="SubViewport" parent="container" unique_id=105587520]
+[node name="game world" type="SubViewport" parent="game container" unique_id=105587520]
 unique_name_in_owner = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(256, 224)
 render_target_update_mode = 4
 
-[node name="vbox" type="VBoxContainer" parent="." unique_id=1332029361]
+[node name="dialogue" type="VBoxContainer" parent="." unique_id=1332029361]
 process_mode = 3
 z_index = 50
 layout_mode = 1
@@ -44,14 +45,72 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="vbox" unique_id=737062695]
+[node name="HBoxContainer" type="HBoxContainer" parent="dialogue" unique_id=737062695]
 unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 50.0
 
-[node name="Control" type="Control" parent="vbox" unique_id=188079722]
+[node name="Control" type="Control" parent="dialogue" unique_id=188079722]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 176.0
+
+[node name="pause_menu" type="Control" parent="." unique_id=32964571]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="pause_menu" unique_id=758134960]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.078431375, 0.7529412)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="pause_menu" unique_id=488331080]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="pause_menu/HBoxContainer" unique_id=2011844099]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="pause_menu/HBoxContainer" unique_id=1043652519]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/HBoxContainer/VBoxContainer2" unique_id=702563883]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_tl5mg")
+text = "PAUSED
+"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu/HBoxContainer/VBoxContainer2" unique_id=2292972]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="Control2" type="Control" parent="pause_menu/HBoxContainer" unique_id=918557586]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0

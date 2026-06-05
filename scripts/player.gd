@@ -9,6 +9,8 @@ extends NPC
 ## whether or not the camera is teleporting to the player
 var camera_instant: bool = false
 
+signal request_pause()
+
 func _physics_process(delta: float) -> void:
 	
 	upkeep(delta)
@@ -47,6 +49,9 @@ func _physics_process(delta: float) -> void:
 						target.interact(self)
 						
 						delay_interaction()
+			elif Input.is_action_just_pressed("Start button") and input_allowed and interact_delay.is_stopped():
+				request_pause.emit()
+				delay_interaction()
 			
 	
 	fix_camera(camera_instant)
@@ -55,18 +60,18 @@ func _physics_process(delta: float) -> void:
 
 ## Ensures the camera is snapped in the proper room space
 func fix_camera(instant: bool = false) -> void:
-	var translate: Vector2 = global_position
-	translate /= 16.0
-	translate -= camera_snap_axis
-	translate = Vector2(round(translate.x/16.0),round(translate.y/14.0))
-	translate = Vector2(translate.x * 16.0,translate.y * 14.0)
-	translate = translate.round()
-	translate += camera_snap_axis
-	translate *= 16.0
+	var transl: Vector2 = global_position
+	transl /= 16.0
+	transl -= camera_snap_axis
+	transl = Vector2(round(transl.x/16.0),round(transl.y/14.0))
+	transl = Vector2(transl.x * 16.0,transl.y * 14.0)
+	transl = transl.round()
+	transl += camera_snap_axis
+	transl *= 16.0
 	if instant:
-		camera.warp(translate)
-	elif camera.target != translate:
-		camera.glide(translate)
+		camera.warp(transl)
+	elif camera.target != transl:
+		camera.glide(transl)
 
 
 ## forces rooms the player is in to instantly fade in when warping

@@ -84,7 +84,7 @@ func ready_behavior() -> void:
 
 
 ## Used to add logic during _physics_process without overriding important behavior
-func process_behavior(delta: float) -> void:
+func process_behavior(_delta: float) -> void:
 	pass
 
 
@@ -92,7 +92,7 @@ func set_interaction(input: bool = true) -> void:
 	interact_allowed = input
 
 
-func interact(by: Player) -> void:
+func interact(_by: Player) -> void:
 	if interact_allowed:
 		send_dialogue()
 
@@ -134,7 +134,7 @@ func progress_animation(delta: float, opacity: float = -1.0) -> void:
 			sprite.frame = (floori((initial_walk_time - walk_time)*speed_scale * anim_speed) % 2) + 1
 
 
-func upkeep(delta: float) -> void:
+func upkeep(_delta: float) -> void:
 	interact_delay.paused = !input_allowed
 	var temp: Array[CutscenePath] = game_data.accept_movement(NPC_ID)
 	temp.append_array(movement_queue)
@@ -202,14 +202,14 @@ func compile_movement_queue() -> Vector2:
 
 func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_any: bool = false) -> Vector2i:
 	# rounds all components of the movement vector
-	var snapped: Vector2
+	var snap: Vector2
 	if accept_any:
-		snapped = mvm.sign()
+		snap = mvm.sign()
 	else:
-		snapped = mvm.normalized().round()
+		snap = mvm.normalized().round()
 	
 	# snaps the vector to the currect axis
-	var move: Vector2 = current_axis * snapped
+	var move: Vector2 = current_axis * snap
 	
 	var axis_swapped: bool = false
 	
@@ -217,7 +217,7 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_a
 		# if the axis snapping set movement to 0, snap to the opposite axis instead
 		shift_axis()
 		axis_swapped = true
-		move = current_axis * snapped
+		move = current_axis * snap
 	
 	if move.length_squared() <= 0.1:
 		move = Vector2.ZERO
@@ -240,14 +240,15 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_a
 		if directions.has(move):
 			for sprite in sprites:
 				sprite.animation = directions[move]
-				# set the interaction direction to our movement direction
-				interaction.rotation = move.angle()
+			# set the interaction direction to our movement direction
+			interaction.rotation = move.angle()
 		if directions.has(dir_override):
 			for sprite in sprites:
 				sprite.animation = directions[dir_override]
-				# set the interaction direction to our movement direction
-				interaction.rotation = dir_override.angle()
+			# set the interaction direction to our movement direction
+			interaction.rotation = dir_override.angle()
 			
+	
 	
 	
 	if collision:
@@ -257,7 +258,15 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_a
 		shift_axis()
 		var wall = collision.get_collider()
 		if wall is Blockade:
-			wall.bump(self)
+			if input_allowed:
+				var temp: Vector2 = (collision.get_position()-global_position).normalized().round()
+				if directions.has(temp):
+					for sprite in sprites:
+						sprite.animation = directions[temp]
+					# set the interaction direction to our movement direction
+					interaction.rotation = temp.angle()
+				wall.bump(self)
+			
 	else:
 		# move if the target position is free
 		velocity = move * SPEED * speed_scale
@@ -268,6 +277,7 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_a
 			initial_walk_time += dur
 		walk_time = dur + 0.04
 		input_delay.start(dur)
+	
 	
 	var ans: Vector2i = Vector2i(move)
 	return ans

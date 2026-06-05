@@ -12,12 +12,21 @@ extends Area2D
 @export var entry_activation: bool = false
 ## Set to a negative number if there is no interaction limit
 @export var max_interactions: int = -1
+
+## DEPRECATED: These two values are not advised to use since
+## They reset if the level changes
 var interactions: int = 0
 var interact_allowed: bool = true
 
 ## path to the GameData resource
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
+## Any animated sprites linked to this node
+var sprites: Array[CanvasItem]
+## Used as a list for NPCs to check for whether to be visible or not
+var fade_in_checks: Array[Layout] = []
+## used to keep track of the layer this object is in for the color palettes
+@export var material_layer: int = 0
 
 
 ## when the player presses A on it, sends its dialogue if interact_Activation is true
@@ -47,11 +56,52 @@ func _ready() -> void:
 	body_shape_entered.connect(detected_player.unbind(2))
 	collision_layer = 8
 	collision_mask = 4
+	
+	
+	sprites = []
+	for child in get_children():
+		if child is CanvasItem:
+			sprites.append(child)
+			child.z_index = 2
 
 ## when the player walks into it, send its dialogue if entry_activation is true
-func detected_player(body_rid: RID, body: Node2D) -> void:
+func detected_player(_body_rid: RID, _body: Node2D) -> void:
 	if entry_activation and interact_allowed and (max_interactions < 0 or interactions < max_interactions):
 		send_dialogue()
 
 func set_interaction(input: bool = true) -> void:
 	interact_allowed = input
+
+
+func progress_animation(_delta: float, opacity: float = -1.0) -> void:
+	
+	var do_opacity: bool = opacity >= 0.0
+	var result_opacity: float = opacity if do_opacity else 1.0
+	if !monitoring:
+		result_opacity = 0.0
+	# ensure the blockade is visible
+	for sprite in sprites:
+		if sprite.material is ShaderMaterial:
+			sprite.material.set_shader_parameter("opacity",result_opacity)
+	
+	if false:
+		print(str(fade_in_checks.size()) + " | " + str(result_opacity))
+
+
+func _process(delta: float) -> void:
+	var best: float = 0.0 if fade_in_checks.size() > 0 else 1.0
+	for layout in fade_in_checks:
+		if layout.overlaps(self):
+			best = max(best,layout.recent_opacity)
+	progress_animation(delta, best)
+
+
+func change_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:
+	for sprite in sprites:
+		if input.has(material_layer):
+			sprite.material = input[material_layer].duplicate()
+			if sprite.material is ShaderMaterial:
+				sprite.material.set_shader_parameter("opacity_enabled",true)
+		elif clear_non_included:
+			sprite.material = null
+	

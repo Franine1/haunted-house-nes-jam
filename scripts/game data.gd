@@ -138,7 +138,6 @@ func queue_movement_array(input: Array[CutscenePath], npc_id: int) -> void:
 		movement_queues[npc_id].append_array(temp)
 
 
-
 func accept_movement(npc_id: int) -> Array[CutscenePath]:
 	var ans: Array[CutscenePath] = []
 	if movement_queues.has(npc_id):
