@@ -92,12 +92,13 @@ func read_dialogue(input: Dialogue) -> void:
 	
 	
 	current_state = game_state.DIALOGUE
-	if dialogue_script != null and is_instance_valid(dialogue_script) and get_children().has(dialogue_script):
+	if dialogue_script != null and is_instance_valid(dialogue_script) and (dialogue_script.get_parent() == null or dialogue_script.has_meta("deletable")):
 		remove_child(dialogue_script)
 		dialogue_script.queue_free()
 	dialogue_script = input
 	if dialogue_script.get_parent() == null:
 		add_child(dialogue_script)
+		dialogue_script.set_meta("deletable",true)
 	substate = 0
 
 func _process(delta: float) -> void:
