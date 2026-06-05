@@ -39,6 +39,22 @@ func display(input: String, speed: float = 0.01, initial_visible: int = 0) -> vo
 	
 	letters.start(duration)
 
+func fullDisplay(input: String, initial_visible: int = input.length()) -> void:
+	var read_text: String = input
+	var select: bool = read_text[0] == ">"
+	if select:
+		read_text = read_text.substr(1)
+		pass
+	
+	text = read_text
+	
+	if select:
+		back.theme_type_variation = "SelectedPanel"
+	else:
+		back.theme_type_variation = "Panel"
+	visible_characters = initial_visible
+	finish_letters()
+
 ## This function is automatically executed by the textbox to
 ## fill out its letters over time
 func next_letter() -> void:

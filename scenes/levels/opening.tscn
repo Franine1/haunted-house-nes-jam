@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bofa6cyv0wuc7" path="res://assets/openingbackground.png" id="1_bgsd8"]
 [ext_resource type="Material" uid="uid://fdknrie3lpxi" path="res://resources/palettes/redpallete.tres" id="2_e0oev"]
 [ext_resource type="Texture2D" uid="uid://67vb6pab6cw" path="res://assets/car.png" id="3_l1ccp"]
+[ext_resource type="Script" uid="uid://bgp2vr75ki64h" path="res://scenes/levels/opening.gd" id="4_xvwrp"]
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="5_8ksfs"]
 
 [node name="opening" type="Node2D" unique_id=1103441852]
 
@@ -15,10 +17,13 @@ repeat_times = 2
 position = Vector2(128, 112)
 texture = ExtResource("1_bgsd8")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=180518125]
-position = Vector2(128, 112)
-
 [node name="Car" type="Sprite2D" parent="." unique_id=107883568]
 material = ExtResource("2_e0oev")
 position = Vector2(64, 136)
 texture = ExtResource("3_l1ccp")
+script = ExtResource("4_xvwrp")
+
+[node name="DialogueLines" type="Node" parent="Car" unique_id=661224745]
+script = ExtResource("5_8ksfs")
+lines = Array[String](["kill me"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

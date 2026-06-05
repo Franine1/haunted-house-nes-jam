@@ -306,7 +306,8 @@ func fill_dialogue(delay: float, match_letters: bool = false) -> void:
 		var initial: int = 0
 		if let.size() > 0:
 			initial = let.pop_back()
-		temp.display(line,delay,initial)
+		#temp.display(line,delay,initial)
+		temp.fullDisplay(line,initial)
 		
 
 

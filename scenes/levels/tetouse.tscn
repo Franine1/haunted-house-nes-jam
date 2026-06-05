@@ -79,6 +79,7 @@ metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone2" unique_id=126638935]
 position = Vector2(0, 160)
 shape = SubResource("RectangleShape2D_gmymq")
+disabled = true
 
 [node name="DialogueToggle" type="Node" parent="InteractionZone2" unique_id=1778428533]
 script = ExtResource("7_38uu6")

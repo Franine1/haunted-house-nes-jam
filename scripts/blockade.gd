@@ -10,6 +10,8 @@ extends StaticBody2D
 @export var interact_activation: bool = false
 ## Whether you can interact with this by colliding with it
 @export var collide_activation: bool = false
+## Whether the dialogue triggers automatically
+@export var instant_activation: bool = false
 
 @export_category("Activation Cue")
 @export var cue: String
@@ -30,7 +32,7 @@ var fade_in_checks: Array[Layout] = []
 
 
 ## only used to determine if a blockade is linked to a layout
-signal empty_signal()
+##signal empty_signal()
 
 enum compare {
 	EQUAL ## The values must be equivalent
@@ -57,7 +59,6 @@ func _process(delta: float) -> void:
 	if interact_activation and active:
 		collision_layer += 8
 	collision_mask = 2
-	
 	
 	var best: float = 0.0
 	for layout in fade_in_checks:
@@ -121,7 +122,14 @@ func progress_animation(delta: float, opacity: float = -1.0) -> void:
 	if false:
 		print(str(fade_in_checks.size()) + " | " + str(result_opacity))
 
-
+func inst() -> void:
+	print("sigh?")
+	pass
+	print(interact_allowed)
+	print(active)
+	await(get_tree().create_timer(1))
+	print(interact_allowed)
+	print(active)
 
 func _ready() -> void:
 	sprites = []
@@ -129,3 +137,6 @@ func _ready() -> void:
 		if child is CanvasItem:
 			sprites.append(child)
 			child.z_index = 2
+	if instant_activation == true:
+		print("sigh")
+		inst()
