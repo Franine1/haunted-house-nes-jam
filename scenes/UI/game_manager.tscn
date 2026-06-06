@@ -64,6 +64,12 @@ cue = "menu"
 value = 2
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
+[node name="DialogueCue2" type="Node" parent="menu system/main menu/option2/load" unique_id=50123186]
+script = ExtResource("3_jgm3m")
+cue = "saved"
+value = -2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="options" type="Node" parent="menu system/main menu/option2" unique_id=1085935555]
 script = ExtResource("2_a4601")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
@@ -163,6 +169,32 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 script = ExtResource("3_jgm3m")
 cue = "menu"
 value = 4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle2" type="Node" parent="menu system/pause menu2/option/exit" unique_id=98183460]
+script = ExtResource("3_hov4v")
+cue = "saved"
+value = 1
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue2" type="Node" parent="menu system/pause menu2/option/exit/DialogueToggle2" unique_id=1025294483]
+script = ExtResource("3_jgm3m")
+cue = "confirm"
+value = -1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle" type="Node" parent="menu system/pause menu2/option/exit" unique_id=1410554145]
+script = ExtResource("3_hov4v")
+cue = "saved"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="menu system/pause menu2/option/exit/DialogueToggle" unique_id=145543421]
+script = ExtResource("3_jgm3m")
+cue = "confirm"
+value = 1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="game saves" type="Node" parent="menu system" unique_id=1026008301]
@@ -270,35 +302,42 @@ value = -1
 compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueOption" type="Node" parent="menu system/game saves/confirm" unique_id=1393026285]
+[node name="DialogueToggle" type="Node" parent="menu system/game saves/confirm" unique_id=104792282]
+script = ExtResource("3_hov4v")
+cue = "saved"
+value = -2
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="menu system/game saves/confirm/DialogueToggle" unique_id=1393026285]
 script = ExtResource("4_hov4v")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueSection2" type="Node" parent="menu system/game saves/confirm/DialogueOption" unique_id=1568878014]
+[node name="DialogueSection2" type="Node" parent="menu system/game saves/confirm/DialogueToggle/DialogueOption" unique_id=1568878014]
 script = ExtResource("2_a4601")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="menu system/game saves/confirm/DialogueOption/DialogueSection2" unique_id=596510318]
+[node name="DialogueLines" type="Node" parent="menu system/game saves/confirm/DialogueToggle/DialogueOption/DialogueSection2" unique_id=596510318]
 script = ExtResource("5_34ocb")
 lines = Array[String](["Cancel"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue" type="Node" parent="menu system/game saves/confirm/DialogueOption/DialogueSection2" unique_id=133210718]
+[node name="DialogueCue" type="Node" parent="menu system/game saves/confirm/DialogueToggle/DialogueOption/DialogueSection2" unique_id=133210718]
 script = ExtResource("3_jgm3m")
 cue = "menu"
 value = -1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueSection" type="Node" parent="menu system/game saves/confirm/DialogueOption" unique_id=402109699]
+[node name="DialogueSection" type="Node" parent="menu system/game saves/confirm/DialogueToggle/DialogueOption" unique_id=402109699]
 script = ExtResource("2_a4601")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="menu system/game saves/confirm/DialogueOption/DialogueSection" unique_id=1631547467]
+[node name="DialogueLines" type="Node" parent="menu system/game saves/confirm/DialogueToggle/DialogueOption/DialogueSection" unique_id=1631547467]
 script = ExtResource("5_34ocb")
 lines = Array[String](["Overwrite"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue" type="Node" parent="menu system/game saves/confirm/DialogueOption/DialogueSection" unique_id=314514126]
+[node name="DialogueCue" type="Node" parent="menu system/game saves/confirm/DialogueToggle/DialogueOption/DialogueSection" unique_id=314514126]
 script = ExtResource("3_jgm3m")
 cue = "confirm"
 value = 1
@@ -322,16 +361,45 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 script = ExtResource("4_hov4v")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueLines" type="Node" parent="menu system/exit/DialogueOption" unique_id=1684970724]
+[node name="DialogueSection2" type="Node" parent="menu system/exit/DialogueOption" unique_id=2137487418]
+script = ExtResource("2_a4601")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="menu system/exit/DialogueOption/DialogueSection2" unique_id=1684970724]
 script = ExtResource("5_34ocb")
 lines = Array[String](["Cancel"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="menu system/exit/DialogueOption/DialogueSection2" unique_id=1649733391]
+script = ExtResource("3_jgm3m")
+cue = "menu"
+value = -1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueSection" type="Node" parent="menu system/exit/DialogueOption" unique_id=1542670360]
 script = ExtResource("2_a4601")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="menu system/exit/DialogueOption/DialogueSection" unique_id=844119395]
+[node name="DialogueToggle" type="Node" parent="menu system/exit/DialogueOption/DialogueSection" unique_id=1624870313]
+script = ExtResource("3_hov4v")
+cue = "confirm"
+value = -1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="menu system/exit/DialogueOption/DialogueSection/DialogueToggle" unique_id=1508617359]
+script = ExtResource("5_34ocb")
+lines = Array[String](["Exit Without Saving"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="menu system/exit/DialogueOption/DialogueSection" unique_id=870868526]
+script = ExtResource("3_hov4v")
+cue = "confirm"
+value = -1
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="menu system/exit/DialogueOption/DialogueSection/DialogueToggle2" unique_id=844119395]
 script = ExtResource("5_34ocb")
 lines = Array[String](["Quit Game"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

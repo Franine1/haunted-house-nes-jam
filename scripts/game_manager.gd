@@ -424,6 +424,7 @@ func menu_behavior(_delta: float) -> void:
 					if default_menu == 1:
 						# save a game
 						if game_data.get_data("confirm") == 1:
+							game_data.set_data("saved",1)
 							game_data.save_game(game_data.get_data("slot"))
 							game_data.set_data("menu",default_menu)
 						
@@ -435,17 +436,19 @@ func menu_behavior(_delta: float) -> void:
 						else:
 							default_mode = 5
 				4: ## exits current context
-					if default_menu == 1:
-						# deletes the current game world, returns to menu
-						for child in game_world.get_children():
-							game_world.remove_child(child)
-							child.queue_free()
-						default_menu = 0
-						default_mode = 0
-						game_data.set_data("menu",default_menu)
-					elif game_data.get_data("confirm") == 1:
-						# exit the game
-						get_tree().quit()
+					if game_data.get_data("confirm") == 1:
+						if default_menu == 1:
+							# deletes the current game world, returns to menu
+							for child in game_world.get_children():
+								game_world.remove_child(child)
+								child.queue_free()
+							default_menu = 0
+							default_mode = 0
+							game_data.set_data("menu",default_menu)
+						else:
+							# exit the game
+							get_tree().quit()
+							
 				5: ## start the game
 					# resumes game
 					if default_menu == 1: ## this is the pause menu
@@ -481,13 +484,13 @@ func pause_requested(pausing: bool = true) -> void:
 	substate = 0
 	dialogue_script = menu_system
 	game_data.set_data("menu",default_menu)
+	game_data.set_data("saved",0)
 	clear_menu_data()
 
 func clear_menu_data() -> void:
 	
 	game_data.set_data("slot",0)
 	game_data.set_data("confirm",0)
-	game_data.set_data("saved",0)
 
 
 func start_game(is_new: bool = true) -> void:
