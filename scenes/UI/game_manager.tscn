@@ -444,14 +444,12 @@ grow_vertical = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="dialogue" unique_id=737062695]
 unique_name_in_owner = true
 clip_contents = true
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 50.0
 
 [node name="Control" type="Control" parent="dialogue" unique_id=188079722]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 176.0
 
 [node name="pause_menu" type="Control" parent="." unique_id=32964571]
 unique_name_in_owner = true

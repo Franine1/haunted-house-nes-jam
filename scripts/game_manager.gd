@@ -260,6 +260,9 @@ func dialogue_behavior(_delta: float) -> void:
 			var more: bool = fill_dialogue(0.01 * clamp(game_data.get_data("lettering"),1,1000))
 			if more:
 				substate = 2
+				#var extra: float = clamp(floor(3.0 * pow(stored_text.size(),0.333)),1.0,16.0) * 16.0
+				#text_holder.custom_minimum_size = Vector2(0.0,extra)
+					
 			else:
 				substate = 4
 			
@@ -326,14 +329,11 @@ func dialogue_behavior(_delta: float) -> void:
 ## deletes old dialogue boxes and adds in new ones based on the current needs
 ## return is whether or not there is more dialogue
 func fill_dialogue(delay: float, match_letters: bool = false, target: Control = text_holder) -> bool:
-	var let: Array[int] = []
-	for child in target.get_children():
-		if match_letters and child is Textbox:
-			var temp = let
-			let = [child.visible_characters]
-			let.append_array(temp)
-		target.remove_child(child)
-		child.queue_free()
+	
+	if !match_letters or dialogue_script.dialogue_finished():
+		for child in target.get_children():
+			target.remove_child(child)
+			child.queue_free()
 	
 	# if the current dialogue is done, simply delete these old textboxes
 	# and go back to the game instead. 
@@ -342,13 +342,17 @@ func fill_dialogue(delay: float, match_letters: bool = false, target: Control = 
 	
 	stored_text = dialogue_script.line()
 	
-	for line in stored_text:
-		var temp: Textbox = textbox.instantiate()
-		target.add_child(temp)
-		var initial: int = 0
-		if let.size() > 0:
-			initial = let.pop_back()
-		temp.display(line,delay,initial)
+	if match_letters:
+		var i = 0
+		for child in target.get_children():
+			if child is Textbox:
+				child.replace_text(stored_text[i])
+				i += 1
+	else:
+		for line in stored_text:
+			var temp: Textbox = textbox.instantiate()
+			target.add_child(temp)
+			temp.display(line,delay)
 	
 	return true
 
@@ -407,7 +411,7 @@ func menu_behavior(_delta: float) -> void:
 				else:
 					for i in temp.size():
 						if temp[i] != stored_text[i]:
-							substate = 1
+							fill_dialogue(0.01,true,target)
 							break
 			
 			if read_a:

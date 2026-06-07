@@ -26,6 +26,9 @@ var player_position: Vector4 = Vector4.ZERO
 const savepath: String = "user://savedgames/"
 
 
+## TODO: fully implement this
+## used to request redundant dialogue scenes or changing scenes
+@export var saved_dialogue: Dictionary[String,PackedScene] = {}
 
 
 ## IMPORTANT: data values with meaning
@@ -67,6 +70,7 @@ const names: Array[String] = [
 	""
 	,"You"
 	,"Lea"
+	,"Window Person"
 ]
 
 
@@ -212,6 +216,8 @@ func load_game(slot: int) -> bool:
 				var result: int = int(next.get(1))
 				
 				data[key] = result
+	
+	file.close() 
 	
 	return true
 

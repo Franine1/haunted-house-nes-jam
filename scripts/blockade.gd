@@ -91,7 +91,7 @@ func send_dialogue() -> void:
 	var temp: Array[Dialogue]
 	for child in get_children():
 		if child is Dialogue:
-			temp.append(child)
+			temp.append(child.duplicate())
 	
 	game_data.queue_dialogue_array(temp)
 	

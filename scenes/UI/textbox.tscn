@@ -13,8 +13,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_uo5yn")
+fit_content = true
 scroll_active = false
 scroll_following_visible_characters = true
+shortcut_keys_enabled = false
 visible_characters_behavior = 1
 script = ExtResource("1_v60m8")
 metadata/_edit_use_anchors_ = true
@@ -33,3 +35,6 @@ theme = ExtResource("1_uo5yn")
 [node name="letter_timer" type="Timer" parent="." unique_id=1999774709]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="scroll_timer" type="Timer" parent="." unique_id=1457777748]
+unique_name_in_owner = true

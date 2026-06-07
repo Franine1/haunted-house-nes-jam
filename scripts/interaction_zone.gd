@@ -54,15 +54,15 @@ func _ready() -> void:
 	# and connects player collisions to the detected_player
 	# function.
 	body_shape_entered.connect(detected_player.unbind(2))
-	collision_layer = 8
-	collision_mask = 4
+	collision_layer = 40
+	collision_mask = 6
 	
 	
 	sprites = []
 	for child in get_children():
 		if child is CanvasItem:
 			sprites.append(child)
-			child.z_index = 2
+			child.z_index = 3
 
 ## when the player walks into it, send its dialogue if entry_activation is true
 func detected_player(_body_rid: RID, _body: Node2D) -> void:
