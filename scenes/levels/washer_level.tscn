@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://gqdtpgy8df1d"]
+
+[ext_resource type="Script" uid="uid://56yoruxpggjg" path="res://scripts/level.gd" id="1_1w44k"]
+[ext_resource type="PackedScene" uid="uid://b3sdkigh4r41v" path="res://scenes/characters/player.tscn" id="2_hundv"]
+[ext_resource type="PackedScene" uid="uid://788yecqta0dg" path="res://scenes/rooms/washer_entrance.tscn" id="3_ewcao"]
+[ext_resource type="Script" uid="uid://ckgko44c6nyac" path="res://scripts/blockade.gd" id="4_a0l57"]
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="5_tig5c"]
+[ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="6_jgbvq"]
+[ext_resource type="PackedScene" uid="uid://cyyw4qaml1uuq" path="res://scenes/objects/red_gate.tscn" id="7_tig5c"]
+[ext_resource type="PackedScene" uid="uid://df65dairh100i" path="res://scenes/objects/blue_gate.tscn" id="8_jgbvq"]
+[ext_resource type="PackedScene" uid="uid://ek5q3e60nbh8" path="res://scenes/objects/blue_switch.tscn" id="9_o6887"]
+[ext_resource type="PackedScene" uid="uid://c1spskvc5gy55" path="res://scenes/objects/red_switch.tscn" id="10_58u5q"]
+[ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="10_o6887"]
+[ext_resource type="PackedScene" uid="uid://bjmo0ca38roc1" path="res://scenes/characters/boat.tscn" id="11_jgbvq"]
+[ext_resource type="PackedScene" uid="uid://bgh4lv8o3p7hu" path="res://scenes/objects/checkpoint.tscn" id="13_58u5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xm21a"]
+size = Vector2(90, 93)
+
+[node name="Level" type="Node2D" unique_id=1876574184]
+script = ExtResource("1_1w44k")
+metadata/_custom_type_script = "uid://56yoruxpggjg"
+
+[node name="boat path" type="RigidBody2D" parent="." unique_id=1728970284]
+collision_layer = 64
+collision_mask = 4
+
+[node name="boat_path_shape" type="CollisionPolygon2D" parent="boat path" unique_id=1488402197]
+build_mode = 1
+polygon = PackedVector2Array(120, -472, 152, -472, 152, -792, 120, -792)
+
+[node name="boat" parent="." unique_id=681959088 instance=ExtResource("11_jgbvq")]
+position = Vector2(136, -488)
+
+[node name="Node2D" parent="." unique_id=1856024105 instance=ExtResource("2_hundv")]
+position = Vector2(120, 216)
+camera_snap_axis = Vector2(8, 7)
+
+[node name="washer_entrance" parent="." unique_id=1077939589 instance=ExtResource("3_ewcao")]
+
+[node name="return_to_lvl1" type="StaticBody2D" parent="." unique_id=924796776]
+script = ExtResource("4_a0l57")
+interact_activation = true
+collide_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="return_to_lvl1" unique_id=519269553]
+position = Vector2(128, 273.5)
+shape = SubResource("RectangleShape2D_xm21a")
+
+[node name="DialogueSection" type="Node" parent="return_to_lvl1" unique_id=143040719]
+script = ExtResource("5_tig5c")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueCue" type="Node" parent="return_to_lvl1/DialogueSection" unique_id=475782372]
+script = ExtResource("6_jgbvq")
+cue = "x_set"
+value = 1880
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="return_to_lvl1/DialogueSection" unique_id=968460796]
+script = ExtResource("6_jgbvq")
+cue = "y_set"
+value = 184
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue3" type="Node" parent="return_to_lvl1/DialogueSection" unique_id=211747690]
+script = ExtResource("6_jgbvq")
+cue = "reposition"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue4" type="Node" parent="return_to_lvl1/DialogueSection" unique_id=2002201044]
+script = ExtResource("6_jgbvq")
+cue = "level"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="Blockade" parent="." unique_id=511395359 instance=ExtResource("7_tig5c")]
+position = Vector2(56, -552)
+
+[node name="Blockade2" parent="." unique_id=712131418 instance=ExtResource("8_jgbvq")]
+position = Vector2(136, -552)
+
+[node name="InteractionZone" parent="." unique_id=1954855741 instance=ExtResource("9_o6887")]
+position = Vector2(56, -648)
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone" unique_id=1859127380]
+script = ExtResource("10_o6887")
+cue = "blue_lever1"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue3" type="Node" parent="InteractionZone/DialogueToggle" unique_id=1655214064]
+script = ExtResource("6_jgbvq")
+cue = "exit_banned"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone/DialogueToggle" unique_id=1009046973]
+script = ExtResource("6_jgbvq")
+cue = "boat_cutscene"
+value = 1
+delay = 1.0
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone/DialogueToggle" unique_id=631726380]
+script = ExtResource("6_jgbvq")
+cue = "blue_lever1"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone2" parent="." unique_id=77348620 instance=ExtResource("10_58u5q")]
+position = Vector2(24, -504)
+
+[node name="checkpoint" parent="." unique_id=872723591 instance=ExtResource("13_58u5q")]
+position = Vector2(104, -496)
+
+[node name="checkpoint2" parent="." unique_id=655148360 instance=ExtResource("13_58u5q")]
+position = Vector2(104, -608)

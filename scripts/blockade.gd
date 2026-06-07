@@ -27,8 +27,17 @@ var sprites: Array[CanvasItem]
 var fade_in_checks: Array[Layout] = []
 ## used to keep track of the layer this object is in for the color palettes
 @export var material_layer: int = 0
+## the blockade's visibility mode
+@export var visibility_type: mode = mode.ROOM_VISIBLE_AND_ACTIVE
 
 
+enum mode {
+	ALWAYS ## Always visible
+	,WHILE_ACTIVE ## Visible if it's cue condition is true
+	,WHILE_ROOM_IS_VISIBLE ## Visible if in contact with a visible room
+	,ROOM_VISIBLE_AND_ACTIVE ## Visible if both in a visible room and the cue condition is true
+	,ROOM_VISIBLE_OR_ACTIVE ## Visible if either in a visible room and the cue condition is true
+}
 
 enum compare {
 	EQUAL ## The values must be equivalent
@@ -107,10 +116,12 @@ func set_interaction(input: bool = true) -> void:
 
 func progress_animation(_delta: float, opacity: float = -1.0) -> void:
 	
-	var do_opacity: bool = opacity >= 0.0
+	var do_opacity: bool = (opacity >= 0.0) and ![mode.ALWAYS,mode.WHILE_ACTIVE].has(visibility_type)
+	do_opacity = do_opacity and !(visibility_type == mode.ROOM_VISIBLE_OR_ACTIVE and active)
 	var result_opacity: float = opacity if do_opacity else 1.0
-	if !active:
+	if !active and [mode.WHILE_ACTIVE,mode.ROOM_VISIBLE_AND_ACTIVE].has(visibility_type):
 		result_opacity = 0.0
+	
 	# ensure the blockade is visible
 	for sprite in sprites:
 		if sprite.material is ShaderMaterial:

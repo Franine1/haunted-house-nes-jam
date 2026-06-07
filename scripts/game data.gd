@@ -38,6 +38,7 @@ const savepath: String = "user://savedgames/"
 ## 0: Main menu | 1: Pause menu | 2: game saves | 3: options | 4: exiting game | 5: starting game 
 ## INFO: "confirm", "slot", "saved": used to organize the game menu properly
 ##
+## INFO: "exit_banned": while this isn't zero, the player cannot reach the menu
 ##
 ##
 ## INFO: "level": sets the level

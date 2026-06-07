@@ -273,7 +273,7 @@ position = Vector2(2048, 224)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="kitchen" unique_id=223047545]
 visible = false
-polygon = PackedVector2Array(-16, 336, 416, 336, 416, 192, 160, 192, 160, -16, -16, -16)
+polygon = PackedVector2Array(-16, 336, 272, 336, 272, 192, 160, 192, 160, -16, -16, -16)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="kitchen" unique_id=2020539810]
 visible = false
@@ -1273,6 +1273,61 @@ script = ExtResource("31_fyonw")
 lines = Array[String](["Leave it on", "You leave the faucet running."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
+[node name="DialogueToggle3" type="Node" parent="sink/DialogueSection" unique_id=710534119]
+script = ExtResource("32_gbo60")
+cue = "forced"
+value = -9
+compare_type = 4
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueToggle4" type="Node" parent="sink/DialogueSection/DialogueToggle3" unique_id=1502245520]
+script = ExtResource("32_gbo60")
+cue = "soap"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="sink/DialogueSection/DialogueToggle3/DialogueToggle4" unique_id=372750050]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="sink/DialogueSection/DialogueToggle3/DialogueToggle4/DialogueOption" unique_id=1693865063]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="sink/DialogueSection/DialogueToggle3/DialogueToggle4/DialogueOption/DialogueSection" unique_id=1829642968]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Check cabinet", "There's dish soap inside of the cabinet."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="sink/DialogueSection/DialogueToggle3/DialogueToggle4/DialogueOption/DialogueSection" unique_id=1312908357]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="sink/DialogueSection/DialogueToggle3/DialogueToggle4/DialogueOption/DialogueSection/DialogueOption" unique_id=436850114]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="sink/DialogueSection/DialogueToggle3/DialogueToggle4/DialogueOption/DialogueSection/DialogueOption/DialogueSection" unique_id=2144152758]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Take it", "Got the dish soap."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="sink/DialogueSection/DialogueToggle3/DialogueToggle4/DialogueOption/DialogueSection/DialogueOption/DialogueSection" unique_id=747527313]
+script = ExtResource("27_qiytx")
+cue = "soap"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="sink/DialogueSection/DialogueToggle3/DialogueToggle4/DialogueOption/DialogueSection/DialogueOption" unique_id=1734502976]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Leave it"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines" type="Node" parent="sink/DialogueSection/DialogueToggle3/DialogueToggle4/DialogueOption" unique_id=44537523]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
 [node name="Sprite2D" type="Sprite2D" parent="sink" unique_id=486318938]
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("40_wahft")
@@ -1936,25 +1991,164 @@ texture = ExtResource("40_wahft")
 script = ExtResource("27_o1ess")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection" unique_id=1306261198]
+[node name="DialogueToggle" type="Node" parent="evil_washer/DialogueSection" unique_id=160448619]
+script = ExtResource("32_gbo60")
+cue = "washer"
+value = 2
+compare_type = 2
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection/DialogueToggle" unique_id=1306261198]
 script = ExtResource("31_fyonw")
 lines = Array[String](["It's a washer. The machine's violently banging around."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueOption" type="Node" parent="evil_washer/DialogueSection" unique_id=143369819]
+[node name="DialogueToggle4" type="Node" parent="evil_washer/DialogueSection" unique_id=1760287973]
+script = ExtResource("32_gbo60")
+cue = "washer"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection/DialogueToggle4" unique_id=1159264313]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a washer. The door is open."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle3" type="Node" parent="evil_washer/DialogueSection" unique_id=212140916]
+script = ExtResource("32_gbo60")
+cue = "washer"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueToggle" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3" unique_id=1829526449]
+script = ExtResource("32_gbo60")
+cue = "soap"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle" unique_id=1452235710]
 script = ExtResource("37_tlc6n")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueSection" type="Node" parent="evil_washer/DialogueSection/DialogueOption" unique_id=1878565459]
+[node name="DialogueSection" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=1319445996]
 script = ExtResource("27_o1ess")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection/DialogueOption/DialogueSection" unique_id=348586589]
+[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=556708565]
 script = ExtResource("31_fyonw")
-lines = Array[String](["Stop the washer", "You press the power button, but it doesn't work. The door won't open either. ", ""])
+lines = Array[String](["Use dish soap", "You don't think you'd ever do this with your own clothes, but times are tough."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueLines2" type="Node" parent="evil_washer/DialogueSection/DialogueOption" unique_id=546467129]
+[node name="DialogueCue" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=491392518]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 10
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=480458200]
+script = ExtResource("31_fyonw")
+lines = Array[String](["...!!", "The washer stopped. Seems like that was enough to get the clothes clean.", "(...Was it really, though?)", "Either way, you're able to open the door and check the clothes for a key now."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue3" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=1174643268]
+script = ExtResource("27_qiytx")
+cue = "delay"
+value = 10
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines3" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=1027118515]
+script = ExtResource("31_fyonw")
+lines = Array[String](["...?", "The inside of the washer turned into some kind of tunnel. ", "It looks like if you want a key, you're gonna have to crawl inside."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=1983040484]
+script = ExtResource("27_qiytx")
+cue = "washer"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=1987964379]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3" unique_id=856828109]
+script = ExtResource("32_gbo60")
+cue = "soap"
+value = 1
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection/DialogueToggle3/DialogueToggle2" unique_id=175082658]
+script = ExtResource("31_fyonw")
+lines = Array[String](["You don't have anything that can be used to wash clothes yet."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="evil_washer/DialogueSection" unique_id=777487748]
+script = ExtResource("32_gbo60")
+cue = "washer"
+value = 2
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="evil_washer/DialogueSection/DialogueToggle2" unique_id=143369819]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="evil_washer/DialogueSection/DialogueToggle2/DialogueOption" unique_id=1878565459]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=348586589]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Crawl inside the washer"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="evil_washer/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=335825076]
+script = ExtResource("27_qiytx")
+cue = "washer"
+value = 3
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue" type="Node" parent="evil_washer/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=1871237683]
+script = ExtResource("27_qiytx")
+cue = "level"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="evil_washer/DialogueSection/DialogueToggle2/DialogueOption" unique_id=546467129]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle5" type="Node" parent="evil_washer/DialogueSection" unique_id=64823604]
+script = ExtResource("32_gbo60")
+cue = "washer"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="evil_washer/DialogueSection/DialogueToggle5" unique_id=1693079810]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="evil_washer/DialogueSection/DialogueToggle5/DialogueOption" unique_id=1754540657]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection/DialogueToggle5/DialogueOption/DialogueSection" unique_id=357870252]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Stop the washer", "You press the power button, but it doesn't work. The door won't open either. ", "...", "You go around the back to look for the power cord.", "Even after you unplug it, the washer won't give up on its duty.", "Maybe there's some way you can help it finish its cleaning? There could be soap or detergent."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="evil_washer/DialogueSection/DialogueToggle5/DialogueOption/DialogueSection" unique_id=1604387550]
+script = ExtResource("27_qiytx")
+cue = "washer"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="evil_washer/DialogueSection/DialogueToggle5/DialogueOption" unique_id=284842692]
 script = ExtResource("31_fyonw")
 lines = Array[String](["Leave it be"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

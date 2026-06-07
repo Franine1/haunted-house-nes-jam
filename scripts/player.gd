@@ -52,8 +52,9 @@ func _physics_process(delta: float) -> void:
 						
 						delay_interaction()
 			elif Input.is_action_just_pressed("Start button") and input_allowed and interact_delay.is_stopped():
-				request_pause.emit()
-				delay_interaction()
+				if game_data.get_data("exit_banned") == 0:
+					request_pause.emit()
+					delay_interaction()
 			
 	
 	fix_camera(camera_instant)

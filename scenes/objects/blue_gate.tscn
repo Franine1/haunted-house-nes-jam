@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://df65dairh100i"]
+
+[ext_resource type="Script" uid="uid://ckgko44c6nyac" path="res://scripts/blockade.gd" id="1_7t0nw"]
+[ext_resource type="Shape2D" uid="uid://dnj8iayr04pc7" path="res://resources/shapes/gate_shape.tres" id="2_mpjt3"]
+[ext_resource type="Texture2D" uid="uid://b588oj2sk6iuo" path="res://assets/temp_blue.tres" id="3_5017r"]
+
+[node name="Blockade" type="StaticBody2D" unique_id=511395359]
+script = ExtResource("1_7t0nw")
+cue = "color"
+value = 2
+compare_type = 1
+material_layer = 4
+visibility_type = 1
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1377267997]
+shape = ExtResource("2_mpjt3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=566473423]
+position = Vector2(4.7683716e-07, 0)
+scale = Vector2(3, 0.25)
+texture = ExtResource("3_5017r")

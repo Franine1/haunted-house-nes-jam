@@ -1,6 +1,6 @@
 [gd_resource type="ImageTexture" format=3 uid="uid://jq7turbi7g2n"]
 
-[sub_resource type="Image" id="Image_m85mw"]
+[sub_resource type="Image" id="Image_h2wax"]
 data = {
 "data": PackedByteArray(255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255),
 "format": "RGBA8",
@@ -10,4 +10,4 @@ data = {
 }
 
 [resource]
-image = SubResource("Image_m85mw")
+image = SubResource("Image_h2wax")

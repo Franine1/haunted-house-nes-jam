@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://bjmo0ca38roc1"]
+
+[ext_resource type="Script" uid="uid://jtb1cg1n1k0i" path="res://scripts/boat.gd" id="1_getc1"]
+[ext_resource type="Texture2D" uid="uid://67vb6pab6cw" path="res://assets/car.png" id="2_getc1"]
+[ext_resource type="Material" uid="uid://b8jlb2n6kiqe6" path="res://resources/palettes/brownpallete.tres" id="2_ivay7"]
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="4_ivay7"]
+[ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="5_png02"]
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="6_ffovt"]
+[ext_resource type="Script" uid="uid://bbr1g3c52vcnu" path="res://scripts/DialogueMovement.gd" id="6_i2opl"]
+[ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="7_0ndey"]
+[ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="7_3sxwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2opl"]
+size = Vector2(32, 48)
+
+[node name="boat" type="CharacterBody2D" unique_id=681959088]
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_getc1")
+NPC_ID = 1
+metadata/_custom_type_script = "uid://wqtobb22r6fk"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=457145773]
+material = ExtResource("2_ivay7")
+texture = ExtResource("2_getc1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1261751026]
+build_mode = 1
+polygon = PackedVector2Array(-16, -24, 16, -24, 16, 24, -16, 24)
+
+[node name="DialogueSection" type="Node" parent="." unique_id=315019379]
+script = ExtResource("4_ivay7")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="interaction" type="Node" parent="DialogueSection" unique_id=1560078868]
+script = ExtResource("5_png02")
+cue = "boat_cutscene"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/interaction" unique_id=1887149193]
+script = ExtResource("7_3sxwk")
+cue = "no_boat"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle3" type="Node" parent="DialogueSection/interaction" unique_id=1120364037]
+script = ExtResource("5_png02")
+cue = "no_boat"
+value = 1
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueToggle2" type="Node" parent="DialogueSection/interaction/DialogueToggle3" unique_id=1164355614]
+script = ExtResource("5_png02")
+cue = "in_boat"
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle2" unique_id=1663400808]
+script = ExtResource("7_3sxwk")
+cue = "in_boat"
+value = -1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue3" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle2" unique_id=156814175]
+script = ExtResource("7_3sxwk")
+cue = "no_boat"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle" type="Node" parent="DialogueSection/interaction/DialogueToggle3" unique_id=1651068937]
+script = ExtResource("5_png02")
+cue = "in_boat"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle" unique_id=1576536851]
+script = ExtResource("6_ffovt")
+lines = Array[String](["It's a boat."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle" unique_id=1274211982]
+script = ExtResource("7_0ndey")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=122453094]
+script = ExtResource("4_ivay7")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=1441839330]
+script = ExtResource("6_ffovt")
+lines = Array[String](["Get in"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=1514338089]
+script = ExtResource("7_3sxwk")
+cue = "in_boat"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=990392020]
+script = ExtResource("6_ffovt")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="cutscene" type="Node" parent="DialogueSection" unique_id=1280589744]
+script = ExtResource("5_png02")
+cue = "boat_cutscene"
+compare_type = 3
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueToggle" type="Node" parent="DialogueSection/cutscene" unique_id=335354267]
+script = ExtResource("5_png02")
+cue = "boat_cutscene"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueMovement2" type="Node" parent="DialogueSection/cutscene/DialogueToggle" unique_id=813062167]
+script = ExtResource("6_i2opl")
+directions = Array[Vector2i]([Vector2i(0, -7)])
+NPC_ID = 1
+speed = 2.0
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/cutscene" unique_id=782705062]
+script = ExtResource("7_3sxwk")
+cue = "exit_banned"
+delay = 4.0
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue3" type="Node" parent="DialogueSection/cutscene" unique_id=11348991]
+script = ExtResource("7_3sxwk")
+cue = "boat_cutscene"
+delay = 4.0
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="DialogueSection/cutscene" unique_id=106062049]
+script = ExtResource("7_3sxwk")
+cue = "boat_cutscene"
+value = -1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="player_scan" type="Area2D" parent="." unique_id=816645881]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_scan" unique_id=870052819]
+shape = SubResource("RectangleShape2D_i2opl")

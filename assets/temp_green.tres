@@ -1,0 +1,9 @@
+[gd_resource type="GradientTexture2D" format=3 uid="uid://pfihsvsvgaml"]
+
+[sub_resource type="Gradient" id="Gradient_4v30v"]
+colors = PackedColorArray(0, 1, 0, 1, 0, 1, 0, 1)
+
+[resource]
+gradient = SubResource("Gradient_4v30v")
+width = 16
+height = 16
