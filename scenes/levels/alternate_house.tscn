@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dh511aurqns6i"]
+
+[ext_resource type="PackedScene" uid="uid://cq72xn6uaevmw" path="res://scenes/teto_layouts/frontlawn.tscn" id="1_jn64y"]
+[ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="2_ttf37"]
+[ext_resource type="PackedScene" uid="uid://b3sdkigh4r41v" path="res://scenes/characters/player.tscn" id="2_ywcy1"]
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="3_hjvn6"]
+[ext_resource type="PackedScene" uid="uid://bxgfbooamxjm2" path="res://scenes/teto_layouts/foyer.tscn" id="3_ywcy1"]
+[ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="4_2fdjj"]
+[ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="5_u3wmg"]
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="6_i12p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bjtk"]
+size = Vector2(30, 14)
+
+[node name="AlternateHouse" type="Node2D" unique_id=923394458]
+
+[node name="FrontLawn" parent="." unique_id=240038182 instance=ExtResource("1_jn64y")]
+position = Vector2(128, 112)
+
+[node name="Player" parent="." unique_id=1856024105 instance=ExtResource("2_ywcy1")]
+position = Vector2(-120, 296)
+camera_snap_axis = Vector2(8, 7)
+
+[node name="Foyer" parent="." unique_id=768714048 instance=ExtResource("3_ywcy1")]
+position = Vector2(128, -112)
+
+[node name="FrontDoor" type="Area2D" parent="." unique_id=1826161034]
+position = Vector2(128, -128)
+script = ExtResource("2_ttf37")
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FrontDoor" unique_id=2046029536]
+position = Vector2(0, 152)
+shape = SubResource("RectangleShape2D_1bjtk")
+
+[node name="DialogueSection" type="Node" parent="FrontDoor" unique_id=155842825]
+script = ExtResource("3_hjvn6")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueToggle2" type="Node" parent="FrontDoor/DialogueSection" unique_id=1865369414]
+script = ExtResource("4_2fdjj")
+cue = "forced"
+value = -2
+compare_type = 4
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="FrontDoor/DialogueSection/DialogueToggle2" unique_id=693854240]
+script = ExtResource("5_u3wmg")
+cue = "level"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle" type="Node" parent="FrontDoor/DialogueSection" unique_id=1194560829]
+script = ExtResource("4_2fdjj")
+cue = "forced"
+value = -1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="FrontDoor/DialogueSection/DialogueToggle" unique_id=425011322]
+script = ExtResource("6_i12p4")
+lines = Array[String](["You softly knock.", "...", "You knock harder. The door swings open on its own. ", "I guess when you live in the middle of nowhere you don't need to lock your door.", "Hopefully it's fine if you just go in."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="FrontDoor/DialogueSection/DialogueToggle" unique_id=92363476]
+script = ExtResource("5_u3wmg")
+cue = "forced"
+value = -2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"

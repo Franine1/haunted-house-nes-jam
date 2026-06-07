@@ -20,6 +20,7 @@ const game_data: GameData = preload("res://resources/game data/gameData.tres")
 const levels: Array[PackedScene] = [
 	preload("res://scenes/levels/tetouse.tscn")
 	,preload("res://scenes/levels/default_house.tscn")
+	,preload("res://scenes/levels/alternate_house.tscn")
 ]
 ## Current dialogue script
 var dialogue_script: Dialogue = null

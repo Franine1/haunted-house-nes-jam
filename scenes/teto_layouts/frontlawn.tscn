@@ -40,7 +40,7 @@ shape = SubResource("WorldBoundaryShape2D_s1yhe")
 
 [node name="Car" type="Sprite2D" parent="." unique_id=226010141]
 material = ExtResource("6_x8jcr")
-position = Vector2(-40, 208)
+position = Vector2(-248, 208)
 rotation = 1.5707964
 texture = ExtResource("6_fnaax")
 
