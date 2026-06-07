@@ -1,12 +1,21 @@
 [gd_scene format=3 uid="uid://qskutd3lgycj"]
 
 [ext_resource type="Texture2D" uid="uid://bofa6cyv0wuc7" path="res://assets/openingbackground.png" id="1_bgsd8"]
+[ext_resource type="Script" uid="uid://cqho57fobtf2h" path="res://scripts/opening.gd" id="1_xvwrp"]
 [ext_resource type="Material" uid="uid://fdknrie3lpxi" path="res://resources/palettes/redpallete.tres" id="2_e0oev"]
 [ext_resource type="Texture2D" uid="uid://67vb6pab6cw" path="res://assets/car.png" id="3_l1ccp"]
-[ext_resource type="Script" uid="uid://bgp2vr75ki64h" path="res://scenes/levels/opening.gd" id="4_xvwrp"]
-[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="5_8ksfs"]
+[ext_resource type="Texture2D" uid="uid://b18jiwlo867bu" path="res://assets/title assets/crawlone.png" id="6_8ksfs"]
+[ext_resource type="Texture2D" uid="uid://co0pol4iv620h" path="res://assets/title assets/nestitle.png" id="6_uipno"]
+[ext_resource type="Texture2D" uid="uid://bygbfbdgoo6ym" path="res://assets/title assets/pressa.png" id="7_uipno"]
+
+[sub_resource type="Gradient" id="Gradient_atpat"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8ksfs"]
+gradient = SubResource("Gradient_atpat")
 
 [node name="opening" type="Node2D" unique_id=1103441852]
+script = ExtResource("1_xvwrp")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=41613663]
 repeat_size = Vector2(0, 224)
@@ -21,9 +30,21 @@ texture = ExtResource("1_bgsd8")
 material = ExtResource("2_e0oev")
 position = Vector2(64, 136)
 texture = ExtResource("3_l1ccp")
-script = ExtResource("4_xvwrp")
 
-[node name="DialogueLines" type="Node" parent="Car" unique_id=661224745]
-script = ExtResource("5_8ksfs")
-lines = Array[String](["kill me"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+[node name="Crawlone" type="Sprite2D" parent="." unique_id=493553078]
+position = Vector2(128, 112)
+texture = ExtResource("6_8ksfs")
+
+[node name="Nestitle" type="Sprite2D" parent="." unique_id=1008202183]
+position = Vector2(128, 112)
+texture = ExtResource("6_uipno")
+
+[node name="why is the black a sprite snad??" type="Sprite2D" parent="." unique_id=276743067]
+z_index = -1000
+position = Vector2(120, 104)
+scale = Vector2(1.65625, 439.99997)
+texture = SubResource("GradientTexture1D_8ksfs")
+
+[node name="Pressa" type="Sprite2D" parent="." unique_id=910497212]
+position = Vector2(136, 112)
+texture = ExtResource("7_uipno")
