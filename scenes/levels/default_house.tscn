@@ -45,12 +45,13 @@
 [ext_resource type="Material" uid="uid://b7qhrmcdja4mi" path="res://resources/palettes/bluepallete.tres" id="36_4lh72"]
 [ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="37_oahe5"]
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="37_tlc6n"]
-[ext_resource type="Script" uid="uid://bbr1g3c52vcnu" path="res://DialogueMovement.gd" id="38_oahe5"]
+[ext_resource type="Script" uid="uid://bbr1g3c52vcnu" path="res://scripts/DialogueMovement.gd" id="38_oahe5"]
 [ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="40_wahft"]
 [ext_resource type="Shape2D" uid="uid://bbvt0g7t3h4t5" path="res://resources/shapes/default_collider.tres" id="41_xovbb"]
 [ext_resource type="Script" uid="uid://2fxoxwt3c1kf" path="res://scripts/translation_portal.gd" id="42_5l7pq"]
 [ext_resource type="PackedScene" uid="uid://vk0mkiy4dsq0" path="res://scenes/layouts/alt_3_hallway.tscn" id="48_4dvlw"]
 [ext_resource type="PackedScene" uid="uid://buaxnuy5nlg77" path="res://scenes/layouts/window.tscn" id="49_mfmey"]
+[ext_resource type="PackedScene" uid="uid://dn2g6lrf06ffa" path="res://scenes/dialogue/window_person.tscn" id="52_dfnd4"]
 [ext_resource type="Script" uid="uid://bwfil16152c87" path="res://scripts/dialogue_loop.gd" id="52_tdlnt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u00pf"]
@@ -138,6 +139,9 @@ size = Vector2(48, 193)
 size = Vector2(72, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfnd4"]
+size = Vector2(256, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uo0wi"]
 size = Vector2(224, 112)
 
 [node name="default_house" type="Node2D" unique_id=825320048]
@@ -1636,138 +1640,13 @@ metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="windowman" unique_id=1136448868]
 shape = ExtResource("41_xovbb")
 
-[node name="DialogueSection" type="Node" parent="windowman" unique_id=128687927]
-script = ExtResource("27_o1ess")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
-
-[node name="DialogueToggle4" type="Node" parent="windowman/DialogueSection" unique_id=724600625]
-script = ExtResource("32_gbo60")
-cue = "window"
-value = 1
-compare_type = 1
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueToggle" type="Node" parent="windowman/DialogueSection/DialogueToggle4" unique_id=499335407]
-script = ExtResource("32_gbo60")
-cue = "knock"
-value = 2
-compare_type = 0
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueOption" type="Node" parent="windowman/DialogueSection/DialogueToggle4/DialogueToggle" unique_id=1835763658]
-script = ExtResource("37_tlc6n")
-metadata/_custom_type_script = "uid://djmjjs20dmaub"
-
-[node name="DialogueSection" type="Node" parent="windowman/DialogueSection/DialogueToggle4/DialogueToggle/DialogueOption" unique_id=204663963]
-script = ExtResource("27_o1ess")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
-
-[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle4/DialogueToggle/DialogueOption/DialogueSection" unique_id=1694349741]
-script = ExtResource("31_fyonw")
-lines = Array[String](["Knock on the window"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueCue" type="Node" parent="windowman/DialogueSection/DialogueToggle4/DialogueToggle/DialogueOption/DialogueSection" unique_id=1977199964]
-script = ExtResource("27_qiytx")
-cue = "delay"
-value = 10
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle4/DialogueToggle/DialogueOption/DialogueSection" unique_id=1455243195]
-script = ExtResource("31_fyonw")
-lines = Array[String](["...!!", "There's someone on the other side."])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueCue2" type="Node" parent="windowman/DialogueSection/DialogueToggle4/DialogueToggle/DialogueOption/DialogueSection" unique_id=282627343]
-script = ExtResource("27_qiytx")
-cue = "knock"
-value = 3
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle4/DialogueToggle/DialogueOption" unique_id=1135509977]
-script = ExtResource("31_fyonw")
-lines = Array[String](["Do not"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueToggle2" type="Node" parent="windowman/DialogueSection" unique_id=1244922557]
-script = ExtResource("32_gbo60")
-cue = "window"
-value = 1
-compare_type = 0
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueOption" type="Node" parent="windowman/DialogueSection/DialogueToggle2" unique_id=725477485]
-script = ExtResource("37_tlc6n")
-metadata/_custom_type_script = "uid://djmjjs20dmaub"
-
-[node name="DialogueSection" type="Node" parent="windowman/DialogueSection/DialogueToggle2/DialogueOption" unique_id=389999175]
-script = ExtResource("27_o1ess")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
-
-[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=354887998]
-script = ExtResource("31_fyonw")
-lines = Array[String](["Open the window", "The latch disappears when you blink."])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueCue" type="Node" parent="windowman/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=135194997]
-script = ExtResource("27_qiytx")
-cue = "window"
-value = 2
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle2/DialogueOption" unique_id=1221396240]
-script = ExtResource("31_fyonw")
-lines = Array[String](["Leave it"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueToggle" type="Node" parent="windowman/DialogueSection" unique_id=1996377106]
-script = ExtResource("32_gbo60")
-cue = "window"
-value = 1
-compare_type = 2
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueToggle2" type="Node" parent="windowman/DialogueSection/DialogueToggle" unique_id=1263541526]
-script = ExtResource("32_gbo60")
-cue = "knock"
-value = 2
-compare_type = 2
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueToggle2" unique_id=1586118624]
-script = ExtResource("31_fyonw")
-lines = Array[String](["It's night out. "])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueToggle" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueToggle2" unique_id=1384802251]
-script = ExtResource("32_gbo60")
-cue = "window"
-compare_type = 0
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueCue" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueToggle2/DialogueToggle" unique_id=1146076967]
-script = ExtResource("27_qiytx")
-cue = "window"
-value = 1
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="DialogueToggle3" type="Node" parent="windowman/DialogueSection" unique_id=540345244]
-script = ExtResource("32_gbo60")
-cue = "window"
-value = 2
-compare_type = 0
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueCue" type="Node" parent="windowman/DialogueSection/DialogueToggle3" unique_id=1745447358]
-script = ExtResource("27_qiytx")
-cue = "window"
-value = -1
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
+[node name="DialogueSection" parent="windowman" unique_id=1138576288 instance=ExtResource("52_dfnd4")]
 
 [node name="DialogueToggle5" type="Node" parent="windowman/DialogueSection" unique_id=1944389335]
 script = ExtResource("32_gbo60")
 cue = "knock"
-value = 3
+value = 4
+compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle5" unique_id=376953004]
@@ -1860,7 +1739,7 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption/DialogueSection6" unique_id=187514197]
 script = ExtResource("31_fyonw")
-lines = Array[String](["Can you help me?"])
+lines = Array[String](["I need tips"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption/DialogueSection6" unique_id=1293307952]
@@ -1884,12 +1763,37 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption/DialogueSection5" unique_id=640761727]
 script = ExtResource("31_fyonw")
-lines = Array[String](["Is there any way I can get out?"])
+lines = Array[String](["How can I get out?"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption/DialogueSection5" unique_id=1627287227]
 script = ExtResource("31_fyonw")
-lines = Array[String](["Have you tried the front door?", "...", "Well, you'll have chances to leave eventually.", "The doors might move, but they can't disappear. They're out there, somewhere."])
+lines = Array[String](["Have you tried the door?", "...", "Well, they're not gone. They just moved somewhere else.", "If you can find a key they might want to come back.", "Oh, I just remembered. The other day she said she washed some of her spare keys in her laundry.", "You should check the laundry room for a key."])
+name_id = 3
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueSection7" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption" unique_id=1880594410]
+script = ExtResource("32_gbo60")
+cue = "dialogue"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueToggle" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption/DialogueSection7" unique_id=723236723]
+script = ExtResource("32_gbo60")
+cue = "painting"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption/DialogueSection7/DialogueToggle" unique_id=1607786825]
+script = ExtResource("31_fyonw")
+lines = Array[String](["The painting in the lving room"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption/DialogueSection7/DialogueToggle" unique_id=720926021]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Oh, that's where I live. Don't you recognize it?", "I don't think you can come over yet. Not that I don't want you over.", "Maybe later on, you can find a way in. There's something you're missing right now, though."])
 name_id = 3
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
@@ -2035,6 +1939,24 @@ metadata/_custom_type_script = "uid://lrhymco58lj0"
 [node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection" unique_id=1306261198]
 script = ExtResource("31_fyonw")
 lines = Array[String](["It's a washer. The machine's violently banging around."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="evil_washer/DialogueSection" unique_id=143369819]
+script = ExtResource("37_tlc6n")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="evil_washer/DialogueSection/DialogueOption" unique_id=1878565459]
+script = ExtResource("27_o1ess")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="evil_washer/DialogueSection/DialogueOption/DialogueSection" unique_id=348586589]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Stop the washer", "You press the power button, but it doesn't work. The door won't open either. ", ""])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="evil_washer/DialogueSection/DialogueOption" unique_id=546467129]
+script = ExtResource("31_fyonw")
+lines = Array[String](["Leave it be"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="toilet" type="StaticBody2D" parent="." unique_id=407966215]
@@ -2456,7 +2378,7 @@ metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="knock1" unique_id=1835418774]
 visible = false
-position = Vector2(1664.5, 112)
+position = Vector2(1664, 112)
 shape = SubResource("RectangleShape2D_dfnd4")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="knock1" unique_id=1968022957]
@@ -2486,28 +2408,34 @@ metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="knock2" unique_id=379308618]
 visible = false
 position = Vector2(1152, 152)
-shape = SubResource("RectangleShape2D_dfnd4")
+shape = SubResource("RectangleShape2D_uo0wi")
 
 [node name="DialogueSection" type="Node" parent="knock2" unique_id=1244986601]
 script = ExtResource("32_gbo60")
 cue = "knock"
-value = 1
-compare_type = 0
+value = 2
+compare_type = 4
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueCue" type="Node" parent="knock2/DialogueSection" unique_id=177967336]
+[node name="DialogueSection2" type="Node" parent="knock2/DialogueSection" unique_id=892960068]
+script = ExtResource("32_gbo60")
+cue = "knock"
+value = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="knock2/DialogueSection/DialogueSection2" unique_id=638813092]
 script = ExtResource("27_qiytx")
 cue = "delay"
 value = 10
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueLines" type="Node" parent="knock2/DialogueSection" unique_id=1132362085]
+[node name="DialogueLines" type="Node" parent="knock2/DialogueSection/DialogueSection2" unique_id=1347786631]
 script = ExtResource("31_fyonw")
 lines = Array[String](["So far, you haven't found any way out.", "What's all this going on with the halls being messed up? And the missing doors?", "There's got to be a way out, or to find out what's going on. Did you spot anything useful?", "Didn't you spot some way to contact the outside?"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue2" type="Node" parent="knock2/DialogueSection" unique_id=390938958]
+[node name="DialogueCue2" type="Node" parent="knock2/DialogueSection/DialogueSection2" unique_id=442411161]
 script = ExtResource("27_qiytx")
 cue = "knock"
-value = 2
+value = 3
 metadata/_custom_type_script = "uid://xhrymkbacnrg"

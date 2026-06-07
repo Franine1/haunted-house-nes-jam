@@ -6,7 +6,7 @@ extends Dialogue
 
 ## The actual lines of dialogue
 @export var lines: Array[String]
-## Speed that the letters display at
+## DEPRECATED Speed that the letters display at
 @export var display_speed: float = 0.01
 ## A value that adds a name to the start of the dialogue, 
 ## reading it from game_data. This allows easily changing names across

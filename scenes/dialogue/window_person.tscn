@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://dn2g6lrf06ffa"]
+
+[ext_resource type="Script" uid="uid://dam8tqpvvue1w" path="res://window_person.gd" id="1_no0mt"]
+[ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="2_yw0ey"]
+[ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="3_5va7y"]
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="4_suwcy"]
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="5_w1j1a"]
+[ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="6_m1ies"]
+
+[node name="DialogueSection" type="Node" unique_id=1138576288]
+script = ExtResource("1_no0mt")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="let_knock" type="Node" parent="." unique_id=1053644401]
+unique_name_in_owner = true
+script = ExtResource("2_yw0ey")
+cue = "knock"
+value = 4
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueToggle" type="Node" parent="let_knock" unique_id=1616579837]
+script = ExtResource("2_yw0ey")
+cue = "knock"
+value = 2
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="let_knock/DialogueToggle" unique_id=1535195426]
+script = ExtResource("3_5va7y")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="let_knock/DialogueToggle/DialogueOption" unique_id=548007604]
+script = ExtResource("4_suwcy")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="let_knock/DialogueToggle/DialogueOption/DialogueSection" unique_id=1855648760]
+script = ExtResource("5_w1j1a")
+lines = Array[String](["Knock on the window"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="let_knock/DialogueToggle/DialogueOption/DialogueSection" unique_id=1819032437]
+script = ExtResource("6_m1ies")
+cue = "delay"
+value = 10
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines2" type="Node" parent="let_knock/DialogueToggle/DialogueOption/DialogueSection" unique_id=1129747139]
+script = ExtResource("5_w1j1a")
+lines = Array[String](["...!!", "There's someone on the other side."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="change_knock" type="Node" parent="let_knock/DialogueToggle/DialogueOption/DialogueSection" unique_id=1964912135]
+unique_name_in_owner = true
+script = ExtResource("6_m1ies")
+cue = "knock"
+value = 4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="let_knock/DialogueToggle/DialogueOption" unique_id=130807739]
+script = ExtResource("5_w1j1a")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle3" type="Node" parent="." unique_id=1629164915]
+script = ExtResource("2_yw0ey")
+cue = "knock"
+value = 2
+compare_type = 4
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueToggle2" type="Node" parent="DialogueToggle3" unique_id=1299444636]
+script = ExtResource("2_yw0ey")
+cue = "window"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="DialogueToggle3/DialogueToggle2" unique_id=1331838916]
+script = ExtResource("3_5va7y")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueLines" type="Node" parent="DialogueToggle3/DialogueToggle2/DialogueOption" unique_id=2078244004]
+script = ExtResource("5_w1j1a")
+lines = Array[String](["Open the window", "...?", "The latch disappeared."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="DialogueToggle3/DialogueToggle2/DialogueOption" unique_id=462571601]
+script = ExtResource("5_w1j1a")
+lines = Array[String](["Leave it"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="DialogueToggle3/DialogueToggle2" unique_id=86219525]
+script = ExtResource("6_m1ies")
+cue = "knock"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue" type="Node" parent="DialogueToggle3/DialogueToggle2" unique_id=1647480572]
+script = ExtResource("6_m1ies")
+cue = "window"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle3" type="Node" parent="DialogueToggle3" unique_id=943518547]
+script = ExtResource("2_yw0ey")
+cue = "window"
+value = 1
+compare_type = 2
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="DialogueToggle3/DialogueToggle3" unique_id=343740645]
+script = ExtResource("5_w1j1a")
+lines = Array[String](["It's night out."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle" type="Node" parent="DialogueToggle3/DialogueToggle3" unique_id=852066710]
+script = ExtResource("2_yw0ey")
+cue = "window"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="DialogueToggle3/DialogueToggle3/DialogueToggle" unique_id=448857168]
+script = ExtResource("6_m1ies")
+cue = "window"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle4" type="Node" parent="." unique_id=231758420]
+script = ExtResource("2_yw0ey")
+cue = "window"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="DialogueToggle4" unique_id=2005672091]
+script = ExtResource("6_m1ies")
+cue = "window"
+value = -1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
