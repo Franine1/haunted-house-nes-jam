@@ -258,7 +258,7 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_a
 		shift_axis()
 		var wall = collision.get_collider()
 		if wall is Blockade:
-			if input_allowed:
+			if input_allowed and wall.collide_activation:
 				var temp: Vector2 = (collision.get_position()-global_position).normalized().round()
 				if directions.has(temp):
 					for sprite in sprites:
