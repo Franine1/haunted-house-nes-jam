@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://df1pgts67ud5a"]
+
+[ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="1_o7lam"]
+[ext_resource type="Shape2D" uid="uid://bbvt0g7t3h4t5" path="res://resources/shapes/default_collider.tres" id="2_c74tx"]
+[ext_resource type="Texture2D" uid="uid://c03xj4ottijqf" path="res://assets/temp_purple.tres" id="3_uyn1r"]
+[ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="4_gr8w3"]
+
+[node name="InteractionZone" type="Area2D" unique_id=1954855741]
+script = ExtResource("1_o7lam")
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=65035154]
+shape = ExtResource("2_c74tx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1605430613]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_uyn1r")
+
+[node name="DialogueCue" type="Node" parent="." unique_id=344243516]
+script = ExtResource("4_gr8w3")
+cue = "color"
+value = 4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"

@@ -5,7 +5,7 @@ var cue: GameCue
 var player_target: Player = null
 var do_warp: bool = false
 var refresh_spot: bool = false
-const checks: Array[String] = ["spot1","spot2","spot3","spot4"]
+const checks: Array[String] = ["spot1","spot2","spot3","spot4","spot5","spot6","spot7"]
 
 ## Changes its interaction ray into a scanner for if the player can leave the boat.
 ## Sets up cues and correctly interprets its position from game data.
@@ -35,6 +35,9 @@ func ready_behavior() -> void:
 	cue.add_cue("spot2",check_spots.bind(1))
 	cue.add_cue("spot3",check_spots.bind(2))
 	cue.add_cue("spot4",check_spots.bind(3))
+	cue.add_cue("spot5",check_spots.bind(4))
+	cue.add_cue("spot6",check_spots.bind(5))
+	cue.add_cue("spot7",check_spots.bind(6))
 	finished_movement.connect(exit_mode_changed)
 
 
@@ -139,14 +142,14 @@ func check_spots(input: int, source: int) -> void:
 		game_data.set_data("spot",source)
 		refresh_spot = false
 	
-	
-	const y_checks: Array[float] = [-920.0,-968.0,-1016.0,-1064.0]
+	## IMPORTANT
+	const y_checks: Array[float] = [-920.0,-968.0,-1016.0,-1064.0,-1144.0,-1208.0,-1272.0]
 	
 	reset_interaction()
 	interaction.collision_mask = 33
 	
 
-	for i in range(4):
+	for i in checks.size():
 		if i != source:
 			game_data.set_data(checks[i],0)
 	

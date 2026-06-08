@@ -1,6 +1,8 @@
 extends DialogueSection
 
 
+## Starting from 4, the ID of the specific window in question. 
+## Values before 4 are used to determine whether there is extra dialogue.
 @export var knock_ID: int = 4
 @onready var let_player_knock: DialogueToggle = %let_knock
 @onready var change_knock: DialogueCue = %change_knock
