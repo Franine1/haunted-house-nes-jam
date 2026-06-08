@@ -4,13 +4,13 @@ extends NPC
 var cue: GameCue
 var player_target: Player = null
 var do_warp: bool = false
-
+var refresh_spot: bool = false
+const checks: Array[String] = ["spot1","spot2","spot3","spot4"]
 
 ## Changes its interaction ray into a scanner for if the player can leave the boat.
 ## Sets up cues and correctly interprets its position from game data.
 func ready_behavior() -> void:
-	interaction.target_position = Vector2(32.0,0.0)
-	interaction.collision_mask = 128
+	reset_interaction()
 	
 	cue = GameCue.new()
 	add_child(cue)
@@ -31,8 +31,18 @@ func ready_behavior() -> void:
 	
 	cue.add_cue("boat_cutscene",boat_cutscene)
 	cue.add_cue("in_boat",boat_leave_or_enter)
+	cue.add_cue("spot1",check_spots.bind(0))
+	cue.add_cue("spot2",check_spots.bind(1))
+	cue.add_cue("spot3",check_spots.bind(2))
+	cue.add_cue("spot4",check_spots.bind(3))
 	finished_movement.connect(exit_mode_changed)
-	
+
+
+## resets the interaction ray to the default
+func reset_interaction() -> void:
+	interaction.target_position = Vector2(32.0,0.0)
+	interaction.collision_mask = 128
+	interaction.rotation = 0
 
 ## activates when the boat is supposed to move on its own
 func boat_cutscene(input: int) -> void:
@@ -61,6 +71,10 @@ func boat_leave_or_enter(input: int) -> void:
 		if able:
 			game_data.set_data("in_boat",0)
 			player_target.global_position = interaction.target_position.rotated(interaction.rotation) + global_position
+			
+			for i in range(checks.size()):
+				game_data.set_data(checks[i],0)
+			refresh_spot = true
 			update_position()
 	else:
 		player_target.global_position = global_position
@@ -81,6 +95,8 @@ func process_behavior(_delta: float) -> void:
 	
 	if game_data.get_data("in_boat") != 0 and do_warp:
 		global_position = game_data.get_player_position()
+	
+	
 
 
 ## Snaps the position correctly into the world
@@ -111,3 +127,40 @@ func get_pos_data(input: Vector2) -> Vector2i:
 func set_pos_data(input: Vector2i) -> void:
 	global_position = Vector2(8.0,8.0) + Vector2(input * 16)
 	update_position()
+
+
+## Determines whether or not the boat can go to a set spot
+func check_spots(input: int, source: int) -> void:
+	if input != 1:
+		return
+	if game_data.get_data("boat_cutscene") != 0:
+		return
+	if refresh_spot:
+		game_data.set_data("spot",source)
+		refresh_spot = false
+	
+	
+	const y_checks: Array[float] = [-920.0,-968.0,-1016.0,-1064.0]
+	
+	reset_interaction()
+	interaction.collision_mask = 33
+	
+
+	for i in range(4):
+		if i != source:
+			game_data.set_data(checks[i],0)
+	
+	if source != game_data.get_data("spot"):
+		if game_data.get_data(checks[source]) == 1:
+			interaction.target_position = Vector2(0.0,y_checks[source]-y_checks[game_data.get_data("spot")])
+			interaction.force_raycast_update()
+			if interaction.is_colliding():
+				game_data.set_data(checks[source],0)
+			else:
+				game_data.set_data(checks[source],2)
+				game_data.set_data("spot",source)
+				game_data.set_data("exit_banned",1)
+				game_data.set_data("boat_cutscene",3)
+	
+	reset_interaction()
+	

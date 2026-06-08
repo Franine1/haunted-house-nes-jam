@@ -26,11 +26,7 @@ texture = ExtResource("2_getc1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1261751026]
 build_mode = 1
-polygon = PackedVector2Array(-18, -26, 18, -26, 18, 26, -18, 26)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." unique_id=1848947287]
-build_mode = 1
-polygon = PackedVector2Array(-14, -22, 14, -22, 14, 22, -14, 22)
+polygon = PackedVector2Array(-16, -24, 16, -24, 16, 24, -16, 24)
 
 [node name="DialogueSection" type="Node" parent="." unique_id=315019379]
 script = ExtResource("4_ivay7")
@@ -185,10 +181,95 @@ speed = 7.5
 relative = false
 metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
 
-[node name="DialogueCue3" type="Node" parent="DialogueSection/cutscene" unique_id=11348991]
-script = ExtResource("7_3sxwk")
+[node name="DialogueToggle2" type="Node" parent="DialogueSection/cutscene" unique_id=1559757892]
+script = ExtResource("5_png02")
 cue = "boat_cutscene"
-delay = 4.0
+value = 3
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueToggle4" type="Node" parent="DialogueSection/cutscene/DialogueToggle2" unique_id=1131880155]
+script = ExtResource("5_png02")
+cue = "spot1"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueMovement3" type="Node" parent="DialogueSection/cutscene/DialogueToggle2/DialogueToggle4" unique_id=1950447918]
+script = ExtResource("6_i2opl")
+directions = Array[Vector2i]([Vector2i(8, -58)])
+NPC_ID = 1
+speed = 10.0
+delay = 0.2
+relative = false
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/cutscene/DialogueToggle2/DialogueToggle4" unique_id=1608476222]
+script = ExtResource("7_3sxwk")
+cue = "spot1"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle5" type="Node" parent="DialogueSection/cutscene/DialogueToggle2" unique_id=1161968969]
+script = ExtResource("5_png02")
+cue = "spot2"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueMovement3" type="Node" parent="DialogueSection/cutscene/DialogueToggle2/DialogueToggle5" unique_id=1264085972]
+script = ExtResource("6_i2opl")
+directions = Array[Vector2i]([Vector2i(8, -61)])
+NPC_ID = 1
+speed = 10.0
+delay = 0.2
+relative = false
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/cutscene/DialogueToggle2/DialogueToggle5" unique_id=656526202]
+script = ExtResource("7_3sxwk")
+cue = "spot2"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle6" type="Node" parent="DialogueSection/cutscene/DialogueToggle2" unique_id=1476082465]
+script = ExtResource("5_png02")
+cue = "spot3"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueMovement3" type="Node" parent="DialogueSection/cutscene/DialogueToggle2/DialogueToggle6" unique_id=927890692]
+script = ExtResource("6_i2opl")
+directions = Array[Vector2i]([Vector2i(8, -64)])
+NPC_ID = 1
+speed = 10.0
+delay = 0.2
+relative = false
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/cutscene/DialogueToggle2/DialogueToggle6" unique_id=368281711]
+script = ExtResource("7_3sxwk")
+cue = "spot3"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle7" type="Node" parent="DialogueSection/cutscene/DialogueToggle2" unique_id=1150150350]
+script = ExtResource("5_png02")
+cue = "spot4"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueMovement3" type="Node" parent="DialogueSection/cutscene/DialogueToggle2/DialogueToggle7" unique_id=892508602]
+script = ExtResource("6_i2opl")
+directions = Array[Vector2i]([Vector2i(8, -67)])
+NPC_ID = 1
+speed = 10.0
+delay = 0.2
+relative = false
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/cutscene/DialogueToggle2/DialogueToggle7" unique_id=1168224123]
+script = ExtResource("7_3sxwk")
+cue = "spot4"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueCue2" type="Node" parent="DialogueSection/cutscene" unique_id=106062049]

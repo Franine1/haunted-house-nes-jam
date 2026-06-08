@@ -18,6 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://dybe63wiaie0m" path="res://scenes/objects/green_switch.tscn" id="16_o0koi"]
 [ext_resource type="PackedScene" uid="uid://bdtx87q04tyke" path="res://scenes/objects/blue_gate_small.tscn" id="17_o0koi"]
 [ext_resource type="PackedScene" uid="uid://bkr4mitnaxbb7" path="res://scenes/objects/green_gate_small.tscn" id="18_o6i8v"]
+[ext_resource type="PackedScene" uid="uid://0vklfxl25fll" path="res://scenes/rooms/washer_puzzle_3.tscn" id="19_o6i8v"]
+[ext_resource type="PackedScene" uid="uid://dykvvs521n2f7" path="res://scenes/objects/red_gate_small.tscn" id="20_olpua"]
+[ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="21_mg80x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xm21a"]
 size = Vector2(90, 93)
@@ -28,6 +31,15 @@ b = Vector2(0, -2000)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_q3np2"]
 a = Vector2(32, 0)
 b = Vector2(32, -2000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m62uw"]
+size = Vector2(84, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lyi0"]
+size = Vector2(72, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg80x"]
+size = Vector2(88, 32)
 
 [node name="Level" type="Node2D" unique_id=1876574184]
 script = ExtResource("1_1w44k")
@@ -214,3 +226,147 @@ position = Vector2(64, -776)
 
 [node name="Blockade7" parent="." unique_id=837156968 instance=ExtResource("18_o6i8v")]
 position = Vector2(32, -776)
+
+[node name="Room" parent="." unique_id=1893353675 instance=ExtResource("19_o6i8v")]
+position = Vector2(0, -1120)
+
+[node name="checkpoint7" parent="." unique_id=389230684 instance=ExtResource("13_58u5q")]
+position = Vector2(104, -928)
+
+[node name="checkpoint8" parent="." unique_id=269896569 instance=ExtResource("13_58u5q")]
+position = Vector2(168, -928)
+
+[node name="checkpoint9" parent="." unique_id=2041135070 instance=ExtResource("13_58u5q")]
+position = Vector2(104, -976)
+
+[node name="checkpoint10" parent="." unique_id=322847870 instance=ExtResource("13_58u5q")]
+position = Vector2(168, -976)
+
+[node name="checkpoint11" parent="." unique_id=931766157 instance=ExtResource("13_58u5q")]
+position = Vector2(104, -1072)
+
+[node name="checkpoint12" parent="." unique_id=1066095144 instance=ExtResource("13_58u5q")]
+position = Vector2(168, -1072)
+
+[node name="checkpoint13" parent="." unique_id=2104800706 instance=ExtResource("13_58u5q")]
+position = Vector2(168, -1024)
+
+[node name="Blockade8" parent="." unique_id=1067645042 instance=ExtResource("7_tig5c")]
+position = Vector2(136, -952)
+collision_layer = 33
+collision_mask = 3
+
+[node name="Blockade9" parent="." unique_id=1630729180 instance=ExtResource("15_q3np2")]
+position = Vector2(136, -1048)
+collision_layer = 33
+collision_mask = 3
+
+[node name="Blockade10" parent="." unique_id=972588739 instance=ExtResource("8_jgbvq")]
+position = Vector2(136, -1096)
+
+[node name="Blockade11" parent="." unique_id=583086418 instance=ExtResource("17_o0koi")]
+position = Vector2(224, -1000)
+
+[node name="Blockade12" parent="." unique_id=1946562139 instance=ExtResource("18_o6i8v")]
+position = Vector2(200, -976)
+rotation = 1.5707964
+
+[node name="InteractionZone6" parent="." unique_id=269281257 instance=ExtResource("16_o0koi")]
+position = Vector2(216, -904)
+
+[node name="InteractionZone7" parent="." unique_id=1561899698 instance=ExtResource("9_o6887")]
+position = Vector2(8, -968)
+
+[node name="InteractionZone8" parent="." unique_id=133067272 instance=ExtResource("10_58u5q")]
+position = Vector2(216, -1096)
+
+[node name="Blockade13" parent="." unique_id=726249127 instance=ExtResource("20_olpua")]
+position = Vector2(64, -1000)
+
+[node name="Blockade14" parent="." unique_id=1882686310 instance=ExtResource("17_o0koi")]
+position = Vector2(32, -1000)
+
+[node name="InteractionZone9" type="Area2D" parent="." unique_id=2008639070]
+position = Vector2(200, -928)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone9" unique_id=2020488973]
+visible = false
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_m62uw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone9" unique_id=468799049]
+visible = false
+position = Vector2(-140, 0)
+shape = SubResource("RectangleShape2D_m62uw")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone9" unique_id=1559080671]
+script = ExtResource("6_jgbvq")
+cue = "spot1"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone11" type="Area2D" parent="." unique_id=1713345506]
+position = Vector2(200, -928)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone11" unique_id=1614543067]
+position = Vector2(4, -48)
+shape = SubResource("RectangleShape2D_2lyi0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone11" unique_id=1201114142]
+position = Vector2(-140, -48)
+shape = SubResource("RectangleShape2D_mg80x")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone11" unique_id=445708510]
+script = ExtResource("6_jgbvq")
+cue = "spot2"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone10" type="Area2D" parent="." unique_id=1931088238]
+position = Vector2(200, -1024)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone10" unique_id=288493143]
+visible = false
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_m62uw")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone10" unique_id=407677152]
+script = ExtResource("6_jgbvq")
+cue = "spot3"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone12" type="Area2D" parent="." unique_id=1519955088]
+position = Vector2(200, -1072)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone12" unique_id=482640203]
+visible = false
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_m62uw")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone12" unique_id=1991348928]
+visible = false
+position = Vector2(-136, 0)
+shape = SubResource("RectangleShape2D_m62uw")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone12" unique_id=932652351]
+script = ExtResource("6_jgbvq")
+cue = "spot4"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"

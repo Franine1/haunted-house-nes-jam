@@ -54,7 +54,7 @@ func _ready() -> void:
 	# and connects player collisions to the detected_player
 	# function.
 	body_shape_entered.connect(detected_player.unbind(2))
-	collision_layer = 40
+	collision_layer = 40 if interact_activation else 32
 	collision_mask = 6
 	
 	
@@ -65,8 +65,8 @@ func _ready() -> void:
 			child.z_index = 3
 
 ## when the player walks into it, send its dialogue if entry_activation is true
-func detected_player(_body_rid: RID, _body: Node2D) -> void:
-	if entry_activation and interact_allowed and (max_interactions < 0 or interactions < max_interactions):
+func detected_player(_body_rid: RID, body: Node2D) -> void:
+	if entry_activation and interact_allowed and body is Player and (max_interactions < 0 or interactions < max_interactions):
 		send_dialogue()
 
 func set_interaction(input: bool = true) -> void:
