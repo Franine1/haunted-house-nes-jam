@@ -26,7 +26,11 @@ texture = ExtResource("2_getc1")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1261751026]
 build_mode = 1
-polygon = PackedVector2Array(-16, -24, 16, -24, 16, 24, -16, 24)
+polygon = PackedVector2Array(-18, -26, 18, -26, 18, 26, -18, 26)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="." unique_id=1848947287]
+build_mode = 1
+polygon = PackedVector2Array(-14, -22, 14, -22, 14, 22, -14, 22)
 
 [node name="DialogueSection" type="Node" parent="." unique_id=315019379]
 script = ExtResource("4_ivay7")
@@ -74,31 +78,74 @@ cue = "in_boat"
 compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle" unique_id=1576536851]
+[node name="DialogueToggle" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle" unique_id=206350776]
+script = ExtResource("5_png02")
+cue = "used_boat"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle" unique_id=1576536851]
 script = ExtResource("6_ffovt")
 lines = Array[String](["It's a boat."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueOption" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle" unique_id=1274211982]
+[node name="DialogueOption" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle" unique_id=1274211982]
 script = ExtResource("7_0ndey")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueSection" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=122453094]
+[node name="DialogueSection" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle/DialogueOption" unique_id=122453094]
 script = ExtResource("4_ivay7")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=1441839330]
+[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle/DialogueOption/DialogueSection" unique_id=1441839330]
 script = ExtResource("6_ffovt")
 lines = Array[String](["Get in"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=1514338089]
+[node name="DialogueCue2" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle/DialogueOption/DialogueSection" unique_id=1518606915]
+script = ExtResource("7_3sxwk")
+cue = "used_boat"
+value = 1
+delay = 0.1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle/DialogueOption/DialogueSection" unique_id=1514338089]
 script = ExtResource("7_3sxwk")
 cue = "in_boat"
 value = 1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=990392020]
+[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle/DialogueOption" unique_id=990392020]
+script = ExtResource("6_ffovt")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle" unique_id=1082273182]
+script = ExtResource("5_png02")
+cue = "used_boat"
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueOption" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle2" unique_id=2003490555]
+script = ExtResource("7_0ndey")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle2/DialogueOption" unique_id=163971000]
+script = ExtResource("4_ivay7")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle2/DialogueOption/DialogueSection" unique_id=1053902038]
+script = ExtResource("6_ffovt")
+lines = Array[String](["Get in"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle2/DialogueOption/DialogueSection" unique_id=2145730776]
+script = ExtResource("7_3sxwk")
+cue = "in_boat"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="DialogueSection/interaction/DialogueToggle3/DialogueToggle/DialogueToggle2/DialogueOption" unique_id=1268280049]
 script = ExtResource("6_ffovt")
 lines = Array[String](["Do not"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
@@ -123,11 +170,20 @@ NPC_ID = 1
 speed = 2.0
 metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
 
-[node name="DialogueCue" type="Node" parent="DialogueSection/cutscene" unique_id=782705062]
-script = ExtResource("7_3sxwk")
-cue = "exit_banned"
-delay = 4.0
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
+[node name="DialogueToggle3" type="Node" parent="DialogueSection/cutscene" unique_id=1582316315]
+script = ExtResource("5_png02")
+cue = "boat_cutscene"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueMovement2" type="Node" parent="DialogueSection/cutscene/DialogueToggle3" unique_id=14684427]
+script = ExtResource("6_i2opl")
+directions = Array[Vector2i]([Vector2i(8, -46)])
+NPC_ID = 1
+speed = 7.5
+relative = false
+metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
 
 [node name="DialogueCue3" type="Node" parent="DialogueSection/cutscene" unique_id=11348991]
 script = ExtResource("7_3sxwk")

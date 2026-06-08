@@ -50,6 +50,7 @@ var interact_allowed: bool = true
 
 
 signal update_fading()
+signal finished_movement()
 
 func _ready() -> void:
 	interaction = RayCast2D.new()
@@ -187,6 +188,7 @@ func compile_movement_queue() -> Vector2:
 		else:
 			if !movement_queue.back().next_pathway():
 				movement_queue.pop_back()
+				finished_movement.emit()
 	if mvm or dir:
 		
 		var reduce: Vector2i = enact_movement(mvm, dir, movement_mode_switch) 

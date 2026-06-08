@@ -24,13 +24,14 @@ func ready_behavior() -> void:
 		if game_data.has_data("boat_y"):
 			temp.y = game_data.get_data("boat_y")
 	else:
+		do_warp = true
 		global_position = game_data.get_player_position()
 	
 	set_pos_data(temp)
 	
 	cue.add_cue("boat_cutscene",boat_cutscene)
 	cue.add_cue("in_boat",boat_leave_or_enter)
-	cue.add_cue("exit_banned",exit_mode_changed)
+	finished_movement.connect(exit_mode_changed)
 	
 
 ## activates when the boat is supposed to move on its own
@@ -41,9 +42,10 @@ func boat_cutscene(input: int) -> void:
 
 ## Used to order the boat to update its position when exiting the
 ## game becomes allowed
-func exit_mode_changed(input: int) -> void:
-	if input == 0:
-		update_position()
+func exit_mode_changed() -> void:
+	game_data.set_data("exit_banned",0)
+	game_data.set_data("boat_cutscene",0)
+	update_position()
 
 ## Used to get the player to enter or leave the boat
 func boat_leave_or_enter(input: int) -> void:
