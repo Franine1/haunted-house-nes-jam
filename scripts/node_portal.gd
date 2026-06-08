@@ -12,7 +12,8 @@ extends Portal
 
 @export var target_node: Node2D
 
-func activate(body_rid: RID, body: Node2D) -> void:
+func activate(_body_rid: RID, body: Node2D) -> void:
+	
 	var source_pos: Vector2 = body.global_position
 	if body.has_method("final_position"):
 		source_pos = body.final_position()

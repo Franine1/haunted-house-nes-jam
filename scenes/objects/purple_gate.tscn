@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dedl2810ph76j"]
 
-[ext_resource type="Script" uid="uid://ckgko44c6nyac" path="res://scripts/blockade.gd" id="1_127w5"]
+[ext_resource type="Script" uid="uid://b2igad3guj1uf" path="res://scripts/gates.gd" id="1_5u5gh"]
 [ext_resource type="Shape2D" uid="uid://dnj8iayr04pc7" path="res://resources/shapes/gate_shape.tres" id="2_2pmsp"]
 [ext_resource type="Texture2D" uid="uid://c03xj4ottijqf" path="res://assets/temp_purple.tres" id="3_pl4d1"]
 
 [node name="Blockade" type="StaticBody2D" unique_id=511395359]
-script = ExtResource("1_127w5")
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("1_5u5gh")
 cue = "color"
 value = 4
 compare_type = 1

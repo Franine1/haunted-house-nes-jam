@@ -15,19 +15,7 @@ func ready_behavior() -> void:
 	cue = GameCue.new()
 	add_child(cue)
 	
-	var temp: Vector2i = get_pos_data(global_position)
-	
-	
-	if game_data.get_data("in_boat") == 0:
-		if game_data.has_data("boat_x"):
-			temp.x = game_data.get_data("boat_x")
-		if game_data.has_data("boat_y"):
-			temp.y = game_data.get_data("boat_y")
-	else:
-		do_warp = true
-		global_position = game_data.get_player_position()
-	
-	set_pos_data(temp)
+	warp()
 	
 	cue.add_cue("boat_cutscene",boat_cutscene)
 	cue.add_cue("in_boat",boat_leave_or_enter)
@@ -38,7 +26,29 @@ func ready_behavior() -> void:
 	cue.add_cue("spot5",check_spots.bind(4))
 	cue.add_cue("spot6",check_spots.bind(5))
 	cue.add_cue("spot7",check_spots.bind(6))
+	cue.add_cue("key",try_level_cleared_warp)
 	finished_movement.connect(exit_mode_changed)
+
+func try_level_cleared_warp(input: int) -> void:
+	if input == 3:
+		warp(Vector2i(16,56))
+
+
+## Places the boat in its proper position
+func warp(offset: Vector2i = Vector2i.ZERO) -> void:
+	var temp: Vector2i = get_pos_data(global_position)
+	
+	
+	if game_data.get_data("in_boat") == 0:
+		if game_data.has_data("boat_x"):
+			temp.x = game_data.get_data("boat_x") + offset.x
+		if game_data.has_data("boat_y"):
+			temp.y = game_data.get_data("boat_y") + offset.y
+	else:
+		do_warp = true
+		global_position = game_data.get_player_position()
+	
+	set_pos_data(temp)
 
 
 ## resets the interaction ray to the default

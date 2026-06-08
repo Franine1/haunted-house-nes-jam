@@ -21,6 +21,7 @@ var active: bool = false
 
 var interact_allowed: bool = true
 
+@export_category("Visibility")
 ## Any animated sprites linked to this node
 var sprites: Array[CanvasItem]
 ## Used as a list for NPCs to check for whether to be visible or not
@@ -49,16 +50,9 @@ enum compare {
 	,ALWAYS ## This blockade is always active
 }
 
+## progressess animations and updates activity
 func _process(delta: float) -> void:
-	active = (compare_type == compare.ALWAYS)
-	if (game_data.get_data(cue) == value):
-		active = active or [compare.EQUAL,compare.LESS_OR_EQUAL,compare.GREATER_OR_EQUAL].has(compare_type)
-	else:
-		active = active or [compare.NOT_EQUAL].has(compare_type)
-	if (game_data.get_data(cue) < value):
-		active = active or [compare.LESS,compare.LESS_OR_EQUAL].has(compare_type)
-	if (game_data.get_data(cue) > value):
-		active = active or [compare.GREATER,compare.GREATER_OR_EQUAL].has(compare_type)
+	update_activity()
 	
 	collision_layer = 33 if active else 0
 	if interact_activation and active:
@@ -71,10 +65,22 @@ func _process(delta: float) -> void:
 		if layout.overlaps(self):
 			best = max(best,layout.recent_opacity)
 	progress_animation(delta, best)
-	
-	
 
 
+## Updates the node's active var
+func update_activity() -> void:
+	active = (compare_type == compare.ALWAYS)
+	if (game_data.get_data(cue) == value):
+		active = active or [compare.EQUAL,compare.LESS_OR_EQUAL,compare.GREATER_OR_EQUAL].has(compare_type)
+	else:
+		active = active or [compare.NOT_EQUAL].has(compare_type)
+	if (game_data.get_data(cue) < value):
+		active = active or [compare.LESS,compare.LESS_OR_EQUAL].has(compare_type)
+	if (game_data.get_data(cue) > value):
+		active = active or [compare.GREATER,compare.GREATER_OR_EQUAL].has(compare_type)
+
+
+## Changes the color scheme of child sprite2Ds accordingly
 func change_palette(input: Dictionary[int,ShaderMaterial], clear_non_included: bool = true) -> void:
 	for sprite in sprites:
 		if input.has(material_layer):

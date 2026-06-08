@@ -84,8 +84,8 @@ func progress_animation(_delta: float, opacity: float = -1.0) -> void:
 		if sprite.material is ShaderMaterial:
 			sprite.material.set_shader_parameter("opacity",result_opacity)
 	
-	if false:
-		print(str(fade_in_checks.size()) + " | " + str(result_opacity))
+	
+	
 
 
 func _process(delta: float) -> void:
