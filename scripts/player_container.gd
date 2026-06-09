@@ -86,6 +86,9 @@ func react_to_astral_projection(input: bool, override: bool = false) -> void:
 		else:
 			if astral_recently_enforced.is_stopped():
 				ast.global_position = pl.global_position + (Vector2(16.0,14.0) * 16.0 * astral_offset)
+				print("default")
+			else:
+				print(ast.global_position)
 			
 		
 		
@@ -108,8 +111,10 @@ func current_player(active: bool = true) -> Player:
 		return ast
 
 func adjust_player_distances(input: Vector2 = astral_offset) -> void:
+	if astral_recently_enforced.time_left > 0.1 and !astral_recently_enforced.is_stopped():
+		return # ignore the command
 	var difference: Vector2 = (Vector2(16.0,14.0) * 16.0 * input)
 	current_player(false).global_position = current_player().global_position + difference
 	if astral_mode and false:
 		ast.camera_snap_axis = pl.camera_snap_axis + difference/16.0 
-	astral_recently_enforced.start(0.1)
+	astral_recently_enforced.start(0.2)

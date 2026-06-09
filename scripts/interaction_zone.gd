@@ -67,7 +67,8 @@ func _ready() -> void:
 ## when the player walks into it, send its dialogue if entry_activation is true
 func detected_player(_body_rid: RID, body: Node2D) -> void:
 	if entry_activation and interact_allowed and body is Player and (max_interactions < 0 or interactions < max_interactions):
-		send_dialogue()
+		if body.toggle:
+			send_dialogue()
 
 func set_interaction(input: bool = true) -> void:
 	interact_allowed = input

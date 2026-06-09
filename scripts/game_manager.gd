@@ -69,6 +69,7 @@ var current_pallete: Dictionary[int,ShaderMaterial] = {
 	,4: preload("res://resources/palettes/redpallete.tres")
 	,5: preload("res://resources/palettes/oceanpallette.tres")
 	,6: preload("res://resources/palettes/ghostlypallette.tres")
+	,7: preload("res://resources/palettes/grimepallette.tres")
 }
 
 ## The allowed game states

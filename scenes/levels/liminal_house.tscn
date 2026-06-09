@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bxypwd0i20k5d"]
+[gd_scene format=4 uid="uid://bxypwd0i20k5d"]
 
 [ext_resource type="Script" uid="uid://56yoruxpggjg" path="res://scripts/level.gd" id="1_ge134"]
 [ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="2_dhces"]
@@ -25,6 +25,10 @@
 [ext_resource type="Script" uid="uid://xcuenefyob25" path="res://scripts/astral_translation.gd" id="23_x33el"]
 [ext_resource type="Script" uid="uid://cup01huy0tbwf" path="res://scripts/astral_anchor.gd" id="24_a25vn"]
 [ext_resource type="PackedScene" uid="uid://bbpj1d0pxkbee" path="res://scenes/layouts/astral_hallway.tscn" id="25_5d0i7"]
+[ext_resource type="PackedScene" uid="uid://cnv61xd7f2tu3" path="res://scenes/layouts/grimy_hall.tscn" id="26_5sawo"]
+[ext_resource type="PackedScene" uid="uid://nmufkjjhmoex" path="res://scenes/layouts/grimy_living_room.tscn" id="27_8m340"]
+[ext_resource type="PackedScene" uid="uid://dn2g6lrf06ffa" path="res://scenes/dialogue/window_person.tscn" id="28_fbbmj"]
+[ext_resource type="Script" uid="uid://bwfil16152c87" path="res://scripts/dialogue_loop.gd" id="29_l1ti2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jaq44"]
 size = Vector2(160, 80)
@@ -49,6 +53,9 @@ size = Vector2(225, 113)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sawo"]
 size = Vector2(256, 304)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8m340"]
+size = Vector2(256, 208)
 
 [node name="liminal_house" type="Node2D" unique_id=2032826598]
 script = ExtResource("1_ge134")
@@ -744,6 +751,7 @@ screen_offset = Vector2i(0, -8)
 metadata/_custom_type_script = "uid://xcuenefyob25"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralTranslation" unique_id=1981985153]
+visible = false
 polygon = PackedVector2Array(-1008, 1888, -808, 1888, -808, 1896, -824, 1896, -824, 1928, -840, 1928, -840, 1912, -952, 1912, -952, 1928, -968, 1928, -968, 1960, -952, 1960, -952, 1976, -840, 1976, -840, 1960, -824, 1960, -824, 1928, -792, 1928, -792, 1912, -784, 1912, -784, 2000, -1008, 2000)
 
 [node name="AstralAnchor" type="Area2D" parent="." unique_id=77324653]
@@ -782,6 +790,7 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="Layout" parent="Room" unique_id=440563856 instance=ExtResource("25_5d0i7")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room" unique_id=92684098]
+visible = false
 position = Vector2(32, -120)
 shape = SubResource("RectangleShape2D_5sawo")
 
@@ -793,4 +802,231 @@ target_tile = Vector2i(7, 3)
 metadata/_custom_type_script = "uid://cup01huy0tbwf"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralAnchor2" unique_id=1034858847]
-polygon = PackedVector2Array(-24, -24, -24, 24, 136, 24, 136, -56, 88, -56, 88, -24)
+visible = false
+polygon = PackedVector2Array(-24, -24, -24, 24, 136, 24, 136, -184, 88, -184, 56, -200, 8, -200, -24, -168, -24, -160, 48, -160, 48, -128, 16, -128, 16, -160, -24, -160, -24, -120, 8, -88, 88, -88, 88, -24)
+
+[node name="AstralTranslation4" type="Area2D" parent="." unique_id=234268127]
+script = ExtResource("23_x33el")
+screen_offset = Vector2i(0, -8)
+metadata/_custom_type_script = "uid://xcuenefyob25"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AstralTranslation4" unique_id=450868885]
+position = Vector2(-872, 1704)
+shape = ExtResource("7_lvia4")
+
+[node name="escape_hall" type="Area2D" parent="." unique_id=2142821919]
+position = Vector2(0, -16)
+script = ExtResource("2_dhces")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="Layout" parent="escape_hall" unique_id=1366310754 instance=ExtResource("26_5sawo")]
+position = Vector2(-928, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="escape_hall" unique_id=1998923681]
+visible = false
+position = Vector2(-896, -104)
+shape = SubResource("RectangleShape2D_8m340")
+
+[node name="living_room" type="Area2D" parent="." unique_id=972111109]
+position = Vector2(-896, -416)
+script = ExtResource("2_dhces")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="living_room" parent="living_room" unique_id=279256798 instance=ExtResource("27_8m340")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="living_room" unique_id=1705473428]
+visible = false
+polygon = PackedVector2Array(-32, 192, -32, -16, 80, -16, 80, 128, 176, 128, 176, 80, 224, 80, 224, 240, 320, 240, 320, 320, 176, 320, 176, 176, 80, 176, 80, 192)
+
+[node name="living_room2" type="Area2D" parent="." unique_id=2098572980]
+position = Vector2(-1408, -416)
+script = ExtResource("2_dhces")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="living_room" parent="living_room2" unique_id=347182087 instance=ExtResource("27_8m340")]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAABAAEAAAAAAAgAAAABAAEAAAAAAAkAAAABAAEAAAAAAAoAAAABAAEAAAABAAAAAAABAAEAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAABAAQAAAABAAEAAAABAAUAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAABAAgAAAABAAEAAAABAAkAAAABAAEAAAACAAAAAAABAAEAAAACAAEAAAABAAEAAAACAAIAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAACAAYAAAABAAEAAAACAAcAAAABAAEAAAACAAgAAAABAAEAAAACAAkAAAABAAEAAAACAAoAAAABAAEAAAADAAAAAAABAAEAAAADAAEAAAABAAEAAAADAAIAAAABAAEAAAADAAMAAAABAAEAAAADAAQAAAABAAEAAAADAAUAAAABAAEAAAADAAYAAAABAAEAAAADAAcAAAABAAEAAAADAAgAAAABAAEAAAADAAkAAAABAAEAAAADAAoAAAABAAEAAAAEAAAAAAACAAEAAAAEAAEAAAACAAEAAAAEAAIAAAACAAEAAAAEAAMAAAACAAEAAAAEAAQAAAACAAEAAAAEAAUAAAACAAEAAAAEAAYAAAACAAEAAAAEAAcAAAACAAEAAAAEAAgAAAAGAAEAAAAEAAkAAAABAAEAAAAEAAoAAAAGAAIAAAD//woAAAABAAEAAAD//wkAAAABAAEAAAD//wgAAAABAAEAAAD//wcAAAABAAEAAAD//wYAAAABAAEAAAD//wUAAAABAAEAAAD//wQAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD//wEAAAABAAEAAAD//wAAAAABAAEAAAD/////AAABAAAAAAAAAP//AAABAAAAAAABAP//AAABAAAAAAACAP//AAABAAAAAAADAP//AAABAAAAAAAEAP//AAACAAAAAAD//wsAAAABAAIAAAADAAsAAAABAAIAAAAEAAsAAAABAAIAAAD+////AAAAAAAAAAD+/wAAAAAAAAEAAAD+/wEAAAAAAAEAAAD+/wIAAAAAAAEAAAD+/wMAAAAAAAEAAAD+/wQAAAAAAAEAAAD+/wUAAAAAAAEAAAD+/wYAAAAAAAEAAAD+/wcAAAAAAAEAAAD+/wgAAAAAAAEAAAD+/wkAAAAAAAEAAAD+/woAAAAAAAIAAAD+/wsAAAABAAIAAAABAAsAAAABAAIAAAACAAsAAAABAAIAAAAAAAsAAAABAAIAAAABAAoAAAABAAEAAAAFAAgAAAABAAAAAAAGAAgAAAABAAAAAAAHAAgAAAABAAAAAAAIAAgAAAABAAAAAAAJAAgAAAABAAAAAAAKAAgAAAABAAAAAAAFAAoAAAABAAIAAAAGAAoAAAABAAIAAAAHAAoAAAABAAIAAAAIAAoAAAABAAIAAAAJAAoAAAABAAIAAAAKAAoAAAABAAIAAAALAAgAAAAFAAEAAAALAAYAAAAAAAEAAAALAAcAAAAAAAEAAAALAAUAAAAAAAAAAAAMAAUAAAABAAAAAAAMAAYAAAABAAEAAAAMAAcAAAABAAEAAAAMAAgAAAABAAEAAAANAAUAAAACAAAAAAANAAYAAAACAAEAAAANAAcAAAACAAEAAAANAAgAAAACAAEAAAAFAAkAAAABAAEAAAAGAAkAAAABAAEAAAAHAAkAAAABAAEAAAAIAAkAAAABAAEAAAAJAAkAAAABAAEAAAAKAAkAAAABAAEAAAALAAkAAAABAAEAAAAMAAkAAAABAAEAAAANAAkAAAACAAEAAAAMAAoAAAABAAEAAAAMAAsAAAABAAEAAAAMAAwAAAABAAEAAAAMAA0AAAABAAEAAAAMAA4AAAABAAEAAAAMAA8AAAABAAEAAAAMABAAAAABAAEAAAAMABEAAAABAAEAAAAMABIAAAABAAEAAAANAAoAAAACAAEAAAANAAsAAAACAAEAAAANAAwAAAACAAEAAAANAA0AAAACAAEAAAANAA4AAAACAAEAAAANAA8AAAACAAEAAAANABAAAAAGAAEAAAALAAoAAAAFAAIAAAALAAsAAAAAAAEAAAALAAwAAAAAAAEAAAALAA0AAAAAAAEAAAALAA4AAAAAAAEAAAALAA8AAAAAAAEAAAALABAAAAAAAAEAAAALABEAAAAAAAEAAAALABIAAAAAAAIAAAALABMAAAABAAIAAAAMABMAAAABAAIAAAANABMAAAABAAIAAAAQABMAAAABAAIAAAARABMAAAABAAIAAAAPABMAAAABAAIAAAAOABMAAAABAAIAAAAOABAAAAABAAAAAAAPABAAAAABAAAAAAARABAAAAABAAAAAAASABAAAAABAAAAAAASABMAAAABAAIAAAATABMAAAABAAIAAAATABIAAAACAAIAAAATABAAAAACAAAAAAATABEAAAACAAEAAAANABEAAAABAAEAAAAOABEAAAABAAEAAAAPABEAAAABAAEAAAAQABEAAAABAAEAAAARABEAAAABAAEAAAASABEAAAABAAEAAAASABIAAAABAAEAAAARABIAAAABAAEAAAAQABIAAAABAAEAAAAPABIAAAABAAEAAAAOABIAAAABAAEAAAANABIAAAABAAEAAAAQABAAAAABAAAAAAA=")
+material_layer = 6
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="living_room2" unique_id=1243972113]
+visible = false
+polygon = PackedVector2Array(-32, 192, -32, -16, 80, -16, 80, 128, 176, 128, 176, 80, 224, 80, 224, 240, 320, 240, 320, 320, 176, 320, 176, 176, 80, 176, 80, 192)
+
+[node name="windowman" type="Area2D" parent="." unique_id=115576405]
+position = Vector2(-632, -168)
+script = ExtResource("20_kb7oi")
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="windowman" unique_id=401535632]
+shape = ExtResource("7_lvia4")
+
+[node name="DialogueSection" parent="windowman" unique_id=1138576288 instance=ExtResource("28_fbbmj")]
+knock_ID = 6
+
+[node name="DialogueToggle" type="Node" parent="windowman/DialogueSection" unique_id=664840828]
+script = ExtResource("21_vyu0u")
+cue = "knock"
+value = 6
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle" unique_id=321682675]
+script = ExtResource("5_u8ura")
+lines = Array[String](["...", "It's been cold lately, hasn't it?"])
+name_id = 3
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="windowman/DialogueSection/DialogueToggle" unique_id=1034809398]
+script = ExtResource("10_uuq2e")
+cue = "dialogue"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLoop" type="Node" parent="windowman/DialogueSection/DialogueToggle" unique_id=1560367163]
+script = ExtResource("29_l1ti2")
+cue = "dialogue"
+value = 1
+metadata/_custom_type_script = "uid://bwfil16152c87"
+
+[node name="DialogueOption" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop" unique_id=1319416890]
+script = ExtResource("8_lvia4")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption" unique_id=263810503]
+script = ExtResource("9_uuq2e")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection" unique_id=598143756]
+script = ExtResource("5_u8ura")
+lines = Array[String](["How did I go through walls?!"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection" unique_id=201479516]
+script = ExtResource("5_u8ura")
+lines = Array[String](["I think you had a... uh...", "Right! An out-of-body experience.", "And, uh, I'm sure the fact that it happens every time you close your eyes is... normal.", "Now that I think about it, last time I saw Lea, she was trying to do the same thing.", "I wonder how that turned out for her."])
+name_id = 3
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueSection2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption" unique_id=1945177131]
+script = ExtResource("9_uuq2e")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection2" unique_id=1549073116]
+script = ExtResource("5_u8ura")
+lines = Array[String](["Nevermind"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection2" unique_id=1009596027]
+script = ExtResource("10_uuq2e")
+cue = "dialogue"
+value = -1
+additive = true
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="AstralAnchor3" type="Area2D" parent="." unique_id=444727531]
+script = ExtResource("24_a25vn")
+enforce_Y = false
+copy_X = true
+copy_Y = true
+target_screen = Vector2i(-2, 0)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralAnchor3" unique_id=1367621289]
+polygon = PackedVector2Array(-928, -432, -816, -432, -816, -288, -720, -288, -720, -336, -672, -336, -672, -136, -576, -136, -576, -96, -720, -96, -720, -240, -848, -240, -864, -248, -880, -248, -896, -240, -928, -240)
+
+[node name="AstralAnchor5" type="Area2D" parent="." unique_id=673063758]
+position = Vector2(-512, 0)
+script = ExtResource("24_a25vn")
+enforce_Y = false
+copy_X = true
+copy_Y = true
+target_screen = Vector2i(2, 0)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralAnchor5" unique_id=561122225]
+polygon = PackedVector2Array(-928, -432, -816, -432, -816, -288, -720, -288, -720, -336, -672, -336, -672, -136, -576, -136, -576, -96, -720, -96, -720, -240, -848, -240, -864, -248, -880, -248, -896, -240, -928, -240)
+
+[node name="AstralAnchor4" type="Area2D" parent="." unique_id=1201945182]
+script = ExtResource("24_a25vn")
+copy_X = true
+target_screen = Vector2i(-2, -1)
+target_tile = Vector2i(0, -2)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralAnchor4" unique_id=97985662]
+position = Vector2(-40, 200)
+polygon = PackedVector2Array(-840, -432, -824, -432, -824, -328, -792, -296, -792, -280, -824, -248, -840, -248, -872, -280, -872, -296, -840, -328)
+
+[node name="Blockade6" type="StaticBody2D" parent="." unique_id=1120000994]
+position = Vector2(-696, -344)
+script = ExtResource("4_pap46")
+interact_activation = true
+collide_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade6" unique_id=662149520]
+shape = ExtResource("7_lvia4")
+
+[node name="DialogueSection" type="Node" parent="Blockade6" unique_id=397802422]
+script = ExtResource("9_uuq2e")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueToggle" type="Node" parent="Blockade6/DialogueSection" unique_id=1679963588]
+script = ExtResource("21_vyu0u")
+cue = "key"
+value = 3
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="Blockade6/DialogueSection/DialogueToggle" unique_id=1430984337]
+script = ExtResource("5_u8ura")
+lines = Array[String](["It's locked. This door goes to the backyard.", "You have the key now."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="Blockade6/DialogueSection/DialogueToggle" unique_id=2089034389]
+script = ExtResource("8_lvia4")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="Blockade6/DialogueSection/DialogueToggle/DialogueOption" unique_id=248931598]
+script = ExtResource("9_uuq2e")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="Blockade6/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1838730927]
+script = ExtResource("5_u8ura")
+lines = Array[String](["Unlock it", "The door creaks as the handle turns."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="Blockade6/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=424042817]
+script = ExtResource("10_uuq2e")
+cue = "key"
+value = 4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="Blockade6/DialogueSection/DialogueToggle/DialogueOption" unique_id=830668230]
+script = ExtResource("5_u8ura")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="Blockade6/DialogueSection" unique_id=475922038]
+script = ExtResource("21_vyu0u")
+cue = "key"
+value = 3
+compare_type = 3
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="Blockade6/DialogueSection/DialogueToggle2" unique_id=1042591321]
+script = ExtResource("10_uuq2e")
+cue = "level"
+value = 4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="AstralAnchor6" type="Area2D" parent="." unique_id=1245982849]
+script = ExtResource("24_a25vn")
+copy_X = true
+copy_Y = true
+target_screen = Vector2i(-2, 0)
+target_tile = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AstralAnchor6" unique_id=411161772]
+position = Vector2(-632, -160)
+shape = ExtResource("7_lvia4")

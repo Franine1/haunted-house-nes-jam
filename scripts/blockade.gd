@@ -113,9 +113,10 @@ func send_dialogue() -> void:
 ## when the player bumps into it, sends its dialogue if collide_Activation is true
 func bump(source: NPC = null) -> void:
 	if source is Player and collide_activation and interact_allowed and active:
-		if source != null:
-			source.delay_interaction()
-		send_dialogue()
+		if source.toggle:
+			if source != null:
+				source.delay_interaction()
+			send_dialogue()
 
 func set_interaction(input: bool = true) -> void:
 	interact_allowed = input

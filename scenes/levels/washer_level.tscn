@@ -793,6 +793,12 @@ script = ExtResource("28_e3ck7")
 lines = Array[String](["The bowl is empty. The water spilled out."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
+[node name="DialogueCue" type="Node" parent="Blockade19/DialogueSection/DialogueToggle2" unique_id=1977314733]
+script = ExtResource("6_jgbvq")
+cue = "secret_hint1"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="DialogueToggle" type="Node" parent="Blockade19/DialogueSection" unique_id=569627580]
 script = ExtResource("10_o6887")
 cue = "key"
@@ -856,6 +862,76 @@ metadata/_custom_type_script = "uid://xhrymkbacnrg"
 [node name="DialogueLines" type="Node" parent="Blockade19/DialogueSection/DialogueToggle/DialogueOption/DialogueSection/DialogueOption" unique_id=10211156]
 script = ExtResource("28_e3ck7")
 lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Blockade24" type="StaticBody2D" parent="." unique_id=1637745428]
+position = Vector2(-120, -1640)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("4_a0l57")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade24" unique_id=332051419]
+shape = ExtResource("26_bpya2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Blockade24" unique_id=145552604]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("31_bpya2")
+
+[node name="DialogueSection" type="Node" parent="Blockade24" unique_id=1693578820]
+script = ExtResource("5_tig5c")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="Blockade24/DialogueSection" unique_id=197639655]
+script = ExtResource("28_e3ck7")
+lines = Array[String](["It's a headless statue of a woman. It's green after exposure to water."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle" type="Node" parent="Blockade24/DialogueSection" unique_id=1117311376]
+script = ExtResource("10_o6887")
+cue = "garden"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines2" type="Node" parent="Blockade24/DialogueSection/DialogueToggle" unique_id=2037965305]
+script = ExtResource("28_e3ck7")
+lines = Array[String](["She has a necklace with a key on it."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="Blockade24/DialogueSection/DialogueToggle" unique_id=1748528259]
+script = ExtResource("31_e3ck7")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="Blockade24/DialogueSection/DialogueToggle/DialogueOption" unique_id=2015231616]
+script = ExtResource("5_tig5c")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="Blockade24/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1059992941]
+script = ExtResource("28_e3ck7")
+lines = Array[String](["Take it", "Got the Gardener's Key."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="Blockade24/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=778439461]
+script = ExtResource("6_jgbvq")
+cue = "garden"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="Blockade24/DialogueSection/DialogueToggle/DialogueOption" unique_id=1731135228]
+script = ExtResource("28_e3ck7")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="Blockade24/DialogueSection" unique_id=804765537]
+script = ExtResource("10_o6887")
+cue = "garden"
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="Blockade24/DialogueSection/DialogueToggle2" unique_id=1557919627]
+script = ExtResource("28_e3ck7")
+lines = Array[String](["Her necklace is ruined."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="InteractionZone" type="Area2D" parent="." unique_id=1002149294]
@@ -1012,4 +1088,77 @@ shape = ExtResource("34_cuylp")
 [node name="DialogueCue" type="Node" parent="InteractionZone27" unique_id=44723871]
 script = ExtResource("6_jgbvq")
 cue = "tooltip"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="Blockade23" type="StaticBody2D" parent="." unique_id=1899643482]
+position = Vector2(24, -632)
+script = ExtResource("4_a0l57")
+interact_activation = true
+cue = "secret_hint1"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade23" unique_id=545428793]
+shape = ExtResource("26_bpya2")
+
+[node name="DialogueToggle" type="Node" parent="Blockade23" unique_id=593064242]
+script = ExtResource("10_o6887")
+cue = "secret_hint1"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="Blockade23/DialogueToggle" unique_id=899110272]
+script = ExtResource("28_e3ck7")
+lines = Array[String](["There's a note on the wall. It's crumpled after being washed thoroughly."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="Blockade23/DialogueToggle" unique_id=178941466]
+script = ExtResource("31_e3ck7")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueLines" type="Node" parent="Blockade23/DialogueToggle/DialogueOption" unique_id=95277461]
+script = ExtResource("28_e3ck7")
+lines = Array[String](["Read it", "You slowly unfurl the note. It seems to be a drawing of a room.", "There's a bowl of water in the middle, and two pathways on the left wall."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="Blockade23/DialogueToggle/DialogueOption" unique_id=1419902184]
+script = ExtResource("28_e3ck7")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Sprite2D" type="Sprite2D" parent="Blockade23" unique_id=587088782]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("31_bpya2")
+
+[node name="InteractionZone28" type="Area2D" parent="." unique_id=1351268070]
+position = Vector2(-56, -1472)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone28" unique_id=289891364]
+shape = ExtResource("26_bpya2")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone28" unique_id=880299461]
+script = ExtResource("6_jgbvq")
+cue = "volume"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone29" type="Area2D" parent="." unique_id=1305666984]
+position = Vector2(-32, -1496)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone29" unique_id=648395513]
+shape = ExtResource("26_bpya2")
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone29" unique_id=1946297417]
+script = ExtResource("6_jgbvq")
+cue = "volume"
+value = 2
 metadata/_custom_type_script = "uid://xhrymkbacnrg"

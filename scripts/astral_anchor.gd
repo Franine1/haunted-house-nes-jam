@@ -26,18 +26,18 @@ func enforce_distances(player_container: PlayerContainer, active_player: Player,
 	if enforce_Y:
 		enforce_axis += Vector2.DOWN
 	
-	var copy_axis: Vector2 = Vector2.ZERO
+	var copy_axis: Vector2 = Vector2.ONE
 	if copy_X:
-		copy_axis += Vector2.RIGHT
+		copy_axis -= Vector2.RIGHT
 	if copy_Y:
-		copy_axis += Vector2.DOWN
+		copy_axis -= Vector2.DOWN
 	
 	var source_pos: Vector2 = active_player.final_position() / 16.0
 	
-	var enforced_vector: Vector2 = Vector2(target_screen) + ((Vector2(target_tile) - source_pos) / screen)
+	var enforced_vector: Vector2 = Vector2(target_screen) + (Vector2(target_tile) / screen)
 	
-	var unchanged_vector: Vector2 = (inactive_player.final_position() - active_player.final_position()) / (16.0 * screen)
+	var unchanged_vector: Vector2 = source_pos / screen
 	
-	var final: Vector2 = (enforce_axis * enforced_vector) + (copy_axis * unchanged_vector)
+	var final: Vector2 = (enforce_axis * enforced_vector) - (copy_axis * unchanged_vector)
 	
 	player_container.adjust_player_distances(final)
