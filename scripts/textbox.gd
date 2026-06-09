@@ -38,7 +38,8 @@ func display(input: String, speed: float = 0.01, initial_visible: int = 0, sze: 
 func replace_text(input: String) -> void:
 	var read_text: String = input
 	var select: bool = read_text[0] == ">"
-	if select:
+	var cleared: bool = read_text[0] == "~"
+	if cleared or select:
 		read_text = read_text.substr(1)
 		pass
 	
@@ -46,6 +47,8 @@ func replace_text(input: String) -> void:
 	
 	if select:
 		back.theme_type_variation = "SelectedPanel"
+	elif cleared:
+		back.hide()
 	else:
 		back.theme_type_variation = "Panel"
 

@@ -5,6 +5,7 @@ signal glide_finished()
 
 ## delay after gliding finishes before unpausing
 @onready var glide_timer: Timer = %"glide delay"
+## The sprite used to black out the screen
 @onready var blackout_sprite: Sprite2D = %Sprite2D
 
 var target: Vector2 = Vector2.ZERO:
@@ -12,7 +13,9 @@ var target: Vector2 = Vector2.ZERO:
 		target = value
 		arrived = false
 
+## Whether or not we are currently at our target position
 var arrived: bool = false
+## Whether or not the screen is blacked out
 var blackout: bool = true
 
 ## the delay between pausing the game and starting to glide,
@@ -21,8 +24,13 @@ const glide_delay: float = 0.15
 
 func _ready() -> void:
 	# connects the timer to the try_unpause function
-	blackout_sprite.z_index = 1000
+	blackout_transition()
 	glide_timer.timeout.connect(try_unpause)
+
+
+func blackout_transition() -> void:
+	blackout_sprite.z_index = 1000
+	blackout = true
 	get_tree().create_timer(0.1).timeout.connect(set_blackout.bind(false))
 
 ## glides to a target position and pauses the game
@@ -72,9 +80,11 @@ func _process(delta: float) -> void:
 		global_position = target
 	
 
+## Unpauses the game if the camera's at its destination
 func try_unpause() -> void:
 	if arrived:
 		get_tree().paused = false
 
+## Sets the value of blackout
 func set_blackout(input: bool) -> void:
 	blackout = input

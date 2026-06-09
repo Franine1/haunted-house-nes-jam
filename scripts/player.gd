@@ -5,21 +5,42 @@ extends NPC
 
 ## The camera of the player
 @onready var camera: Camera2D = %Camera2D
+## Determines if this is the physical player node or the spiritual one
+@export var astral_mode: bool = true
 
 ## whether or not the camera is teleporting to the player
 var camera_instant: bool = false
+## Time B button has been held
+var projection_time: float = 0.0
+## overrride for whether this node is able to interact
+var toggle: bool = astral_mode
+## Time needed to hold the B button to astral project
+const max_projection_time: float = 0.75
 
 signal request_pause()
 
+signal astral_changed(input: bool)
+
+
+func ready_behavior() -> void:
+	toggle = astral_mode
+
+
 func _physics_process(delta: float) -> void:
 	
-	game_data.accept_player_position(global_position,camera_snap_axis)
+	if astral_mode:
+		game_data.accept_player_position(global_position,camera_snap_axis)
+	else:
+		game_data.accept_astral_position(global_position,camera_snap_axis)
+		
 	
 	upkeep(delta)
 	
 	progress_animation(delta)
 	
 	var has_moved: bool = false
+	
+	var increasing_projection_time: bool = false
 	
 	if input_delay.is_stopped():
 		# movement inputs are allowed
@@ -37,28 +58,40 @@ func _physics_process(delta: float) -> void:
 		if !mvm:
 			# if we aren't moving, allow the player to interact
 			velocity = Vector2.ZERO
-		if Input.is_action_just_pressed("A button") and input_allowed and interact_delay.is_stopped() and !has_moved:
-			if interaction.is_colliding():
-				var target = interaction.get_collider()
-				if target is InteractionZone:
-					target.interact()
+		if input_allowed and toggle and interact_delay.is_stopped() and !has_moved:
+			if Input.is_action_just_pressed("A button"):
+				if interaction.is_colliding():
+					var target = interaction.get_collider()
+					if target is InteractionZone:
+						target.interact()
+						delay_interaction()
+					elif target is Blockade:
+						target.interact()
+						delay_interaction()
+					elif target is Player:
+						pass
+					elif target is NPC:
+						target.interact(self)
+						
+						delay_interaction()
+			elif Input.is_action_just_pressed("Start button"):
+				if game_data.get_data("exit_banned") == 0:
+					request_pause.emit()
 					delay_interaction()
-				elif target is Blockade:
-					target.interact()
-					delay_interaction()
-				elif target is Player:
-					pass
-				elif target is NPC:
-					target.interact(self)
-					
-					delay_interaction()
-		elif Input.is_action_just_pressed("Start button") and input_allowed and interact_delay.is_stopped():
-			if game_data.get_data("exit_banned") == 0:
-				request_pause.emit()
-				delay_interaction()
-			
+			elif Input.is_action_pressed("B button"):
+				increasing_projection_time = true
 	
-	fix_camera(camera_instant)
+	if increasing_projection_time:
+		projection_time += delta
+		if projection_time >= max_projection_time:
+			projection_time = 0.0
+			game_data.set_data("astral",-game_data.get_data("astral"))
+			astral_changed.emit((game_data.get_data("astral") <= 0))
+	else:
+		projection_time = clamp(projection_time - delta,0.0,max_projection_time)
+	
+	if toggle:
+		fix_camera(camera_instant)
 	move_and_slide()
 
 
@@ -72,10 +105,11 @@ func fix_camera(instant: bool = false) -> void:
 	transl = transl.round()
 	transl += camera_snap_axis
 	transl *= 16.0
-	if instant:
-		camera.warp(transl)
-	elif camera.target != transl:
-		camera.glide(transl)
+	if toggle:
+		if instant:
+			camera.warp(transl)
+		elif camera.target != transl:
+			camera.glide(transl)
 
 
 ## forces rooms the player is in to instantly fade in when warping
@@ -90,7 +124,8 @@ func seamless_warp() -> void:
 func teleport(target: Vector2) -> void:
 	var difference: Vector2 = target - global_position
 	camera_snap_axis += difference/16.0 
-	camera.shift(difference)
+	if toggle:
+		camera.shift(difference)
 	global_position = target
 
 ## changes the value of "seamless"

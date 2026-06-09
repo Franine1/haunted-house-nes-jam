@@ -23,6 +23,8 @@ var dialogue_queue: Array[Dialogue] = []
 var movement_queues: Dictionary[int,Array] = {}
 ## initial player transformation
 var player_position: Vector4 = Vector4.ZERO
+## initial astral position
+var astral_position: Vector2 = Vector2.ZERO
 ## path to save files to
 const savepath: String = "user://savedgames/"
 
@@ -75,7 +77,30 @@ const names: Array[String] = [
 	,"Window Person"
 ]
 
+const tooltips: Array[Array] = [
+	[""]
+	,["~1 / 3"]
+	,["~2 / 3"]
+	,["~3 / 3"]
+	,["~Hold B to close your eyes"]
+]
 
+
+
+
+## returns the current tooltip being displayed
+func next_tooltip() -> Array[String]:
+	if data["tooltip"] > 0 and tooltips.size() > data["tooltip"]:
+		var t = tooltips[data["tooltip"]]
+		var ans: Array[String] = []
+		for item in t:
+			if item is String:
+				ans.append(item)
+		return ans
+	return []
+
+
+## returns the preset name of an NPC
 func name(input: int) -> String:
 	if input >= names.size() or input < 0:
 		return ""
@@ -178,7 +203,7 @@ func save_game(slot: int) -> void:
 	
 	var file: FileAccess = FileAccess.open(get_slot_name(slot),FileAccess.WRITE)
 	
-	var temp = [player_position[0],player_position[1],player_position[2],player_position[3]]
+	var temp = [player_position[0],player_position[1],player_position[2],player_position[3],astral_position[0],astral_position[1]]
 	file.store_csv_line(prepare_csv(temp))
 	
 	for key in data.keys():
@@ -204,14 +229,14 @@ func load_game(slot: int) -> bool:
 		if !repos:
 			repos = true
 			var result: Array[float] = []
-			for i in range(4):
+			for i in range(6):
 				if i < next.size():
 					result.append(float(next.get(i)))
 				else:
 					result.append(0.0)
 			
 			player_position = Vector4(result[0],result[1],result[2],result[3])
-			#print(player_position)
+			astral_position = Vector2(result[4],result[5])
 			
 		else:
 			if next.size() >= 2:
@@ -267,11 +292,19 @@ func prepare_csv(input: Array) -> PackedStringArray:
 func accept_player_position(pos: Vector2, snap: Vector2) -> void:
 	player_position = Vector4(pos.x,pos.y,snap.x,snap.y)
 
+## lets the player upload their position and camera snap axis
+func accept_astral_position(pos: Vector2, snap: Vector2) -> void:
+	astral_position = Vector2(pos.x,pos.y)
+	player_position = Vector4(player_position[0],player_position[1],snap.x,snap.y)
+
 
 ## returns the global position of the player
 func get_player_position() -> Vector2:
 	return Vector2(player_position[0],player_position[1])
 
+## returns the global position of the player
+func get_astral_position() -> Vector2:
+	return astral_position
 
 ## returns the camera snap axis of the player
 func get_player_camera() -> Vector2:

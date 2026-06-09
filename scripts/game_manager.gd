@@ -20,6 +20,8 @@ extends Control
 @onready var cue: GameCue = %GameCue
 ## Dialogue scripts used for the menu system
 @onready var menu_system: Dialogue = %"menu system"
+## holds tooltip popups
+@onready var tooltip_holder: VBoxContainer = %tooltip_box
 
 
 
@@ -79,6 +81,10 @@ enum game_state {
 ## A second measure of what is ocurring in the current game state
 var substate: int = 0
 
+## the tooltip currently being displayed
+var current_tooltip: int = 0
+
+
 ## Sets up the input dialogue to be displayed on screen
 func read_dialogue(input: Dialogue) -> void:
 	input.reset_dialogue()
@@ -95,6 +101,9 @@ func read_dialogue(input: Dialogue) -> void:
 	
 	
 	current_state = game_state.DIALOGUE
+	remove_textboxes(tooltip_holder)
+	current_tooltip = -1
+	
 	if dialogue_script != null and is_instance_valid(dialogue_script) and (dialogue_script.get_parent() == null or dialogue_script.has_meta("deletable")):
 		remove_child(dialogue_script)
 		dialogue_script.queue_free()
@@ -119,6 +128,12 @@ func _process(delta: float) -> void:
 				var next_dialogue: Dialogue = game_data.next_dialogue()
 				if next_dialogue != null:
 					read_dialogue(next_dialogue)
+			
+			if current_tooltip != game_data.get_data("tooltip"):
+				remove_textboxes(tooltip_holder)
+				current_tooltip = game_data.get_data("tooltip")
+				if current_tooltip > 0:
+					add_textboxes(game_data.next_tooltip(),0.01,tooltip_holder)
 		
 		game_state.DIALOGUE:
 			dialogue_behavior(delta)
@@ -188,17 +203,19 @@ func change_level(input: int, force_change: bool = false, use_gamedata_positioni
 	# looks for the player and changes their position if the GameData requests it
 	for child in temp.get_children():
 		if child is PlayerContainer:
+			child.astral_projection.connect(react_to_astral)
 			if game_data.has_data("reposition") and (game_data.get_data("reposition") != 0):
 				child.global_position = Vector2(game_data.get_data("x_set"),game_data.get_data("y_set"))
 			child.global_position += 16.0 * Vector2(game_data.get_data("x_shift"),game_data.get_data("y_shift"))
-			player = child.pl
+			player = child.current_player()
 			player.request_pause.connect(pause_requested)
 			
 			if use_gamedata_positioning:
 				child.global_position = game_data.get_player_position()
 				child.set_snap_axis(game_data.get_player_camera())
+				child.ast.global_position = game_data.get_astral_position()
 			
-			child.pl.finish_camera_glide()
+			child.current_player().finish_camera_glide()
 	game_data.remove_data("x_set")
 	game_data.remove_data("y_set")
 	game_data.remove_data("x_shift")
@@ -208,9 +225,18 @@ func change_level(input: int, force_change: bool = false, use_gamedata_positioni
 	# sets up the palette in the level after a brief delay
 	if temp is Level:
 		get_tree().create_timer(0.01).timeout.connect(temp.distribute_palette.bind(current_pallete))
-	
-	
 
+
+
+func react_to_astral(input: bool, chr: Player) -> void:
+	var child = player.get_parent()
+	
+	assert((is_instance_valid(child) and child != null),"Player node not contained in a player container")
+	
+	player = child.current_player()
+	if !player.request_pause.is_connected(pause_requested):
+		player.request_pause.connect(pause_requested)
+	
 
 
 ## First thing the game does on startup, any code needed for this will go here
@@ -331,14 +357,21 @@ func dialogue_behavior(_delta: float) -> void:
 		_: # unknown substates redirect to the beginning of dialogue
 			substate = 0
 
+
+func remove_textboxes(target: Control) -> void:
+	
+	for child in target.get_children():
+		if child is Textbox:
+			target.remove_child(child)
+			child.queue_free()
+
+
 ## deletes old dialogue boxes and adds in new ones based on the current needs
 ## return is whether or not there is more dialogue
 func fill_dialogue(delay: float, match_letters: bool = false, target: Control = text_holder) -> bool:
 	
 	if !match_letters or dialogue_script.dialogue_finished():
-		for child in target.get_children():
-			target.remove_child(child)
-			child.queue_free()
+		remove_textboxes(target)
 	
 	# if the current dialogue is done, simply delete these old textboxes
 	# and go back to the game instead. 
@@ -354,13 +387,16 @@ func fill_dialogue(delay: float, match_letters: bool = false, target: Control = 
 				child.replace_text(stored_text[i])
 				i += 1
 	else:
-		for line in stored_text:
-			var temp: Textbox = textbox.instantiate()
-			target.add_child(temp)
-			temp.display(line,delay)
+		add_textboxes(stored_text,delay,target)
 	
 	return true
 
+
+func add_textboxes(input: Array[String], delay: float, target: Control) -> void:
+	for line in input:
+			var temp: Textbox = textbox.instantiate()
+			target.add_child(temp)
+			temp.display(line,delay)
 
 
 ## any logic done in the main menu or pause menu would go here.
@@ -455,6 +491,8 @@ func menu_behavior(_delta: float) -> void:
 							default_mode = 0
 							game_data.set_data("music",0)
 							game_data.set_data("volume",0)
+							remove_textboxes(tooltip_holder)
+							current_tooltip = -1
 							game_data.set_data("menu",default_menu)
 						else:
 							# exit the game

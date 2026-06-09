@@ -23,6 +23,7 @@ unique_name_in_owner = true
 z_index = 5
 collision_layer = 4
 collision_mask = 81
+motion_mode = 1
 script = ExtResource("1_yewv4")
 NPC_ID = -1
 
@@ -30,6 +31,26 @@ NPC_ID = -1
 shape = SubResource("RectangleShape2D_kqtwu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=364525199]
+material = ExtResource("3_dyp2m")
+sprite_frames = ExtResource("4_atpat")
+animation = &"down"
+
+[node name="astral_projection" type="CharacterBody2D" parent="." unique_id=1215297155]
+unique_name_in_owner = true
+visible = false
+z_index = 5
+position = Vector2(0, 896)
+collision_layer = 4
+collision_mask = 81
+motion_mode = 1
+script = ExtResource("1_yewv4")
+astral_mode = false
+NPC_ID = -1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="astral_projection" unique_id=1235271680]
+shape = SubResource("RectangleShape2D_kqtwu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="astral_projection" unique_id=1578601796]
 material = ExtResource("3_dyp2m")
 sprite_frames = ExtResource("4_atpat")
 animation = &"down"

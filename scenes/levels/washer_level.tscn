@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://bwfil16152c87" path="res://scripts/dialogue_loop.gd" id="30_tahix"]
 [ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="31_bpya2"]
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="31_e3ck7"]
+[ext_resource type="Shape2D" uid="uid://dnj8iayr04pc7" path="res://resources/shapes/gate_shape.tres" id="34_cuylp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xm21a"]
 size = Vector2(90, 93)
@@ -921,4 +922,94 @@ shape = SubResource("RectangleShape2D_cuylp")
 [node name="DialogueCue" type="Node" parent="InteractionZone22" unique_id=590718281]
 script = ExtResource("6_jgbvq")
 cue = "hide_color_gates"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone23" type="Area2D" parent="." unique_id=1067403423]
+position = Vector2(136, -656)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone23" unique_id=384742915]
+shape = ExtResource("34_cuylp")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone23" unique_id=1700106247]
+script = ExtResource("6_jgbvq")
+cue = "tooltip"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone24" type="Area2D" parent="." unique_id=1675451094]
+position = Vector2(136, -688)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone24" unique_id=1219326867]
+shape = ExtResource("34_cuylp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone24" unique_id=658536590]
+position = Vector2(0, -192)
+shape = ExtResource("34_cuylp")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone24" unique_id=1641184167]
+script = ExtResource("6_jgbvq")
+cue = "tooltip"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone25" type="Area2D" parent="." unique_id=1451242183]
+position = Vector2(136, -912)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone25" unique_id=537922343]
+shape = ExtResource("34_cuylp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone25" unique_id=111436328]
+position = Vector2(0, -192)
+shape = ExtResource("34_cuylp")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone25" unique_id=1262467364]
+script = ExtResource("6_jgbvq")
+cue = "tooltip"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone26" type="Area2D" parent="." unique_id=1250036286]
+position = Vector2(136, -1136)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone26" unique_id=1493683616]
+shape = ExtResource("34_cuylp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone26" unique_id=2065702999]
+position = Vector2(0, -192)
+shape = ExtResource("34_cuylp")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone26" unique_id=1444517497]
+script = ExtResource("6_jgbvq")
+cue = "tooltip"
+value = 3
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone27" type="Area2D" parent="." unique_id=741862311]
+position = Vector2(136, -1360)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone27" unique_id=1970998462]
+shape = ExtResource("34_cuylp")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone27" unique_id=44723871]
+script = ExtResource("6_jgbvq")
+cue = "tooltip"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"

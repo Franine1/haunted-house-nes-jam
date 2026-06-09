@@ -4,6 +4,7 @@ class_name PlayerContainer
 extends Node2D
 
 @onready var pl: Player = %Player
+@onready var ast: Player = %astral_projection
 @onready var cm: Camera2D = %Camera2D
 @export var camera_snap_axis: Vector2 = Vector2.ZERO:
 	set(value):
@@ -16,13 +17,24 @@ extends Node2D
 		if is_node_ready():
 			set_speed_scale(speed_scale)
 
+## Whether the player container is initially astral projecting or not
+@export var astral_mode: bool = true
+
+const game_data: GameData = preload("res://resources/game data/gameData.tres")
+
+signal astral_projection(input: bool, chr: Player)
+
 
 func _ready() -> void:
 	set_snap_axis(camera_snap_axis)
 	set_speed_scale(speed_scale)
+	astral_mode = (game_data.get_data("astral") <= 0)
+	pl.astral_changed.connect(react_to_astral_projection)
+	ast.astral_changed.connect(react_to_astral_projection)
+	
+	if !astral_mode:
+		react_to_astral_projection(false,true)
 
-func get_player() -> Player:
-	return pl
 
 func set_snap_axis(value: Vector2) -> void:
 	if pl != null and pl.is_node_ready():
@@ -37,6 +49,51 @@ func set_speed_scale(value: float) -> void:
 	else:
 		get_tree().create_timer(0.1).timeout.connect(set_speed_scale.bind(value))
 
-#func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("A button"):
-	#	camera_snap_axis += Vector2.ONE
+## ensures we're focused on the correct character
+func correct_focus() -> void:
+	var chrs: Array[Player] = [pl,ast]
+	
+	for chr in chrs:
+		var enable = (chr.astral_mode == astral_mode)
+		
+		chr.visible = enable
+		chr.toggle = enable
+
+## Switches player characters accordingly when the player astral projects
+func react_to_astral_projection(input: bool, override: bool = false) -> void:
+	
+	if input != astral_mode or override:
+		astral_mode = input
+		
+		if game_data.get_data("tooltip") == 4:
+			game_data.set_data("tooltip",0)
+		
+		
+		var source: Player = ast if astral_mode else pl
+		var endpoint: Player = pl if astral_mode else ast
+		
+		
+		correct_focus()
+		
+		if astral_mode:
+			pass
+		else:
+			ast.global_position = pl.global_position + (Vector2(16.0,14.0) * 16.0 * Vector2(0.0,8.0))
+		
+		
+		var difference: Vector2 = endpoint.global_position - source.global_position
+		if !astral_mode:
+			endpoint.camera_snap_axis = source.camera_snap_axis + difference/16.0 
+		
+		cm.blackout_transition()
+		cm.shift(difference)
+		endpoint.finish_camera_glide()
+		
+		astral_projection.emit(astral_mode,current_player())
+
+## returns the current player
+func current_player(active: bool = true) -> Player:
+	if (astral_mode == active):
+		return pl
+	else:
+		return ast
