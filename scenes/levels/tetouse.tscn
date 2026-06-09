@@ -47,6 +47,19 @@ value = -2
 compare_type = 4
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
+[node name="DialogueToggle" type="Node" parent="InteractionZone/DialogueSection/DialogueToggle2" unique_id=90194945]
+script = ExtResource("7_38uu6")
+cue = "forced"
+value = -4
+compare_type = 4
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone/DialogueSection/DialogueToggle2/DialogueToggle" unique_id=17360385]
+script = ExtResource("5_gmymq")
+cue = "music"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="DialogueCue" type="Node" parent="InteractionZone/DialogueSection/DialogueToggle2" unique_id=999196486]
 script = ExtResource("5_gmymq")
 cue = "level"

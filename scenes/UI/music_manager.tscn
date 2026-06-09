@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://ds1sjl6ruorsg"]
+
+[ext_resource type="AudioStream" uid="uid://bdx5ryridtdof" path="res://resources/music/observed.wav" id="1_ocg0u"]
+[ext_resource type="AudioStream" uid="uid://dc1fyndkvtnql" path="res://resources/music/muted.wav" id="2_2nvdm"]
+[ext_resource type="AudioStream" uid="uid://01gtok52n3iw" path="res://resources/music/objective.wav" id="3_xd1le"]
+[ext_resource type="AudioStream" uid="uid://cwtq1syf353qc" path="res://resources/music/rooms are moving.wav" id="4_t0b4g"]
+[ext_resource type="AudioStream" uid="uid://do1jq1l3x2r4r" path="res://resources/music/draining.wav" id="5_vqhc5"]
+[ext_resource type="AudioStream" uid="uid://dr4vav87ki58r" path="res://resources/music/veiled iris.wav" id="6_tbk5f"]
+[ext_resource type="AudioStream" uid="uid://big2cdsx3qeag" path="res://resources/music/three mirrors.wav" id="7_8jmwk"]
+[ext_resource type="Script" uid="uid://u7lt4smxcgdr" path="res://scripts/music_manager.gd" id="8_2nvdm"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gpyor"]
+clip_count = 7
+clip_0/name = &"Observed"
+clip_0/stream = ExtResource("1_ocg0u")
+clip_0/auto_advance = 0
+clip_1/name = &"Muted"
+clip_1/stream = ExtResource("2_2nvdm")
+clip_1/auto_advance = 0
+clip_2/name = &"Objective"
+clip_2/stream = ExtResource("3_xd1le")
+clip_2/auto_advance = 0
+clip_3/name = &"Rooms Are Moving"
+clip_3/stream = ExtResource("4_t0b4g")
+clip_3/auto_advance = 0
+clip_4/name = &"Draining"
+clip_4/stream = ExtResource("5_vqhc5")
+clip_4/auto_advance = 0
+clip_5/name = &"Veiled Iris"
+clip_5/stream = ExtResource("6_tbk5f")
+clip_5/auto_advance = 0
+clip_6/name = &"Three Mirrors"
+clip_6/stream = ExtResource("7_8jmwk")
+clip_6/auto_advance = 0
+_transitions = {
+Vector2i(1, 2): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(2, 1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(2, 3): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(3, 4): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(4, 3): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(4, 5): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[node name="music_manager" type="AudioStreamPlayer" unique_id=964932037]
+stream = SubResource("AudioStreamInteractive_gpyor")
+max_polyphony = 100
+script = ExtResource("8_2nvdm")

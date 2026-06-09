@@ -630,6 +630,12 @@ cue = "reposition"
 value = 1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
+[node name="DialogueCue5" type="Node" parent="InteractionZone2/DialogueSection" unique_id=1924613684]
+script = ExtResource("27_qiytx")
+cue = "music"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="DialogueCue" type="Node" parent="InteractionZone2/DialogueSection" unique_id=2123767258]
 script = ExtResource("27_qiytx")
 cue = "level"
@@ -1058,6 +1064,12 @@ cue = "host"
 value = 1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
+[node name="DialogueCue" type="Node" parent="InteractionZone" unique_id=1754520936]
+script = ExtResource("27_qiytx")
+cue = "volume"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="InteractionZone3" type="Area2D" parent="." unique_id=1055917915]
 position = Vector2(16, 96)
 script = ExtResource("26_tyelw")
@@ -1068,6 +1080,11 @@ metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone3" unique_id=197421383]
 position = Vector2(8, 8)
 shape = SubResource("RectangleShape2D_4lh72")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone3" unique_id=376602113]
+script = ExtResource("27_qiytx")
+cue = "volume"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueToggle" type="Node" parent="InteractionZone3" unique_id=1844355882]
 script = ExtResource("32_gbo60")
@@ -1081,6 +1098,12 @@ script = ExtResource("31_fyonw")
 lines = Array[String](["Oh!"])
 name_id = 2
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue4" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=1403828510]
+script = ExtResource("27_qiytx")
+cue = "music"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueMovement" type="Node" parent="InteractionZone3/DialogueToggle" unique_id=2099717065]
 script = ExtResource("38_oahe5")
@@ -1481,6 +1504,12 @@ compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueCue4" type="Node" parent="InteractionZone5/DialogueToggle" unique_id=1548143291]
+script = ExtResource("27_qiytx")
+cue = "volume"
+value = -1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue6" type="Node" parent="InteractionZone5/DialogueToggle" unique_id=1264350839]
 script = ExtResource("27_qiytx")
 cue = "lettering"
 value = 50
@@ -2112,6 +2141,12 @@ cue = "washer"
 value = 3
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
+[node name="DialogueCue3" type="Node" parent="evil_washer/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=1146477594]
+script = ExtResource("27_qiytx")
+cue = "music"
+value = 4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="DialogueCue" type="Node" parent="evil_washer/DialogueSection/DialogueToggle2/DialogueOption/DialogueSection" unique_id=1871237683]
 script = ExtResource("27_qiytx")
 cue = "level"
@@ -2219,6 +2254,17 @@ lines = Array[String](["Something's off."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueCue3" type="Node" parent="somethings_off/DialogueToggle" unique_id=597309396]
+script = ExtResource("27_qiytx")
+cue = "volume"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue5" type="Node" parent="somethings_off/DialogueToggle" unique_id=226384694]
+script = ExtResource("27_qiytx")
+cue = "music"
+value = 3
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue6" type="Node" parent="somethings_off/DialogueToggle" unique_id=1123667499]
 script = ExtResource("27_qiytx")
 cue = "forced"
 value = -9

@@ -208,7 +208,8 @@ func change_level(input: int, force_change: bool = false, use_gamedata_positioni
 	# sets up the palette in the level after a brief delay
 	if temp is Level:
 		get_tree().create_timer(0.01).timeout.connect(temp.distribute_palette.bind(current_pallete))
-
+	
+	
 
 
 
@@ -222,6 +223,7 @@ func start_behavior(_delta: float) -> void:
 	substate = 0
 	dialogue_script = menu_system
 	game_data.set_data("menu",default_menu)
+	game_data.set_data("music",0)
 	clear_menu_data()
 	current_state = game_state.MENU
 
@@ -451,6 +453,7 @@ func menu_behavior(_delta: float) -> void:
 								child.queue_free()
 							default_menu = 0
 							default_mode = 0
+							game_data.set_data("music",0)
 							game_data.set_data("menu",default_menu)
 						else:
 							# exit the game

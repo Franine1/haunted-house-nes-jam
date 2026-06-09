@@ -15,6 +15,7 @@ signal data_change(key: String, value: int)
 ## all the global data points. They're identified with a string and always
 ## return an int.
 var data: Dictionary[String,int] = {
+	"level": 2
 }
 ## List of currently queued dialogue.
 var dialogue_queue: Array[Dialogue] = []
@@ -168,6 +169,7 @@ func accept_movement(npc_id: int) -> Array[CutscenePath]:
 func reset_game() -> void:
 	data.clear()
 	player_position = Vector4.ZERO
+	set_data("music",1)
 
 
 ## saves the game data to a slot
@@ -220,6 +222,8 @@ func load_game(slot: int) -> bool:
 	
 	file.close() 
 	
+	data_change.emit("music",data["music"])
+	
 	return true
 
 
@@ -229,6 +233,9 @@ func delete_game(slot: int) -> void:
 	if DirAccess.dir_exists_absolute(get_slot_name(slot)):
 		DirAccess.remove_absolute(get_slot_name(slot))
 	
+
+
+
 
 
 ## ensures the save folder exists

@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	
 	progress_animation(delta)
 	
+	var has_moved: bool = false
 	
 	if input_delay.is_stopped():
 		# movement inputs are allowed
@@ -31,30 +32,30 @@ func _physics_process(delta: float) -> void:
 			speed_scale = default_speed
 			
 			if mvm:
-				enact_movement(mvm) 
+				has_moved = (enact_movement(mvm) != Vector2i.ZERO)
 			
 		if !mvm:
 			# if we aren't moving, allow the player to interact
 			velocity = Vector2.ZERO
-			if Input.is_action_just_pressed("A button") and input_allowed and interact_delay.is_stopped():
-				if interaction.is_colliding():
-					var target = interaction.get_collider()
-					if target is InteractionZone:
-						target.interact()
-						delay_interaction()
-					elif target is Blockade:
-						target.interact()
-						delay_interaction()
-					elif target is Player:
-						pass
-					elif target is NPC:
-						target.interact(self)
-						
-						delay_interaction()
-			elif Input.is_action_just_pressed("Start button") and input_allowed and interact_delay.is_stopped():
-				if game_data.get_data("exit_banned") == 0:
-					request_pause.emit()
+		if Input.is_action_just_pressed("A button") and input_allowed and interact_delay.is_stopped() and !has_moved:
+			if interaction.is_colliding():
+				var target = interaction.get_collider()
+				if target is InteractionZone:
+					target.interact()
 					delay_interaction()
+				elif target is Blockade:
+					target.interact()
+					delay_interaction()
+				elif target is Player:
+					pass
+				elif target is NPC:
+					target.interact(self)
+					
+					delay_interaction()
+		elif Input.is_action_just_pressed("Start button") and input_allowed and interact_delay.is_stopped():
+			if game_data.get_data("exit_banned") == 0:
+				request_pause.emit()
+				delay_interaction()
 			
 	
 	fix_camera(camera_instant)

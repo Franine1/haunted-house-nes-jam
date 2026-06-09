@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://dyv6sm6km8i56" path="res://resources/themes/UI_theme.tres" id="3_tl5mg"]
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="4_hov4v"]
 [ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="5_34ocb"]
+[ext_resource type="PackedScene" uid="uid://ds1sjl6ruorsg" path="res://scenes/UI/music_manager.tscn" id="9_hov4v"]
 
 [node name="game manager" type="Control" unique_id=604842194]
 process_mode = 3
@@ -510,3 +511,5 @@ size_flags_stretch_ratio = 3.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+
+[node name="music_manager" parent="." unique_id=964932037 instance=ExtResource("9_hov4v")]
