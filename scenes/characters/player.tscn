@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://dn1kold33mxhc" path="res://resources/palettes/playerpallete.tres" id="3_dyp2m"]
 [ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="4_atpat"]
 [ext_resource type="Script" uid="uid://c35esgc0k2q4m" path="res://scripts/camera2D.gd" id="5_atpat"]
+[ext_resource type="Material" uid="uid://c3tvspmgrsoss" path="res://resources/palettes/player_ghost_pallette.tres" id="5_kqtwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqtwu"]
 size = Vector2(12, 12)
@@ -37,7 +38,6 @@ animation = &"down"
 
 [node name="astral_projection" type="CharacterBody2D" parent="." unique_id=1215297155]
 unique_name_in_owner = true
-visible = false
 z_index = 5
 position = Vector2(0, 896)
 collision_layer = 4
@@ -51,7 +51,7 @@ NPC_ID = -1
 shape = SubResource("RectangleShape2D_kqtwu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="astral_projection" unique_id=1578601796]
-material = ExtResource("3_dyp2m")
+material = ExtResource("5_kqtwu")
 sprite_frames = ExtResource("4_atpat")
 animation = &"down"
 

@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c3tvspmgrsoss"]
+
+[ext_resource type="Shader" uid="uid://b7sks3iuk0ea8" path="res://scripts/player.gdshader" id="1_xvedu"]
+
+[resource]
+shader = ExtResource("1_xvedu")
+shader_parameter/grey1 = Color(1, 1, 1, 1)
+shader_parameter/col1 = Color(0.83137256, 0.827451, 0.99607843, 1)
+shader_parameter/grey2 = Color(0.6627451, 0.6627451, 0.6627451, 1)
+shader_parameter/col2 = Color(0.4627451, 0.15294118, 1, 1)
+shader_parameter/grey3 = Color(0.39607844, 0.39607844, 0.39607844, 1)
+shader_parameter/col3 = Color(0, 0, 0, 1)
+shader_parameter/grey4 = Color(0, 0, 0, 1)
+shader_parameter/col4 = Color(0, 0, 0, 1)
+shader_parameter/opacity = 1.0
+shader_parameter/opacity_enabled = false

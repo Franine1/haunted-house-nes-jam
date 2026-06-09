@@ -90,6 +90,7 @@ window/stretch/scale_mode="integer"
 2d_physics/layer_6="Blockades"
 2d_physics/layer_7="Barriers"
 2d_physics/layer_8="Checkpoints"
+2d_physics/layer_9="Projection Zones"
 
 [physics]
 

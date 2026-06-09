@@ -68,6 +68,7 @@ var current_pallete: Dictionary[int,ShaderMaterial] = {
 	,3: preload("res://resources/palettes/bluepallete.tres")
 	,4: preload("res://resources/palettes/redpallete.tres")
 	,5: preload("res://resources/palettes/oceanpallette.tres")
+	,6: preload("res://resources/palettes/ghostlypallette.tres")
 }
 
 ## The allowed game states
@@ -228,10 +229,10 @@ func change_level(input: int, force_change: bool = false, use_gamedata_positioni
 
 
 
-func react_to_astral(input: bool, chr: Player) -> void:
+func react_to_astral(_input: bool, _chr: Player) -> void:
 	var child = player.get_parent()
 	
-	assert((is_instance_valid(child) and child != null),"Player node not contained in a player container")
+	assert((is_instance_valid(child) and child != null and child is PlayerContainer),"Player node not contained in a valid player container")
 	
 	player = child.current_player()
 	if !player.request_pause.is_connected(pause_requested):

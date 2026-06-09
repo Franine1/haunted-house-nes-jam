@@ -24,8 +24,14 @@ const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
 signal astral_projection(input: bool, chr: Player)
 
+var astral_offset: Vector2 = Vector2(0.0,8.0)
+
+var astral_recently_enforced: Timer
 
 func _ready() -> void:
+	astral_recently_enforced = Timer.new()
+	add_child(astral_recently_enforced)
+	astral_recently_enforced.one_shot = true
 	set_snap_axis(camera_snap_axis)
 	set_speed_scale(speed_scale)
 	astral_mode = (game_data.get_data("astral") <= 0)
@@ -78,11 +84,14 @@ func react_to_astral_projection(input: bool, override: bool = false) -> void:
 		if astral_mode:
 			pass
 		else:
-			ast.global_position = pl.global_position + (Vector2(16.0,14.0) * 16.0 * Vector2(0.0,8.0))
+			if astral_recently_enforced.is_stopped():
+				ast.global_position = pl.global_position + (Vector2(16.0,14.0) * 16.0 * astral_offset)
+			
 		
 		
 		var difference: Vector2 = endpoint.global_position - source.global_position
-		if !astral_mode:
+		endpoint.camera_snap_axis = source.camera_snap_axis
+		if !astral_mode and false:
 			endpoint.camera_snap_axis = source.camera_snap_axis + difference/16.0 
 		
 		cm.blackout_transition()
@@ -97,3 +106,10 @@ func current_player(active: bool = true) -> Player:
 		return pl
 	else:
 		return ast
+
+func adjust_player_distances(input: Vector2 = astral_offset) -> void:
+	var difference: Vector2 = (Vector2(16.0,14.0) * 16.0 * input)
+	current_player(false).global_position = current_player().global_position + difference
+	if astral_mode and false:
+		ast.camera_snap_axis = pl.camera_snap_axis + difference/16.0 
+	astral_recently_enforced.start(0.1)

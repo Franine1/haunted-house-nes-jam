@@ -22,6 +22,9 @@
 [ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="20_kb7oi"]
 [ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="21_vyu0u"]
 [ext_resource type="PackedScene" uid="uid://b10c7ik5prltt" path="res://scenes/layouts/walled_off.tscn" id="22_vyu0u"]
+[ext_resource type="Script" uid="uid://xcuenefyob25" path="res://scripts/astral_translation.gd" id="23_x33el"]
+[ext_resource type="Script" uid="uid://cup01huy0tbwf" path="res://scripts/astral_anchor.gd" id="24_a25vn"]
+[ext_resource type="PackedScene" uid="uid://bbpj1d0pxkbee" path="res://scenes/layouts/astral_hallway.tscn" id="25_5d0i7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jaq44"]
 size = Vector2(160, 80)
@@ -40,6 +43,12 @@ size = Vector2(80, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a25vn"]
 size = Vector2(256, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d0i7"]
+size = Vector2(225, 113)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sawo"]
+size = Vector2(256, 304)
 
 [node name="liminal_house" type="Node2D" unique_id=2032826598]
 script = ExtResource("1_ge134")
@@ -257,6 +266,7 @@ entry_activation = true
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=1353048752]
+visible = false
 position = Vector2(-896, 152)
 shape = SubResource("RectangleShape2D_x33el")
 
@@ -724,5 +734,63 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 [node name="dining_room" parent="walled_off" unique_id=282370625 instance=ExtResource("22_vyu0u")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walled_off" unique_id=1872503376]
+visible = false
 position = Vector2(112, 16)
 shape = SubResource("RectangleShape2D_a25vn")
+
+[node name="AstralTranslation" type="Area2D" parent="." unique_id=296840465]
+script = ExtResource("23_x33el")
+screen_offset = Vector2i(0, -8)
+metadata/_custom_type_script = "uid://xcuenefyob25"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralTranslation" unique_id=1981985153]
+polygon = PackedVector2Array(-1008, 1888, -808, 1888, -808, 1896, -824, 1896, -824, 1928, -840, 1928, -840, 1912, -952, 1912, -952, 1928, -968, 1928, -968, 1960, -952, 1960, -952, 1976, -840, 1976, -840, 1960, -824, 1960, -824, 1928, -792, 1928, -792, 1912, -784, 1912, -784, 2000, -1008, 2000)
+
+[node name="AstralAnchor" type="Area2D" parent="." unique_id=77324653]
+script = ExtResource("24_a25vn")
+enforce_X = false
+copy_X = true
+target_screen = Vector2i(0, 8)
+target_tile = Vector2i(0, 6)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralAnchor" unique_id=254036642]
+polygon = PackedVector2Array(-920, 48, -1008, 48, -1008, 88, -992, 88, -992, 64, -920, 64)
+
+[node name="AstralTranslation3" type="Area2D" parent="." unique_id=1815911905]
+position = Vector2(-904, 56)
+script = ExtResource("23_x33el")
+metadata/_custom_type_script = "uid://xcuenefyob25"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AstralTranslation3" unique_id=1931201828]
+shape = ExtResource("7_lvia4")
+
+[node name="AstralTranslation2" type="Area2D" parent="." unique_id=1348535185]
+script = ExtResource("23_x33el")
+metadata/_custom_type_script = "uid://xcuenefyob25"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AstralTranslation2" unique_id=357532201]
+visible = false
+position = Vector2(-896.5, 151.5)
+shape = SubResource("RectangleShape2D_5d0i7")
+
+[node name="Room" type="Area2D" parent="." unique_id=739319812]
+position = Vector2(-928, 1840)
+script = ExtResource("2_dhces")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="Layout" parent="Room" unique_id=440563856 instance=ExtResource("25_5d0i7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Room" unique_id=92684098]
+position = Vector2(32, -120)
+shape = SubResource("RectangleShape2D_5sawo")
+
+[node name="AstralAnchor2" type="Area2D" parent="." unique_id=1336310007]
+position = Vector2(-904, 1848)
+script = ExtResource("24_a25vn")
+target_screen = Vector2i(-4, 0)
+target_tile = Vector2i(7, 3)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralAnchor2" unique_id=1034858847]
+polygon = PackedVector2Array(-24, -24, -24, 24, 136, 24, 136, -56, 88, -56, 88, -24)
