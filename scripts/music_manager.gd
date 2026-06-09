@@ -32,6 +32,8 @@ func _ready() -> void:
 func change_volume(input: int) -> void:
 	if input >= 0 and sound_levels.size() > input:
 		volume_setting = input
+		if volume_db <= -60.0:
+			play()
 		fadein()
 	else:
 		fadeout()

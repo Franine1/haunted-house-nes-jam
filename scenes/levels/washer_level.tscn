@@ -139,8 +139,8 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueCue4" type="Node" parent="return_to_lvl1/DialogueSection2/level 3" unique_id=940957028]
 script = ExtResource("6_jgbvq")
-cue = "music"
-value = 5
+cue = "volume"
+value = -1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueCue5" type="Node" parent="return_to_lvl1/DialogueSection2/level 3" unique_id=882153223]

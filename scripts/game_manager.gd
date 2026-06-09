@@ -454,6 +454,7 @@ func menu_behavior(_delta: float) -> void:
 							default_menu = 0
 							default_mode = 0
 							game_data.set_data("music",0)
+							game_data.set_data("volume",0)
 							game_data.set_data("menu",default_menu)
 						else:
 							# exit the game

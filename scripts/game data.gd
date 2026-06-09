@@ -223,6 +223,7 @@ func load_game(slot: int) -> bool:
 	file.close() 
 	
 	data_change.emit("music",data["music"])
+	data_change.emit("volume",data["volume"])
 	
 	return true
 
