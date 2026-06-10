@@ -513,19 +513,34 @@ delay = 0.1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="checkpoint14" parent="." unique_id=1660890669 instance=ExtResource("13_58u5q")]
-position = Vector2(104, -1160)
+position = Vector2(104, -1152)
+
+[node name="checkpoint27" parent="." unique_id=1045333784 instance=ExtResource("13_58u5q")]
+position = Vector2(104, -1168)
 
 [node name="checkpoint15" parent="." unique_id=1080920193 instance=ExtResource("13_58u5q")]
-position = Vector2(104, -1224)
+position = Vector2(104, -1216)
+
+[node name="checkpoint26" parent="." unique_id=1139977139 instance=ExtResource("13_58u5q")]
+position = Vector2(104, -1232)
 
 [node name="checkpoint16" parent="." unique_id=1669137950 instance=ExtResource("13_58u5q")]
-position = Vector2(168, -1224)
+position = Vector2(168, -1232)
+
+[node name="checkpoint25" parent="." unique_id=1526590554 instance=ExtResource("13_58u5q")]
+position = Vector2(168, -1216)
 
 [node name="checkpoint17" parent="." unique_id=1890900233 instance=ExtResource("13_58u5q")]
-position = Vector2(168, -1288)
+position = Vector2(168, -1296)
+
+[node name="checkpoint24" parent="." unique_id=1050598679 instance=ExtResource("13_58u5q")]
+position = Vector2(168, -1280)
 
 [node name="checkpoint18" parent="." unique_id=1206704287 instance=ExtResource("13_58u5q")]
-position = Vector2(104, -1288)
+position = Vector2(104, -1296)
+
+[node name="checkpoint23" parent="." unique_id=1260843132 instance=ExtResource("13_58u5q")]
+position = Vector2(104, -1280)
 
 [node name="InteractionZone18" type="Area2D" parent="." unique_id=1770003600]
 position = Vector2(200, -1288)
@@ -1092,6 +1107,8 @@ metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="Blockade23" type="StaticBody2D" parent="." unique_id=1899643482]
 position = Vector2(24, -632)
+collision_layer = 33
+collision_mask = 3
 script = ExtResource("4_a0l57")
 interact_activation = true
 cue = "secret_hint1"
@@ -1120,7 +1137,7 @@ metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
 [node name="DialogueLines" type="Node" parent="Blockade23/DialogueToggle/DialogueOption" unique_id=95277461]
 script = ExtResource("28_e3ck7")
-lines = Array[String](["Read it", "You slowly unfurl the note. It seems to be a drawing of a room.", "There's a bowl of water in the middle, and two pathways on the left wall."])
+lines = Array[String](["Read it", "You slowly unfurl the note. It seems to be a drawing of a room.", "There's a bowl of water in the middle, and two pathways on the right wall."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines2" type="Node" parent="Blockade23/DialogueToggle/DialogueOption" unique_id=1419902184]

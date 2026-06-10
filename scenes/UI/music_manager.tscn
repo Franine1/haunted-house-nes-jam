@@ -37,6 +37,12 @@ clip_7/name = &"Three Mirrors"
 clip_7/stream = ExtResource("7_8jmwk")
 clip_7/auto_advance = 0
 _transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 1
+},
 Vector2i(-1, 0): {
 "fade_beats": 1.0,
 "fade_mode": 4,
@@ -60,30 +66,6 @@ Vector2i(2, 1): {
 "fade_mode": 4,
 "from_time": 0,
 "to_time": 0
-},
-Vector2i(2, 3): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 0,
-"to_time": 1
-},
-Vector2i(3, 4): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 0,
-"to_time": 1
-},
-Vector2i(4, 3): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 0,
-"to_time": 1
-},
-Vector2i(4, 5): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 0,
-"to_time": 1
 }
 }
 

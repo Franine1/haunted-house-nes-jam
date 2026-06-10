@@ -497,6 +497,11 @@ cue = "exit_banned"
 value = 1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
+[node name="DialogueCue10" type="Node" parent="Blockade2/DialogueSection/DialogueToggle/DialogueToggle6/DialogueOption/DialogueSection" unique_id=394074892]
+script = ExtResource("10_uuq2e")
+cue = "color"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="DialogueCue4" type="Node" parent="Blockade2/DialogueSection/DialogueToggle/DialogueToggle6/DialogueOption/DialogueSection" unique_id=1915538091]
 script = ExtResource("10_uuq2e")
 cue = "grandfather"
@@ -891,18 +896,100 @@ metadata/_custom_type_script = "uid://bwfil16152c87"
 script = ExtResource("8_lvia4")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueSection" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption" unique_id=263810503]
-script = ExtResource("9_uuq2e")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
+[node name="1_toggle1" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption" unique_id=237461774]
+script = ExtResource("21_vyu0u")
+cue = "dialogue"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection" unique_id=598143756]
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/1_toggle1" unique_id=598143756]
 script = ExtResource("5_u8ura")
 lines = Array[String](["How did I go through walls?!"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection" unique_id=201479516]
+[node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/1_toggle1" unique_id=201479516]
 script = ExtResource("5_u8ura")
 lines = Array[String](["I think you had a... uh...", "Right! An out-of-body experience.", "And, uh, I'm sure the fact that it happens every time you close your eyes is... normal.", "Now that I think about it, last time I saw Lea, she was trying to do the same thing.", "I wonder how that turned out for her."])
+name_id = 3
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="1_toggle2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption" unique_id=1833870851]
+script = ExtResource("21_vyu0u")
+cue = "dialogue"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/1_toggle2" unique_id=114019147]
+script = ExtResource("5_u8ura")
+lines = Array[String](["What caused all of this?"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/1_toggle2" unique_id=2033859313]
+script = ExtResource("5_u8ura")
+lines = Array[String](["I can't tell for certain, but I've always had my suspicions that this house was haunted.", "As a matter of fact, I'd argue the whole community is. Even my house, too.", "I at least know this curse can't leave the neigborhood. You'll be in the clear if you leave.", "I don't think just getting into the backyard will be enough, though."])
+name_id = 3
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="1_toggle3" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption" unique_id=1446352437]
+script = ExtResource("21_vyu0u")
+cue = "dialogue"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/1_toggle3" unique_id=1837550542]
+script = ExtResource("5_u8ura")
+lines = Array[String](["What's going on outside?"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/1_toggle3" unique_id=968699868]
+script = ExtResource("5_u8ura")
+lines = Array[String](["I've seen a few things out there."])
+name_id = 3
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/1_toggle3" unique_id=182999379]
+script = ExtResource("10_uuq2e")
+cue = "dialogue"
+value = 1
+additive = true
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="2_toggle1" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption" unique_id=1089455382]
+script = ExtResource("21_vyu0u")
+cue = "dialogue"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/2_toggle1" unique_id=1894477035]
+script = ExtResource("5_u8ura")
+lines = Array[String](["How do the puzzles work?"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/2_toggle1" unique_id=355727635]
+script = ExtResource("5_u8ura")
+lines = Array[String](["From what I've seen, it's not so different from what you were dealing with before. ", "Seems a little less physically possible than before. There's some buttons that look like they'll trap you in place.", "It's a good thing you're not just limited to the physical, then."])
+name_id = 3
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="2_toggle2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption" unique_id=1739418987]
+script = ExtResource("21_vyu0u")
+cue = "dialogue"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/2_toggle2" unique_id=929228339]
+script = ExtResource("5_u8ura")
+lines = Array[String](["How would I get out?"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/2_toggle2" unique_id=660374940]
+script = ExtResource("5_u8ura")
+lines = Array[String](["A better question is if you even will be able to.", "The only ways into the backyard are through the kitchen and the hallway. There's no fence gate.", "I don't think hopping the fences would work either. They seem like they'll just bring you back where you started.", "If worst comes to worst, you might want to find Lea rather than ask me for help. It is her house, after all."])
 name_id = 3
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
@@ -910,9 +997,28 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 script = ExtResource("9_uuq2e")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection2" unique_id=1549073116]
+[node name="DialogueToggle" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection2" unique_id=1346290476]
+script = ExtResource("21_vyu0u")
+cue = "dialogue"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection2/DialogueToggle" unique_id=1549073116]
 script = ExtResource("5_u8ura")
 lines = Array[String](["Nevermind"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection2" unique_id=93708429]
+script = ExtResource("21_vyu0u")
+cue = "dialogue"
+value = 2
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection2/DialogueToggle2" unique_id=272978024]
+script = ExtResource("5_u8ura")
+lines = Array[String](["Let's talk about something else"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueCue" type="Node" parent="windowman/DialogueSection/DialogueToggle/DialogueLoop/DialogueOption/DialogueSection2" unique_id=1009596027]
@@ -931,7 +1037,7 @@ target_screen = Vector2i(-2, 0)
 metadata/_custom_type_script = "uid://cup01huy0tbwf"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralAnchor3" unique_id=1367621289]
-polygon = PackedVector2Array(-928, -432, -816, -432, -816, -288, -720, -288, -720, -336, -672, -336, -672, -136, -576, -136, -576, -96, -720, -96, -720, -240, -848, -240, -864, -248, -880, -248, -896, -240, -928, -240)
+polygon = PackedVector2Array(-928, -432, -816, -432, -816, -288, -720, -288, -720, -312, -672, -312, -672, -136, -576, -136, -576, -96, -720, -96, -720, -240, -848, -240, -864, -248, -880, -248, -896, -240, -928, -240)
 
 [node name="AstralAnchor5" type="Area2D" parent="." unique_id=673063758]
 position = Vector2(-512, 0)
@@ -943,7 +1049,7 @@ target_screen = Vector2i(2, 0)
 metadata/_custom_type_script = "uid://cup01huy0tbwf"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralAnchor5" unique_id=561122225]
-polygon = PackedVector2Array(-928, -432, -816, -432, -816, -288, -720, -288, -720, -336, -672, -336, -672, -136, -648, -136, -640, -128, -624, -128, -616, -136, -576, -136, -576, -96, -720, -96, -720, -240, -848, -240, -864, -256, -880, -256, -896, -240, -928, -240)
+polygon = PackedVector2Array(-928, -432, -816, -432, -816, -288, -720, -288, -720, -296, -672, -296, -672, -136, -648, -136, -640, -128, -624, -128, -616, -136, -576, -136, -576, -96, -720, -96, -720, -240, -848, -240, -864, -256, -880, -256, -896, -240, -928, -240)
 
 [node name="AstralAnchor4" type="Area2D" parent="." unique_id=1201945182]
 script = ExtResource("24_a25vn")
@@ -1015,6 +1121,12 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueCue" type="Node" parent="Blockade6/DialogueSection/DialogueToggle2" unique_id=1042591321]
 script = ExtResource("10_uuq2e")
+cue = "music"
+value = 6
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="Blockade6/DialogueSection/DialogueToggle2" unique_id=1582623192]
+script = ExtResource("10_uuq2e")
 cue = "level"
 value = 4
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
@@ -1028,5 +1140,18 @@ target_tile = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://cup01huy0tbwf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AstralAnchor6" unique_id=411161772]
+position = Vector2(-632, -160)
+shape = ExtResource("7_lvia4")
+
+[node name="AstralAnchor7" type="Area2D" parent="." unique_id=1347120176]
+position = Vector2(-64, -176)
+script = ExtResource("24_a25vn")
+copy_X = true
+copy_Y = true
+target_screen = Vector2i(-2, 0)
+target_tile = Vector2i(0, 1)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AstralAnchor7" unique_id=1504306889]
 position = Vector2(-632, -160)
 shape = ExtResource("7_lvia4")
