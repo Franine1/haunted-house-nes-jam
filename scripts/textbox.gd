@@ -39,18 +39,20 @@ func replace_text(input: String) -> void:
 	var read_text: String = input
 	var select: bool = read_text[0] == ">"
 	var cleared: bool = read_text[0] == "~"
-	if cleared or select:
+	var fade: bool = read_text[0] == "`"
+	if cleared or select or fade:
 		read_text = read_text.substr(1)
 		pass
 	
 	text = read_text
 	
+	back.theme_type_variation = "Panel"
 	if select:
 		back.theme_type_variation = "SelectedPanel"
-	elif cleared:
+	if cleared or fade:
+		modulate = Color(1.0,1.0,1.0,0.5)
+	if cleared:
 		back.hide()
-	else:
-		back.theme_type_variation = "Panel"
 
 
 ## This looks like ass and I do NOT recommend using this function

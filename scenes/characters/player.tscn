@@ -55,6 +55,15 @@ material = ExtResource("5_kqtwu")
 sprite_frames = ExtResource("4_atpat")
 animation = &"down"
 
+[node name="shadow" type="AnimatedSprite2D" parent="." unique_id=1292306653]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 0.5019608)
+z_index = 4
+position = Vector2(70, 0)
+sprite_frames = ExtResource("4_atpat")
+animation = &"down"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1338080857]
 unique_name_in_owner = true
 process_mode = 3

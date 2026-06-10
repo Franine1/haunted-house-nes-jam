@@ -74,6 +74,8 @@ var current_pallete: Dictionary[int,ShaderMaterial] = {
 	,8: preload("res://resources/palettes/tundrapallette.tres")
 	,9: preload("res://resources/palettes/brickpallette.tres")
 	,10: preload("res://resources/palettes/pinetree_pallette.tres")
+	,11: preload("res://resources/palettes/player_ghost_pallette.tres")
+	,12: preload("res://resources/palettes/snow_pallette.tres")
 }
 
 ## The allowed game states
@@ -142,9 +144,11 @@ func _process(delta: float) -> void:
 					add_textboxes(game_data.next_tooltip(),0.01,tooltip_holder)
 		
 		game_state.DIALOGUE:
+			remove_textboxes(tooltip_holder)
 			dialogue_behavior(delta)
 		
 		game_state.MENU:
+			remove_textboxes(tooltip_holder)
 			menu_behavior(delta)
 		
 	

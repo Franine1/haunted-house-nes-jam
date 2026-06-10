@@ -17,6 +17,17 @@ var toggle: bool = astral_mode
 ## Time needed to hold the B button to astral project
 const max_projection_time: float = 0.75
 
+var astral_version: astral = astral.DEFAULT
+	
+
+enum astral {
+	DEFAULT
+	,POLTERGEIST
+}
+
+
+
+
 signal request_pause()
 
 signal astral_changed(input: bool)
@@ -42,7 +53,13 @@ func _physics_process(delta: float) -> void:
 	
 	var increasing_projection_time: bool = false
 	
-	if input_delay.is_stopped():
+	var stagnant: bool = false
+	
+	match astral_version:
+		astral.POLTERGEIST:
+			stagnant = !toggle
+	
+	if input_delay.is_stopped() and !stagnant:
 		# movement inputs are allowed
 		correct_position()
 		

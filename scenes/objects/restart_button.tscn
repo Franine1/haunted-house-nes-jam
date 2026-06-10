@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://t6xdn3qnt63f"]
+
+[ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="1_2nti3"]
+[ext_resource type="Shape2D" uid="uid://bbvt0g7t3h4t5" path="res://resources/shapes/default_collider.tres" id="2_7w2lm"]
+[ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="3_yog2l"]
+[ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="4_7yno7"]
+[ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="5_vnjvs"]
+[ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="6_ujvcx"]
+[ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="7_7l4og"]
+
+[node name="restart button" type="Area2D" unique_id=261233939]
+script = ExtResource("1_2nti3")
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=375680364]
+shape = ExtResource("2_7w2lm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409648092]
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("3_yog2l")
+
+[node name="DialogueSection" type="Node" parent="." unique_id=968444907]
+script = ExtResource("4_7yno7")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection" unique_id=1048507190]
+script = ExtResource("5_vnjvs")
+cue = "pressed"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="DialogueSection" unique_id=1404232532]
+script = ExtResource("6_ujvcx")
+lines = Array[String](["\"Restart Button\""])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="DialogueSection" unique_id=1844167355]
+script = ExtResource("7_7l4og")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="DialogueSection/DialogueOption" unique_id=1821773254]
+script = ExtResource("4_7yno7")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="DialogueSection/DialogueOption/DialogueSection" unique_id=336054695]
+script = ExtResource("6_ujvcx")
+lines = Array[String](["Press it"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="DialogueSection/DialogueOption/DialogueSection" unique_id=150151050]
+script = ExtResource("5_vnjvs")
+cue = "pressed"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="DialogueSection/DialogueOption/DialogueSection" unique_id=513779335]
+script = ExtResource("5_vnjvs")
+cue = "restart"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="DialogueSection/DialogueOption" unique_id=686854681]
+script = ExtResource("6_ujvcx")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

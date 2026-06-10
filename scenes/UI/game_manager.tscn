@@ -515,7 +515,7 @@ size_flags_stretch_ratio = 2.0
 [node name="music_manager" parent="." unique_id=964932037 instance=ExtResource("9_hov4v")]
 
 [node name="tips" type="HBoxContainer" parent="." unique_id=558874322]
-modulate = Color(1, 1, 1, 0.5019608)
+z_index = 50
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

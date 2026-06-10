@@ -23,7 +23,7 @@ var interaction: RayCast2D
 ## A modifier to the player speed
 var speed_scale: float = 5.0
 ## An exported default speed value for NPCs
-@export var default_speed: float = 5.0
+@export var default_speed: float = 7.5
 
 ## the ID the game uses to specifically identify this NPC
 @export var NPC_ID: int = 0

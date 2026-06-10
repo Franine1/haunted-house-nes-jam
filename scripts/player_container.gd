@@ -6,6 +6,8 @@ extends Node2D
 @onready var pl: Player = %Player
 @onready var ast: Player = %astral_projection
 @onready var cm: Camera2D = %Camera2D
+@onready var shadow: AnimatedSprite2D = %shadow
+var cue: GameCue
 @export var camera_snap_axis: Vector2 = Vector2.ZERO:
 	set(value):
 		camera_snap_axis = value
@@ -20,6 +22,14 @@ extends Node2D
 ## Whether the player container is initially astral projecting or not
 @export var astral_mode: bool = true
 
+@export var astral_version: astral = astral.DEFAULT
+	
+
+enum astral {
+	DEFAULT
+	,POLTERGEIST
+}
+
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
 signal astral_projection(input: bool, chr: Player)
@@ -29,6 +39,10 @@ var astral_offset: Vector2 = Vector2(0.0,8.0)
 var astral_recently_enforced: Timer
 
 func _ready() -> void:
+	cue = GameCue.new()
+	add_child(cue)
+	cue.add_cue("restart",restart_puzzle)
+	
 	astral_recently_enforced = Timer.new()
 	add_child(astral_recently_enforced)
 	astral_recently_enforced.one_shot = true
@@ -37,9 +51,11 @@ func _ready() -> void:
 	astral_mode = (game_data.get_data("astral") <= 0)
 	pl.astral_changed.connect(react_to_astral_projection)
 	ast.astral_changed.connect(react_to_astral_projection)
-	
+
 	if !astral_mode:
 		react_to_astral_projection(false,true)
+	else:
+		correct_focus()
 
 
 func set_snap_axis(value: Vector2) -> void:
@@ -64,6 +80,8 @@ func correct_focus() -> void:
 		
 		chr.visible = enable
 		chr.toggle = enable
+	
+	shadow.visible = !astral_mode and [astral.POLTERGEIST].has(astral_version)
 
 ## Switches player characters accordingly when the player astral projects
 func react_to_astral_projection(input: bool, override: bool = false) -> void:
@@ -98,6 +116,9 @@ func react_to_astral_projection(input: bool, override: bool = false) -> void:
 		cm.shift(difference)
 		endpoint.finish_camera_glide()
 		
+		shadow.global_position = ast.global_position
+		shadow.animation = pl.sprites[0].animation
+		
 		astral_projection.emit(astral_mode,current_player())
 
 ## returns the current player
@@ -107,6 +128,7 @@ func current_player(active: bool = true) -> Player:
 	else:
 		return ast
 
+## Forces a certain offset between astral projections
 func adjust_player_distances(input: Vector2 = astral_offset) -> void:
 	if astral_recently_enforced.time_left > 0.1 and !astral_recently_enforced.is_stopped():
 		return # ignore the command
@@ -115,3 +137,29 @@ func adjust_player_distances(input: Vector2 = astral_offset) -> void:
 	if astral_mode and false:
 		ast.camera_snap_axis = pl.camera_snap_axis + difference/16.0 
 	astral_recently_enforced.start(0.2)
+
+
+func _process(_delta: float) -> void:
+	#astral_version = clamp(game_data.get_data("version"),0,astral.keys().size()-1)
+	
+	var ans: Player.astral = Player.astral.values()[astral_version]
+	
+	pl.astral_version = ans
+	ast.astral_version = ans
+	
+	pass
+
+## Resets positions of the player and astral projection
+func restart_puzzle(input: int = 1) -> void:
+	if input != 0:
+		cm.blackout_transition()
+		pl.global_position = game_data.get_restart_position()
+		ast.global_position = game_data.get_restart_position()
+		current_player().finish_camera_glide()
+		#react_to_astral_projection(true,true)
+		
+		game_data.set_data("restart",0)
+	
+	
+	
+	

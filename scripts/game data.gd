@@ -25,6 +25,8 @@ var movement_queues: Dictionary[int,Array] = {}
 var player_position: Vector4 = Vector4.ZERO
 ## initial astral position
 var astral_position: Vector2 = Vector2.ZERO
+## restart position for puzzles
+var restart_position: Vector2 = Vector2.ZERO
 ## path to save files to
 const savepath: String = "user://savedgames/"
 
@@ -83,6 +85,10 @@ const tooltips: Array[Array] = [
 	,["~2 / 3"]
 	,["~3 / 3"]
 	,["~Hold B to close your eyes"]
+	,["1 / 4", "You will reappear at your shadow"]
+	,["2 / 4"]
+	,["3 / 4"]
+	,["4 / 4"]
 ]
 
 
@@ -309,3 +315,11 @@ func get_astral_position() -> Vector2:
 ## returns the camera snap axis of the player
 func get_player_camera() -> Vector2:
 	return Vector2(player_position[2],player_position[3])
+
+## returns the global position of the player
+func set_restart_position(input: Vector2) -> void:
+	restart_position = input
+
+## returns the global position of the player
+func get_restart_position() -> Vector2:
+	return restart_position

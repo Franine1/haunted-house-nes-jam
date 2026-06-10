@@ -52,7 +52,7 @@ size = Vector2(256, 224)
 size = Vector2(225, 113)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sawo"]
-size = Vector2(256, 304)
+size = Vector2(256, 448)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8m340"]
 size = Vector2(256, 208)
@@ -796,7 +796,7 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room" unique_id=92684098]
 visible = false
-position = Vector2(32, -120)
+position = Vector2(32, -48)
 shape = SubResource("RectangleShape2D_5sawo")
 
 [node name="AstralAnchor2" type="Area2D" parent="." unique_id=1336310007]
