@@ -19,7 +19,7 @@ extends AstralZone
 
 
 
-func enforce_distances(player_container: PlayerContainer, active_player: Player, inactive_player: Player):
+func enforce_distances(player_container: PlayerContainer, active_player: Player, _inactive_player: Player):
 	var enforce_axis: Vector2 = Vector2.ZERO
 	if enforce_X:
 		enforce_axis += Vector2.RIGHT

@@ -35,6 +35,7 @@ const levels: Array[PackedScene] = [
 	,preload("res://scenes/levels/default_house.tscn")
 	,preload("res://scenes/levels/washer_level.tscn")
 	,preload("res://scenes/levels/liminal_house.tscn")
+	,preload("res://scenes/levels/backyard.tscn")
 ]
 ## Current dialogue script
 var dialogue_script: Dialogue = null

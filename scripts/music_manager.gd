@@ -12,7 +12,7 @@ const sound_levels: Array[float] = [
 	,5.0
 ]
 
-const silent_sound_level: float = -80.0
+const silent_sound_level: float = -65.0
 
 var db_goal: float = 0.0
 var volume_setting: int = 0

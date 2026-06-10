@@ -86,9 +86,6 @@ func react_to_astral_projection(input: bool, override: bool = false) -> void:
 		else:
 			if astral_recently_enforced.is_stopped():
 				ast.global_position = pl.global_position + (Vector2(16.0,14.0) * 16.0 * astral_offset)
-				print("default")
-			else:
-				print(ast.global_position)
 			
 		
 		

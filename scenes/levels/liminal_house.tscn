@@ -943,7 +943,7 @@ target_screen = Vector2i(2, 0)
 metadata/_custom_type_script = "uid://cup01huy0tbwf"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralAnchor5" unique_id=561122225]
-polygon = PackedVector2Array(-928, -432, -816, -432, -816, -288, -720, -288, -720, -336, -672, -336, -672, -136, -576, -136, -576, -96, -720, -96, -720, -240, -848, -240, -864, -248, -880, -248, -896, -240, -928, -240)
+polygon = PackedVector2Array(-928, -432, -816, -432, -816, -288, -720, -288, -720, -336, -672, -336, -672, -136, -648, -136, -640, -128, -624, -128, -616, -136, -576, -136, -576, -96, -720, -96, -720, -240, -848, -240, -864, -256, -880, -256, -896, -240, -928, -240)
 
 [node name="AstralAnchor4" type="Area2D" parent="." unique_id=1201945182]
 script = ExtResource("24_a25vn")
