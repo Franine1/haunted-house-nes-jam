@@ -321,4 +321,4 @@ func final_position() -> Vector2:
 func delay_interaction() -> void:
 	if interaction:
 		toggle_interaction(false)
-		interact_delay.start(0.25)
+		interact_delay.start(0.2)

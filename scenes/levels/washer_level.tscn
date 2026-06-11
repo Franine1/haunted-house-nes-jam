@@ -740,7 +740,6 @@ position = Vector2(360, -304)
 position = Vector2(360, -272)
 
 [node name="Room3" type="Area2D" parent="." unique_id=905748255]
-visible = false
 script = ExtResource("28_616nk")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 

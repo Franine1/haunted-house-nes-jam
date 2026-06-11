@@ -77,6 +77,9 @@ var current_pallete: Dictionary[int,ShaderMaterial] = {
 	,10: preload("res://resources/palettes/pinetree_pallette.tres")
 	,11: preload("res://resources/palettes/player_ghost_pallette.tres")
 	,12: preload("res://resources/palettes/snow_pallette.tres")
+	,13: preload("res://resources/palettes/dusk_pallette.tres")
+	,14: preload("res://resources/palettes/ethereal_pallette.tres")
+	,15: preload("res://resources/palettes/moldy_pallette.tres")
 }
 
 ## The allowed game states
@@ -302,7 +305,7 @@ func dialogue_behavior(_delta: float) -> void:
 			
 		1: # requests the correct dialogue boxes to appear 
 			
-			var more: bool = fill_dialogue(0.01 * clamp(game_data.get_data("lettering"),1,1000))
+			var more: bool = fill_dialogue(0.012 * clamp(game_data.get_data("lettering"),1,1000))
 			if more:
 				substate = 2
 				#var extra: float = clamp(floor(3.0 * pow(stored_text.size(),0.333)),1.0,16.0) * 16.0
@@ -359,7 +362,7 @@ func dialogue_behavior(_delta: float) -> void:
 					substate = 1
 			
 		3: # skips the delay between different letters
-			var more: bool = fill_dialogue(0.01 * clamp(game_data.get_data("lettering"),1,1000),true)
+			var more: bool = fill_dialogue(0.012 * clamp(game_data.get_data("lettering"),1,1000),true)
 			if more:
 				substate = 2
 			else:
@@ -442,7 +445,7 @@ func menu_behavior(_delta: float) -> void:
 			substate = 1
 			
 		1: ## fill in dialogue into the chosen window
-			var more: bool = fill_dialogue(0.01,false,target)
+			var more: bool = fill_dialogue(0.012,false,target)
 			substate = 3
 			## reset if the current dialogue tree ended, otherwise fill all letters
 			if more:
@@ -467,7 +470,7 @@ func menu_behavior(_delta: float) -> void:
 				else:
 					for i in temp.size():
 						if temp[i] != stored_text[i]:
-							fill_dialogue(0.01,true,target)
+							fill_dialogue(0.012,true,target)
 							break
 			
 			if read_a:

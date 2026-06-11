@@ -53,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://buaxnuy5nlg77" path="res://scenes/layouts/window.tscn" id="49_mfmey"]
 [ext_resource type="PackedScene" uid="uid://dn2g6lrf06ffa" path="res://scenes/dialogue/window_person.tscn" id="52_dfnd4"]
 [ext_resource type="Script" uid="uid://bwfil16152c87" path="res://scripts/dialogue_loop.gd" id="52_tdlnt"]
+[ext_resource type="Shape2D" uid="uid://dnj8iayr04pc7" path="res://resources/shapes/gate_shape.tres" id="54_uo0wi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u00pf"]
 size = Vector2(32, 48)
@@ -143,6 +144,12 @@ size = Vector2(256, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uo0wi"]
 size = Vector2(224, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f56w2"]
+size = Vector2(28, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jmmq"]
+size = Vector2(30, 30)
 
 [node name="default_house" type="Node2D" unique_id=825320048]
 script = ExtResource("1_couku")
@@ -2678,3 +2685,363 @@ script = ExtResource("27_qiytx")
 cue = "knock"
 value = 3
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="mirror" type="StaticBody2D" parent="." unique_id=2069648418]
+position = Vector2(184, -568)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="mirror" unique_id=997211403]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mirror" unique_id=1784494919]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueLines" type="Node" parent="mirror" unique_id=1241437999]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a mirror.", "You're not sure why there's three of them."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="nightstand" type="StaticBody2D" parent="." unique_id=333005205]
+position = Vector2(24, -520)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="nightstand" unique_id=370839530]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nightstand" unique_id=1196121817]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueLines" type="Node" parent="nightstand" unique_id=1709078536]
+script = ExtResource("31_fyonw")
+lines = Array[String](["A nightstand."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="nightstand2" type="StaticBody2D" parent="." unique_id=1829424013]
+position = Vector2(120, -392)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="nightstand2" unique_id=676046504]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nightstand2" unique_id=2145192593]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueLines" type="Node" parent="nightstand2" unique_id=400208580]
+script = ExtResource("31_fyonw")
+lines = Array[String](["A tiny little nightstand."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="nightstand3" type="StaticBody2D" parent="." unique_id=2083046345]
+position = Vector2(-72, -392)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="nightstand3" unique_id=2024662280]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="nightstand3" unique_id=712626607]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueLines" type="Node" parent="nightstand3" unique_id=1615253541]
+script = ExtResource("31_fyonw")
+lines = Array[String](["A tiny little nightstand."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="dresser" type="StaticBody2D" parent="." unique_id=1053103392]
+position = Vector2(144, -552)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="dresser" unique_id=1592859585]
+scale = Vector2(0.25, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dresser" unique_id=1068908176]
+shape = SubResource("RectangleShape2D_f56w2")
+
+[node name="DialogueLines" type="Node" parent="dresser" unique_id=228397464]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a dresser. There's an outfit already prepared, neatly folded on top."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="bookshelf" type="StaticBody2D" parent="." unique_id=195416781]
+position = Vector2(-120, -568)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="bookshelf" unique_id=1614792509]
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf" unique_id=449906583]
+shape = ExtResource("54_uo0wi")
+
+[node name="DialogueLines" type="Node" parent="bookshelf" unique_id=1245397738]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a bookshelf. Although you yourself are a reader, you don't spot any titles you heard of before.", "They're all obscure names, mostly by the same two or three authors."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="bookshelf2" type="StaticBody2D" parent="." unique_id=84666312]
+position = Vector2(-56, -568)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="bookshelf2" unique_id=1875391291]
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf2" unique_id=136581210]
+shape = ExtResource("54_uo0wi")
+
+[node name="DialogueLines" type="Node" parent="bookshelf2" unique_id=1765002699]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a bookshelf. Although you yourself are a reader, you don't spot any titles you heard of before.", "They're all obscure names, mostly by the same two or three authors."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="bookshelf3" type="StaticBody2D" parent="." unique_id=631151268]
+position = Vector2(-120, -520)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="bookshelf3" unique_id=1249434555]
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf3" unique_id=527275328]
+shape = ExtResource("54_uo0wi")
+
+[node name="DialogueLines" type="Node" parent="bookshelf3" unique_id=516800566]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a bookshelf. Although you yourself are a reader, you don't spot any titles you heard of before.", "They're all obscure names, mostly by the same two or three authors."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="bookshelf4" type="StaticBody2D" parent="." unique_id=1202725966]
+position = Vector2(-56, -520)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="bookshelf4" unique_id=1438969263]
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf4" unique_id=775675599]
+shape = ExtResource("54_uo0wi")
+
+[node name="DialogueLines" type="Node" parent="bookshelf4" unique_id=875556592]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a bookshelf. Although you yourself are a reader, you don't spot any titles you heard of before.", "They're all obscure names, mostly by the same two or three authors."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="bookshelf5" type="StaticBody2D" parent="." unique_id=60437299]
+position = Vector2(-120, -472)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="bookshelf5" unique_id=703606451]
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf5" unique_id=1758700948]
+shape = ExtResource("54_uo0wi")
+
+[node name="DialogueLines" type="Node" parent="bookshelf5" unique_id=228046347]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a bookshelf. Although you yourself are a reader, you don't spot any titles you heard of before.", "They're all obscure names, mostly by the same two or three authors."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="bookshelf6" type="StaticBody2D" parent="." unique_id=573140501]
+position = Vector2(-56, -472)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="bookshelf6" unique_id=744117303]
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf6" unique_id=1469665259]
+shape = ExtResource("54_uo0wi")
+
+[node name="DialogueLines" type="Node" parent="bookshelf6" unique_id=729316432]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a bookshelf. Although you yourself are a reader, you don't spot any titles you heard of before.", "They're all obscure names, mostly by the same two or three authors."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="dresser2" type="StaticBody2D" parent="." unique_id=638776959]
+position = Vector2(192, -312)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="dresser2" unique_id=70105791]
+scale = Vector2(0.25, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dresser2" unique_id=786458353]
+shape = SubResource("RectangleShape2D_f56w2")
+
+[node name="DialogueLines" type="Node" parent="dresser2" unique_id=1060213627]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a dresser. The drawers are all empty."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="dresser3" type="StaticBody2D" parent="." unique_id=1112988158]
+position = Vector2(-144, -312)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="dresser3" unique_id=1245107033]
+scale = Vector2(0.25, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dresser3" unique_id=431785931]
+shape = SubResource("RectangleShape2D_f56w2")
+
+[node name="DialogueLines" type="Node" parent="dresser3" unique_id=1188739833]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a dresser. The drawers are all empty."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="mirror2" type="StaticBody2D" parent="." unique_id=1949014943]
+position = Vector2(216, -584)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="mirror2" unique_id=1084524320]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mirror2" unique_id=1424300664]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueLines" type="Node" parent="mirror2" unique_id=16257070]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a mirror.", "You're not sure why there's three of them."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="mirror3" type="StaticBody2D" parent="." unique_id=1649783643]
+position = Vector2(232, -568)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="mirror3" unique_id=1092843561]
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mirror3" unique_id=1414970435]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueLines" type="Node" parent="mirror3" unique_id=1582356415]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a mirror.", "You're not sure why there's three of them."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="bed" type="StaticBody2D" parent="." unique_id=1222766109]
+position = Vector2(32, -544)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="bed" unique_id=139126537]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bed" unique_id=1811925381]
+shape = SubResource("RectangleShape2D_8jmmq")
+
+[node name="DialogueLines" type="Node" parent="bed" unique_id=1250794888]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a king-size bed."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="bed2" type="StaticBody2D" parent="." unique_id=504724093]
+position = Vector2(-32, -384)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="bed2" unique_id=303189519]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bed2" unique_id=2109522199]
+shape = SubResource("RectangleShape2D_8jmmq")
+
+[node name="DialogueLines" type="Node" parent="bed2" unique_id=953574878]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a twin-size bed."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="bed3" type="StaticBody2D" parent="." unique_id=1932422352]
+position = Vector2(80, -384)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="bed3" unique_id=1234864167]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("40_wahft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bed3" unique_id=524430918]
+shape = SubResource("RectangleShape2D_8jmmq")
+
+[node name="DialogueLines" type="Node" parent="bed3" unique_id=2030597643]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a twin-size bed."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

@@ -16,6 +16,11 @@ var index: int = 0
 func line() -> Array[String]:
 	if dialogue_finished():
 		return []
+	while sections[index].dialogue_finished():
+		index += 1
+		if dialogue_finished(true):
+			return []
+		sections[index].reset_dialogue()
 	return sections[index].line()
 
 ## pass down the A interaction to the current section,
@@ -26,7 +31,7 @@ func A_reaction():
 		return
 	
 	sections[index].A_reaction()
-	if sections[index].dialogue_finished(true):
+	while sections[index].dialogue_finished():
 		index += 1
 		if dialogue_finished(true):
 			return

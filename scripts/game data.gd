@@ -77,6 +77,7 @@ const names: Array[String] = [
 	,"You"
 	,"Lea"
 	,"Window Person"
+	,"Peanut Butter"
 ]
 
 const tooltips: Array[Array] = [

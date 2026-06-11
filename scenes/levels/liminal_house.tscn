@@ -1054,7 +1054,7 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueToggle" unique_id=1320305995]
 script = ExtResource("5_u8ura")
-lines = Array[String](["...", "My, you look like you've seen a ghost. Heh..."])
+lines = Array[String](["...", "My, you look like you've seen a ghost."])
 name_id = 3
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
@@ -1088,7 +1088,7 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueToggle/DialogueLoop/DialogueOption/p1" unique_id=142806115]
 script = ExtResource("5_u8ura")
-lines = Array[String](["...", "My. You don't look so well, friend.", "Did something happen while you were outside?"])
+lines = Array[String](["...", "You don't look so well, friend.", "Did something happen while you were outside?"])
 name_id = 3
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 

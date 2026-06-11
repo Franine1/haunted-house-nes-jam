@@ -34,7 +34,7 @@ const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
 signal astral_projection(input: bool, chr: Player)
 
-var astral_offset: Vector2 = Vector2(0.0,8.0)
+const astral_offset: Vector2 = Vector2(0.0,8.0)
 
 var astral_recently_enforced: Timer
 
@@ -114,6 +114,8 @@ func react_to_astral_projection(input: bool, override: bool = false) -> void:
 		cm.blackout_transition()
 		cm.shift(difference)
 		endpoint.finish_camera_glide()
+		
+		#print([(endpoint.position / Vector2(256.0,224.0)),(source.position / Vector2(256.0,224.0))])
 		
 		shadow.global_position = ast.global_position
 		shadow.animation = pl.sprites[0].animation

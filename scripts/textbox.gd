@@ -13,22 +13,26 @@ extends RichTextLabel
 @onready var back: Panel = %Panel
 var duration: float = 0.1
 var expected_size: float = 48.0
+var start_time: float = 0.0
+var fill_duration: float = 0.1
 
 ## This takes in an input string and time delay value between letters, then
 ## sets up the text box correctly from that
 func display(input: String, speed: float = 0.01, initial_visible: int = 0, sze: float = 48.0) -> void:
 	duration = speed
 	expected_size = sze
+	visible_characters = 0
 	
 	replace_text(input)
 	
-	
 	visible_characters = initial_visible
+	
 	
 	if !letters.timeout.is_connected(next_letter):
 		letters.timeout.connect(next_letter)
 	
-	letters.start(duration)
+	#letters.start(duration)
+	
 	
 	reset_scroll()
 	
@@ -36,6 +40,10 @@ func display(input: String, speed: float = 0.01, initial_visible: int = 0, sze: 
 
 
 func replace_text(input: String) -> void:
+	
+	var amount: float = visible_ratio * text.length() if text.length() > 0 else 0.0
+	var full: bool = (visible_ratio >= 1.0) and (text.length() > 0)
+	
 	var read_text: String = input
 	var select: bool = read_text[0] == ">"
 	var cleared: bool = read_text[0] == "~"
@@ -53,6 +61,12 @@ func replace_text(input: String) -> void:
 		modulate = Color(1.0,1.0,1.0,0.5)
 	if cleared:
 		back.hide()
+	
+	fill_duration = read_text.length() * duration
+	var new_ratio: float = amount / clamp(input.length(),1,INF)
+	start_time = -(new_ratio * fill_duration - Time.get_unix_time_from_system())
+	if full:
+		finish_letters()
 
 
 ## This looks like ass and I do NOT recommend using this function
@@ -75,14 +89,21 @@ func next_letter() -> void:
 ## This function can be used to order the textbox to finish filling letters
 func finish_letters() -> void:
 	letters.stop()
+	fill_duration = 0.001
 	visible_ratio = 1.0
 
 ## This function returns whether or not the textbox has completely filled.
 func is_full() -> bool:
 	return visible_ratio >= 1.0
 
-## UNUSED
+## automatically scrolls through text: UNUSED
+## Also now performs the letter filling
 func _process(delta: float) -> void:
+	
+	visible_ratio = clamp((Time.get_unix_time_from_system() - start_time) / fill_duration,0.0,1.1)
+	
+	
+	
 	if get_line_count() > get_visible_line_count() and false:
 		var scroll: VScrollBar = get_v_scroll_bar()
 		var speed = get_visible_line_count() / (1.0 * get_line_count()) * 5.0
@@ -102,3 +123,11 @@ func reset_scroll() -> void:
 func _ready() -> void:
 	scroller.timeout.connect(reset_scroll)
 	scroller.one_shot = true
+
+
+
+
+static func modulus(source: float, mod: float) -> float:
+	var sub = (1.0 * source)/(1.0 * mod) # -10, 3 -> -3.333
+	var ans = source - (mod * floor(sub)) # -10, 3, -3.333 -> 2
+	return ans
