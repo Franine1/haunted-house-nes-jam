@@ -136,20 +136,23 @@ func progress_animation(delta: float, opacity: float = -1.0) -> void:
 
 
 func upkeep(_delta: float) -> void:
-	interact_delay.paused = !input_allowed
 	var temp: Array[CutscenePath] = game_data.accept_movement(NPC_ID)
 	temp.append_array(movement_queue)
+	
 	movement_queue = temp
 	
-	
+	#for i in temp:
+		#if !i.completed():
+			#movement_queue.append(i)
 
 func _physics_process(delta: float) -> void:
+	interact_delay.paused = !input_allowed
+	
 	collision_layer = 16
 	collision_mask = 5
 	
 	process_behavior(delta)
 	
-	upkeep(delta)
 	
 	
 	var best: float = 0.0
@@ -159,6 +162,7 @@ func _physics_process(delta: float) -> void:
 	progress_animation(delta, best)
 	
 	if input_delay.is_stopped():
+		upkeep(delta)
 		# movement inputs are allowed
 		correct_position()
 		
@@ -178,8 +182,8 @@ func compile_movement_queue() -> Vector2:
 	var local: Vector2i = Vector2i((global_position/16.0).floor())
 	var relative_shift: bool = false
 	if movement_queue.size() > 0:
-		if movement_queue.back().direction(local):
-			mvm = Vector2(movement_queue.back().direction(local))
+		mvm = Vector2(movement_queue.back().direction(local))
+		if mvm:
 			relative_shift = !movement_queue.back().relative
 			dir = movement_queue.back().look_direction
 			speed_scale = movement_queue.back().speed

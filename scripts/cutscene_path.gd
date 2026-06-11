@@ -50,3 +50,7 @@ func reduce(input: Vector2i) -> void:
 			directions[directions.size()-1] -= input
 	if directions.size() == 0:
 		look_direction = Vector2i.ZERO
+
+func completed() -> bool:
+	return directions.size() == 0 and look_direction == Vector2i.ZERO
+	

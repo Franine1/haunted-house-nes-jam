@@ -36,6 +36,7 @@ const levels: Array[PackedScene] = [
 	,preload("res://scenes/levels/washer_level.tscn")
 	,preload("res://scenes/levels/liminal_house.tscn")
 	,preload("res://scenes/levels/backyard.tscn")
+	,preload("res://scenes/levels/second_floor.tscn")
 ]
 ## Current dialogue script
 var dialogue_script: Dialogue = null
@@ -97,6 +98,7 @@ var current_tooltip: int = 0
 func read_dialogue(input: Dialogue) -> void:
 	input.reset_dialogue()
 	if input.dialogue_finished():
+		input.dialogue_finished(true)
 		return
 	
 	dialogue_enabled = true
@@ -145,10 +147,12 @@ func _process(delta: float) -> void:
 		
 		game_state.DIALOGUE:
 			remove_textboxes(tooltip_holder)
+			current_tooltip = -1
 			dialogue_behavior(delta)
 		
 		game_state.MENU:
 			remove_textboxes(tooltip_holder)
+			current_tooltip = -1
 			menu_behavior(delta)
 		
 	
@@ -386,6 +390,7 @@ func fill_dialogue(delay: float, match_letters: bool = false, target: Control = 
 	# if the current dialogue is done, simply delete these old textboxes
 	# and go back to the game instead. 
 	if dialogue_script.dialogue_finished():
+		dialogue_script.dialogue_finished(true)
 		return false
 	
 	stored_text = dialogue_script.line()
@@ -470,6 +475,8 @@ func menu_behavior(_delta: float) -> void:
 				substate = 1
 		3: ## interpreting the current choices made
 			var default_mode: int = 0 if dialogue_script.dialogue_finished() else 2
+			if default_mode == 0:
+				dialogue_script.dialogue_finished(true)
 			match game_data.get_data("menu"):
 				0: ## main menu: no special behavior
 					pass

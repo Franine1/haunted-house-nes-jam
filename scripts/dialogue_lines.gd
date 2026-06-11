@@ -34,7 +34,7 @@ func select_reaction():
 	pass
 
 ## The dialogue is finished if our index isn't in the array of strings
-func dialogue_finished() -> bool:
+func dialogue_finished(_current: bool = false) -> bool:
 	return (index >= lines.size() or index < 0)
 
 ## resetting dialogue sets the index back to 0.

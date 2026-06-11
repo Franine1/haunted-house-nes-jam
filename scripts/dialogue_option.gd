@@ -20,6 +20,7 @@ var choice_made: bool = false
 ## or the next line of whichever choice was selected.
 func line() -> Array[String]:
 	if dialogue_finished():
+		dialogue_finished(true)
 		return []
 	if !choice_made:
 		# skip any choices without dialogue
@@ -45,7 +46,7 @@ func line() -> Array[String]:
 
 
 func A_reaction():
-	if dialogue_finished():
+	if dialogue_finished(true):
 		return
 	if !choice_made:
 		# approve the currently selected choice
@@ -59,6 +60,7 @@ func A_reaction():
 
 func select_reaction():
 	if dialogue_finished():
+		dialogue_finished(true)
 		return
 	if !choice_made:
 		# move through the available choices
@@ -72,9 +74,14 @@ func select_reaction():
 		choices[index].select_reaction()
 
 
-func dialogue_finished() -> bool:
+func dialogue_finished(current: bool = false) -> bool:
 	# if the index is invalid or the selected choice has its dialogue finished, this dialogue path ends
-	return (index >= choices.size() or index < 0 or (choices[index].dialogue_finished() and choice_made))
+	var ans = (index >= choices.size() or index < 0)
+	
+	if (choices[index].dialogue_finished() and choice_made):
+		ans = true
+		choices[index].dialogue_finished(current)
+	return ans
 
 
 ## Resets itself alongside every choice in its children.

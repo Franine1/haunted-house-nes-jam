@@ -28,6 +28,7 @@ var fade_in_checks: Array[Layout] = []
 ## used to keep track of the layer this object is in for the color palettes
 @export var material_layer: int = 0
 
+var cooldown: Timer
 
 ## when the player presses A on it, sends its dialogue if interact_Activation is true
 func interact() -> void:
@@ -45,7 +46,7 @@ func send_dialogue() -> void:
 		if child is Dialogue:
 			temp.append(child)
 	
-	game_data.queue_dialogue_array(temp)
+	game_data.queue_dialogue_array(temp.duplicate())
 	
 	interactions += 1
 
@@ -57,6 +58,9 @@ func _ready() -> void:
 	collision_layer = 40 if interact_activation else 32
 	collision_mask = 6
 	
+	cooldown = Timer.new()
+	cooldown.one_shot = true
+	add_child(cooldown)
 	
 	sprites = []
 	for child in get_children():
@@ -66,9 +70,12 @@ func _ready() -> void:
 
 ## when the player walks into it, send its dialogue if entry_activation is true
 func detected_player(_body_rid: RID, body: Node2D) -> void:
-	if entry_activation and interact_allowed and body is Player and (max_interactions < 0 or interactions < max_interactions):
-		if body.toggle:
-			send_dialogue()
+	if cooldown.is_stopped():
+		if entry_activation and interact_allowed and body is Player and (max_interactions < 0 or interactions < max_interactions):
+			if body.toggle:
+				body.erase_movement_queue_attempt()
+				send_dialogue()
+				cooldown.start(0.1)
 
 func set_interaction(input: bool = true) -> void:
 	interact_allowed = input

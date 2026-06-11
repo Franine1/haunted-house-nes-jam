@@ -1,0 +1,27 @@
+[gd_scene format=4 uid="uid://dvfo35a0vg41u"]
+
+[ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="1_s6rh6"]
+[ext_resource type="Material" uid="uid://ds4457y00hijl" path="res://resources/palettes/brickpallette.tres" id="2_iy3k1"]
+[ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="3_gj7ht"]
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="4_hl2jc"]
+[ext_resource type="Material" uid="uid://cstxp72cbfwd5" path="res://resources/palettes/pinetree_pallette.tres" id="5_6qvma"]
+
+[node name="shed" type="Area2D" unique_id=963148147]
+script = ExtResource("1_s6rh6")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="Layout2" type="TileMapLayer" parent="." unique_id=660049860]
+material = ExtResource("2_iy3k1")
+tile_map_data = PackedByteArray("AAAHAAsAAAAEAAMAAAAIAAsAAAAEAAMAAAAHAAwAAAAEAAMAAAAHAA0AAAAEAAMAAAAIAA0AAAAEAAMAAAAIAAwAAAAEAAMAAAA=")
+tile_set = ExtResource("3_gj7ht")
+script = ExtResource("4_hl2jc")
+material_layer = 9
+metadata/_custom_type_script = "uid://byvdvujagvico"
+
+[node name="Layout3" type="TileMapLayer" parent="." unique_id=1965533006]
+material = ExtResource("5_6qvma")
+tile_map_data = PackedByteArray("AAAFAAQAAAAAAAAAAAAFAAUAAAAAAAEAAAAFAAYAAAAAAAEAAAAGAAYAAAABAAEAAAAGAAcAAAABAAEAAAAGAAgAAAABAAEAAAAFAAgAAAAAAAIAAAAFAAkAAAABAAIAAAAGAAkAAAADAAEAAAAFAAcAAAAAAAEAAAAHAAgAAAABAAEAAAAHAAkAAAABAAEAAAAIAAkAAAABAAEAAAAJAAkAAAAEAAEAAAAKAAkAAAABAAIAAAAKAAgAAAACAAIAAAAJAAgAAAABAAEAAAAJAAcAAAABAAEAAAAIAAgAAAABAAEAAAAIAAcAAAABAAEAAAAHAAcAAAABAAEAAAAHAAYAAAABAAEAAAAKAAcAAAACAAEAAAAKAAYAAAACAAEAAAAJAAYAAAABAAEAAAAJAAUAAAABAAEAAAAIAAUAAAABAAEAAAAHAAUAAAABAAEAAAAGAAUAAAABAAEAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAIAAYAAAABAAEAAAAJAAQAAAABAAAAAAAKAAQAAAACAAAAAAAKAAUAAAACAAEAAAAHAAoAAAABAAEAAAAIAAoAAAABAAEAAAAGAAoAAAABAAIAAAAJAAoAAAABAAIAAAAJAAsAAAABAAIAAAAGAAsAAAABAAIAAAA=")
+tile_set = ExtResource("3_gj7ht")
+script = ExtResource("4_hl2jc")
+material_layer = 10
+metadata/_custom_type_script = "uid://byvdvujagvico"

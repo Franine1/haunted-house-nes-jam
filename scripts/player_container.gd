@@ -81,7 +81,6 @@ func correct_focus() -> void:
 		chr.visible = enable
 		chr.toggle = enable
 	
-	shadow.visible = !astral_mode and [astral.POLTERGEIST].has(astral_version)
 
 ## Switches player characters accordingly when the player astral projects
 func react_to_astral_projection(input: bool, override: bool = false) -> void:
@@ -146,6 +145,8 @@ func _process(_delta: float) -> void:
 	
 	pl.astral_version = ans
 	ast.astral_version = ans
+	
+	shadow.visible = !astral_mode and [astral.POLTERGEIST].has(astral_version)
 	
 	pass
 

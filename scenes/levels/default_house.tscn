@@ -2646,7 +2646,6 @@ entry_activation = true
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="knock2" unique_id=379308618]
-visible = false
 position = Vector2(1152, 152)
 shape = SubResource("RectangleShape2D_uo0wi")
 
@@ -2671,7 +2670,7 @@ metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueLines" type="Node" parent="knock2/DialogueSection/DialogueSection2" unique_id=1347786631]
 script = ExtResource("31_fyonw")
-lines = Array[String](["So far, you haven't found any way out.", "What's all this going on with the halls being messed up? And the missing doors?", "There's got to be a way out, or to find out what's going on. Did you spot anything useful?", "Didn't you spot some way to contact the outside?"])
+lines = Array[String](["So far, you haven't found any way out.", "What's all this going on with the halls being messed up? And the missing doors?", "There's got to be a way out, or to find out what's going on. Did you spot anything useful?", "Maybe if you saw a door or window or something, you could try to escape."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueCue2" type="Node" parent="knock2/DialogueSection/DialogueSection2" unique_id=442411161]

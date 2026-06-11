@@ -37,7 +37,7 @@ func select_reaction():
 ## When we check if this dialogue is finished, it performs its
 ## cue and sets the correct parameter in game data, then returns
 ## that the dialogue is finished.
-func dialogue_finished() -> bool:
+func dialogue_finished(_current: bool = false) -> bool:
 	if !emitted:
 		if delay <= 0:
 			if !additive:

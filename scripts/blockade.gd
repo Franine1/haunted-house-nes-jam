@@ -64,6 +64,7 @@ func _process(delta: float) -> void:
 	for layout in fade_in_checks:
 		if layout.overlaps(self):
 			best = max(best,layout.recent_opacity)
+	
 	progress_animation(delta, best)
 
 
@@ -116,6 +117,7 @@ func bump(source: NPC = null) -> void:
 		if source.toggle:
 			if source != null:
 				source.delay_interaction()
+				source.erase_movement_queue_attempt()
 			send_dialogue()
 
 func set_interaction(input: bool = true) -> void:

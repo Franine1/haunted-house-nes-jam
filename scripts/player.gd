@@ -38,6 +38,7 @@ func ready_behavior() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	interact_delay.paused = !input_allowed
 	
 	if astral_mode:
 		game_data.accept_player_position(global_position,camera_snap_axis)
@@ -45,7 +46,6 @@ func _physics_process(delta: float) -> void:
 		game_data.accept_astral_position(global_position,camera_snap_axis)
 		
 	
-	upkeep(delta)
 	
 	progress_animation(delta)
 	
@@ -60,6 +60,9 @@ func _physics_process(delta: float) -> void:
 			stagnant = !toggle
 	
 	if input_delay.is_stopped() and !stagnant:
+		
+		upkeep(delta)
+		
 		# movement inputs are allowed
 		correct_position()
 		
@@ -67,6 +70,9 @@ func _physics_process(delta: float) -> void:
 		if !input_allowed:
 			mvm = compile_movement_queue()
 		else:
+			if movement_queue.size() > 0 and false:
+				get_tree().create_timer(0.1).timeout.connect(erase_movement_queue_attempt)
+			
 			speed_scale = default_speed
 			
 			if mvm:
@@ -77,6 +83,7 @@ func _physics_process(delta: float) -> void:
 			velocity = Vector2.ZERO
 		if input_allowed and toggle and interact_delay.is_stopped() and !has_moved:
 			if Input.is_action_just_pressed("A button"):
+				erase_movement_queue_attempt()
 				if interaction.is_colliding():
 					var target = interaction.get_collider()
 					if target is InteractionZone:
@@ -159,3 +166,8 @@ func finish_camera_glide(input: bool = true) -> void:
 	camera_instant = input
 	if camera_instant:
 		get_tree().create_timer(0.1).timeout.connect(finish_camera_glide.bind(false))
+
+
+func erase_movement_queue_attempt() -> void:
+	if interact_allowed:
+		movement_queue.clear()

@@ -22,30 +22,38 @@ func line() -> Array[String]:
 ## then if the current section is finished, 
 ## go to the next unfinished section
 func A_reaction():
-	if dialogue_finished():
+	if dialogue_finished(true):
 		return
 	
 	sections[index].A_reaction()
-	if sections[index].dialogue_finished():
+	if sections[index].dialogue_finished(true):
 		index += 1
-		if dialogue_finished():
+		if dialogue_finished(true):
 			return
 		sections[index].reset_dialogue()
-		while !dialogue_finished() and sections[index].dialogue_finished():
-			index += 1
-			sections[index].reset_dialogue()
 
 ## passes down the interaction to the current section
 func select_reaction():
 	if dialogue_finished():
+		dialogue_finished(true)
 		return
 	sections[index].select_reaction()
 
 ## dialogue is finished if every single section's dialogue is finished.
-func dialogue_finished() -> bool:
+func dialogue_finished(current: bool = false) -> bool:
+	var temp = index
 	while index < sections.size()-1 and sections[index].dialogue_finished():
+		sections[index].dialogue_finished(current)
 		index += 1
-	return (index >= sections.size() or index < 0 or (index == (sections.size()-1) and sections[index].dialogue_finished()))
+	var ans = (index >= sections.size() or index < 0)
+	if (index == (sections.size()-1) and sections[index].dialogue_finished()):
+		ans = true
+		sections[index].dialogue_finished(current)
+	
+	if !current and false:
+		index = temp
+	
+	return ans
 
 
 func reset_dialogue() -> void:

@@ -16,6 +16,7 @@ func A_reaction():
 	
 	sections[index].A_reaction()
 	while sections[index].dialogue_finished():
+		sections[index].dialogue_finished(true)
 		index += 1
 		if index >= sections.size():
 			index = 0
@@ -26,7 +27,7 @@ func A_reaction():
 ## Same as a DialogueToggle's dialogue_finished, except
 ## it doesn't care about whether its sections are finished or
 ## not, and is solely based on the activation condition.
-func dialogue_finished() -> bool:
+func dialogue_finished(_current: bool = false) -> bool:
 	
 	var temp: int = game_data.get_data(cue)
 	var valid: bool = false

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://def70mc2hugym"]
+
+[ext_resource type="Script" uid="uid://56yoruxpggjg" path="res://scripts/level.gd" id="1_0fisr"]
+
+[node name="second floor" type="Node2D" unique_id=352483477]
+script = ExtResource("1_0fisr")
+metadata/_custom_type_script = "uid://56yoruxpggjg"

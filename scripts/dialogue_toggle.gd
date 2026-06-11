@@ -26,7 +26,7 @@ enum compare {
 ## Same as a DialogueSection's dialogue_finished, except
 ## if it's boolean comparison is found to be false, the dialogue
 ## automatically is declared to be finished.
-func dialogue_finished() -> bool:
+func dialogue_finished(current: bool = false) -> bool:
 	var temp: int = game_data.get_data(cue)
 	var valid: bool = false
 	if temp == value:
@@ -47,6 +47,5 @@ func dialogue_finished() -> bool:
 	if !valid:
 		return true
 	
-	while index < sections.size()-1 and sections[index].dialogue_finished():
-		index += 1
-	return (index >= sections.size() or index < 0 or (index == (sections.size()-1) and sections[index].dialogue_finished()))
+	
+	return super.dialogue_finished(current)

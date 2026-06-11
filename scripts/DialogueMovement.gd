@@ -19,6 +19,10 @@ extends Dialogue
 ## determines whether or not the target is relative to the NPC or exact in the world
 @export var relative: bool = true
 
+
+## whether or not this movement was already emitted
+var emitted: bool = false
+
 ## reference to the game data
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
 
@@ -47,18 +51,21 @@ func select_reaction():
 ## When we check if this dialogue is finished, it requests its
 ## movement from the game data, then returns
 ## that the dialogue is finished.
-func dialogue_finished() -> bool:
-	var look_aim: Vector2i = [Vector2i.ZERO,Vector2i.UP,Vector2i.DOWN,Vector2i.LEFT,Vector2i.RIGHT][look_direction]
-	
-	var ans: CutscenePath = CutscenePath.compile(directions,speed,look_aim,relative)
-	if delay <= 0:
-		game_data.queue_movement(ans,NPC_ID)
-	else:
-		var source = get_tree().current_scene
-		source.get_tree().create_timer(delay).timeout.connect(game_data.queue_movement.bind(ans,NPC_ID))
+func dialogue_finished(_current: bool = false) -> bool:
+	if !emitted:
+		var look_aim: Vector2i = [Vector2i.ZERO,Vector2i.UP,Vector2i.DOWN,Vector2i.LEFT,Vector2i.RIGHT][look_direction]
+		
+		var ans: CutscenePath = CutscenePath.compile(directions,speed,look_aim,relative)
+		if delay <= 0:
+			game_data.queue_movement(ans,NPC_ID)
+		else:
+			var source = get_tree().current_scene
+			source.get_tree().create_timer(delay).timeout.connect(game_data.queue_movement.bind(ans,NPC_ID))
+		
+		emitted = true
 	
 	return true
 
 ## No resetting needs to be done.
 func reset_dialogue() -> void:
-	pass
+	emitted = false

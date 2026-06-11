@@ -1,0 +1,18 @@
+[gd_scene format=4 uid="uid://bbsy7n1yt4gko"]
+
+[ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="1_uye6n"]
+[ext_resource type="Material" uid="uid://c3tvspmgrsoss" path="res://resources/palettes/player_ghost_pallette.tres" id="2_yqhnb"]
+[ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="3_syijd"]
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="4_gmuxn"]
+
+[node name="shed" type="Area2D" unique_id=963148147]
+script = ExtResource("1_uye6n")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="Layout3" type="TileMapLayer" parent="." unique_id=1965533006]
+material = ExtResource("2_yqhnb")
+tile_map_data = PackedByteArray("AAAFAAQAAAAAAAAAAAAFAAUAAAAAAAEAAAAFAAYAAAAAAAEAAAAGAAYAAAABAAEAAAAGAAcAAAABAAEAAAAGAAgAAAABAAEAAAAFAAgAAAAAAAIAAAAFAAkAAAABAAIAAAAGAAkAAAABAAIAAAAFAAcAAAAAAAEAAAAHAAgAAAABAAEAAAAHAAkAAAABAAIAAAAIAAkAAAABAAIAAAAJAAkAAAABAAIAAAAKAAkAAAABAAIAAAAKAAgAAAACAAIAAAAJAAgAAAABAAEAAAAJAAcAAAABAAEAAAAIAAgAAAABAAEAAAAIAAcAAAABAAEAAAAHAAcAAAABAAEAAAAHAAYAAAABAAEAAAAKAAcAAAACAAEAAAAKAAYAAAACAAEAAAAJAAYAAAABAAEAAAAJAAUAAAABAAEAAAAIAAUAAAABAAEAAAAHAAUAAAABAAEAAAAGAAUAAAABAAEAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAIAAYAAAABAAEAAAAJAAQAAAABAAAAAAAKAAQAAAACAAAAAAAKAAUAAAACAAEAAAA=")
+tile_set = ExtResource("3_syijd")
+script = ExtResource("4_gmuxn")
+material_layer = 11
+metadata/_custom_type_script = "uid://byvdvujagvico"
