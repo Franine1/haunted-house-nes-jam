@@ -41,7 +41,7 @@ size = Vector2(1280, 896)
 size = Vector2(496, 416)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn7fg"]
-size = Vector2(1280, 344)
+size = Vector2(1280, 472)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgm3s"]
 size = Vector2(16, 224)
@@ -99,6 +99,12 @@ size = Vector2(96, 240)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rdyf"]
 size = Vector2(114, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xco26"]
+size = Vector2(352, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4icms"]
+size = Vector2(64, 80)
 
 [node name="second floor" type="Node2D" unique_id=352483477]
 script = ExtResource("1_0fisr")
@@ -162,6 +168,7 @@ screen_offset = Vector2i(0, -8)
 metadata/_custom_type_script = "uid://r7nrvikp2r0q"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AstralClamp" unique_id=1528441886]
+visible = false
 position = Vector2(-8, 216)
 shape = SubResource("RectangleShape2D_yw8e7")
 
@@ -211,6 +218,30 @@ visible = false
 position = Vector2(640, 156)
 shape = SubResource("RectangleShape2D_tn7fg")
 
+[node name="astral_halls" type="Area2D" parent="." unique_id=549004485]
+position = Vector2(0, 896)
+script = ExtResource("2_daixp")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="hallway_F2" parent="astral_halls" unique_id=2085302389 instance=ExtResource("7_5wfnp")]
+material = ExtResource("5_e7owg")
+position = Vector2(528, 400)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAABAAEAAAAAAAIAAAABAAIAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAFAAEAAAABAAEAAAAGAAAAAAABAAAAAAAGAAEAAAABAAEAAAAGAAIAAAABAAIAAAAHAAEAAAABAAEAAAD0/wEAAAABAAEAAAD1/wEAAAABAAEAAAD2/wEAAAABAAEAAAD3/wEAAAABAAEAAAD4/wEAAAABAAEAAAD5/wEAAAABAAEAAAD6/wEAAAABAAEAAAD7/wEAAAABAAEAAAD8/wEAAAABAAEAAAD9/wEAAAABAAEAAAD+/wEAAAABAAEAAAD//wEAAAABAAEAAAD0/wAAAAABAAAAAAD1/wAAAAABAAAAAAD2/wAAAAABAAAAAAD3/wAAAAABAAAAAAD4/wAAAAABAAAAAAD5/wAAAAABAAAAAAD6/wAAAAABAAAAAAD7/wAAAAABAAAAAAD8/wAAAAABAAAAAAD9/wAAAAABAAAAAAD+/wAAAAABAAAAAAD//wAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAHAAAAAAABAAAAAAAHAAIAAAABAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAABAAIAAAAFAAIAAAABAAIAAAD0/wIAAAABAAIAAAD1/wIAAAABAAIAAAD2/wIAAAABAAIAAAD3/wIAAAABAAIAAAD4/wIAAAABAAIAAAD5/wIAAAABAAIAAAD6/wIAAAABAAIAAAD7/wIAAAABAAIAAAD8/wIAAAABAAIAAAD9/wIAAAABAAIAAAD+/wIAAAABAAIAAAD//wIAAAABAAIAAADz/wIAAAABAAIAAADy/wIAAAABAAIAAADw/wIAAAABAAIAAADz/wAAAAABAAAAAADy/wAAAAABAAAAAADx/wAAAAABAAAAAADw/wAAAAABAAAAAADw/wEAAAABAAEAAADx/wEAAAABAAEAAADy/wEAAAABAAEAAADz/wEAAAABAAEAAADx/wIAAAABAAIAAADv/wAAAAABAAAAAADv/wEAAAABAAEAAADv/wIAAAABAAIAAAAIAAAAAAACAAAAAAAIAAEAAAACAAIAAAAIAAIAAAABAAIAAADu/wAAAAABAAAAAADu/wEAAAABAAEAAADu/wIAAAABAAIAAADt/wEAAAABAAEAAADs/wAAAAAAAAAAAADt/wAAAAABAAAAAADs/wEAAAAAAAIAAADs/wIAAAABAAIAAADt/wIAAAABAAIAAAA=")
+material_layer = 14
+
+[node name="Layout" type="TileMapLayer" parent="astral_halls" unique_id=357795414]
+material = ExtResource("5_e7owg")
+tile_map_data = PackedByteArray("AAAxAAwAAAAEAAMAAAAwAAwAAAAEAAMAAAAyAAwAAAAEAAMAAAAzAAwAAAAEAAMAAAA0AAwAAAAEAAMAAAA1AAwAAAAEAAMAAAA2AAwAAAAEAAMAAAA3AAwAAAAEAAMAAAA4AAwAAAAEAAMAAAA5AAwAAAAEAAMAAAA6AAwAAAAEAAMAAAA7AAwAAAAEAAMAAAA8AAwAAAAEAAMAAAA9AAwAAAAEAAMAAAA+AAwAAAAEAAMAAAA/AAwAAAAEAAMAAAA/AAsAAAAEAAMAAAA+AAsAAAAEAAMAAAA9AAsAAAAEAAMAAAA8AAsAAAAEAAMAAAA7AAsAAAAEAAMAAAA6AAsAAAAEAAMAAAA5AAsAAAAEAAMAAAA4AAsAAAAEAAMAAAA3AAsAAAAEAAMAAAA2AAsAAAAEAAMAAAA1AAsAAAAEAAMAAAA0AAsAAAAEAAMAAAAzAAsAAAAEAAMAAAAyAAsAAAAEAAMAAAAxAAsAAAAEAAMAAAAwAAsAAAAEAAMAAAAwAAoAAAAEAAMAAAAxAAoAAAAEAAMAAAAyAAoAAAAEAAMAAAAzAAoAAAAEAAMAAAA0AAoAAAAEAAMAAAA1AAoAAAAEAAMAAAA2AAoAAAAEAAMAAAA3AAoAAAAEAAMAAAA4AAoAAAAEAAMAAAA5AAoAAAAEAAMAAAA6AAoAAAAEAAMAAAA7AAoAAAAEAAMAAAA8AAoAAAAEAAMAAAA9AAoAAAAEAAMAAAA+AAoAAAAEAAMAAAA/AAoAAAAEAAMAAAA/AAkAAAAEAAMAAAA+AAkAAAAEAAMAAAA9AAkAAAAEAAMAAAA8AAkAAAAEAAMAAAA7AAkAAAAEAAMAAAA6AAkAAAAEAAMAAAA5AAkAAAAEAAMAAAA4AAkAAAAEAAMAAAA3AAkAAAAEAAMAAAAyAAkAAAAEAAMAAAAxAAkAAAAEAAMAAAAwAAkAAAAEAAMAAAAzAAkAAAAEAAMAAAA0AAkAAAAEAAMAAAA1AAkAAAAEAAMAAAA2AAkAAAAEAAMAAAAwAA0AAAABAAIAAAAxAA0AAAABAAIAAAAyAA0AAAABAAIAAAAzAA0AAAABAAIAAAA0AA0AAAABAAIAAAA6AA0AAAABAAIAAAA7AA0AAAABAAIAAAA8AA0AAAABAAIAAAA9AA0AAAABAAIAAAA+AA0AAAABAAIAAAA/AA0AAAABAAIAAAAwAAgAAAABAAAAAAAxAAgAAAABAAAAAAAyAAgAAAABAAAAAAAzAAgAAAABAAAAAAA0AAgAAAABAAAAAAA1AAgAAAABAAAAAAA2AAgAAAABAAAAAAA3AAgAAAABAAAAAAA4AAgAAAABAAAAAAA5AAgAAAABAAAAAAA6AAgAAAABAAAAAAA7AAgAAAABAAAAAAA8AAgAAAABAAAAAAA9AAgAAAABAAAAAAA+AAgAAAABAAAAAAA/AAgAAAABAAAAAAA1AA0AAAABAAIAAAA2AA0AAAABAAIAAAA3AA0AAAABAAIAAAA4AA0AAAABAAIAAAA5AA0AAAABAAIAAAAoAA0AAAABAAIAAAAnAA0AAAABAAIAAAAmAA0AAAABAAIAAAAlAA0AAAABAAIAAAAkAA0AAAABAAIAAAAjAA0AAAABAAIAAAAiAA0AAAABAAIAAAAhAA0AAAABAAIAAAAgAA0AAAABAAIAAAAoAAgAAAABAAAAAAAnAAgAAAABAAAAAAAmAAgAAAABAAAAAAAlAAgAAAABAAAAAAAkAAgAAAABAAAAAAAjAAgAAAABAAAAAAAiAAgAAAABAAAAAAAhAAgAAAABAAAAAAAgAAgAAAABAAAAAAAgAAkAAAAEAAMAAAAgAAoAAAAEAAMAAAAgAAsAAAAEAAMAAAAgAAwAAAAEAAMAAAAhAAwAAAAEAAMAAAAiAAwAAAAEAAMAAAAjAAwAAAAEAAMAAAAkAAwAAAAEAAMAAAAlAAwAAAAEAAMAAAAmAAwAAAAEAAMAAAAnAAwAAAAEAAMAAAAoAAwAAAAEAAMAAAAoAAsAAAAEAAMAAAAnAAsAAAAEAAMAAAAmAAsAAAAEAAMAAAAlAAsAAAAEAAMAAAAkAAsAAAAEAAMAAAAjAAsAAAAEAAMAAAAiAAsAAAAEAAMAAAAhAAsAAAAEAAMAAAAhAAoAAAAEAAMAAAAiAAoAAAAEAAMAAAAjAAoAAAAEAAMAAAAkAAoAAAAEAAMAAAAlAAoAAAAEAAMAAAAmAAoAAAAEAAMAAAAnAAoAAAAEAAMAAAAoAAoAAAAEAAMAAAAoAAkAAAAEAAMAAAAnAAkAAAAEAAMAAAAmAAkAAAAEAAMAAAAlAAkAAAAEAAMAAAAkAAkAAAAEAAMAAAAhAAkAAAAEAAMAAAAiAAkAAAAEAAMAAAAjAAkAAAAEAAMAAAApAA0AAAABAAIAAAAqAA0AAAABAAIAAAArAA0AAAABAAIAAAAsAA0AAAABAAIAAAAtAA0AAAABAAIAAAAuAA0AAAABAAIAAAAvAA0AAAABAAIAAAApAAgAAAABAAAAAAAqAAgAAAABAAAAAAArAAgAAAABAAAAAAAsAAgAAAABAAAAAAAtAAgAAAABAAAAAAAuAAgAAAABAAAAAAAvAAgAAAABAAAAAAApAAkAAAAEAAMAAAApAAoAAAAEAAMAAAApAAsAAAAEAAMAAAApAAwAAAAEAAMAAAAqAAwAAAAEAAMAAAArAAwAAAAEAAMAAAAsAAwAAAAEAAMAAAAtAAwAAAAEAAMAAAAuAAwAAAAEAAMAAAAvAAwAAAAEAAMAAAAvAAsAAAAEAAMAAAAuAAsAAAAEAAMAAAAtAAsAAAAEAAMAAAAsAAsAAAAEAAMAAAArAAsAAAAEAAMAAAAqAAsAAAAEAAMAAAAqAAoAAAAEAAMAAAArAAoAAAAEAAMAAAAsAAoAAAAEAAMAAAAtAAoAAAAEAAMAAAAuAAoAAAAEAAMAAAAvAAoAAAAEAAMAAAAuAAkAAAAEAAMAAAAtAAkAAAAEAAMAAAAsAAkAAAAEAAMAAAArAAkAAAAEAAMAAAAqAAkAAAAEAAMAAAAvAAkAAAAEAAMAAAA=")
+tile_set = ExtResource("10_awr63")
+script = ExtResource("11_bkjp5")
+material_layer = 14
+metadata/_custom_type_script = "uid://byvdvujagvico"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="astral_halls" unique_id=1116414417]
+visible = false
+position = Vector2(640, 220)
+shape = SubResource("RectangleShape2D_tn7fg")
+
 [node name="AstralClamp2" type="Area2D" parent="." unique_id=832531365]
 script = ExtResource("4_daixp")
 target_screen_position = Vector2i(0, 8)
@@ -221,7 +252,7 @@ metadata/_custom_type_script = "uid://r7nrvikp2r0q"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralClamp2" unique_id=1127428196]
 visible = false
-polygon = PackedVector2Array(80, 0, 224, 0, 224, 224, 80, 224)
+polygon = PackedVector2Array(88, 0, 216, 0, 216, 224, 88, 224)
 
 [node name="InteractionZone" type="Area2D" parent="." unique_id=1332715298]
 position = Vector2(536, 312)
@@ -699,38 +730,38 @@ script = ExtResource("16_2waup")
 lines = Array[String](["It's a sink."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="Blockade21" type="StaticBody2D" parent="." unique_id=508375437]
+[node name="trashcan" type="StaticBody2D" parent="." unique_id=508375437]
 position = Vector2(968, 168)
 script = ExtResource("23_q33y3")
 interact_activation = true
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
-[node name="Sprite2D" type="Sprite2D" parent="Blockade21" unique_id=901670030]
+[node name="Sprite2D" type="Sprite2D" parent="trashcan" unique_id=901670030]
 scale = Vector2(0.12, 0.12)
 texture = ExtResource("24_3bhyt")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade21" unique_id=194796727]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="trashcan" unique_id=194796727]
 shape = ExtResource("15_8vjvb")
 
-[node name="DialogueSection" type="Node" parent="Blockade21" unique_id=1343034019]
+[node name="DialogueSection" type="Node" parent="trashcan" unique_id=1343034019]
 script = ExtResource("22_nk1hv")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="Blockade21/DialogueSection" unique_id=2048425331]
+[node name="DialogueLines" type="Node" parent="trashcan/DialogueSection" unique_id=2048425331]
 script = ExtResource("16_2waup")
 lines = Array[String](["...There's a trashcan in the middle of the path."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueOption" type="Node" parent="Blockade21/DialogueSection" unique_id=372335707]
+[node name="DialogueOption" type="Node" parent="trashcan/DialogueSection" unique_id=372335707]
 script = ExtResource("21_l8bvp")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueLines" type="Node" parent="Blockade21/DialogueSection/DialogueOption" unique_id=686437161]
+[node name="DialogueLines" type="Node" parent="trashcan/DialogueSection/DialogueOption" unique_id=686437161]
 script = ExtResource("16_2waup")
-lines = Array[String](["Rummage", "There's a note in there, and nothing else. You recognize it as Lea's handwriting.", "\"I was about to tell him the directions, but it seemed like he already knew them.\"", "\"He kept saying the path you're supposed to take without even realizing it.\""])
+lines = Array[String](["Rummage", "There's a note in there, and nothing else. You recognize it as Lea's handwriting.", "\"I was about to tell them the directions, but it seemed like they already knew it.\"", "\"They keep saying the path you're supposed to take without even realizing it.\""])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueLines2" type="Node" parent="Blockade21/DialogueSection/DialogueOption" unique_id=535451059]
+[node name="DialogueLines2" type="Node" parent="trashcan/DialogueSection/DialogueOption" unique_id=535451059]
 script = ExtResource("16_2waup")
 lines = Array[String](["Do not"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
@@ -1382,6 +1413,26 @@ warp_offset = Vector2i(-64, 0)
 position = Vector2(1096, 192)
 warp_offset = Vector2i(-64, 0)
 
+[node name="default_translation5" parent="." unique_id=1006899839 instance=ExtResource("26_54pcn")]
+position = Vector2(1016, 1056)
+warp_offset = Vector2i(-16, 0)
+
+[node name="default_translation6" parent="." unique_id=226606138 instance=ExtResource("26_54pcn")]
+position = Vector2(1016, 1088)
+warp_offset = Vector2i(-16, 0)
+
+[node name="default_translation7" parent="." unique_id=449018273 instance=ExtResource("26_54pcn")]
+position = Vector2(664, 1056)
+warp_offset = Vector2i(16, 0)
+
+[node name="default_translation8" parent="." unique_id=1715471282 instance=ExtResource("26_54pcn")]
+position = Vector2(664, 1080)
+warp_offset = Vector2i(16, 0)
+
+[node name="default_translation9" parent="." unique_id=712718309 instance=ExtResource("26_54pcn")]
+position = Vector2(648, 1096)
+warp_offset = Vector2i(16, 0)
+
 [node name="default_translation3" parent="." unique_id=2023610684 instance=ExtResource("26_54pcn")]
 position = Vector2(8, 160)
 warp_offset = Vector2i(64, 0)
@@ -1937,7 +1988,8 @@ entry_activation = true
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="InteractionZone3" unique_id=1909334857]
-polygon = PackedVector2Array(80, 1824, 224, 1824, 224, 2000, 80, 2000)
+visible = false
+polygon = PackedVector2Array(-16, 1936, 80, 1936, 80, 2000, -16, 2000)
 
 [node name="DialogueToggle" type="Node" parent="InteractionZone3" unique_id=935486215]
 script = ExtResource("18_tdpg8")
@@ -1991,12 +2043,12 @@ visible = false
 position = Vector2(584, 88)
 shape = SubResource("RectangleShape2D_ut7ql")
 
-[node name="astral_hall" type="Area2D" parent="." unique_id=1346005860]
+[node name="astral_stairs" type="Area2D" parent="." unique_id=1346005860]
 position = Vector2(528, 448)
 script = ExtResource("2_daixp")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
-[node name="Layout" type="TileMapLayer" parent="astral_hall" unique_id=886367774]
+[node name="Layout" type="TileMapLayer" parent="astral_stairs" unique_id=886367774]
 material = ExtResource("29_fnhfk")
 tile_map_data = PackedByteArray("AAD//xMAAAABAAcAAAABABMAAAABAAcAAAD//xIAAAABAAIAAAD//xEAAAABAAIAAAAAABEAAAABAAIAAAABABEAAAABAAIAAAABABIAAAABAAIAAAAAABIAAAAGAAMAAAAAABMAAAABAAEAAAAAABQAAAABAAEAAAAAABUAAAABAAEAAAABABUAAAABAAEAAAACABUAAAABAAEAAAABABQAAAABAAAAAAACABQAAAABAAAAAAACABYAAAABAAIAAAABABYAAAABAAIAAAAAABYAAAABAAIAAAD//xYAAAABAAIAAAD//xUAAAAAAAIAAAD//xQAAAAAAAEAAAADABUAAAABAAEAAAADABQAAAAEAAAAADADABMAAAAEAAAAADADABIAAAAEAAAAADADABEAAAAEAAAAADADABAAAAAEAAAAADADAA8AAAAEAAAAADADAA4AAAAEAAAAADADAA0AAAAEAAAAADADAAwAAAAEAAAAADADAAsAAAAEAAAAADADAAoAAAAEAAAAADADAAkAAAAGAAUAAAACAAgAAAABAAcAAAADAAgAAAABAAcAAAAEAAgAAAABAAcAAAACAAkAAAABAAIAAAACAAoAAAAAAAEAAAAEAAkAAAABAAIAAAAEAAoAAAACAAEAAAAEAAsAAAACAAEAAAACAAsAAAAAAAEAAAADABYAAAABAAIAAAAEABYAAAABAAIAAAAEABUAAAACAAIAAAAEAAwAAAACAAEAAAAEAA0AAAACAAEAAAAEAA4AAAACAAEAAAAEAA8AAAACAAEAAAAEABAAAAACAAEAAAAEABEAAAACAAEAAAAEABIAAAACAAEAAAAEABMAAAACAAEAAAAEABQAAAACAAEAAAACABMAAAAAAAEAAAACABIAAAAAAAEAAAACABEAAAAAAAEAAAACABAAAAAAAAEAAAACAA8AAAAAAAEAAAACAA4AAAAAAAEAAAACAA0AAAAAAAEAAAACAAwAAAAAAAEAAAA=")
 tile_set = ExtResource("10_awr63")
@@ -2004,7 +2056,7 @@ script = ExtResource("11_bkjp5")
 material_layer = 6
 metadata/_custom_type_script = "uid://byvdvujagvico"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="astral_hall" unique_id=1974158098]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="astral_stairs" unique_id=1974158098]
 visible = false
 position = Vector2(32, 248)
 shape = SubResource("RectangleShape2D_64y4e")
@@ -2080,3 +2132,78 @@ metadata/_custom_type_script = "uid://r7nrvikp2r0q"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AstralClamp4" unique_id=46902775]
 position = Vector2(583, 67)
 shape = SubResource("RectangleShape2D_4rdyf")
+
+[node name="astralAnchor" type="Area2D" parent="." unique_id=1465216301]
+position = Vector2(128, 88)
+script = ExtResource("30_pgm3s")
+enforce_X = false
+copy_X = true
+copy_Y = true
+target_screen = Vector2i(0, 4)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="astralAnchor" unique_id=1908422046]
+visible = false
+position = Vector2(712, 80)
+shape = SubResource("RectangleShape2D_xco26")
+
+[node name="astralAnchor3" type="Area2D" parent="." unique_id=1620853056]
+position = Vector2(496, 88)
+script = ExtResource("30_pgm3s")
+copy_X = true
+copy_Y = true
+target_screen = Vector2i(-1, 4)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="astralAnchor3" unique_id=137684765]
+position = Vector2(568, 80)
+shape = SubResource("RectangleShape2D_4icms")
+
+[node name="astralAnchor4" type="Area2D" parent="." unique_id=524324349]
+position = Vector2(-528, 96)
+script = ExtResource("30_pgm3s")
+copy_X = true
+copy_Y = true
+target_screen = Vector2i(3, 4)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="astralAnchor4" unique_id=1366445748]
+position = Vector2(568, 80)
+shape = SubResource("RectangleShape2D_4icms")
+
+[node name="astralAnchor2" type="Area2D" parent="." unique_id=1371625867]
+position = Vector2(128, 984)
+script = ExtResource("30_pgm3s")
+enforce_X = false
+copy_X = true
+copy_Y = true
+target_screen = Vector2i(0, -4)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="astralAnchor2" unique_id=248923217]
+position = Vector2(712, 80)
+shape = SubResource("RectangleShape2D_xco26")
+
+[node name="astralAnchor5" type="Area2D" parent="." unique_id=1912239980]
+position = Vector2(128, 984)
+script = ExtResource("30_pgm3s")
+enforce_X = false
+copy_X = true
+target_screen = Vector2i(0, 6)
+target_tile = Vector2i(0, -2)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="astralAnchor5" unique_id=1168431049]
+polygon = PackedVector2Array(104, -768, 104, -808, 336, -808, 336, -984, 384, -984, 384, -808, 520, -808, 520, -768, 424, -768, 424, -704, 392, -704, 392, -768)
+
+[node name="astralAnchor6" type="Area2D" parent="." unique_id=523554649]
+position = Vector2(144, 2104)
+script = ExtResource("30_pgm3s")
+enforce_X = false
+copy_X = true
+copy_Y = true
+target_screen = Vector2i(0, -5)
+metadata/_custom_type_script = "uid://cup01huy0tbwf"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="astralAnchor6" unique_id=1594344254]
+polygon = PackedVector2Array(72, -768, 72, -808, 384, -808, 384, -768, 400, -768, 400, -808, 520, -808, 520, -760, 352, -760, 352, -800, 336, -800, 336, -768)

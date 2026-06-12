@@ -920,6 +920,47 @@ script = ExtResource("44_23sco")
 lines = Array[String](["Seems like there's a random staircase that leads to a flat wall.", "...Or actually, the doorway's just on the second floor for some reason."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
+[node name="DialogueToggle6" type="Node" parent="path to lvl5/DialogueSection" unique_id=592989137]
+script = ExtResource("42_dm8c6")
+cue = "ladder"
+value = 5
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle6" unique_id=955601981]
+script = ExtResource("44_23sco")
+lines = Array[String](["Seems like there's a random staircase that leads to a flat wall.", "...Or actually, the doorway's just on the second floor for some reason."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption2" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle6" unique_id=372807182]
+script = ExtResource("50_aeeq7")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle6/DialogueOption2" unique_id=736000922]
+script = ExtResource("4_c7dc3")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines2" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle6/DialogueOption2/DialogueSection" unique_id=1353750106]
+script = ExtResource("44_23sco")
+lines = Array[String](["Use ladder"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle6/DialogueOption2/DialogueSection" unique_id=379595707]
+script = ExtResource("44_23sco")
+lines = Array[String](["Although it's a little tricky to get this ladder stable on these stairs, after some trail and error, it's stable.", "You get it stable enough that you can climb up."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle6/DialogueOption2/DialogueSection" unique_id=2049373558]
+script = ExtResource("5_g1gcg")
+cue = "ladder"
+value = 4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle6/DialogueOption2" unique_id=5374898]
+script = ExtResource("44_23sco")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
 [node name="DialogueToggle" type="Node" parent="path to lvl5/DialogueSection" unique_id=1043288239]
 script = ExtResource("42_dm8c6")
 cue = "ladder"
@@ -1104,6 +1145,7 @@ position = Vector2(-256, -448)
 position = Vector2(-256, -224)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="normal map" unique_id=633456816]
+visible = false
 position = Vector2(128, -224)
 shape = SubResource("RectangleShape2D_mp5tv")
 
@@ -1118,6 +1160,7 @@ position = Vector2(-768, -448)
 position = Vector2(0, -448)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="inside_shed" unique_id=1120495062]
+visible = false
 position = Vector2(-640, -336)
 shape = ExtResource("11_c5jrn")
 
@@ -1216,7 +1259,7 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 [node name="DialogueCue" type="Node" parent="Blockade46/DialogueSection/DialogueOption/DialogueSection" unique_id=1179447175]
 script = ExtResource("5_g1gcg")
 cue = "ladder"
-value = 1
+value = 5
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueLines" type="Node" parent="Blockade46/DialogueSection/DialogueOption" unique_id=1784342347]
