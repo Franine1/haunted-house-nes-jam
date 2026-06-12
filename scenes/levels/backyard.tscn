@@ -98,10 +98,17 @@ metadata/_custom_type_script = "uid://lrhymco58lj0"
 script = ExtResource("42_dm8c6")
 cue = "ladder"
 value = 2
-compare_type = 2
+compare_type = 1
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueCue" type="Node" parent="return_to_lvl3/DialogueSection/DialogueToggle" unique_id=304670251]
+[node name="DialogueToggle2" type="Node" parent="return_to_lvl3/DialogueSection/DialogueToggle" unique_id=917474222]
+script = ExtResource("42_dm8c6")
+cue = "ladder"
+value = 3
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="return_to_lvl3/DialogueSection/DialogueToggle/DialogueToggle2" unique_id=457624300]
 script = ExtResource("5_g1gcg")
 cue = "music"
 value = 5
@@ -889,97 +896,97 @@ script = ExtResource("5_g1gcg")
 cue = "color"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="InteractionZone34" type="Area2D" parent="." unique_id=205917460]
+[node name="path to lvl5" type="Area2D" parent="." unique_id=205917460]
 script = ExtResource("39_4o22t")
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone34" unique_id=456241019]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="path to lvl5" unique_id=456241019]
 position = Vector2(56, 216)
 shape = ExtResource("43_hvsi4")
 
-[node name="DialogueSection" type="Node" parent="InteractionZone34" unique_id=1165832612]
+[node name="DialogueSection" type="Node" parent="path to lvl5" unique_id=1165832612]
 script = ExtResource("4_c7dc3")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueToggle3" type="Node" parent="InteractionZone34/DialogueSection" unique_id=2018676756]
+[node name="DialogueToggle3" type="Node" parent="path to lvl5/DialogueSection" unique_id=2018676756]
 script = ExtResource("42_dm8c6")
 cue = "ladder"
 value = 2
 compare_type = 2
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueLines" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle3" unique_id=213776642]
+[node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle3" unique_id=213776642]
 script = ExtResource("44_23sco")
 lines = Array[String](["Seems like there's a random staircase that leads to a flat wall.", "...Or actually, the doorway's just on the second floor for some reason."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueToggle" type="Node" parent="InteractionZone34/DialogueSection" unique_id=1043288239]
+[node name="DialogueToggle" type="Node" parent="path to lvl5/DialogueSection" unique_id=1043288239]
 script = ExtResource("42_dm8c6")
 cue = "ladder"
 value = 1
 compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueOption" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle" unique_id=423975087]
+[node name="DialogueOption" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle" unique_id=423975087]
 script = ExtResource("50_aeeq7")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueSection" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle/DialogueOption" unique_id=1951897751]
+[node name="DialogueSection" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle/DialogueOption" unique_id=1951897751]
 script = ExtResource("4_c7dc3")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines2" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1727534685]
+[node name="DialogueLines2" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1727534685]
 script = ExtResource("44_23sco")
 lines = Array[String](["Use ladder"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue2" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=795411197]
+[node name="DialogueCue2" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=795411197]
 script = ExtResource("5_g1gcg")
 cue = "volume"
 value = -1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueLines" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=886325243]
+[node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=886325243]
 script = ExtResource("44_23sco")
 lines = Array[String](["...", "...You decide to use the ladder. To climb up.", "You try to anchor it on the stairs. You want to make sure its stable.", "There isn't a lot of stable ground to get it onto. The ladder's wobbling while you try to get it in place.", "...", "Your hands are shaking.", "What if the ladder falls? What if it breaks?", "What if it ends up like the grandfather clock?", "..."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1824558685]
+[node name="DialogueCue" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1824558685]
 script = ExtResource("5_g1gcg")
 cue = "ladder"
 value = 2
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueLines" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle/DialogueOption" unique_id=1564258706]
+[node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle/DialogueOption" unique_id=1564258706]
 script = ExtResource("44_23sco")
 lines = Array[String](["Do not"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueToggle2" type="Node" parent="InteractionZone34/DialogueSection" unique_id=495157793]
+[node name="DialogueToggle2" type="Node" parent="path to lvl5/DialogueSection" unique_id=495157793]
 script = ExtResource("42_dm8c6")
 cue = "ladder"
 value = 2
 compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueLines" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle2" unique_id=1494723986]
+[node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle2" unique_id=1494723986]
 script = ExtResource("44_23sco")
 lines = Array[String](["You can't do this."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle2" unique_id=1497563218]
+[node name="DialogueCue" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle2" unique_id=1497563218]
 script = ExtResource("5_g1gcg")
 cue = "exit_banned"
 delay = 0.6
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueCue2" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle2" unique_id=1662112122]
+[node name="DialogueCue2" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle2" unique_id=1662112122]
 script = ExtResource("5_g1gcg")
 cue = "exit_banned"
 value = 1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueMovement" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle2" unique_id=1161960634]
+[node name="DialogueMovement" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle2" unique_id=1161960634]
 script = ExtResource("45_6uvyw")
 directions = Array[Vector2i]([Vector2i(0, -3)])
 speed = 6.0
@@ -987,52 +994,66 @@ look_direction = 2
 relative = false
 metadata/_custom_type_script = "uid://bbr1g3c52vcnu"
 
-[node name="DialogueToggle4" type="Node" parent="InteractionZone34/DialogueSection" unique_id=59488648]
+[node name="DialogueToggle4" type="Node" parent="path to lvl5/DialogueSection" unique_id=59488648]
 script = ExtResource("42_dm8c6")
 cue = "ladder"
 value = 3
 compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueLines" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle4" unique_id=440360608]
+[node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle4" unique_id=440360608]
 script = ExtResource("44_23sco")
 lines = Array[String](["..."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueOption" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle4" unique_id=1367048520]
+[node name="DialogueOption" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle4" unique_id=1367048520]
 script = ExtResource("50_aeeq7")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueSection" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle4/DialogueOption" unique_id=51045766]
+[node name="DialogueSection" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle4/DialogueOption" unique_id=51045766]
 script = ExtResource("4_c7dc3")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines2" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle4/DialogueOption/DialogueSection" unique_id=788667317]
+[node name="DialogueLines2" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle4/DialogueOption/DialogueSection" unique_id=788667317]
 script = ExtResource("44_23sco")
 lines = Array[String](["Use ladder", "Your breathing is controlled. You prepare the ladder, and get it well rooted into the ground.", "After it's planted at the foot of the staircase, you prepare to climb.", "...", "You're still afraid. Probably just as much as before.", "Somehow, though, you don't doubt yourself even a bit."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle4/DialogueOption/DialogueSection" unique_id=1698805485]
+[node name="DialogueCue4" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle4/DialogueOption/DialogueSection" unique_id=164662596]
 script = ExtResource("5_g1gcg")
-cue = "music"
-value = 7
+cue = "ladder"
+value = 4
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueCue3" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle4/DialogueOption/DialogueSection" unique_id=2122357361]
+[node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle4/DialogueOption" unique_id=1612549136]
+script = ExtResource("44_23sco")
+lines = Array[String](["Not yet"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle5" type="Node" parent="path to lvl5/DialogueSection" unique_id=402967632]
+script = ExtResource("42_dm8c6")
+cue = "ladder"
+value = 4
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue3" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle5" unique_id=155386951]
 script = ExtResource("5_g1gcg")
 cue = "volume"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueCue2" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle4/DialogueOption/DialogueSection" unique_id=1587683568]
+[node name="DialogueCue" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle5" unique_id=610516808]
+script = ExtResource("5_g1gcg")
+cue = "music"
+value = 7
+delay = 0.1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle5" unique_id=1544350463]
 script = ExtResource("5_g1gcg")
 cue = "level"
 value = 5
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="DialogueLines" type="Node" parent="InteractionZone34/DialogueSection/DialogueToggle4/DialogueOption" unique_id=1612549136]
-script = ExtResource("44_23sco")
-lines = Array[String](["Not yet"])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="shed4" parent="." unique_id=76627779 instance=ExtResource("46_4e4xs")]
 position = Vector2(-512, -448)

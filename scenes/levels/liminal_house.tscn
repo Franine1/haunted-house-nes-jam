@@ -1246,97 +1246,97 @@ metadata/_custom_type_script = "uid://cup01huy0tbwf"
 position = Vector2(-40, 200)
 polygon = PackedVector2Array(-840, -432, -824, -432, -824, -328, -792, -296, -792, -280, -824, -248, -840, -248, -872, -280, -872, -296, -840, -328)
 
-[node name="Blockade6" type="StaticBody2D" parent="." unique_id=1120000994]
+[node name="path to lvl4" type="StaticBody2D" parent="." unique_id=1120000994]
 position = Vector2(-696, -344)
 script = ExtResource("4_pap46")
 interact_activation = true
 collide_activation = true
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade6" unique_id=662149520]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="path to lvl4" unique_id=662149520]
 shape = ExtResource("7_lvia4")
 
-[node name="DialogueSection" type="Node" parent="Blockade6" unique_id=397802422]
+[node name="DialogueSection" type="Node" parent="path to lvl4" unique_id=397802422]
 script = ExtResource("9_uuq2e")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueToggle3" type="Node" parent="Blockade6/DialogueSection" unique_id=1353447264]
+[node name="DialogueToggle3" type="Node" parent="path to lvl4/DialogueSection" unique_id=1353447264]
 script = ExtResource("21_vyu0u")
 cue = "ladder"
 value = 2
 compare_type = 1
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueToggle" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3" unique_id=1679963588]
+[node name="DialogueToggle" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3" unique_id=1679963588]
 script = ExtResource("21_vyu0u")
 cue = "key"
 value = 3
 compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueLines" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3/DialogueToggle" unique_id=1430984337]
+[node name="DialogueLines" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3/DialogueToggle" unique_id=1430984337]
 script = ExtResource("5_u8ura")
 lines = Array[String](["It's locked. This door goes to the backyard.", "You have the key now."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueOption" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3/DialogueToggle" unique_id=2089034389]
+[node name="DialogueOption" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3/DialogueToggle" unique_id=2089034389]
 script = ExtResource("8_lvia4")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueSection" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=248931598]
+[node name="DialogueSection" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=248931598]
 script = ExtResource("9_uuq2e")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=1838730927]
+[node name="DialogueLines" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=1838730927]
 script = ExtResource("5_u8ura")
 lines = Array[String](["Unlock it", "The door creaks as the handle turns."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=424042817]
+[node name="DialogueCue" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption/DialogueSection" unique_id=424042817]
 script = ExtResource("10_uuq2e")
 cue = "key"
 value = 4
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueLines" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=830668230]
+[node name="DialogueLines" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3/DialogueToggle/DialogueOption" unique_id=830668230]
 script = ExtResource("5_u8ura")
 lines = Array[String](["Do not"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueToggle2" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3" unique_id=475922038]
+[node name="DialogueToggle2" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3" unique_id=475922038]
 script = ExtResource("21_vyu0u")
 cue = "key"
 value = 3
 compare_type = 3
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueToggle" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3/DialogueToggle2" unique_id=212303331]
+[node name="DialogueToggle" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3/DialogueToggle2" unique_id=212303331]
 script = ExtResource("21_vyu0u")
 cue = "ladder"
 value = 3
 compare_type = 1
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueCue" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3/DialogueToggle2/DialogueToggle" unique_id=1042591321]
+[node name="DialogueCue" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3/DialogueToggle2/DialogueToggle" unique_id=1042591321]
 script = ExtResource("10_uuq2e")
 cue = "music"
 value = 6
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueCue2" type="Node" parent="Blockade6/DialogueSection/DialogueToggle3/DialogueToggle2" unique_id=1582623192]
+[node name="DialogueCue2" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle3/DialogueToggle2" unique_id=1582623192]
 script = ExtResource("10_uuq2e")
 cue = "level"
 value = 4
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueToggle" type="Node" parent="Blockade6/DialogueSection" unique_id=1697823697]
+[node name="DialogueToggle" type="Node" parent="path to lvl4/DialogueSection" unique_id=1697823697]
 script = ExtResource("21_vyu0u")
 cue = "ladder"
 value = 2
 compare_type = 0
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueLines" type="Node" parent="Blockade6/DialogueSection/DialogueToggle" unique_id=1686235318]
+[node name="DialogueLines" type="Node" parent="path to lvl4/DialogueSection/DialogueToggle" unique_id=1686235318]
 script = ExtResource("5_u8ura")
 lines = Array[String](["...", "You don't want to go back."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
@@ -1366,10 +1366,13 @@ metadata/_custom_type_script = "uid://cup01huy0tbwf"
 position = Vector2(-632, -160)
 shape = ExtResource("7_lvia4")
 
-[node name="InteractionZone3" type="Area2D" parent="." unique_id=338135956]
+[node name="InteractionZone3" type="StaticBody2D" parent="." unique_id=1223084025]
 position = Vector2(-872, -424)
-script = ExtResource("20_kb7oi")
-metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("4_pap46")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="InteractionZone3" unique_id=127373472]
 scale = Vector2(0.625, 0.125)

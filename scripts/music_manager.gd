@@ -2,6 +2,7 @@ extends AudioStreamPlayer
 
 
 var player: AudioStreamInteractive
+var music_refresher: Timer
 var cue: GameCue
 
 const sound_levels: Array[float] = [
@@ -21,6 +22,12 @@ func _ready() -> void:
 	attach_stream()
 	
 	volume_db = sound_levels[0]
+	
+	music_refresher = Timer.new()
+	add_child(music_refresher)
+	music_refresher.one_shot = true
+	music_refresher.timeout.connect(refresh_track)
+	
 	
 	cue = GameCue.new()
 	add_child(cue)
@@ -46,8 +53,9 @@ func attach_stream() -> void:
 		player = stream
 
 ## changes to the correct audio track
-func change_track(input: int) -> void:
+func change_track(input: int, do_twice: bool = true) -> void:
 	if !playing:
+		play()
 		get_tree().create_timer(0.05).timeout.connect(change_track.bind(input))
 		return
 	var pb: AudioStreamPlaybackInteractive = get_stream_playback()
@@ -63,6 +71,13 @@ func change_track(input: int) -> void:
 		fadeout()
 	
 	pass
+	
+	if do_twice:
+		music_refresher.start(1.0)
+
+
+func refresh_track() -> void:
+	change_track(GameCue.get_cue("music"),false)
 
 ## fades out the audio
 func fadeout() -> void:

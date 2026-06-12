@@ -33,3 +33,6 @@ func add_cue(key: String, function: Callable) -> void:
 func remove_cue(key: String) -> void:
 	if cues.has(key):
 		cues.erase(key)
+
+static func get_cue(key: String) -> int:
+	return game_data.get_data(key)
