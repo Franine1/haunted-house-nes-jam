@@ -44,49 +44,49 @@ size = Vector2(496, 416)
 size = Vector2(1280, 472)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgm3s"]
-size = Vector2(16, 224)
+size = Vector2(12, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_euhgd"]
-size = Vector2(20, 208)
+size = Vector2(12, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lijr"]
-size = Vector2(20, 192)
+size = Vector2(12, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_js1kr"]
-size = Vector2(20, 208)
+size = Vector2(12, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y0exw"]
-size = Vector2(20, 208)
+size = Vector2(12, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xsgun"]
-size = Vector2(20, 208)
+size = Vector2(12, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ek6sw"]
-size = Vector2(20, 208)
+size = Vector2(12, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nb0aa"]
-size = Vector2(20, 184)
+size = Vector2(12, 184)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0x4m"]
-size = Vector2(20, 208)
+size = Vector2(12, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osaui"]
-size = Vector2(20, 208)
+size = Vector2(12, 208)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmdno"]
-size = Vector2(256, 16)
+size = Vector2(256, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ok22x"]
-size = Vector2(240, 20)
+size = Vector2(240, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ate7b"]
-size = Vector2(240, 20)
+size = Vector2(240, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmcgp"]
-size = Vector2(240, 16)
+size = Vector2(232, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0ub6"]
-size = Vector2(240, 20)
+size = Vector2(240, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e7owg"]
 size = Vector2(1277, 897)
@@ -100,11 +100,20 @@ size = Vector2(96, 240)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4rdyf"]
 size = Vector2(114, 138)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab3u3"]
+size = Vector2(20, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3axd1"]
+size = Vector2(20, 98)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xco26"]
 size = Vector2(352, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4icms"]
 size = Vector2(64, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymgml"]
+size = Vector2(130, 130)
 
 [node name="second floor" type="Node2D" unique_id=352483477]
 script = ExtResource("1_0fisr")
@@ -512,9 +521,27 @@ script = ExtResource("16_2waup")
 lines = Array[String](["Where to find peanut butter?"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueLines2" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle5/DialogueToggle7" unique_id=217592954]
+[node name="DialogueToggle" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle5/DialogueToggle7" unique_id=35613289]
+script = ExtResource("18_tdpg8")
+cue = "rat_item"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines2" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle5/DialogueToggle7/DialogueToggle" unique_id=217592954]
 script = ExtResource("16_2waup")
 lines = Array[String](["Hey, that's supposed to be your job, bucko!", "Ugh. Youngins'. Never wanting to do work of their own.", "The thing is, I don't know either.", "I mean, I know it's in the, uh. The balcony.", "Lea was gonna give me the directions to it, but...", "she was gonna write it down right before she left, but the deal went up in the air.", "...", "Did I just say something important?"])
+name_id = 4
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle5/DialogueToggle7" unique_id=335114539]
+script = ExtResource("18_tdpg8")
+cue = "rat_item"
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines2" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle5/DialogueToggle7/DialogueToggle2" unique_id=1198954952]
+script = ExtResource("16_2waup")
+lines = Array[String](["Sucks to say, but I already devoured al the rest of the peanut butter around here.", "You're gonna have to look, like, really far and wide if you wanna find some more.", "The good news is, now that you know what it looks like, I bet you'll be able to spot peanut butter where you didn't notice it before! Heh heh!"])
 name_id = 4
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
@@ -637,20 +664,20 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines7" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle6/DialogueToggle" unique_id=2090529961]
 script = ExtResource("16_2waup")
-lines = Array[String](["(They follow this up by producing a comically large peanut butter cookie.)", "(The rats sigh, then break the cookie in half.)", "(They eat both halves.)", "Got the hairpin"])
+lines = Array[String](["(You got the hairpin. Surely this has some kind of use...?)"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle6/DialogueToggle" unique_id=263930104]
+script = ExtResource("19_y1kem")
+cue = "rat_item"
+value = 1
+delay = 0.1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueCue" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle6/DialogueToggle" unique_id=844807633]
 script = ExtResource("19_y1kem")
 cue = "hairpin"
 value = 1
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="DialogueCue" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle6" unique_id=263930104]
-script = ExtResource("19_y1kem")
-cue = "rat_item"
-value = 1
-additive = true
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueCue2" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle6" unique_id=1662996849]
@@ -687,6 +714,13 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 script = ExtResource("16_2waup")
 lines = Array[String](["That's enough peanut butter"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueSection/DialogueToggle2" unique_id=1677555579]
+script = ExtResource("19_y1kem")
+cue = "dialogue"
+value = -1
+additive = true
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueCue" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueSection" unique_id=12442383]
 script = ExtResource("19_y1kem")
@@ -756,9 +790,25 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 script = ExtResource("21_l8bvp")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueLines" type="Node" parent="trashcan/DialogueSection/DialogueOption" unique_id=686437161]
+[node name="DialogueSection" type="Node" parent="trashcan/DialogueSection/DialogueOption" unique_id=1748862741]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="trashcan/DialogueSection/DialogueOption/DialogueSection" unique_id=686437161]
 script = ExtResource("16_2waup")
 lines = Array[String](["Rummage", "There's a note in there, and nothing else. You recognize it as Lea's handwriting.", "\"I was about to tell them the directions, but it seemed like they already knew it.\"", "\"They keep saying the path you're supposed to take without even realizing it.\""])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle" type="Node" parent="trashcan/DialogueSection/DialogueOption/DialogueSection" unique_id=423732368]
+script = ExtResource("18_tdpg8")
+cue = "ask_rat_help"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines2" type="Node" parent="trashcan/DialogueSection/DialogueOption/DialogueSection/DialogueToggle" unique_id=1495039146]
+script = ExtResource("16_2waup")
+lines = Array[String](["...", "Was she talking about Peanut Biter? Is he saying directions without realizing it?"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines2" type="Node" parent="trashcan/DialogueSection/DialogueOption" unique_id=535451059]
@@ -801,6 +851,63 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 script = ExtResource("16_2waup")
 lines = Array[String](["Do not"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="ruined_bookshelves" type="StaticBody2D" parent="." unique_id=524763206]
+position = Vector2(120, 72)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("23_q33y3")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="DialogueSection" type="Node" parent="ruined_bookshelves" unique_id=547112786]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="ruined_bookshelves/DialogueSection" unique_id=1407082324]
+script = ExtResource("16_2waup")
+lines = Array[String](["It's a ruined bookshelf. THe books are gone and the wood is rotting."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Sprite2D" type="Sprite2D" parent="ruined_bookshelves" unique_id=1703978306]
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("24_3bhyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ruined_bookshelves" unique_id=511447855]
+shape = ExtResource("25_3bhyt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ruined_bookshelves" unique_id=1564949234]
+position = Vector2(64, 0)
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("24_3bhyt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ruined_bookshelves" unique_id=2145918221]
+position = Vector2(64, 0)
+shape = ExtResource("25_3bhyt")
+
+[node name="Sprite2D5" type="Sprite2D" parent="ruined_bookshelves" unique_id=1889051757]
+position = Vector2(0, 96)
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("24_3bhyt")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="ruined_bookshelves" unique_id=999928906]
+position = Vector2(0, 96)
+shape = ExtResource("25_3bhyt")
+
+[node name="Sprite2D7" type="Sprite2D" parent="ruined_bookshelves" unique_id=1934404123]
+position = Vector2(1024, 0)
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("24_3bhyt")
+
+[node name="Sprite2D8" type="Sprite2D" parent="ruined_bookshelves" unique_id=1993865673]
+position = Vector2(1088, 0)
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("24_3bhyt")
+
+[node name="Sprite2D11" type="Sprite2D" parent="ruined_bookshelves" unique_id=318916051]
+position = Vector2(1024, 96)
+scale = Vector2(0.375, 0.125)
+texture = ExtResource("24_3bhyt")
 
 [node name="Blockade4" type="StaticBody2D" parent="." unique_id=952427258]
 position = Vector2(184, 1864)
@@ -1379,7 +1486,7 @@ metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
 [node name="DialogueLines" type="Node" parent="Blockade19/DialogueSection/DialogueOption" unique_id=945594979]
 script = ExtResource("16_2waup")
-lines = Array[String](["Read it", "You skim to an interesting passage:", "\"So far, only four cases have ever been reported. The sudden onset is predicted to lead to misdiagnosis as schizophrenia in additional cases.\"", "\"Especially due to the almost supernatural nature if its effects, detection is likely to only occur in a fraction of a percent of occurrences.\"", "\"Those affected suddenly lose all memories of their life, and express that they've lived an alternate life as a completely different person.\"", "\"The symtoms seem similar to ego death or a complete personality change, but the distinguishing feature is that there is proof of their previous life having actually existed.\"", "\"Medical records and contracts are often found that prove the life described did happen; these 'former lives' are generally missing persons elsewhere in the world.\"", "\"In all cases, the 'former life' seems to be remembered by none of these 'former acquaintances', and the individual is only discovered to be missing after a case of Spiritual-Dissonance Syndrome is diagnosed.\""])
+lines = Array[String](["Read it", "You skim to an interesting passage:", "\"So far, only four cases have ever been reported. The sudden onset is predicted to lead to misdiagnosis as schizophrenia in additional cases.\"", "\"Especially due to the almost supernatural nature if its effects, detection is likely to only occur in a fraction of a percent of occurrences.\"", "\"Those affected suddenly lose all memories of their life, and express that they've lived an alternate life as a completely different person.\"", "\"The symptoms seem similar to ego death or a complete personality change, but the distinguishing feature is that there is proof of their previous life having actually existed.\"", "\"Medical records and contracts are often found that prove the life described did happen; these 'former lives' are generally missing persons elsewhere in the world.\"", "\"In all cases, the 'former life' seems to be remembered by none of these 'former acquaintances', and the individual is only discovered to be missing after a case of Spiritual-Dissonance Syndrome is diagnosed.\""])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines2" type="Node" parent="Blockade19/DialogueSection/DialogueOption" unique_id=641238364]
@@ -1400,10 +1507,68 @@ texture = ExtResource("24_3bhyt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade2" unique_id=1813344693]
 shape = ExtResource("15_8vjvb")
 
-[node name="DialogueLines" type="Node" parent="Blockade2" unique_id=77715765]
+[node name="DialogueSection" type="Node" parent="Blockade2" unique_id=1917037667]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines2" type="Node" parent="Blockade2/DialogueSection" unique_id=193769130]
 script = ExtResource("16_2waup")
-lines = Array[String](["It's a toilet.", "...You notice the right wall of this bathroom is just gone.", "You don't know if this is just supposed to be a modern toilet or something, but you don't think you'd ever use something like this."])
+lines = Array[String](["It's a toilet."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle" type="Node" parent="Blockade2/DialogueSection" unique_id=414640125]
+script = ExtResource("18_tdpg8")
+cue = "toilet_toucher"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="Blockade2/DialogueSection/DialogueToggle" unique_id=77715765]
+script = ExtResource("16_2waup")
+lines = Array[String](["...You notice the right wall of this bathroom is just gone.", "You don't know if this is just supposed to be a modern toilet or something, but you don't think you'd ever use something like this."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle2" type="Node" parent="Blockade2/DialogueSection" unique_id=1440391032]
+script = ExtResource("18_tdpg8")
+cue = "toilet_toucher"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="Blockade2/DialogueSection/DialogueToggle2" unique_id=1905996076]
+script = ExtResource("16_2waup")
+lines = Array[String](["Seems like someone wrote something in sharpie on the side.", "\"...If you're feeling stuck, remember to astral project in different places!\"", "\"You might find completely different areas you can astral project into even on the same screen!\"", "...", "When you blinked, the message disappeared."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle3" type="Node" parent="Blockade2/DialogueSection" unique_id=1003151767]
+script = ExtResource("18_tdpg8")
+cue = "toilet_toucher"
+value = 3
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="Blockade2/DialogueSection/DialogueToggle3" unique_id=1775813359]
+script = ExtResource("16_2waup")
+lines = Array[String](["Seems like someone wrote something in sharpie on the side.", "\"If you're still stuck, go downstairs for some hints! The mannequins are happy to help.\"", "\"The puzzle is knowing the right path to take in the balcony.\"", "...", "When you blinked, the message disappeared."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueToggle4" type="Node" parent="Blockade2/DialogueSection" unique_id=532661700]
+script = ExtResource("18_tdpg8")
+cue = "toilet_toucher"
+value = 3
+compare_type = 3
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="Blockade2/DialogueSection/DialogueToggle4" unique_id=1979494377]
+script = ExtResource("16_2waup")
+lines = Array[String](["You don't think any more messages are coming from the toilet of the wise."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="Blockade2/DialogueSection" unique_id=1831306121]
+script = ExtResource("19_y1kem")
+cue = "toilet_toucher"
+value = 1
+additive = true
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="default_translation" parent="." unique_id=159804422 instance=ExtResource("26_54pcn")]
 position = Vector2(1096, 160)
@@ -1535,7 +1700,7 @@ shape = SubResource("RectangleShape2D_ek6sw")
 [node name="TranslationPortal6" type="Area2D" parent="." unique_id=186352324]
 position = Vector2(-752, 0)
 script = ExtResource("28_euhgd")
-warp_offset = Vector2i(48, -14)
+warp_offset = Vector2i(32, 0)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal6" unique_id=1108314383]
@@ -1633,7 +1798,7 @@ position = Vector2(1272.5, 2128)
 shape = SubResource("RectangleShape2D_pmdno")
 
 [node name="TranslationPortal17" type="Area2D" parent="." unique_id=1019202709]
-position = Vector2(136, 328)
+position = Vector2(144, 328)
 script = ExtResource("28_euhgd")
 warp_offset = Vector2i(-48, -28)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1643,7 +1808,7 @@ position = Vector2(1272.5, 2128)
 shape = SubResource("RectangleShape2D_pmdno")
 
 [node name="TranslationPortal18" type="Area2D" parent="." unique_id=540836368]
-position = Vector2(392, 328)
+position = Vector2(408, 328)
 script = ExtResource("28_euhgd")
 warp_offset = Vector2i(-64, -28)
 metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
@@ -1853,7 +2018,13 @@ cue = "reinteract_master"
 value = 2
 metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
-[node name="DialogueLines" type="Node" parent="path to lvl6/DialogueSection/DialogueToggle3/DialogueToggle" unique_id=1650939062]
+[node name="DialogueToggle2" type="Node" parent="path to lvl6/DialogueSection/DialogueToggle3/DialogueToggle" unique_id=790623581]
+script = ExtResource("18_tdpg8")
+cue = "hairpin"
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="path to lvl6/DialogueSection/DialogueToggle3/DialogueToggle/DialogueToggle2" unique_id=396292571]
 script = ExtResource("16_2waup")
 lines = Array[String](["You don't think you can get into this room unless you talk to someone who might have a key."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
@@ -1890,6 +2061,12 @@ lines = Array[String](["...!!", "It unlocked.", "That was a lot easier than it p
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueCue2" type="Node" parent="path to lvl6/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1795911800]
+script = ExtResource("19_y1kem")
+cue = "host"
+value = 4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue3" type="Node" parent="path to lvl6/DialogueSection/DialogueToggle/DialogueOption/DialogueSection" unique_id=1387524010]
 script = ExtResource("19_y1kem")
 cue = "hairpin"
 value = 2
@@ -2050,7 +2227,7 @@ metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="Layout" type="TileMapLayer" parent="astral_stairs" unique_id=886367774]
 material = ExtResource("29_fnhfk")
-tile_map_data = PackedByteArray("AAD//xMAAAABAAcAAAABABMAAAABAAcAAAD//xIAAAABAAIAAAD//xEAAAABAAIAAAAAABEAAAABAAIAAAABABEAAAABAAIAAAABABIAAAABAAIAAAAAABIAAAAGAAMAAAAAABMAAAABAAEAAAAAABQAAAABAAEAAAAAABUAAAABAAEAAAABABUAAAABAAEAAAACABUAAAABAAEAAAABABQAAAABAAAAAAACABQAAAABAAAAAAACABYAAAABAAIAAAABABYAAAABAAIAAAAAABYAAAABAAIAAAD//xYAAAABAAIAAAD//xUAAAAAAAIAAAD//xQAAAAAAAEAAAADABUAAAABAAEAAAADABQAAAAEAAAAADADABMAAAAEAAAAADADABIAAAAEAAAAADADABEAAAAEAAAAADADABAAAAAEAAAAADADAA8AAAAEAAAAADADAA4AAAAEAAAAADADAA0AAAAEAAAAADADAAwAAAAEAAAAADADAAsAAAAEAAAAADADAAoAAAAEAAAAADADAAkAAAAGAAUAAAACAAgAAAABAAcAAAADAAgAAAABAAcAAAAEAAgAAAABAAcAAAACAAkAAAABAAIAAAACAAoAAAAAAAEAAAAEAAkAAAABAAIAAAAEAAoAAAACAAEAAAAEAAsAAAACAAEAAAACAAsAAAAAAAEAAAADABYAAAABAAIAAAAEABYAAAABAAIAAAAEABUAAAACAAIAAAAEAAwAAAACAAEAAAAEAA0AAAACAAEAAAAEAA4AAAACAAEAAAAEAA8AAAACAAEAAAAEABAAAAACAAEAAAAEABEAAAACAAEAAAAEABIAAAACAAEAAAAEABMAAAACAAEAAAAEABQAAAACAAEAAAACABMAAAAAAAEAAAACABIAAAAAAAEAAAACABEAAAAAAAEAAAACABAAAAAAAAEAAAACAA8AAAAAAAEAAAACAA4AAAAAAAEAAAACAA0AAAAAAAEAAAACAAwAAAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AAD//xMAAAABAAcAAAABABMAAAABAAcAAAD//xIAAAABAAIAAAD//xEAAAABAAIAAAAAABEAAAAEAAAAAAABABEAAAABAAIAAAABABIAAAABAAIAAAAAABIAAAAGAAMAAAAAABMAAAABAAEAAAAAABQAAAABAAEAAAAAABUAAAABAAEAAAABABUAAAABAAEAAAACABUAAAABAAEAAAABABQAAAABAAAAAAACABQAAAABAAAAAAACABYAAAABAAIAAAABABYAAAABAAIAAAAAABYAAAABAAIAAAD//xYAAAABAAIAAAD//xUAAAAAAAIAAAD//xQAAAAAAAEAAAADABUAAAABAAEAAAADABQAAAAEAAAAADADABMAAAAEAAAAADADABIAAAAEAAAAADADABEAAAAEAAAAADADABAAAAAEAAAAADADAA8AAAAEAAAAADADAA4AAAAEAAAAADADAA0AAAAEAAAAADADAAwAAAAEAAAAADADAAsAAAAEAAAAADADAAoAAAAEAAAAADADAAkAAAAGAAUAAAACAAgAAAABAAcAAAADAAgAAAABAAcAAAAEAAgAAAABAAcAAAACAAkAAAABAAIAAAACAAoAAAAAAAEAAAAEAAkAAAABAAIAAAAEAAoAAAACAAEAAAAEAAsAAAACAAEAAAACAAsAAAAAAAEAAAADABYAAAABAAIAAAAEABYAAAABAAIAAAAEABUAAAACAAIAAAAEAAwAAAACAAEAAAAEAA0AAAACAAEAAAAEAA4AAAACAAEAAAAEAA8AAAACAAEAAAAEABAAAAACAAEAAAAEABEAAAACAAEAAAAEABIAAAACAAEAAAAEABMAAAACAAEAAAAEABQAAAACAAEAAAACABMAAAAAAAEAAAACABIAAAAAAAEAAAACABEAAAAAAAEAAAACABAAAAAAAAEAAAACAA8AAAAAAAEAAAACAA4AAAAAAAEAAAACAA0AAAAAAAEAAAACAAwAAAAAAAEAAAAAABAAAAAEAAAAAAAAAA8AAAAEAAAAAAAAAA4AAAAEAAAAAAD//xAAAAABAAIAAAD//w8AAAABAAIAAAD//w4AAAABAAIAAAABAA4AAAABAAIAAAABAA8AAAABAAIAAAABABAAAAABAAIAAAD//w0AAAABAAIAAAAAAA0AAAAEAAAAAAABAA0AAAABAAIAAAD//wwAAAABAAIAAAAAAAwAAAABAAIAAAABAAwAAAABAAIAAAA=")
 tile_set = ExtResource("10_awr63")
 script = ExtResource("11_bkjp5")
 material_layer = 6
@@ -2069,6 +2246,7 @@ target_screen = Vector2i(0, -1)
 metadata/_custom_type_script = "uid://cup01huy0tbwf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AstralAnchor" unique_id=1995187959]
+visible = false
 position = Vector2(583, 67)
 shape = SubResource("RectangleShape2D_4rdyf")
 
@@ -2081,20 +2259,21 @@ target_screen = Vector2i(0, 2)
 metadata/_custom_type_script = "uid://cup01huy0tbwf"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AstralAnchor2" unique_id=1665834030]
-position = Vector2(584, 64)
-shape = ExtResource("15_8vjvb")
+position = Vector2(584, 37)
+shape = SubResource("RectangleShape2D_ab3u3")
 
-[node name="AstralAnchor3" type="Area2D" parent="." unique_id=1041046137]
+[node name="AstralClamp5" type="Area2D" parent="." unique_id=848308987]
 position = Vector2(-48, 680)
-script = ExtResource("30_pgm3s")
-copy_X = true
-copy_Y = true
-target_screen = Vector2i(0, -2)
-metadata/_custom_type_script = "uid://cup01huy0tbwf"
+script = ExtResource("4_daixp")
+target_screen_position = Vector2i(2, 1)
+target_tile_position = Vector2i(1, 0)
+target_tile_size = Vector2i(1, 5)
+screen_offset = Vector2i(0, -1)
+metadata/_custom_type_script = "uid://r7nrvikp2r0q"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AstralAnchor3" unique_id=1443094376]
-position = Vector2(584, 64)
-shape = ExtResource("15_8vjvb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AstralClamp5" unique_id=1443094376]
+position = Vector2(584, 33)
+shape = SubResource("RectangleShape2D_3axd1")
 
 [node name="AstralAnchor4" type="Area2D" parent="." unique_id=1235726460]
 position = Vector2(0, 536)
@@ -2129,9 +2308,9 @@ target_tile_size = Vector2i(4, 7)
 screen_offset = Vector2i(0, 1)
 metadata/_custom_type_script = "uid://r7nrvikp2r0q"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AstralClamp4" unique_id=46902775]
-position = Vector2(583, 67)
-shape = SubResource("RectangleShape2D_4rdyf")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AstralClamp4" unique_id=1833574515]
+visible = false
+polygon = PackedVector2Array(544, 16, 568, 16, 568, 40, 600, 40, 600, 16, 624, 16, 624, 144, 544, 144)
 
 [node name="astralAnchor" type="Area2D" parent="." unique_id=1465216301]
 position = Vector2(128, 88)
@@ -2194,7 +2373,7 @@ target_tile = Vector2i(0, -2)
 metadata/_custom_type_script = "uid://cup01huy0tbwf"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="astralAnchor5" unique_id=1168431049]
-polygon = PackedVector2Array(104, -768, 104, -808, 336, -808, 336, -984, 384, -984, 384, -808, 520, -808, 520, -768, 424, -768, 424, -704, 392, -704, 392, -768)
+polygon = PackedVector2Array(104, -768, 104, -808, 336, -808, 336, -984, 384, -984, 384, -808, 520, -808, 520, -768)
 
 [node name="astralAnchor6" type="Area2D" parent="." unique_id=523554649]
 position = Vector2(144, 2104)
@@ -2207,3 +2386,251 @@ metadata/_custom_type_script = "uid://cup01huy0tbwf"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="astralAnchor6" unique_id=1594344254]
 polygon = PackedVector2Array(72, -768, 72, -808, 384, -808, 384, -768, 400, -768, 400, -808, 520, -808, 520, -760, 352, -760, 352, -800, 336, -800, 336, -768)
+
+[node name="hint_mannequin1" type="StaticBody2D" parent="." unique_id=1026339517]
+position = Vector2(568, 136)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("23_q33y3")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="DialogueSection" type="Node" parent="hint_mannequin1" unique_id=1137443366]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="hint_mannequin1/DialogueSection" unique_id=1572867738]
+script = ExtResource("16_2waup")
+lines = Array[String](["There's a mannequin here. He's wearing a faded outfit.", "He can give you the first hint."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="hint_mannequin1/DialogueSection" unique_id=1646102615]
+script = ExtResource("21_l8bvp")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="hint_mannequin1/DialogueSection/DialogueOption" unique_id=420921754]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="hint_mannequin1/DialogueSection/DialogueOption/DialogueSection" unique_id=393459855]
+script = ExtResource("16_2waup")
+lines = Array[String](["Ask for a hint"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="hint_mannequin1/DialogueSection/DialogueOption/DialogueSection" unique_id=1803047051]
+script = ExtResource("16_2waup")
+lines = Array[String](["[...]", "[...You can't pass if you won't look out the window.]"])
+name_id = 5
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="hint_mannequin1/DialogueSection/DialogueOption" unique_id=434439468]
+script = ExtResource("16_2waup")
+lines = Array[String](["Nevermind"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Sprite2D" type="Sprite2D" parent="hint_mannequin1" unique_id=531382518]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("24_3bhyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hint_mannequin1" unique_id=301929412]
+shape = ExtResource("15_8vjvb")
+
+[node name="hint_mannequin2" type="StaticBody2D" parent="." unique_id=1518827524]
+position = Vector2(616, 88)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("23_q33y3")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="DialogueSection" type="Node" parent="hint_mannequin2" unique_id=1697859742]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="hint_mannequin2/DialogueSection" unique_id=2066129552]
+script = ExtResource("16_2waup")
+lines = Array[String](["There's a mannequin here. She's wearing a mismatched outfit.", "She can give you the second hint."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="hint_mannequin2/DialogueSection" unique_id=1036108475]
+script = ExtResource("21_l8bvp")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="hint_mannequin2/DialogueSection/DialogueOption" unique_id=375673229]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="hint_mannequin2/DialogueSection/DialogueOption/DialogueSection" unique_id=1602305130]
+script = ExtResource("16_2waup")
+lines = Array[String](["Ask for a hint"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="hint_mannequin2/DialogueSection/DialogueOption/DialogueSection" unique_id=1772481272]
+script = ExtResource("16_2waup")
+lines = Array[String](["[...]", "[...Try astral projecting in the balcony.]"])
+name_id = 5
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="hint_mannequin2/DialogueSection/DialogueOption" unique_id=828421774]
+script = ExtResource("16_2waup")
+lines = Array[String](["Nevermind"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Sprite2D" type="Sprite2D" parent="hint_mannequin2" unique_id=183572842]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("24_3bhyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hint_mannequin2" unique_id=71231974]
+shape = ExtResource("15_8vjvb")
+
+[node name="hint_mannequin3" type="StaticBody2D" parent="." unique_id=873524330]
+position = Vector2(552, 72)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("23_q33y3")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="DialogueSection" type="Node" parent="hint_mannequin3" unique_id=1744371398]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="hint_mannequin3/DialogueSection" unique_id=2100042319]
+script = ExtResource("16_2waup")
+lines = Array[String](["There's a mannequin here. They're wearing a stylish outfit.", "They can give you the third hint."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="hint_mannequin3/DialogueSection" unique_id=1294038645]
+script = ExtResource("21_l8bvp")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="hint_mannequin3/DialogueSection/DialogueOption" unique_id=567654111]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="hint_mannequin3/DialogueSection/DialogueOption/DialogueSection" unique_id=253646044]
+script = ExtResource("16_2waup")
+lines = Array[String](["Ask for a hint"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="hint_mannequin3/DialogueSection/DialogueOption/DialogueSection" unique_id=910525949]
+script = ExtResource("16_2waup")
+lines = Array[String](["[...]", "[...The rats know the correct path to take, even if they say they don't.]"])
+name_id = 5
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="hint_mannequin3/DialogueSection/DialogueOption" unique_id=1777530139]
+script = ExtResource("16_2waup")
+lines = Array[String](["Nevermind"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Sprite2D" type="Sprite2D" parent="hint_mannequin3" unique_id=1876231896]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("24_3bhyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hint_mannequin3" unique_id=1307758391]
+shape = ExtResource("15_8vjvb")
+
+[node name="hint_mannequin4" type="StaticBody2D" parent="." unique_id=1721926947]
+position = Vector2(584, 24)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("23_q33y3")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="DialogueSection" type="Node" parent="hint_mannequin4" unique_id=1645937339]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="hint_mannequin4/DialogueSection" unique_id=1460174601]
+script = ExtResource("16_2waup")
+lines = Array[String](["There's a mannequin here. She's wearing a designer-brand outfit.", "She can give you the fourth hint."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="hint_mannequin4/DialogueSection" unique_id=1848541409]
+script = ExtResource("21_l8bvp")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="hint_mannequin4/DialogueSection/DialogueOption" unique_id=975303707]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="hint_mannequin4/DialogueSection/DialogueOption/DialogueSection" unique_id=1269863985]
+script = ExtResource("16_2waup")
+lines = Array[String](["Ask for a hint"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="hint_mannequin4/DialogueSection/DialogueOption/DialogueSection" unique_id=1144355932]
+script = ExtResource("16_2waup")
+lines = Array[String](["[...]", "[There are four directions you must go through in the balcony.]", "[There are also four mannequins. We each touch only one wall.]"])
+name_id = 5
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueLines2" type="Node" parent="hint_mannequin4/DialogueSection/DialogueOption" unique_id=654613450]
+script = ExtResource("16_2waup")
+lines = Array[String](["Nevermind"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Sprite2D" type="Sprite2D" parent="hint_mannequin4" unique_id=1597664702]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("24_3bhyt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hint_mannequin4" unique_id=659226071]
+shape = ExtResource("15_8vjvb")
+
+[node name="InteractionZone4" type="Area2D" parent="." unique_id=1495876701]
+position = Vector2(976, 2056)
+script = ExtResource("14_8x2hy")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone4" unique_id=614674566]
+position = Vector2(184, -160)
+shape = SubResource("RectangleShape2D_ymgml")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone4" unique_id=1924431635]
+position = Vector2(424, -160)
+shape = SubResource("RectangleShape2D_ymgml")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractionZone4" unique_id=828116607]
+position = Vector2(-328, -152)
+shape = SubResource("RectangleShape2D_ymgml")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InteractionZone4" unique_id=405928572]
+position = Vector2(-320, 56)
+shape = SubResource("RectangleShape2D_ymgml")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="InteractionZone4" unique_id=50844506]
+position = Vector2(-80, -368)
+shape = SubResource("RectangleShape2D_ymgml")
+
+[node name="DialogueSection" type="Node" parent="InteractionZone4" unique_id=275255824]
+script = ExtResource("22_nk1hv")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone4/DialogueSection" unique_id=2049721209]
+script = ExtResource("19_y1kem")
+cue = "void_wander"
+value = 1
+additive = true
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone4/DialogueSection" unique_id=1048283572]
+script = ExtResource("18_tdpg8")
+cue = "void_wander"
+value = 6
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueLines" type="Node" parent="InteractionZone4/DialogueSection/DialogueToggle" unique_id=1755682982]
+script = ExtResource("16_2waup")
+lines = Array[String](["...You feel like you aren't getting anywhere. It seems like you can only find something out here if you move in the correct path.", "At least you can always go back and retry if you open your eyes."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone4/DialogueSection/DialogueToggle" unique_id=1966053663]
+script = ExtResource("19_y1kem")
+cue = "void_wander"
+value = -6
+additive = true
+metadata/_custom_type_script = "uid://xhrymkbacnrg"

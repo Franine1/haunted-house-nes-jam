@@ -15,7 +15,7 @@ var projection_time: float = 0.0
 ## overrride for whether this node is able to interact
 var toggle: bool = astral_mode
 ## Time needed to hold the B button to astral project
-const max_projection_time: float = 0.75
+const max_projection_time: float = 0.4
 
 var astral_version: astral = astral.DEFAULT
 	
@@ -23,6 +23,7 @@ var astral_version: astral = astral.DEFAULT
 enum astral {
 	DEFAULT
 	,POLTERGEIST
+	,MIRRORS
 }
 
 
@@ -57,6 +58,8 @@ func _physics_process(delta: float) -> void:
 	
 	match astral_version:
 		astral.POLTERGEIST:
+			stagnant = !toggle
+		astral.MIRRORS:
 			stagnant = !toggle
 	
 	if input_delay.is_stopped() and !stagnant:
@@ -109,7 +112,10 @@ func _physics_process(delta: float) -> void:
 		projection_time += delta
 		if projection_time >= max_projection_time:
 			projection_time = 0.0
-			game_data.set_data("astral",-game_data.get_data("astral"))
+			var last_astral = game_data.get_data("astral")
+			if last_astral == 2:
+				game_data.add_tooltip(15,5.0,self)
+			game_data.set_data("astral",swap_astral(last_astral))
 			astral_changed.emit((game_data.get_data("astral") <= 0))
 	else:
 		projection_time = clamp(projection_time - delta,0.0,max_projection_time)
@@ -171,3 +177,7 @@ func finish_camera_glide(input: bool = true) -> void:
 func erase_movement_queue_attempt() -> void:
 	if interact_allowed:
 		movement_queue.clear()
+
+
+func swap_astral(input: int) -> int:
+	return abs(input) * ((input ** 2) - input - 1)

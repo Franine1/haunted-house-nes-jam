@@ -947,7 +947,7 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle6/DialogueOption2/DialogueSection" unique_id=379595707]
 script = ExtResource("44_23sco")
-lines = Array[String](["Although it's a little tricky to get this ladder stable on these stairs, after some trail and error, it's stable.", "You get it stable enough that you can climb up."])
+lines = Array[String](["Although it's a little tricky to get this ladder stable on these stairs, after some trial and error, it's stable.", "You get it anchored well and climb up."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueCue" type="Node" parent="path to lvl5/DialogueSection/DialogueToggle6/DialogueOption2/DialogueSection" unique_id=2049373558]

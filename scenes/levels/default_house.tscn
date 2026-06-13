@@ -1879,7 +1879,7 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueLines" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption/DialogueSection7/DialogueToggle" unique_id=1607786825]
 script = ExtResource("31_fyonw")
-lines = Array[String](["The painting in the lving room"])
+lines = Array[String](["The painting in the living room"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle5/DialogueLoop/DialogueOption/DialogueSection7/DialogueToggle" unique_id=720926021]

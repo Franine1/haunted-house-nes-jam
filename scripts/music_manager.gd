@@ -78,6 +78,7 @@ func change_track(input: int, do_twice: bool = true) -> void:
 
 func refresh_track() -> void:
 	change_track(GameCue.get_cue("music"),false)
+	change_volume(GameCue.get_cue("volume"))
 
 ## fades out the audio
 func fadeout() -> void:
@@ -89,7 +90,9 @@ func fadein() -> void:
 
 ## manages audio fading
 func _process(delta: float) -> void:
-	if !playing:
+	if volume_db <= silent_sound_level:
+		stop()
+	elif !playing:
 		play()
 	
 	if volume_db == db_goal:

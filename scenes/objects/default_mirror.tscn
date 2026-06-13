@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b5ogaxgaaftpo"]
+
+[ext_resource type="Script" uid="uid://cx1gssuhvpfka" path="res://scripts/mirror.gd" id="1_um1a1"]
+[ext_resource type="Shape2D" uid="uid://dnj8iayr04pc7" path="res://resources/shapes/gate_shape.tres" id="2_i2t3g"]
+[ext_resource type="Texture2D" uid="uid://b7bd7avmyask" path="res://assets/temp_mirror.tres" id="3_a26mb"]
+
+[node name="default_mirror" type="StaticBody2D" unique_id=1684482553]
+script = ExtResource("1_um1a1")
+interact_activation = true
+metadata/_custom_type_script = "uid://cx1gssuhvpfka"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=296595513]
+shape = ExtResource("2_i2t3g")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=888776692]
+scale = Vector2(3, 0.75)
+texture = ExtResource("3_a26mb")

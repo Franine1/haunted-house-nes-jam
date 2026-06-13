@@ -58,9 +58,9 @@ animation = &"down"
 [node name="shadow" type="AnimatedSprite2D" parent="." unique_id=1292306653]
 unique_name_in_owner = true
 visible = false
-modulate = Color(0.3137255, 0.3137255, 0.3137255, 0.5019608)
+modulate = Color(0.3137255, 0.3137255, 0.3137255, 0.7529412)
 z_index = 4
-position = Vector2(70, 0)
+position = Vector2(-10000, 0)
 sprite_frames = ExtResource("4_atpat")
 animation = &"down"
 
@@ -74,6 +74,12 @@ unique_name_in_owner = true
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D" unique_id=1756726269]
+unique_name_in_owner = true
+z_index = -1000
+scale = Vector2(1.65625, 439.99997)
+texture = SubResource("GradientTexture1D_kqtwu")
+
+[node name="permadark" type="Sprite2D" parent="Camera2D" unique_id=1577351953]
 unique_name_in_owner = true
 z_index = -1000
 scale = Vector2(1.65625, 439.99997)

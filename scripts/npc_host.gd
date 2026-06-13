@@ -16,8 +16,10 @@ func ready_behavior() -> void:
 func process_behavior(_delta: float) -> void:
 	if [-4,-5].has(game_data.get_data("forced")) and game_data.get_data("host") != 2:
 		global_position = Vector2(88.0,120.0)
-	elif game_data.get_data("host") == 3:
+	elif [3,6].has(game_data.get_data("host")):
 		global_position = Vector2(-1440.0,-16.0)
+	elif game_data.get_data("host") == 4:
+		global_position = Vector2(232.0,40.0)
 		
 
 func host_cue(input: int) -> void:
@@ -26,6 +28,8 @@ func host_cue(input: int) -> void:
 		1:
 			global_position = Vector2(232.0,184.0)
 		3:
+			global_position = Vector2(-1440.0,-16.0)
+		6:
 			global_position = Vector2(-1440.0,-16.0)
 
 func interact(by: Player) -> void:

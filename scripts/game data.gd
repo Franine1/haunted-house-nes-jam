@@ -12,6 +12,9 @@ extends Resource
 ## connecting this directly to any node, and instead use GameCues
 ## as a middleman.
 signal data_change(key: String, value: int)
+
+
+signal tooltip_modified()
 ## all the global data points. They're identified with a string and always
 ## return an int.
 var data: Dictionary[String,int] = {
@@ -27,6 +30,8 @@ var player_position: Vector4 = Vector4.ZERO
 var astral_position: Vector2 = Vector2.ZERO
 ## restart position for puzzles
 var restart_position: Vector2 = Vector2.ZERO
+## restart position for puzzles
+var ghost_restart_position: Vector2 = Vector2.ZERO
 ## path to save files to
 const savepath: String = "user://savedgames/"
 
@@ -78,6 +83,7 @@ const names: Array[String] = [
 	,"Lea"
 	,"Window Person"
 	,"Peanut Biter"
+	,"Mannequin"
 ]
 
 const tooltips: Array[Array] = [
@@ -90,21 +96,40 @@ const tooltips: Array[Array] = [
 	,["2 / 4"]
 	,["3 / 4"]
 	,["4 / 4"]
+	,["1 / 6"]
+	,["2 / 6"]
+	,["3 / 6"]
+	,["4 / 6"]
+	,["5 / 6"]
+	,["6 / 6"]
+	,["You cannot astral project at this time"]
 ]
 
 
+var temporary_tooltips: Dictionary[Timer,int]
+var temporary_id: int = 0
 
 
 ## returns the current tooltip being displayed
 func next_tooltip() -> Array[String]:
-	if data["tooltip"] > 0 and tooltips.size() > data["tooltip"]:
-		var t = tooltips[data["tooltip"]]
-		var ans: Array[String] = []
-		for item in t:
-			if item is String:
-				ans.append(item)
-		return ans
-	return []
+	var nums: Array[int] = [data["tooltip"]]
+	for key in temporary_tooltips.keys():
+		nums.append(temporary_tooltips[key])
+	
+	var ans: Array[String] = []
+	
+	for num in nums:
+		if num > 0 and tooltips.size() > num:
+			var t = tooltips[num]
+			
+			for item in t:
+				if item is String:
+					ans.append(item)
+	
+	print(ans.size())
+	
+	return ans
+	
 
 
 ## returns the preset name of an NPC
@@ -115,6 +140,37 @@ func name(input: int) -> String:
 	if ans.length() > 0:
 		ans = ans + ":  "
 	return ans
+
+
+func add_tooltip(tooltip_id: int, duration: float, parent: Node = null) -> void:
+	if data["tooltip"] != tooltip_id:
+		# If there is an identical ID already in the list
+		for key in temporary_tooltips.keys():
+			if temporary_tooltips[key] == tooltip_id:
+				key.start(max(duration,key.time_left))
+				return
+		
+		var next: Timer = Timer.new()
+		parent.add_child(next)
+		next.one_shot = true
+		
+		next.timeout.connect(remove_tooltip.bind(next))
+		temporary_tooltips[next] = tooltip_id
+		
+		next.start(duration)
+		
+		tooltip_modified.emit()
+
+
+func remove_tooltip(key: Timer) -> void:
+	temporary_tooltips.erase(key)
+	
+	tooltip_modified.emit()
+	
+	key.queue_free()
+
+func has_temporary_tooltips() -> bool:
+	return temporary_tooltips.keys().size() > 0
 
 ## sets a data point in the data library
 func set_data(key: String, value: int) -> void:
@@ -324,3 +380,12 @@ func set_restart_position(input: Vector2) -> void:
 ## returns the global position of the player
 func get_restart_position() -> Vector2:
 	return restart_position
+
+
+## returns the global position of the player
+func set_ghost_restart_position(input: Vector2) -> void:
+	ghost_restart_position = input
+
+## returns the global position of the player
+func get_ghost_restart_position() -> Vector2:
+	return ghost_restart_position

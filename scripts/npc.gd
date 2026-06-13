@@ -23,7 +23,7 @@ var interaction: RayCast2D
 ## A modifier to the player speed
 var speed_scale: float = 5.0
 ## An exported default speed value for NPCs
-@export var default_speed: float = 7.5
+@export var default_speed: float = 8.0
 
 ## the ID the game uses to specifically identify this NPC
 @export var NPC_ID: int = 0
@@ -44,6 +44,13 @@ var movement_queue: Array[CutscenePath] = []
 ## current mode of movement. Makes movement look uglier but better at arriving.
 var movement_mode_switch: bool = false
 
+
+const directions: Dictionary[Vector2,String] = {
+		Vector2.LEFT: "left"
+		,Vector2.RIGHT: "right"
+		,Vector2.UP: "up"
+		,Vector2.DOWN: "down"
+	}
 
 ## NPC specific variable determining if the player can interact with them
 var interact_allowed: bool = true
@@ -233,27 +240,13 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_a
 	# check if our movement will lead to a collision
 	var collision: KinematicCollision2D = move_and_collide(move * SPEED, true)
 	
-	const directions: Dictionary[Vector2,String] = {
-		Vector2.LEFT: "left"
-		,Vector2.RIGHT: "right"
-		,Vector2.UP: "up"
-		,Vector2.DOWN: "down"
-	}
+	
 	
 	
 	# skips setting the animation if we move at an angle against a wall
 	if (axis_swapped or !collision):
-		if directions.has(move):
-			for sprite in sprites:
-				sprite.animation = directions[move]
-			# set the interaction direction to our movement direction
-			interaction.rotation = move.angle()
-		if directions.has(dir_override):
-			for sprite in sprites:
-				sprite.animation = directions[dir_override]
-			# set the interaction direction to our movement direction
-			interaction.rotation = dir_override.angle()
-			
+		turn(move)
+		turn(dir_override)
 	
 	
 	
@@ -267,10 +260,7 @@ func enact_movement(mvm: Vector2, dir_override: Vector2 = Vector2.ZERO, accept_a
 			if input_allowed and wall.collide_activation:
 				var temp: Vector2 = (collision.get_position()-global_position).normalized().round()
 				if directions.has(temp):
-					for sprite in sprites:
-						sprite.animation = directions[temp]
-					# set the interaction direction to our movement direction
-					interaction.rotation = temp.angle()
+					turn(temp)
 				wall.bump(self)
 			
 	else:
@@ -322,3 +312,25 @@ func delay_interaction() -> void:
 	if interaction:
 		toggle_interaction(false)
 		interact_delay.start(0.2)
+
+func turn(temp: Vector2) -> bool:
+	var found = directions.has(temp)
+	var closest: Vector2 = temp
+	
+	for key in directions.keys():
+		if found:
+			break
+		if temp.is_equal_approx(key):
+			found = true
+			closest = key
+	
+	if found:
+		for sprite in sprites:
+			sprite.animation = directions[closest]
+			# set the interaction direction to our movement direction
+		interaction.rotation = closest.angle()
+	
+	return found
+
+func facing_direction() -> Vector2:
+	return Vector2.from_angle(interaction.rotation)

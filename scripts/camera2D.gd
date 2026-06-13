@@ -17,6 +17,9 @@ var target: Vector2 = Vector2.ZERO:
 var arrived: bool = false
 ## Whether or not the screen is blacked out
 var blackout: bool = true
+## timer used to fadeout a blackout transition
+var blackout_timer: Timer
+const fade_time: float = 0.1
 
 ## the delay between pausing the game and starting to glide,
 ## along with finishing the glide and resuming
@@ -26,12 +29,16 @@ func _ready() -> void:
 	# connects the timer to the try_unpause function
 	blackout_transition()
 	glide_timer.timeout.connect(try_unpause)
+	blackout_timer = Timer.new()
+	add_child(blackout_timer)
+	blackout_timer.one_shot = true
+	blackout_timer.timeout.connect(set_blackout.bind(false))
 
 
 func blackout_transition() -> void:
 	blackout_sprite.z_index = 1000
 	blackout = true
-	get_tree().create_timer(0.1).timeout.connect(set_blackout.bind(false))
+	get_tree().create_timer(0.1).timeout.connect(fadeout_blackout)
 
 ## glides to a target position and pauses the game
 func glide(t: Vector2 = target) -> void:
@@ -54,6 +61,7 @@ func shift(t: Vector2) -> void:
 func _process(delta: float) -> void:
 	var blackout_layer: int = 1000 if blackout else -1000
 	blackout_sprite.z_index = blackout_layer
+	blackout_sprite.modulate.a = 1.0 if blackout_timer.is_stopped() else (blackout_timer.time_left/fade_time)
 	
 	if !arrived:
 		# if we're still gliding, then move to the position over time
@@ -88,3 +96,6 @@ func try_unpause() -> void:
 ## Sets the value of blackout
 func set_blackout(input: bool) -> void:
 	blackout = input
+
+func fadeout_blackout() -> void:
+	blackout_timer.start(fade_time)

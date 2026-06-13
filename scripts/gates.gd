@@ -24,7 +24,7 @@ func progress_animation(_delta: float, opacity: float = -1.0) -> void:
 	do_opacity = do_opacity and !(visibility_type == mode.ROOM_VISIBLE_OR_ACTIVE and active)
 	var result_opacity: float = opacity if do_opacity else 1.0
 	if !active and [mode.WHILE_ACTIVE,mode.ROOM_VISIBLE_AND_ACTIVE].has(visibility_type):
-		result_opacity = 0.2 if (game_data.get_data("hide_color_gates") == 0) else 0.0
+		result_opacity = 0.3 if (game_data.get_data("hide_color_gates") == 0) else 0.0
 	
 	# ensure the blockade is visible
 	for sprite in sprites:

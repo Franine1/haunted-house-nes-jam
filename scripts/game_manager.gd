@@ -37,6 +37,7 @@ const levels: Array[PackedScene] = [
 	,preload("res://scenes/levels/liminal_house.tscn")
 	,preload("res://scenes/levels/backyard.tscn")
 	,preload("res://scenes/levels/second_floor.tscn")
+	,preload("res://scenes/levels/master_bedroom.tscn")
 ]
 ## Current dialogue script
 var dialogue_script: Dialogue = null
@@ -80,6 +81,12 @@ var current_pallete: Dictionary[int,ShaderMaterial] = {
 	,13: preload("res://resources/palettes/dusk_pallette.tres")
 	,14: preload("res://resources/palettes/ethereal_pallette.tres")
 	,15: preload("res://resources/palettes/moldy_pallette.tres")
+	,16: preload("res://resources/palettes/transition_pallette_1.tres")
+	,17: preload("res://resources/palettes/transition_pallette_2.tres")
+	,18: preload("res://resources/palettes/danger_pallette.tres")
+	,19: preload("res://resources/palettes/bizarre_pallette.tres")
+	,20: preload("res://resources/palettes/mirror_pallette.tres")
+	,21: preload("res://resources/palettes/gloomy_pallette.tres")
 }
 
 ## The allowed game states
@@ -143,10 +150,7 @@ func _process(delta: float) -> void:
 					read_dialogue(next_dialogue)
 			
 			if current_tooltip != game_data.get_data("tooltip"):
-				remove_textboxes(tooltip_holder)
-				current_tooltip = game_data.get_data("tooltip")
-				if current_tooltip > 0:
-					add_textboxes(game_data.next_tooltip(),0.01,tooltip_holder)
+				change_tooltips()
 		
 		game_state.DIALOGUE:
 			remove_textboxes(tooltip_holder)
@@ -158,8 +162,14 @@ func _process(delta: float) -> void:
 			current_tooltip = -1
 			menu_behavior(delta)
 		
-	
-	
+
+func change_tooltips() -> void:
+	remove_textboxes(tooltip_holder)
+	current_tooltip = game_data.get_data("tooltip")
+	if current_tooltip > 0 or game_data.has_temporary_tooltips():
+		add_textboxes(game_data.next_tooltip(),0.01,tooltip_holder)
+
+
 
 func _ready() -> void:
 	# sets up the level change and textbox timers
@@ -179,6 +189,8 @@ func _ready() -> void:
 	# sets up to receive a game cue when the level parameter changes
 	cue.add_cue("level",Callable(change_level))
 	cue.add_cue("delay",Callable(pause_dialogue))
+	
+	game_data.tooltip_modified.connect(change_tooltips)
 
 
 ## pauses the dialogue window for a specific amount of time

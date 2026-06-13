@@ -10,9 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://bkjrnp3smuwu0" path="res://resources/music/frostbitten.wav" id="7_xd1le"]
 [ext_resource type="Script" uid="uid://u7lt4smxcgdr" path="res://scripts/music_manager.gd" id="8_2nvdm"]
 [ext_resource type="AudioStream" uid="uid://c5qkbnqup4tll" path="res://resources/music/no place like H.O.M.E..wav" id="8_t0b4g"]
+[ext_resource type="AudioStream" uid="uid://ccbxtj1cmbllq" path="res://resources/music/doppelganger.wav" id="9_vqhc5"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gpyor"]
-clip_count = 9
+clip_count = 10
 clip_0/name = &"Observed"
 clip_0/stream = ExtResource("1_ocg0u")
 clip_0/auto_advance = 0
@@ -37,9 +38,12 @@ clip_6/auto_advance = 0
 clip_7/name = &"No Place Like H.o.m.e."
 clip_7/stream = ExtResource("8_t0b4g")
 clip_7/auto_advance = 0
-clip_8/name = &"Three Mirrors"
-clip_8/stream = ExtResource("7_8jmwk")
+clip_8/name = &"Doppelganger"
+clip_8/stream = ExtResource("9_vqhc5")
 clip_8/auto_advance = 0
+clip_9/name = &"Three Mirrors"
+clip_9/stream = ExtResource("7_8jmwk")
+clip_9/auto_advance = 0
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 1.0,

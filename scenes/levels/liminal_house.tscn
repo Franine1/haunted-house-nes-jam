@@ -981,7 +981,7 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueLines2" type="Node" parent="windowman/DialogueSection/DialogueToggle2/DialogueToggle/DialogueLoop/DialogueOption/2_toggle1" unique_id=355727635]
 script = ExtResource("5_u8ura")
-lines = Array[String](["From what I've seen, it's not so different from what you were dealing with before. ", "Seems a little less physically possible than before. There's some buttons that look like they'll trap you in place.", "It's a good thing you're not just limited to the physical, then."])
+lines = Array[String](["From what I've seen, it's not so different from what you were dealing with before. More colorful buttons.", "Some of those puzzles seem like they're meant for two people, but I think your \"spiritual awakening\" will let you solve them on your own."])
 name_id = 3
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 

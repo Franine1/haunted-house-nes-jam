@@ -28,6 +28,7 @@ var cue: GameCue
 enum astral {
 	DEFAULT
 	,POLTERGEIST
+	,MIRRORS
 }
 
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
@@ -42,6 +43,7 @@ func _ready() -> void:
 	cue = GameCue.new()
 	add_child(cue)
 	cue.add_cue("restart",restart_puzzle)
+	cue.add_cue("restart_ghost",reset_ghost)
 	
 	astral_recently_enforced = Timer.new()
 	add_child(astral_recently_enforced)
@@ -101,9 +103,12 @@ func react_to_astral_projection(input: bool, override: bool = false) -> void:
 		if astral_mode:
 			pass
 		else:
-			if astral_recently_enforced.is_stopped():
+			if astral_recently_enforced.is_stopped() and ![astral.MIRRORS].has(astral_version):
 				ast.global_position = pl.global_position + (Vector2(16.0,14.0) * 16.0 * astral_offset)
 			
+			if [astral.POLTERGEIST].has(astral_version):
+				endpoint.turn(source.facing_direction())
+		
 		
 		
 		var difference: Vector2 = endpoint.global_position - source.global_position
@@ -117,8 +122,10 @@ func react_to_astral_projection(input: bool, override: bool = false) -> void:
 		
 		#print([(endpoint.position / Vector2(256.0,224.0)),(source.position / Vector2(256.0,224.0))])
 		
-		shadow.global_position = ast.global_position
-		shadow.animation = pl.sprites[0].animation
+		if [astral.POLTERGEIST,astral.MIRRORS].has(astral_version):
+			summon_shadow()
+		
+		
 		
 		astral_projection.emit(astral_mode,current_player())
 
@@ -138,6 +145,11 @@ func adjust_player_distances(input: Vector2 = astral_offset) -> void:
 	if astral_mode and false:
 		ast.camera_snap_axis = pl.camera_snap_axis + difference/16.0 
 	astral_recently_enforced.start(0.2)
+	
+	
+	if [astral.MIRRORS].has(astral_version) and astral_version:
+		summon_shadow.call_deferred()
+	
 
 
 func _process(_delta: float) -> void:
@@ -148,7 +160,10 @@ func _process(_delta: float) -> void:
 	pl.astral_version = ans
 	ast.astral_version = ans
 	
-	shadow.visible = !astral_mode and [astral.POLTERGEIST].has(astral_version)
+	if astral_mode:
+		shadow.visible = [astral.MIRRORS].has(astral_version)
+	else:
+		shadow.visible = [astral.POLTERGEIST,astral.MIRRORS].has(astral_version)
 	
 	pass
 
@@ -157,12 +172,25 @@ func restart_puzzle(input: int = 1) -> void:
 	if input != 0:
 		cm.blackout_transition()
 		pl.global_position = game_data.get_restart_position()
-		ast.global_position = game_data.get_restart_position()
+		ast.global_position = game_data.get_ghost_restart_position()
 		current_player().finish_camera_glide()
 		#react_to_astral_projection(true,true)
 		
+		summon_shadow()
+		
 		game_data.set_data("restart",0)
 	
-	
-	
-	
+
+
+func summon_shadow() -> void:
+	var target: Player = current_player(false)
+	shadow.global_position = target.global_position
+	shadow.animation = target.sprites[0].animation
+
+
+func reset_ghost(input: int = 1) -> void:
+	if input != 0:
+		game_data.set_data("restart_ghost",0)
+		ast.global_position = game_data.get_ghost_restart_position()
+		
+		summon_shadow()
