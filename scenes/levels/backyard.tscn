@@ -867,7 +867,7 @@ cue = "color"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="restart button5" parent="." unique_id=1152303667 instance=ExtResource("41_dubx6")]
-position = Vector2(384, -664)
+position = Vector2(392, -664)
 
 [node name="DialogueToggle" type="Node" parent="restart button5" unique_id=1552584370]
 script = ExtResource("42_dm8c6")

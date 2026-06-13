@@ -383,11 +383,25 @@ rotation = 1.5707964
 [node name="InteractionZone6" parent="." unique_id=269281257 instance=ExtResource("16_o0koi")]
 position = Vector2(216, -904)
 
+[node name="DialogueCue2" type="Node" parent="InteractionZone6" unique_id=2082875202]
+script = ExtResource("6_jgbvq")
+cue = "spot2"
+value = 1
+delay = 0.25
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="InteractionZone7" parent="." unique_id=1561899698 instance=ExtResource("9_o6887")]
 position = Vector2(8, -968)
 
 [node name="InteractionZone8" parent="." unique_id=133067272 instance=ExtResource("10_58u5q")]
 position = Vector2(216, -1096)
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone8" unique_id=1813878622]
+script = ExtResource("6_jgbvq")
+cue = "spot3"
+value = 1
+delay = 0.25
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="Blockade13" parent="." unique_id=726249127 instance=ExtResource("20_olpua")]
 position = Vector2(64, -1000)
@@ -423,15 +437,35 @@ interact_activation = false
 entry_activation = true
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone20" unique_id=457991779]
-position = Vector2(8, 0)
-shape = SubResource("RectangleShape2D_m62uw")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone20" unique_id=1365995935]
 position = Vector2(-140, 0)
 shape = SubResource("RectangleShape2D_m62uw")
 
 [node name="DialogueCue" type="Node" parent="InteractionZone20" unique_id=333658542]
+script = ExtResource("6_jgbvq")
+cue = "spot2"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone30" type="Area2D" parent="." unique_id=1403425750]
+position = Vector2(200, -976)
+script = ExtResource("21_mg80x")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone30" unique_id=1068462576]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_m62uw")
+
+[node name="DialogueToggle" type="Node" parent="InteractionZone30" unique_id=175471988]
+script = ExtResource("10_o6887")
+cue = "color"
+value = 3
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="InteractionZone30/DialogueToggle" unique_id=2049733336]
 script = ExtResource("6_jgbvq")
 cue = "spot2"
 value = 1
@@ -832,7 +866,7 @@ metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
 [node name="DialogueLines" type="Node" parent="Blockade19/DialogueSection/DialogueToggle/DialogueOption" unique_id=396766219]
 script = ExtResource("28_e3ck7")
-lines = Array[String](["Digusting"])
+lines = Array[String](["Disgusting"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueSection" type="Node" parent="Blockade19/DialogueSection/DialogueToggle/DialogueOption" unique_id=1416691787]
@@ -957,6 +991,7 @@ entry_activation = true
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone" unique_id=1641793518]
+visible = false
 position = Vector2(-104, 0)
 shape = SubResource("RectangleShape2D_e3ck7")
 

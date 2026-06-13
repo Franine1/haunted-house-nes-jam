@@ -105,6 +105,8 @@ func react_to_astral_projection(input: bool, override: bool = false) -> void:
 		else:
 			if astral_recently_enforced.is_stopped() and ![astral.MIRRORS].has(astral_version):
 				ast.global_position = pl.global_position + (Vector2(16.0,14.0) * 16.0 * astral_offset)
+			if [astral.MIRRORS].has(astral_version):
+				ast.global_position = shadow.global_position
 			
 			if [astral.POLTERGEIST].has(astral_version):
 				endpoint.turn(source.facing_direction())
@@ -122,8 +124,10 @@ func react_to_astral_projection(input: bool, override: bool = false) -> void:
 		
 		#print([(endpoint.position / Vector2(256.0,224.0)),(source.position / Vector2(256.0,224.0))])
 		
-		if [astral.POLTERGEIST,astral.MIRRORS].has(astral_version):
-			summon_shadow()
+		if [astral.MIRRORS].has(astral_version):
+			summon_shadow.call_deferred()
+		if [astral.POLTERGEIST].has(astral_version):
+			summon_shadow.call_deferred(true)
 		
 		
 		
@@ -182,8 +186,8 @@ func restart_puzzle(input: int = 1) -> void:
 	
 
 
-func summon_shadow() -> void:
-	var target: Player = current_player(false)
+func summon_shadow(activity: bool = false) -> void:
+	var target: Player = current_player(activity)
 	shadow.global_position = target.global_position
 	shadow.animation = target.sprites[0].animation
 

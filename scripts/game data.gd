@@ -96,12 +96,12 @@ const tooltips: Array[Array] = [
 	,["2 / 4"]
 	,["3 / 4"]
 	,["4 / 4"]
-	,["1 / 6"]
-	,["2 / 6"]
-	,["3 / 6"]
-	,["4 / 6"]
-	,["5 / 6"]
-	,["6 / 6"]
+	,["1 / 5"]
+	,["2 / 5"]
+	,["3 / 5"]
+	,["4 / 5"]
+	,["5 / 5"]
+	,[""]
 	,["You cannot astral project at this time"]
 ]
 
@@ -125,8 +125,6 @@ func next_tooltip() -> Array[String]:
 			for item in t:
 				if item is String:
 					ans.append(item)
-	
-	print(ans.size())
 	
 	return ans
 	
