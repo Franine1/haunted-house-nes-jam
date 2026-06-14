@@ -49,8 +49,10 @@
 [ext_resource type="PackedScene" uid="uid://cyyw4qaml1uuq" path="res://scenes/objects/red_gate.tscn" id="47_6cunx"]
 [ext_resource type="PackedScene" uid="uid://bl1u4pogy7m7a" path="res://scenes/rooms/mirror_puzzle_4.tscn" id="48_qdpnv"]
 [ext_resource type="PackedScene" uid="uid://lrnuhaot1h86" path="res://scenes/rooms/mirror_puzzle_5.tscn" id="49_kkjb6"]
-[ext_resource type="Script" uid="uid://b4tvyhcvjuc5x" path="res://screen_loop.gd" id="50_pn4ud"]
+[ext_resource type="Script" uid="uid://b4tvyhcvjuc5x" path="res://scripts/screen_loop.gd" id="50_pn4ud"]
 [ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="51_s7hvo"]
+[ext_resource type="PackedScene" uid="uid://5drfhgf3rmi1" path="res://scenes/rooms/mirror_broken_room.tscn" id="52_edec8"]
+[ext_resource type="PackedScene" uid="uid://dijhhyifvoxb5" path="res://scenes/rooms/mirror_broken_hall.tscn" id="53_66k6b"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_biwtd"]
 normal = Vector2(1, 0)
@@ -86,6 +88,15 @@ size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edec8"]
 size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66k6b"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_63rtd"]
+size = Vector2(32, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x46id"]
+size = Vector2(96, 120)
 
 [node name="master_bedroom" type="Node2D" unique_id=1751356865]
 script = ExtResource("1_egkd1")
@@ -927,24 +938,6 @@ cue = "tooltip"
 value = 13
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueToggle" type="Node" parent="tooltip8/DialogueSection" unique_id=2041394486]
-script = ExtResource("20_21doy")
-cue = "camera_lock"
-value = 2
-compare_type = 1
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueToggle2" type="Node" parent="tooltip8/DialogueSection/DialogueToggle" unique_id=1123988343]
-script = ExtResource("20_21doy")
-cue = "finished_master"
-compare_type = 0
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueCue2" type="Node" parent="tooltip8/DialogueSection/DialogueToggle/DialogueToggle2" unique_id=1601655708]
-script = ExtResource("16_dpnb0")
-cue = "color"
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
 [node name="DialogueCue3" type="Node" parent="tooltip8/DialogueSection" unique_id=1743335501]
 script = ExtResource("16_dpnb0")
 cue = "camera_lock"
@@ -1035,6 +1028,9 @@ position = Vector2(1016, -984)
 [node name="Blockade13" parent="." unique_id=2072130091 instance=ExtResource("39_ebtjj")]
 position = Vector2(912, -1032)
 
+[node name="Blockade17" parent="." unique_id=1574345004 instance=ExtResource("39_ebtjj")]
+position = Vector2(880, -984)
+
 [node name="Blockade14" parent="." unique_id=1114556695 instance=ExtResource("39_ebtjj")]
 position = Vector2(800, -984)
 
@@ -1043,9 +1039,6 @@ position = Vector2(960, -984)
 
 [node name="Blockade16" parent="." unique_id=152741724 instance=ExtResource("40_ebtjj")]
 position = Vector2(880, -904)
-
-[node name="Blockade17" parent="." unique_id=842661171 instance=ExtResource("40_ebtjj")]
-position = Vector2(880, -984)
 
 [node name="Blockade18" parent="." unique_id=1325562665 instance=ExtResource("28_lu1v8")]
 position = Vector2(912, -984)
@@ -1304,6 +1297,7 @@ entry_activation = true
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ghost_reset6" unique_id=262563233]
+position = Vector2(0, 152)
 shape = ExtResource("18_vmeed")
 
 [node name="DialogueSection" type="Node" parent="ghost_reset6" unique_id=1677945903]
@@ -1619,25 +1613,14 @@ visible = false
 shape = SubResource("RectangleShape2D_84r03")
 
 [node name="ReflectionZone14" type="Area2D" parent="." unique_id=651466494]
-position = Vector2(1848, -808)
+position = Vector2(1800, -760)
 script = ExtResource("30_b08vw")
 reflect_Y = true
 reflection_ID = 10
 metadata/_custom_type_script = "uid://c015qt7f8xm1t"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReflectionZone14" unique_id=146051430]
-visible = false
-shape = SubResource("RectangleShape2D_84r03")
-
-[node name="ReflectionZone15" type="Area2D" parent="." unique_id=1818774184]
-position = Vector2(1848, -808)
-script = ExtResource("30_b08vw")
-reflect_X = true
-reflection_ID = 11
-metadata/_custom_type_script = "uid://c015qt7f8xm1t"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ReflectionZone15" unique_id=1592604926]
-visible = false
+position = Vector2(120, 0)
 shape = SubResource("RectangleShape2D_84r03")
 
 [node name="Blockade58" parent="." unique_id=2026336221 instance=ExtResource("25_gnron")]
@@ -1859,112 +1842,92 @@ position = Vector2(1512, -632)
 position = Vector2(1792, -896)
 
 [node name="InteractionZone38" parent="." unique_id=1371069141 instance=ExtResource("27_84r03")]
-position = Vector2(2008, -888)
-
-[node name="DialogueToggle" type="Node" parent="InteractionZone38" unique_id=989816582]
-script = ExtResource("20_21doy")
-cue = "finished_master"
-compare_type = 0
-metadata/_custom_type_script = "uid://4joi47i6a3tx"
-
-[node name="DialogueCue" type="Node" parent="InteractionZone38/DialogueToggle" unique_id=1675658498]
-script = ExtResource("16_dpnb0")
-cue = "delay"
-value = 10
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
-
-[node name="DialogueLines" type="Node" parent="InteractionZone38/DialogueToggle" unique_id=1996129382]
-script = ExtResource("23_l6lwf")
-lines = Array[String](["You should be able to go through that mirror now."])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
-[node name="DialogueCue2" type="Node" parent="InteractionZone38/DialogueToggle" unique_id=967141658]
-script = ExtResource("16_dpnb0")
-cue = "finished_master"
-value = 1
-metadata/_custom_type_script = "uid://xhrymkbacnrg"
+position = Vector2(2024, -872)
 
 [node name="InteractionZone39" parent="." unique_id=1438227735 instance=ExtResource("26_b08vw")]
-position = Vector2(1816, -856)
-
-[node name="InteractionZone40" parent="." unique_id=683868428 instance=ExtResource("35_5dyfj")]
-position = Vector2(1896, -792)
+position = Vector2(1800, -872)
 
 [node name="InteractionZone41" parent="." unique_id=1669258318 instance=ExtResource("35_5dyfj")]
-position = Vector2(2024, -776)
+position = Vector2(1880, -888)
 
 [node name="InteractionZone42" parent="." unique_id=1430105038 instance=ExtResource("36_vsxyk")]
-position = Vector2(2008, -680)
+position = Vector2(1944, -888)
 
 [node name="Blockade73" parent="." unique_id=1518714122 instance=ExtResource("38_dq3p1")]
-position = Vector2(2000, -856)
+position = Vector2(2008, -808)
 
 [node name="Blockade80" parent="." unique_id=623048444 instance=ExtResource("38_dq3p1")]
-position = Vector2(2000, -728)
+position = Vector2(1944, -840)
 
 [node name="Blockade92" parent="." unique_id=696270647 instance=ExtResource("38_dq3p1")]
-position = Vector2(1976, -704)
+position = Vector2(1976, -696)
 rotation = 1.5707964
 
 [node name="Blockade93" parent="." unique_id=1183831718 instance=ExtResource("38_dq3p1")]
-position = Vector2(1976, -832)
+position = Vector2(1976, -824)
 rotation = 1.5707964
 
 [node name="Blockade94" parent="." unique_id=1404411650 instance=ExtResource("38_dq3p1")]
-position = Vector2(1848, -832)
-rotation = 1.5707964
-
-[node name="Blockade95" parent="." unique_id=936445519 instance=ExtResource("38_dq3p1")]
-position = Vector2(1912, -768)
+position = Vector2(1928, -696)
 rotation = 1.5707964
 
 [node name="Blockade81" parent="." unique_id=1349581322 instance=ExtResource("39_ebtjj")]
-position = Vector2(1936, -808)
+position = Vector2(1816, -840)
 
 [node name="Blockade86" parent="." unique_id=1647387870 instance=ExtResource("39_ebtjj")]
-position = Vector2(1976, -768)
+position = Vector2(1912, -776)
+rotation = 1.5707964
+
+[node name="Blockade95" parent="." unique_id=1610927791 instance=ExtResource("39_ebtjj")]
+position = Vector2(1848, -744)
 rotation = 1.5707964
 
 [node name="Blockade87" parent="." unique_id=1063632837 instance=ExtResource("39_ebtjj")]
-position = Vector2(1912, -832)
+position = Vector2(1976, -872)
 rotation = 1.5707964
 
 [node name="Blockade88" parent="." unique_id=328731239 instance=ExtResource("39_ebtjj")]
-position = Vector2(2024, -832)
+position = Vector2(1912, -824)
 rotation = 1.5707964
 
 [node name="Blockade82" parent="." unique_id=301350159 instance=ExtResource("39_ebtjj")]
-position = Vector2(1872, -728)
-
-[node name="Blockade83" parent="." unique_id=1787663322 instance=ExtResource("40_ebtjj")]
-position = Vector2(1936, -728)
-
-[node name="Blockade89" parent="." unique_id=2085050184 instance=ExtResource("40_ebtjj")]
-position = Vector2(1912, -704)
+position = Vector2(1848, -824)
 rotation = 1.5707964
 
+[node name="Blockade83" parent="." unique_id=1787663322 instance=ExtResource("40_ebtjj")]
+position = Vector2(1816, -808)
+
+[node name="Blockade109" parent="." unique_id=478308132 instance=ExtResource("40_ebtjj")]
+position = Vector2(1768, -736)
+rotation = 1.5707964
+
+[node name="Blockade89" parent="." unique_id=2085050184 instance=ExtResource("40_ebtjj")]
+position = Vector2(1960, -728)
+
 [node name="Blockade90" parent="." unique_id=1970900977 instance=ExtResource("40_ebtjj")]
-position = Vector2(2024, -704)
+position = Vector2(1912, -872)
 rotation = 1.5707964
 
 [node name="Blockade91" parent="." unique_id=1270652246 instance=ExtResource("40_ebtjj")]
-position = Vector2(1848, -704)
-rotation = 1.5707964
+position = Vector2(1880, -808)
 
 [node name="Blockade84" parent="." unique_id=563718861 instance=ExtResource("40_ebtjj")]
-position = Vector2(1872, -808)
+position = Vector2(1880, -840)
 
 [node name="Blockade85" parent="." unique_id=385157427 instance=ExtResource("40_ebtjj")]
-position = Vector2(2000, -808)
+position = Vector2(2008, -840)
 
 [node name="small_mirror14" parent="." unique_id=1160980389 instance=ExtResource("37_dq3p1")]
-position = Vector2(1824, -808)
+position = Vector2(1824, -760)
 reflection_ID = 10
 
 [node name="small_mirror15" parent="." unique_id=1293311897 instance=ExtResource("37_dq3p1")]
-position = Vector2(1848, -768)
-rotation = 1.5707964
-reflection_ID = 11
+position = Vector2(1952, -760)
+reflection_ID = 10
+
+[node name="small_mirror16" parent="." unique_id=2082316773 instance=ExtResource("37_dq3p1")]
+position = Vector2(2000, -760)
+reflection_ID = 10
 
 [node name="InteractionZone43" parent="." unique_id=589218730 instance=ExtResource("26_b08vw")]
 position = Vector2(1704, -856)
@@ -1991,41 +1954,11 @@ reflect_X = true
 metadata/_custom_type_script = "uid://b4tvyhcvjuc5x"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLoop" unique_id=285791970]
-position = Vector2(-136, -48)
+position = Vector2(-136, -40)
 shape = ExtResource("15_s2aj0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ScreenLoop" unique_id=849052185]
-position = Vector2(136, -48)
-shape = ExtResource("15_s2aj0")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="ScreenLoop" unique_id=570174995]
-position = Vector2(136, 80)
-shape = ExtResource("15_s2aj0")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="ScreenLoop" unique_id=478656716]
-position = Vector2(-136, 80)
-shape = ExtResource("15_s2aj0")
-
-[node name="ScreenLoop2" type="Area2D" parent="." unique_id=1782946599]
-position = Vector2(1920, -784)
-script = ExtResource("50_pn4ud")
-reflect_Y = true
-metadata/_custom_type_script = "uid://b4tvyhcvjuc5x"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLoop2" unique_id=1056751937]
-position = Vector2(-48, -120)
-shape = ExtResource("15_s2aj0")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="ScreenLoop2" unique_id=1312640456]
-position = Vector2(16, -120)
-shape = ExtResource("15_s2aj0")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="ScreenLoop2" unique_id=835991133]
-position = Vector2(16, 120)
-shape = ExtResource("15_s2aj0")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="ScreenLoop2" unique_id=801064049]
-position = Vector2(-48, 120)
+position = Vector2(136, -40)
 shape = ExtResource("15_s2aj0")
 
 [node name="InteractionZone45" type="Area2D" parent="." unique_id=1712185934]
@@ -2049,6 +1982,22 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 script = ExtResource("16_dpnb0")
 cue = "volume"
 value = -2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone50" type="Area2D" parent="." unique_id=482899200]
+position = Vector2(1520, -992)
+script = ExtResource("14_g7nnd")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone50" unique_id=982526121]
+shape = ExtResource("15_s2aj0")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone50" unique_id=1326817254]
+script = ExtResource("16_dpnb0")
+cue = "host"
+value = 7
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="InteractionZone46" type="Area2D" parent="." unique_id=853046555]
@@ -2172,3 +2121,258 @@ metadata/_custom_type_script = "uid://xhrymkbacnrg"
 script = ExtResource("23_l6lwf")
 lines = Array[String](["Refuse"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="mirror_intermission" parent="." unique_id=453918704 instance=ExtResource("52_edec8")]
+position = Vector2(1024, -1344)
+
+[node name="lea_cutscene" type="Area2D" parent="." unique_id=1513558895]
+position = Vector2(1552, -992)
+script = ExtResource("14_g7nnd")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lea_cutscene" unique_id=2064486088]
+shape = ExtResource("15_s2aj0")
+
+[node name="DialogueSection" type="Node" parent="lea_cutscene" unique_id=1016699807]
+script = ExtResource("23_s4pab")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueCue3" type="Node" parent="lea_cutscene/DialogueSection" unique_id=953539995]
+script = ExtResource("16_dpnb0")
+cue = "volume"
+value = 3
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="lea_cutscene/DialogueSection" unique_id=1898108683]
+script = ExtResource("16_dpnb0")
+cue = "music"
+value = 10
+delay = 0.4
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue5" type="Node" parent="lea_cutscene/DialogueSection" unique_id=1209072469]
+script = ExtResource("16_dpnb0")
+cue = "break_mirror"
+value = 1
+delay = 0.33
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="lea_cutscene2" type="Area2D" parent="." unique_id=892451554]
+position = Vector2(1552, -1216)
+script = ExtResource("14_g7nnd")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lea_cutscene2" unique_id=186253749]
+visible = false
+position = Vector2(56, 0)
+shape = ExtResource("34_c2aab")
+
+[node name="DialogueSection" type="Node" parent="lea_cutscene2" unique_id=751811840]
+script = ExtResource("20_21doy")
+cue = "finished_master"
+value = 2
+compare_type = 4
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="lea_cutscene2/DialogueSection" unique_id=1537709956]
+script = ExtResource("16_dpnb0")
+cue = "delay"
+value = 10
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="lea_cutscene2/DialogueSection" unique_id=1739910888]
+script = ExtResource("23_l6lwf")
+lines = Array[String](["Was that... Lea?", "It happened fast, but it looked like she just destroyed the mirror you were in."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue2" type="Node" parent="lea_cutscene2/DialogueSection" unique_id=1150546432]
+script = ExtResource("16_dpnb0")
+cue = "finished_master"
+value = 3
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="TranslationPortal6" type="Area2D" parent="." unique_id=1219109293]
+position = Vector2(1616, -992)
+script = ExtResource("17_21doy")
+warp_offset = Vector2i(0, -14)
+cue = "break_mirror"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://2fxoxwt3c1kf"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TranslationPortal6" unique_id=2100949219]
+position = Vector2(-16, 0)
+shape = SubResource("RectangleShape2D_66k6b")
+
+[node name="InteractionZone51" type="Area2D" parent="." unique_id=1967976597]
+position = Vector2(1112, -1216)
+script = ExtResource("14_g7nnd")
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone51" unique_id=715181263]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_63rtd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone51" unique_id=458846928]
+position = Vector2(584, 0)
+shape = SubResource("RectangleShape2D_63rtd")
+
+[node name="DialogueLines" type="Node" parent="InteractionZone51" unique_id=1473038903]
+script = ExtResource("23_l6lwf")
+lines = Array[String](["The mirror is gone."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="InteractionZone57" type="Area2D" parent="." unique_id=100443162]
+position = Vector2(1824, -584)
+script = ExtResource("14_g7nnd")
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone57" unique_id=1132642354]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_63rtd")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone57" unique_id=2010035969]
+script = ExtResource("16_dpnb0")
+cue = "finished_master"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="ScreenLoop3" type="Area2D" parent="." unique_id=2027737501]
+position = Vector2(1408, -1456)
+script = ExtResource("50_pn4ud")
+reflect_X = true
+metadata/_custom_type_script = "uid://b4tvyhcvjuc5x"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenLoop3" unique_id=1141590523]
+position = Vector2(136, -32)
+shape = ExtResource("15_s2aj0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ScreenLoop3" unique_id=788184527]
+position = Vector2(136, 32)
+shape = ExtResource("15_s2aj0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ScreenLoop3" unique_id=1698310263]
+position = Vector2(-136, 32)
+shape = ExtResource("15_s2aj0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ScreenLoop3" unique_id=722415276]
+position = Vector2(-136, -32)
+shape = ExtResource("15_s2aj0")
+
+[node name="gloomy_hall" parent="." unique_id=2020902931 instance=ExtResource("53_66k6b")]
+position = Vector2(1280, -1568)
+
+[node name="InteractionZone52" type="Area2D" parent="." unique_id=1152727888]
+position = Vector2(1408, -1456)
+script = ExtResource("14_g7nnd")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone52" unique_id=1296871554]
+position = Vector2(-104, 0)
+shape = SubResource("RectangleShape2D_x46id")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractionZone52" unique_id=498722279]
+position = Vector2(104, 0)
+shape = SubResource("RectangleShape2D_x46id")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone52" unique_id=1952682823]
+script = ExtResource("16_dpnb0")
+cue = "camera_lock"
+value = 2
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone53" type="Area2D" parent="." unique_id=229077562]
+position = Vector2(1408, -1456)
+script = ExtResource("14_g7nnd")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone53" unique_id=2080766568]
+shape = SubResource("RectangleShape2D_x46id")
+
+[node name="DialogueCue" type="Node" parent="InteractionZone53" unique_id=1801343369]
+script = ExtResource("16_dpnb0")
+cue = "camera_lock"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="Blockade108" type="StaticBody2D" parent="." unique_id=1381833480]
+position = Vector2(1408, -1992)
+script = ExtResource("19_dpnb0")
+interact_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade108" unique_id=500216176]
+shape = ExtResource("18_vmeed")
+
+[node name="DialogueSection" type="Node" parent="Blockade108" unique_id=913626042]
+script = ExtResource("23_s4pab")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="Blockade108/DialogueSection" unique_id=661291215]
+script = ExtResource("23_l6lwf")
+lines = Array[String](["There's a door here."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueOption" type="Node" parent="Blockade108/DialogueSection" unique_id=1702427447]
+script = ExtResource("30_84r03")
+metadata/_custom_type_script = "uid://djmjjs20dmaub"
+
+[node name="DialogueSection" type="Node" parent="Blockade108/DialogueSection/DialogueOption" unique_id=573131819]
+script = ExtResource("23_s4pab")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueLines" type="Node" parent="Blockade108/DialogueSection/DialogueOption/DialogueSection" unique_id=328644057]
+script = ExtResource("23_l6lwf")
+lines = Array[String](["Knock", "The door swings open on its own."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="DialogueCue" type="Node" parent="Blockade108/DialogueSection/DialogueOption/DialogueSection" unique_id=1467428681]
+script = ExtResource("16_dpnb0")
+cue = "level"
+value = 7
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueLines" type="Node" parent="Blockade108/DialogueSection/DialogueOption" unique_id=788958298]
+script = ExtResource("23_l6lwf")
+lines = Array[String](["Do not"])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="Blockade110" parent="." unique_id=778646110 instance=ExtResource("47_6cunx")]
+position = Vector2(1896, -680)
+
+[node name="InteractionZone40" parent="." unique_id=6046231 instance=ExtResource("36_vsxyk")]
+position = Vector2(2024, -712)
+
+[node name="Blockade111" parent="." unique_id=37800835 instance=ExtResource("28_lu1v8")]
+position = Vector2(1944, -808)
+
+[node name="Blockade112" parent="." unique_id=678621320 instance=ExtResource("28_lu1v8")]
+position = Vector2(1848, -872)
+rotation = 1.5707964
+
+[node name="Blockade113" parent="." unique_id=848639061 instance=ExtResource("28_lu1v8")]
+position = Vector2(1848, -776)
+rotation = 1.5707964
+
+[node name="Blockade114" parent="." unique_id=136280897 instance=ExtResource("24_x8g7y")]
+position = Vector2(1720, -568)
+
+[node name="InteractionZone54" parent="." unique_id=711298446 instance=ExtResource("26_b08vw")]
+position = Vector2(1688, -536)
+
+[node name="Blockade115" parent="." unique_id=1334707465 instance=ExtResource("47_6cunx")]
+position = Vector2(1768, -600)
+rotation = 1.5707964
+
+[node name="InteractionZone55" parent="." unique_id=2022416819 instance=ExtResource("26_b08vw")]
+position = Vector2(1800, -712)
+
+[node name="InteractionZone56" parent="." unique_id=1168872795 instance=ExtResource("27_84r03")]
+position = Vector2(1960, -680)

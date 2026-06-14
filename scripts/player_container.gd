@@ -44,6 +44,7 @@ func _ready() -> void:
 	add_child(cue)
 	cue.add_cue("restart",restart_puzzle)
 	cue.add_cue("restart_ghost",reset_ghost)
+	cue.add_cue("restart_player",reset_player)
 	
 	astral_recently_enforced = Timer.new()
 	add_child(astral_recently_enforced)
@@ -196,5 +197,12 @@ func reset_ghost(input: int = 1) -> void:
 	if input != 0:
 		game_data.set_data("restart_ghost",0)
 		ast.global_position = game_data.get_ghost_restart_position()
+		
+		summon_shadow()
+
+func reset_player(input: int = 1) -> void:
+	if input != 0:
+		game_data.set_data("restart_player",0)
+		pl.global_position = game_data.get_restart_position()
 		
 		summon_shadow()

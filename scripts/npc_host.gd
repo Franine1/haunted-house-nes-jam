@@ -31,6 +31,9 @@ func host_cue(input: int) -> void:
 			global_position = Vector2(-1440.0,-16.0)
 		6:
 			global_position = Vector2(-1440.0,-16.0)
+		7:
+			global_position = Vector2(1684.0,-988.0)
+			turn(Vector2.LEFT)
 
 func interact(by: Player) -> void:
 	if interact_allowed:

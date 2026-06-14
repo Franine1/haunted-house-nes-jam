@@ -2,6 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://bdx5ryridtdof" path="res://resources/music/observed.wav" id="1_ocg0u"]
 [ext_resource type="AudioStream" uid="uid://dc1fyndkvtnql" path="res://resources/music/muted.wav" id="2_2nvdm"]
+[ext_resource type="AudioStream" uid="uid://b47n8y2f2t5la" path="res://resources/music/freedom.wav" id="3_tbk5f"]
 [ext_resource type="AudioStream" uid="uid://01gtok52n3iw" path="res://resources/music/objective.wav" id="3_xd1le"]
 [ext_resource type="AudioStream" uid="uid://cwtq1syf353qc" path="res://resources/music/rooms are moving.wav" id="4_t0b4g"]
 [ext_resource type="AudioStream" uid="uid://do1jq1l3x2r4r" path="res://resources/music/draining.wav" id="5_vqhc5"]
@@ -13,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://ccbxtj1cmbllq" path="res://resources/music/doppelganger.wav" id="9_vqhc5"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gpyor"]
-clip_count = 10
+clip_count = 11
 clip_0/name = &"Observed"
 clip_0/stream = ExtResource("1_ocg0u")
 clip_0/auto_advance = 0
@@ -44,6 +45,9 @@ clip_8/auto_advance = 0
 clip_9/name = &"Three Mirrors"
 clip_9/stream = ExtResource("7_8jmwk")
 clip_9/auto_advance = 0
+clip_10/name = &"Freedom"
+clip_10/stream = ExtResource("3_tbk5f")
+clip_10/auto_advance = 0
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 1.0,
