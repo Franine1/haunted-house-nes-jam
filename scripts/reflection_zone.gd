@@ -40,6 +40,34 @@ func enforce_distances(player_container: PlayerContainer, active_player: Player,
 	
 	var source_pos: Vector2 = active_player.final_position() / 16.0
 	source_pos += 0.5 * Vector2.ONE
+	
+	var final: Vector2 = reflect_point(source_pos)
+	
+	player_container.adjust_player_distances(final/screen)
+	
+	inactive_player.turn(active_player.facing_direction() * -1)
+
+
+func _process(_delta: float) -> void:
+	pass
+
+
+func reflect(input: int) -> void:
+	if input == 0 or reflection_ID == 0 or input == reflection_ID:
+		scan_bodies()
+
+
+func clamp_position(pos: Vector2,bounds: Rect2) -> Vector2:
+	return Vector2(clamp(pos.x,bounds.position.x,bounds.end.x),clamp(pos.y,bounds.position.y,bounds.end.y))
+
+
+func mirror_changed(input: int) -> void:
+	if input == 1:
+		scan_bodies()
+
+
+func reflect_point(source_pos: Vector2) -> Vector2:
+	
 	var reflect_vector: Vector2 = Vector2.LEFT if reflect_X else Vector2.RIGHT
 	reflect_vector += Vector2.UP if reflect_Y else Vector2.DOWN
 	
@@ -61,25 +89,6 @@ func enforce_distances(player_container: PlayerContainer, active_player: Player,
 	
 	
 	var final: Vector2 = best_pos - source_pos
-	player_container.adjust_player_distances(final/screen)
 	
 	
-	inactive_player.turn(active_player.facing_direction() * -1)
-
-
-func _process(_delta: float) -> void:
-	pass
-
-
-func reflect(input: int) -> void:
-	if input == 0 or reflection_ID == 0 or input == reflection_ID:
-		scan_bodies()
-
-
-func clamp_position(pos: Vector2,bounds: Rect2) -> Vector2:
-	return Vector2(clamp(pos.x,bounds.position.x,bounds.end.x),clamp(pos.y,bounds.position.y,bounds.end.y))
-
-
-func mirror_changed(input: int) -> void:
-	if input == 1:
-		scan_bodies()
+	return final

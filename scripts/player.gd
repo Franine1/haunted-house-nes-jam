@@ -120,6 +120,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		projection_time = clamp(projection_time - delta,0.0,max_projection_time)
 	
+	
 	if toggle:
 		fix_camera(camera_instant)
 	move_and_slide()
@@ -135,6 +136,8 @@ func fix_camera(instant: bool = false) -> void:
 	transl = transl.round()
 	transl += camera_snap_axis
 	transl *= 16.0
+	
+	
 	if toggle:
 		if instant:
 			camera.warp(transl)

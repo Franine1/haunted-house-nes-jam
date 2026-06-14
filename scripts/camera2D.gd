@@ -63,7 +63,12 @@ func _process(delta: float) -> void:
 	blackout_sprite.z_index = blackout_layer
 	blackout_sprite.modulate.a = 1.0 if blackout_timer.is_stopped() else (blackout_timer.time_left/fade_time)
 	
-	if !arrived:
+	var lock_id: int = 1 if get_parent().astral_mode else 2
+	var locked: int = GameCue.get_cue("camera_lock")
+	
+	if (lock_id & locked):
+		get_tree().paused = false
+	elif !arrived:
 		# if we're still gliding, then move to the position over time
 		get_tree().paused = true
 		# screen size times three, so we move three screen lengths a second
