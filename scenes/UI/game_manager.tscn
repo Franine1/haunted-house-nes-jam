@@ -281,7 +281,7 @@ metadata/_custom_type_script = "uid://lrhymco58lj0"
 
 [node name="DialogueLines" type="Node" parent="menu system/game saves/choose/DialogueOption/back" unique_id=1139575374]
 script = ExtResource("5_34ocb")
-lines = Array[String](["Cancel"])
+lines = Array[String](["*Cancel"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueCue" type="Node" parent="menu system/game saves/choose/DialogueOption/back" unique_id=2122784905]
@@ -485,12 +485,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="pause_menu/HBoxContainer" unique_id=1043652519]
+[node name="pause_all" type="VBoxContainer" parent="pause_menu/HBoxContainer" unique_id=1043652519]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="pause_menu/HBoxContainer/VBoxContainer2" unique_id=702563883]
+[node name="pause_header" type="RichTextLabel" parent="pause_menu/HBoxContainer/pause_all" unique_id=702563883]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_tl5mg")
@@ -500,7 +501,7 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="pause_menu/HBoxContainer/VBoxContainer2" unique_id=2292972]
+[node name="pause_textbox" type="VBoxContainer" parent="pause_menu/HBoxContainer/pause_all" unique_id=2292972]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

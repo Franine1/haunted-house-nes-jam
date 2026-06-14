@@ -34,6 +34,8 @@ var restart_position: Vector2 = Vector2.ZERO
 var ghost_restart_position: Vector2 = Vector2.ZERO
 ## path to save files to
 const savepath: String = "user://savedgames/"
+## time this slot has been played for
+var play_time: float = 0.0
 
 
 ## TODO: fully implement this
@@ -74,6 +76,15 @@ const savepath: String = "user://savedgames/"
 ##
 ##
 ## INFO: "omen", "wonder", "ominous": these tags are meant for limited time interactions
+
+
+
+enum variables {
+	POSITIONING,
+	DATA,
+	TIME
+}
+
 
 
 
@@ -255,6 +266,8 @@ func accept_movement(npc_id: int) -> Array[CutscenePath]:
 func reset_game() -> void:
 	data.clear()
 	player_position = Vector4.ZERO
+	astral_position = Vector2.ZERO
+	play_time = 0.0
 	set_data("music",1)
 
 
@@ -267,7 +280,11 @@ func save_game(slot: int) -> void:
 	var temp = [player_position[0],player_position[1],player_position[2],player_position[3],astral_position[0],astral_position[1]]
 	file.store_csv_line(prepare_csv(temp))
 	
+	file.store_csv_line(["time",play_time])
+	
 	for key in data.keys():
+		if key == "time":
+			continue
 		file.store_csv_line(prepare_csv([key,data[key]]))
 	
 	file.close() 
@@ -278,9 +295,41 @@ func load_game(slot: int) -> bool:
 	ensure_folder()
 	reset_game()
 	
+	var ans = get_game(slot)
+	
+	if ans.has(variables.POSITIONING):
+		var posit = ans[variables.POSITIONING]
+		player_position = posit["player"]
+		astral_position = posit["astral"]
+	if ans.has(variables.TIME):
+		play_time = ans[variables.TIME]["default"]
+	
+	if ans.has(variables.DATA):
+		var sub: Dictionary[String,int] = ans[variables.DATA]
+	
+		for key in sub.keys():
+			data[key] = sub[key]
+	
+	data_change.emit("music",data["music"])
+	data_change.emit("volume",data["volume"])
+	
+	return true
+
+
+
+## loads a save slot into game data
+func get_game(slot: int) -> Dictionary[variables,Dictionary]:
+	ensure_folder()
+	
+	var ans: Dictionary[variables,Dictionary] = {}
+	
 	var file: FileAccess = FileAccess.open(get_slot_name(slot),FileAccess.READ)
 	if file == null:
-		return false
+		return ans
+	
+	var tt: Dictionary[String, int] = {}
+	
+	ans[variables.DATA] = tt
 	
 	var repos: bool = false
 	
@@ -296,22 +345,26 @@ func load_game(slot: int) -> bool:
 				else:
 					result.append(0.0)
 			
-			player_position = Vector4(result[0],result[1],result[2],result[3])
-			astral_position = Vector2(result[4],result[5])
+			var player1: Vector4 = Vector4(result[0],result[1],result[2],result[3])
+			var astral1: Vector2 = Vector2(result[4],result[5])
 			
+			ans[variables.POSITIONING] = {
+				"player": player1
+				,"astral": astral1
+			}
 		else:
 			if next.size() >= 2:
 				var key: String = next.get(0)
-				var result: int = int(next.get(1))
-				
-				data[key] = result
+				if key == "time":
+					ans[variables.TIME] = {"default": float(next.get(1))}
+				else:
+					var result: int = int(next.get(1))
+					ans[variables.DATA][key] = result
 	
 	file.close() 
 	
-	data_change.emit("music",data["music"])
-	data_change.emit("volume",data["volume"])
-	
-	return true
+	return ans
+
 
 
 ## deletes a save slot
@@ -387,3 +440,6 @@ func set_ghost_restart_position(input: Vector2) -> void:
 ## returns the global position of the player
 func get_ghost_restart_position() -> Vector2:
 	return ghost_restart_position
+
+func store_play_time(input: float) -> void:
+	play_time += input

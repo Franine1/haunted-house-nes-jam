@@ -2302,44 +2302,44 @@ script = ExtResource("16_dpnb0")
 cue = "camera_lock"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="Blockade108" type="StaticBody2D" parent="." unique_id=1381833480]
+[node name="path to lvl7" type="StaticBody2D" parent="." unique_id=1381833480]
 position = Vector2(1408, -1992)
 script = ExtResource("19_dpnb0")
 interact_activation = true
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade108" unique_id=500216176]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="path to lvl7" unique_id=500216176]
 shape = ExtResource("18_vmeed")
 
-[node name="DialogueSection" type="Node" parent="Blockade108" unique_id=913626042]
+[node name="DialogueSection" type="Node" parent="path to lvl7" unique_id=913626042]
 script = ExtResource("23_s4pab")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="Blockade108/DialogueSection" unique_id=661291215]
+[node name="DialogueLines" type="Node" parent="path to lvl7/DialogueSection" unique_id=661291215]
 script = ExtResource("23_l6lwf")
 lines = Array[String](["There's a door here."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueOption" type="Node" parent="Blockade108/DialogueSection" unique_id=1702427447]
+[node name="DialogueOption" type="Node" parent="path to lvl7/DialogueSection" unique_id=1702427447]
 script = ExtResource("30_84r03")
 metadata/_custom_type_script = "uid://djmjjs20dmaub"
 
-[node name="DialogueSection" type="Node" parent="Blockade108/DialogueSection/DialogueOption" unique_id=573131819]
+[node name="DialogueSection" type="Node" parent="path to lvl7/DialogueSection/DialogueOption" unique_id=573131819]
 script = ExtResource("23_s4pab")
 metadata/_custom_type_script = "uid://lrhymco58lj0"
 
-[node name="DialogueLines" type="Node" parent="Blockade108/DialogueSection/DialogueOption/DialogueSection" unique_id=328644057]
+[node name="DialogueLines" type="Node" parent="path to lvl7/DialogueSection/DialogueOption/DialogueSection" unique_id=328644057]
 script = ExtResource("23_l6lwf")
 lines = Array[String](["Knock", "The door swings open on its own."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="DialogueCue" type="Node" parent="Blockade108/DialogueSection/DialogueOption/DialogueSection" unique_id=1467428681]
+[node name="DialogueCue" type="Node" parent="path to lvl7/DialogueSection/DialogueOption/DialogueSection" unique_id=1467428681]
 script = ExtResource("16_dpnb0")
 cue = "level"
 value = 7
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="DialogueLines" type="Node" parent="Blockade108/DialogueSection/DialogueOption" unique_id=788958298]
+[node name="DialogueLines" type="Node" parent="path to lvl7/DialogueSection/DialogueOption" unique_id=788958298]
 script = ExtResource("23_l6lwf")
 lines = Array[String](["Do not"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

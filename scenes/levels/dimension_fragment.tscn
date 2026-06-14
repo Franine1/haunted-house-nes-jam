@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dwhdvfrlrh3ac"]
+
+[ext_resource type="Script" uid="uid://56yoruxpggjg" path="res://scripts/level.gd" id="1_l0j1j"]
+
+[node name="dimension fragment" type="Node2D" unique_id=111966107]
+script = ExtResource("1_l0j1j")
+metadata/_custom_type_script = "uid://56yoruxpggjg"

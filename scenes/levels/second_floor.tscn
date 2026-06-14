@@ -496,7 +496,7 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueLines2" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle5/DialogueToggle7/DialogueToggle2" unique_id=1198954952]
 script = ExtResource("16_2waup")
-lines = Array[String](["Sucks to say, but I already devoured al the rest of the peanut butter around here.", "You're gonna have to look, like, really far and wide if you wanna find some more.", "The good news is, now that you know what it looks like, I bet you'll be able to spot peanut butter where you didn't notice it before! Heh heh!"])
+lines = Array[String](["Sucks to say, but I already devoured all the rest of the peanut butter around here.", "You're gonna have to look, like, really far and wide if you wanna find some more.", "The good news is, now that you know what it looks like, I bet you'll be able to spot peanut butter where you didn't notice it before! Heh heh!"])
 name_id = 4
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
@@ -528,7 +528,7 @@ metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueLines4" type="Node" parent="peanut biter/DialogueSection/DialogueToggle/DialogueLoop/DialogueToggle2/DialogueOption/DialogueToggle4/DialogueToggle6/DialogueToggle" unique_id=1159212106]
 script = ExtResource("16_2waup")
-lines = Array[String](["THat depends. You got any peanut butter?"])
+lines = Array[String](["That depends. You got any peanut butter?"])
 name_id = 4
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 

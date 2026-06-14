@@ -15,7 +15,7 @@ extends Control
 ## Displays all pause-menu related icons
 @onready var pause_menu: Control = %pause_menu
 ## Holds the pause menu options
-@onready var pause_options: VBoxContainer = %VBoxContainer
+@onready var pause_options: VBoxContainer = %pause_textbox
 ## Automatically signals the game when certain events occur
 @onready var cue: GameCue = %GameCue
 ## Dialogue scripts used for the menu system
@@ -25,8 +25,13 @@ extends Control
 
 
 
+
+
 ## Used to create textboxes
 const textbox: PackedScene = preload("res://scenes/UI/textbox.tscn")
+## Used to display save files
+const save_slot: PackedScene = preload("res://scenes/UI/save_slot.tscn")
+
 ## the GameData resource to read data changes from
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
 ## List of which levels it can switch between
@@ -104,6 +109,9 @@ var substate: int = 0
 var current_tooltip: int = 0
 
 
+## elapsed game time
+var elapsed_time: float = 0.0
+
 ## Sets up the input dialogue to be displayed on screen
 func read_dialogue(input: Dialogue) -> void:
 	input.reset_dialogue()
@@ -134,6 +142,10 @@ func read_dialogue(input: Dialogue) -> void:
 	substate = 0
 
 func _process(delta: float) -> void:
+	
+	if [game_state.GAME,game_state.DIALOGUE].has(current_state):
+		elapsed_time += delta
+	
 	
 	# swaps to the currect behavior based on the current game state
 	match current_state:
@@ -291,6 +303,7 @@ func game_behavior(_delta: float) -> void:
 	text_holder.hide()
 	game_world.handle_input_locally = true
 	
+	
 	# attempts to refresh the color pallete every so often
 	if color_timer.is_stopped():
 		for child in game_world.get_children():
@@ -393,6 +406,10 @@ func remove_textboxes(target: Control) -> void:
 		if child is Textbox:
 			target.remove_child(child)
 			child.queue_free()
+		if child is SaveSlot:
+			target.remove_child(child)
+			child.queue_free()
+		
 
 
 ## deletes old dialogue boxes and adds in new ones based on the current needs
@@ -422,6 +439,37 @@ func fill_dialogue(delay: float, match_letters: bool = false, target: Control = 
 	return true
 
 
+## deletes old dialogue boxes and adds in new ones based on the current needs
+## return is whether or not there is more dialogue
+func fill_save_slots(target: Control = text_holder) -> bool:
+	
+	remove_textboxes(target)
+	
+	# if the current dialogue is done, simply delete these old textboxes
+	# and go back to the game instead. 
+	if dialogue_script.dialogue_finished():
+		dialogue_script.dialogue_finished(true)
+		return false
+	
+	stored_text = dialogue_script.line()
+	
+	var i: int = 0
+	for line in stored_text:
+		if line[0] == "*":
+			add_textboxes([line.substr(1)],0.0,target)
+		elif [">","`","~"].has(line[0]) and line[1] == "*":
+			add_textboxes([line[0] + line.substr(2)],0.0,target)
+			
+		else:
+			var temp: SaveSlot = save_slot.instantiate()
+			target.add_child(temp)
+			temp.display_from_text(line,i)
+			i += 1
+	
+	return true
+
+
+
 func add_textboxes(input: Array[String], delay: float, target: Control) -> void:
 	for line in input:
 			var temp: Textbox = textbox.instantiate()
@@ -437,9 +485,14 @@ func menu_behavior(_delta: float) -> void:
 	game_world.handle_input_locally = false
 	
 	
+	var use_save_slots: bool = (game_data.get_data("menu") == 2) and game_data.get_data("confirm") != -1
+	
+	$pause_menu/HBoxContainer/pause_all/RichTextLabel.size_flags_stretch_ratio = 0.3 if use_save_slots else 1.0
+	$pause_menu/HBoxContainer/pause_all.size_flags_stretch_ratio = 5.0 if use_save_slots else 3.0
 	
 	var target: Control = pause_options
 	
+	%pause_header.visible = (default_menu == 1)
 	
 	if !dialogue_timer.is_stopped():
 		substate = 1
@@ -457,7 +510,11 @@ func menu_behavior(_delta: float) -> void:
 			substate = 1
 			
 		1: ## fill in dialogue into the chosen window
-			var more: bool = fill_dialogue(0.012,false,target)
+			var more: bool
+			if use_save_slots:
+				more = fill_save_slots(target)
+			else:
+				more = fill_dialogue(0.012,false,target)
 			substate = 3
 			## reset if the current dialogue tree ended, otherwise fill all letters
 			if more:
@@ -482,7 +539,14 @@ func menu_behavior(_delta: float) -> void:
 				else:
 					for i in temp.size():
 						if temp[i] != stored_text[i]:
-							fill_dialogue(0.012,true,target)
+							if use_save_slots:
+								fill_save_slots(target)
+								for box in target.get_children():
+									if box is Textbox:
+										box.finish_letters()
+										box.set_centered()
+							else:
+								fill_dialogue(0.012,true,target)
 							break
 			
 			if read_a:
@@ -567,6 +631,10 @@ func pause_requested(pausing: bool = true) -> void:
 	game_data.set_data("menu",default_menu)
 	game_data.set_data("saved",0)
 	clear_menu_data()
+	
+	game_data.store_play_time(elapsed_time)
+	elapsed_time = 0.0
+
 
 func clear_menu_data() -> void:
 	
@@ -579,4 +647,4 @@ func start_game(is_new: bool = true) -> void:
 	get_tree().paused = false
 	change_level(game_data.get_data("level"),true,!is_new)
 	
-	
+	elapsed_time = 0.0
