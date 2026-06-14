@@ -487,7 +487,7 @@ func menu_behavior(_delta: float) -> void:
 	
 	var use_save_slots: bool = (game_data.get_data("menu") == 2) and game_data.get_data("confirm") != -1
 	
-	$pause_menu/HBoxContainer/pause_all/RichTextLabel.size_flags_stretch_ratio = 0.3 if use_save_slots else 1.0
+	%pause_header.size_flags_stretch_ratio = 0.3 if use_save_slots else 1.0
 	$pause_menu/HBoxContainer/pause_all.size_flags_stretch_ratio = 5.0 if use_save_slots else 3.0
 	
 	var target: Control = pause_options
