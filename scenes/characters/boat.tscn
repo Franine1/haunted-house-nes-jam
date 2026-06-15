@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://bjmo0ca38roc1"]
 
 [ext_resource type="Script" uid="uid://jtb1cg1n1k0i" path="res://scripts/boat.gd" id="1_getc1"]
-[ext_resource type="Texture2D" uid="uid://67vb6pab6cw" path="res://assets/car.png" id="2_getc1"]
 [ext_resource type="Material" uid="uid://b8jlb2n6kiqe6" path="res://resources/palettes/brownpallete.tres" id="2_ivay7"]
+[ext_resource type="Texture2D" uid="uid://bpkmc062pejs3" path="res://assets/furniture.png" id="3_3sxwk"]
 [ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="4_ivay7"]
 [ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="5_png02"]
 [ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="6_ffovt"]
 [ext_resource type="Script" uid="uid://bbr1g3c52vcnu" path="res://scripts/DialogueMovement.gd" id="6_i2opl"]
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="7_0ndey"]
 [ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="7_3sxwk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ndey"]
+atlas = ExtResource("3_3sxwk")
+region = Rect2(96, 80, 32, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2opl"]
 size = Vector2(32, 48)
@@ -22,7 +26,7 @@ metadata/_custom_type_script = "uid://wqtobb22r6fk"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=457145773]
 material = ExtResource("2_ivay7")
-texture = ExtResource("2_getc1")
+texture = SubResource("AtlasTexture_0ndey")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1261751026]
 build_mode = 1

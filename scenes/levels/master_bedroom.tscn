@@ -50,7 +50,7 @@
 [ext_resource type="PackedScene" uid="uid://bl1u4pogy7m7a" path="res://scenes/rooms/mirror_puzzle_4.tscn" id="48_qdpnv"]
 [ext_resource type="PackedScene" uid="uid://lrnuhaot1h86" path="res://scenes/rooms/mirror_puzzle_5.tscn" id="49_kkjb6"]
 [ext_resource type="Script" uid="uid://b4tvyhcvjuc5x" path="res://scripts/screen_loop.gd" id="50_pn4ud"]
-[ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="51_s7hvo"]
+[ext_resource type="Texture2D" uid="uid://mh7mij47okx8" path="res://resources/sprite frames/fixed_mirror.tres" id="51_66k6b"]
 [ext_resource type="PackedScene" uid="uid://5drfhgf3rmi1" path="res://scenes/rooms/mirror_broken_room.tscn" id="52_edec8"]
 [ext_resource type="PackedScene" uid="uid://dijhhyifvoxb5" path="res://scenes/rooms/mirror_broken_hall.tscn" id="53_66k6b"]
 
@@ -223,6 +223,11 @@ cue = "volume"
 value = -1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
+[node name="DialogueCue3" type="Node" parent="InteractionZone/DialogueSection" unique_id=1523100484]
+script = ExtResource("16_dpnb0")
+cue = "tooltip"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="InteractionZone5" type="Area2D" parent="." unique_id=1291347393]
 position = Vector2(528, -1200)
 script = ExtResource("14_g7nnd")
@@ -249,7 +254,7 @@ cue = "volume"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="InteractionZone2" type="Area2D" parent="." unique_id=1741775008]
-position = Vector2(264, -1176)
+position = Vector2(352, -1176)
 script = ExtResource("14_g7nnd")
 interact_activation = false
 entry_activation = true
@@ -266,6 +271,32 @@ metadata/_custom_type_script = "uid://lrhymco58lj0"
 [node name="DialogueCue" type="Node" parent="InteractionZone2/DialogueSection" unique_id=1137479781]
 script = ExtResource("16_dpnb0")
 cue = "color"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone2/DialogueSection" unique_id=1476433725]
+script = ExtResource("16_dpnb0")
+cue = "tooltip"
+value = 14
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="InteractionZone58" type="Area2D" parent="." unique_id=174916473]
+position = Vector2(576, -1200)
+script = ExtResource("14_g7nnd")
+interact_activation = false
+entry_activation = true
+metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone58" unique_id=1854074620]
+position = Vector2(-56, 0)
+shape = ExtResource("18_vmeed")
+
+[node name="DialogueSection" type="Node" parent="InteractionZone58" unique_id=182956992]
+script = ExtResource("23_s4pab")
+metadata/_custom_type_script = "uid://lrhymco58lj0"
+
+[node name="DialogueCue2" type="Node" parent="InteractionZone58/DialogueSection" unique_id=90485267]
+script = ExtResource("16_dpnb0")
+cue = "tooltip"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="TranslationPortal" type="Area2D" parent="." unique_id=724964882]
@@ -2070,6 +2101,7 @@ polygon = PackedVector2Array(32, -32, 48, -48, 48, 48, -48, 48, -48, -48, 48, -4
 position = Vector2(1408, -768)
 script = ExtResource("19_dpnb0")
 interact_activation = true
+material_layer = 26
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade107" unique_id=1398964554]
@@ -2077,8 +2109,7 @@ visible = false
 shape = SubResource("RectangleShape2D_edec8")
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade107" unique_id=1368159096]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("51_s7hvo")
+texture = ExtResource("51_66k6b")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Blockade107" unique_id=534826115]
 visible = false
@@ -2087,8 +2118,7 @@ shape = SubResource("RectangleShape2D_edec8")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Blockade107" unique_id=738594710]
 position = Vector2(0, -223.99998)
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("51_s7hvo")
+texture = ExtResource("51_66k6b")
 
 [node name="DialogueSection" type="Node" parent="Blockade107" unique_id=2111338967]
 script = ExtResource("23_s4pab")

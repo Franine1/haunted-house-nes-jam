@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://fyasyw3ur26y"]
+
+[ext_resource type="Shader" uid="uid://b7sks3iuk0ea8" path="res://scripts/player.gdshader" id="1_stybe"]
+
+[resource]
+shader = ExtResource("1_stybe")
+shader_parameter/grey1 = Color(0, 0, 0, 1)
+shader_parameter/col1 = Color(0, 0, 0, 1)
+shader_parameter/grey2 = Color(0, 0, 0, 1)
+shader_parameter/col2 = Color(0, 0, 0, 1)
+shader_parameter/grey3 = Color(0, 0, 0, 1)
+shader_parameter/col3 = Color(0, 0, 0, 1)
+shader_parameter/grey4 = Color(0, 0, 0, 1)
+shader_parameter/col4 = Color(0, 0, 0, 1)
+shader_parameter/opacity = 1.0
+shader_parameter/opacity_enabled = false

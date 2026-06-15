@@ -62,7 +62,7 @@ modulate = Color(0.3137255, 0.3137255, 0.3137255, 0.7529412)
 z_index = 4
 position = Vector2(-10000, 0)
 sprite_frames = ExtResource("4_atpat")
-animation = &"down"
+animation = &"up"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1338080857]
 unique_name_in_owner = true

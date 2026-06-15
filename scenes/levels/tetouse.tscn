@@ -9,12 +9,16 @@
 [ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="6_vg15a"]
 [ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="7_38uu6"]
 [ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="7_w6pbh"]
+[ext_resource type="Script" uid="uid://ckgko44c6nyac" path="res://scripts/blockade.gd" id="10_qjt7r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6pbh"]
 size = Vector2(30, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gmymq"]
 size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5med"]
+size = Vector2(442, 128)
 
 [node name="Tetouse" type="Node2D" unique_id=2053973878]
 script = ExtResource("1_gmymq")
@@ -108,3 +112,20 @@ script = ExtResource("5_gmymq")
 cue = "forced"
 value = -1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="Blockade" type="StaticBody2D" parent="." unique_id=1455504896]
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("10_qjt7r")
+interact_activation = true
+collide_activation = true
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade" unique_id=548591513]
+position = Vector2(-211, 624)
+shape = SubResource("RectangleShape2D_u5med")
+
+[node name="DialogueLines" type="Node" parent="Blockade" unique_id=2024336108]
+script = ExtResource("7_w6pbh")
+lines = Array[String](["You can't go back now..."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

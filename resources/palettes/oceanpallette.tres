@@ -5,11 +5,11 @@
 [resource]
 shader = ExtResource("1_aeh16")
 shader_parameter/grey1 = Color(1, 1, 1, 1)
-shader_parameter/col1 = Color(0.70980394, 0.9254902, 0.9529412, 1)
+shader_parameter/col1 = Color(0.39215687, 0.6901961, 0.99607843, 1)
 shader_parameter/grey2 = Color(0.6627451, 0.6627451, 0.6627451, 1)
-shader_parameter/col2 = Color(0, 0.4862745, 0.5568628, 1)
+shader_parameter/col2 = Color(0.08235294, 0.37254903, 0.85490197, 1)
 shader_parameter/grey3 = Color(0.39607844, 0.39607844, 0.39607844, 1)
-shader_parameter/col3 = Color(0, 0.2509804, 0.30588236, 1)
+shader_parameter/col3 = Color(0, 0.16470589, 0.53333336, 1)
 shader_parameter/grey4 = Color(0, 0, 0, 1)
 shader_parameter/col4 = Color(0, 0, 0, 1)
 shader_parameter/opacity = 1.0

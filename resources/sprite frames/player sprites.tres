@@ -2,51 +2,51 @@
 
 [ext_resource type="Texture2D" uid="uid://yh54yok7708r" path="res://assets/girlsprite.png" id="1_6b1aw"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_76oj4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6b1aw"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dyp2m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu2lb"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_atpat"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo5r5"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kqtwu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ckb"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(0, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6eyoc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7imue"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(16, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eojnx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8t72"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(32, 32, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qgnko"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2oyu"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(0, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7vyk4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmiok"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(16, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2l4js"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_uey85"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(32, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jk2m4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvfqh"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xhtjm"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_da8r7"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(16, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k4v7y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1aoa"]
 atlas = ExtResource("1_6b1aw")
 region = Rect2(32, 16, 16, 16)
 
@@ -54,13 +54,13 @@ region = Rect2(32, 16, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_76oj4")
+"texture": SubResource("AtlasTexture_6b1aw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dyp2m")
+"texture": SubResource("AtlasTexture_gu2lb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_atpat")
+"texture": SubResource("AtlasTexture_yo5r5")
 }],
 "loop": true,
 "name": &"down",
@@ -68,13 +68,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kqtwu")
+"texture": SubResource("AtlasTexture_a8ckb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6eyoc")
+"texture": SubResource("AtlasTexture_7imue")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eojnx")
+"texture": SubResource("AtlasTexture_g8t72")
 }],
 "loop": true,
 "name": &"left",
@@ -82,13 +82,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qgnko")
+"texture": SubResource("AtlasTexture_l2oyu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7vyk4")
+"texture": SubResource("AtlasTexture_vmiok")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2l4js")
+"texture": SubResource("AtlasTexture_uey85")
 }],
 "loop": true,
 "name": &"right",
@@ -96,13 +96,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jk2m4")
+"texture": SubResource("AtlasTexture_yvfqh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xhtjm")
+"texture": SubResource("AtlasTexture_da8r7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k4v7y")
+"texture": SubResource("AtlasTexture_m1aoa")
 }],
 "loop": true,
 "name": &"up",

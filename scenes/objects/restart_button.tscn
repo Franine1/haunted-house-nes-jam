@@ -2,22 +2,28 @@
 
 [ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="1_2nti3"]
 [ext_resource type="Shape2D" uid="uid://bbvt0g7t3h4t5" path="res://resources/shapes/default_collider.tres" id="2_7w2lm"]
-[ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="3_yog2l"]
+[ext_resource type="Texture2D" uid="uid://bpkmc062pejs3" path="res://assets/furniture.png" id="3_2nti3"]
+[ext_resource type="Material" uid="uid://dra6hdwn2gb3c" path="res://resources/palettes/restart_pallette.tres" id="3_7w2lm"]
 [ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="4_7yno7"]
 [ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="5_vnjvs"]
 [ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="6_ujvcx"]
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="7_7l4og"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7w2lm"]
+atlas = ExtResource("3_2nti3")
+region = Rect2(64, 64, 16, 16)
+
 [node name="restart button" type="Area2D" unique_id=261233939]
 script = ExtResource("1_2nti3")
+material_layer = 29
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=375680364]
 shape = ExtResource("2_7w2lm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1409648092]
-scale = Vector2(0.09, 0.09)
-texture = ExtResource("3_yog2l")
+material = ExtResource("3_7w2lm")
+texture = SubResource("AtlasTexture_7w2lm")
 
 [node name="DialogueSection" type="Node" parent="." unique_id=968444907]
 script = ExtResource("4_7yno7")

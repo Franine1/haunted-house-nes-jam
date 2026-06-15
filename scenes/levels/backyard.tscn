@@ -42,14 +42,15 @@
 [ext_resource type="Script" uid="uid://cpock2di8p6cc" path="res://scripts/restart_zone.gd" id="40_glejs"]
 [ext_resource type="PackedScene" uid="uid://t6xdn3qnt63f" path="res://scenes/objects/restart_button.tscn" id="41_dubx6"]
 [ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="42_dm8c6"]
+[ext_resource type="Texture2D" uid="uid://buuvwv2wnuljj" path="res://resources/sprite frames/shelf.tres" id="42_tbq5q"]
 [ext_resource type="Shape2D" uid="uid://bbvt0g7t3h4t5" path="res://resources/shapes/default_collider.tres" id="43_hvsi4"]
+[ext_resource type="Texture2D" uid="uid://bpkmc062pejs3" path="res://assets/furniture.png" id="43_mp5tv"]
 [ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="44_23sco"]
 [ext_resource type="Script" uid="uid://bbr1g3c52vcnu" path="res://scripts/DialogueMovement.gd" id="45_6uvyw"]
 [ext_resource type="PackedScene" uid="uid://dvfo35a0vg41u" path="res://scenes/rooms/shed_inside.tscn" id="45_d3spb"]
 [ext_resource type="PackedScene" uid="uid://bbsy7n1yt4gko" path="res://scenes/rooms/shed_ghost_inside.tscn" id="46_4e4xs"]
 [ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="46_4eqvt"]
 [ext_resource type="PackedScene" uid="uid://vgkqsy77ky76" path="res://scenes/portals/translation/default_translation.tscn" id="47_4eqvt"]
-[ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="49_4eqvt"]
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="50_aeeq7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54bbv"]
@@ -69,6 +70,10 @@ size = Vector2(32, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uvyw"]
 size = Vector2(48, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x3me"]
+atlas = ExtResource("43_mp5tv")
+region = Rect2(80, 80, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbq5q"]
 size = Vector2(32, 34)
@@ -1204,6 +1209,7 @@ shape = SubResource("RectangleShape2D_4e4xs")
 position = Vector2(-648, -360)
 script = ExtResource("2_22su0")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade11" unique_id=332722782]
@@ -1211,8 +1217,8 @@ visible = false
 shape = SubResource("RectangleShape2D_6uvyw")
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade11" unique_id=585196039]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("49_4eqvt")
+position = Vector2(0, -8)
+texture = ExtResource("42_tbq5q")
 
 [node name="DialogueLines" type="Node" parent="Blockade11" unique_id=1184565737]
 script = ExtResource("44_23sco")
@@ -1231,8 +1237,7 @@ metadata/_custom_type_script = "uid://ckgko44c6nyac"
 shape = ExtResource("43_hvsi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade46" unique_id=53664101]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("49_4eqvt")
+texture = SubResource("AtlasTexture_8x3me")
 
 [node name="DialogueSection" type="Node" parent="Blockade46" unique_id=1456379422]
 script = ExtResource("4_c7dc3")

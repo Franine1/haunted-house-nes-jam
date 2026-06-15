@@ -71,9 +71,11 @@ cue = "saved"
 value = -2
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="options" type="Node" parent="menu system/main menu/option2" unique_id=1085935555]
-script = ExtResource("2_a4601")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
+[node name="options" type="Node" parent="menu system/main menu/option2" unique_id=531142627]
+script = ExtResource("3_hov4v")
+cue = "adsfg"
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueLines" type="Node" parent="menu system/main menu/option2/options" unique_id=1065977038]
 script = ExtResource("5_34ocb")
@@ -142,9 +144,11 @@ cue = "menu"
 value = 2
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="options" type="Node" parent="menu system/pause menu2/option" unique_id=717282941]
-script = ExtResource("2_a4601")
-metadata/_custom_type_script = "uid://lrhymco58lj0"
+[node name="options" type="Node" parent="menu system/pause menu2/option" unique_id=574097233]
+script = ExtResource("3_hov4v")
+cue = "23535v"
+compare_type = 1
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
 
 [node name="DialogueLines" type="Node" parent="menu system/pause menu2/option/options" unique_id=1586911450]
 script = ExtResource("5_34ocb")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfjnigs2opyra" path="res://scripts/npc_host.gd" id="1_a4ohs"]
 [ext_resource type="Material" uid="uid://c1ydoochtrh0j" path="res://resources/palettes/phantom_pallette.tres" id="2_a4ohs"]
-[ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="3_1yhgs"]
+[ext_resource type="SpriteFrames" uid="uid://dii5o0evobfh" path="res://resources/sprite frames/lea_sprites.tres" id="3_a4ohs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qp0r"]
 size = Vector2(12, 12)
@@ -19,5 +19,5 @@ shape = SubResource("RectangleShape2D_2qp0r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1632868858]
 material = ExtResource("2_a4ohs")
-sprite_frames = ExtResource("3_1yhgs")
+sprite_frames = ExtResource("3_a4ohs")
 animation = &"down"

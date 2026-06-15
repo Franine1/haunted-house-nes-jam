@@ -94,6 +94,15 @@ var current_pallete: Dictionary[int,ShaderMaterial] = {
 	,20: preload("res://resources/palettes/mirror_pallette.tres")
 	,21: preload("res://resources/palettes/gloomy_pallette.tres")
 	,22: preload("res://resources/palettes/basement_pallette.tres")
+	,23: preload("res://resources/palettes/yellowpallette.tres")
+	,24: preload("res://resources/palettes/purple_pallette.tres")
+	,25: preload("res://resources/palettes/painting_pallette.tres")
+	,26: preload("res://resources/palettes/object_mirror_pallette.tres")
+	,27: preload("res://resources/palettes/phantom_pallette.tres")
+	,28: preload("res://resources/palettes/darkness_pallette.tres")
+	,29: preload("res://resources/palettes/restart_pallette.tres")
+	,30: preload("res://resources/palettes/PB_pallette.tres")
+	,31: preload("res://resources/palettes/white_pallette.tres")
 }
 
 ## The allowed game states

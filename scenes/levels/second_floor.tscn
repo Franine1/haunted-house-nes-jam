@@ -24,12 +24,17 @@
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="21_l8bvp"]
 [ext_resource type="Script" uid="uid://lrhymco58lj0" path="res://scripts/dialogue_section.gd" id="22_nk1hv"]
 [ext_resource type="Script" uid="uid://ckgko44c6nyac" path="res://scripts/blockade.gd" id="23_q33y3"]
-[ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="24_3bhyt"]
 [ext_resource type="Shape2D" uid="uid://dnj8iayr04pc7" path="res://resources/shapes/gate_shape.tres" id="25_3bhyt"]
+[ext_resource type="Texture2D" uid="uid://co1360mx2bw1f" path="res://resources/sprite frames/sink.tres" id="25_y0exw"]
+[ext_resource type="Texture2D" uid="uid://buuvwv2wnuljj" path="res://resources/sprite frames/shelf.tres" id="26_2lijr"]
 [ext_resource type="PackedScene" uid="uid://vgkqsy77ky76" path="res://scenes/portals/translation/default_translation.tscn" id="26_54pcn"]
 [ext_resource type="Script" uid="uid://2fxoxwt3c1kf" path="res://scripts/translation_portal.gd" id="28_euhgd"]
+[ext_resource type="Material" uid="uid://dk4nolkyxsolm" path="res://resources/palettes/PB_pallette.tres" id="28_pmdno"]
+[ext_resource type="Texture2D" uid="uid://b7aqx54bugeru" path="res://assets/PB-2.png.png" id="29_2lijr"]
 [ext_resource type="Material" uid="uid://dc27y8dqyi2kl" path="res://resources/palettes/ghostlypallette.tres" id="29_fnhfk"]
+[ext_resource type="Texture2D" uid="uid://bs0m7w4vnpcrp" path="res://assets/toilet-1.png.png" id="29_xsgun"]
 [ext_resource type="Script" uid="uid://cup01huy0tbwf" path="res://scripts/astral_anchor.gd" id="30_pgm3s"]
+[ext_resource type="Texture2D" uid="uid://bpkmc062pejs3" path="res://assets/furniture.png" id="33_js1kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54pcn"]
 size = Vector2(81, 97)
@@ -39,6 +44,10 @@ size = Vector2(1792, 1568)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tn7fg"]
 size = Vector2(1280, 472)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsgun"]
+atlas = ExtResource("33_js1kr")
+region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ut7ql"]
 size = Vector2(112, 176)
@@ -60,6 +69,10 @@ size = Vector2(352, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4icms"]
 size = Vector2(64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0exw"]
+atlas = ExtResource("33_js1kr")
+region = Rect2(0, 48, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgm3s"]
 size = Vector2(224, 184)
@@ -705,11 +718,12 @@ shape = ExtResource("15_8vjvb")
 position = Vector2(680, 152)
 script = ExtResource("23_q33y3")
 interact_activation = true
+value = 3
+material_layer = 3
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade" unique_id=163456395]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("24_3bhyt")
+texture = ExtResource("25_y0exw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade" unique_id=1976155450]
 shape = ExtResource("15_8vjvb")
@@ -723,11 +737,11 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(968, 168)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 23
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="trashcan" unique_id=901670030]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("24_3bhyt")
+texture = SubResource("AtlasTexture_xsgun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="trashcan" unique_id=194796727]
 shape = ExtResource("15_8vjvb")
@@ -775,11 +789,12 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(120, 1864)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade3" unique_id=704731948]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade3" unique_id=519496542]
 shape = ExtResource("25_3bhyt")
@@ -813,6 +828,7 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="DialogueSection" type="Node" parent="ruined_bookshelves" unique_id=547112786]
@@ -825,16 +841,16 @@ lines = Array[String](["It's a ruined bookshelf. THe books are gone and the wood
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="Sprite2D" type="Sprite2D" parent="ruined_bookshelves" unique_id=1703978306]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ruined_bookshelves" unique_id=511447855]
 shape = ExtResource("25_3bhyt")
 
 [node name="Sprite2D2" type="Sprite2D" parent="ruined_bookshelves" unique_id=1564949234]
 position = Vector2(64, 0)
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ruined_bookshelves" unique_id=2145918221]
 position = Vector2(64, 0)
@@ -842,8 +858,8 @@ shape = ExtResource("25_3bhyt")
 
 [node name="Sprite2D5" type="Sprite2D" parent="ruined_bookshelves" unique_id=1889051757]
 position = Vector2(0, 96)
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="ruined_bookshelves" unique_id=999928906]
 position = Vector2(0, 96)
@@ -851,28 +867,29 @@ shape = ExtResource("25_3bhyt")
 
 [node name="Sprite2D7" type="Sprite2D" parent="ruined_bookshelves" unique_id=1934404123]
 position = Vector2(1024, 0)
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="Sprite2D8" type="Sprite2D" parent="ruined_bookshelves" unique_id=1993865673]
 position = Vector2(1088, 0)
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="Sprite2D11" type="Sprite2D" parent="ruined_bookshelves" unique_id=318916051]
 position = Vector2(1024, 96)
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="Blockade4" type="StaticBody2D" parent="." unique_id=952427258]
 position = Vector2(184, 1864)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade4" unique_id=94556586]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade4" unique_id=1400564274]
 shape = ExtResource("25_3bhyt")
@@ -904,11 +921,12 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(120, 1912)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade5" unique_id=506795458]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade5" unique_id=1938541099]
 shape = ExtResource("25_3bhyt")
@@ -940,11 +958,12 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(184, 1912)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade6" unique_id=1141506096]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade6" unique_id=64259787]
 shape = ExtResource("25_3bhyt")
@@ -976,11 +995,12 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(120, 1960)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade7" unique_id=460963075]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade7" unique_id=1905895546]
 shape = ExtResource("25_3bhyt")
@@ -1012,11 +1032,12 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(184, 1960)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade8" unique_id=1315717977]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade8" unique_id=1794452793]
 shape = ExtResource("25_3bhyt")
@@ -1048,11 +1069,12 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(56, 1960)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade9" unique_id=1142116590]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade9" unique_id=992229215]
 shape = ExtResource("25_3bhyt")
@@ -1084,11 +1106,12 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(-8, 1960)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade10" unique_id=1880330396]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+scale = Vector2(1, 0.5)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade10" unique_id=899948676]
 shape = ExtResource("25_3bhyt")
@@ -1121,11 +1144,13 @@ position = Vector2(-24, 1848)
 rotation = 1.5707964
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade11" unique_id=316767198]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+position = Vector2(-4.7683716e-07, -0.052198887)
+scale = Vector2(1, 0.5032625)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade11" unique_id=761172554]
 shape = ExtResource("25_3bhyt")
@@ -1158,11 +1183,13 @@ position = Vector2(-24, 1912)
 rotation = 1.5707964
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade12" unique_id=382259716]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+position = Vector2(-3.5762787e-07, 1.0315866)
+scale = Vector2(1, 0.43552583)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade12" unique_id=17164456]
 shape = ExtResource("25_3bhyt")
@@ -1195,11 +1222,14 @@ position = Vector2(-72, 1848)
 rotation = 1.5707964
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade13" unique_id=1449247741]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+position = Vector2(4.7683716e-07, -0.44452715)
+rotation = 3.1415927
+scale = Vector2(1, 0.47221708)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade13" unique_id=610868906]
 shape = ExtResource("25_3bhyt")
@@ -1232,11 +1262,14 @@ position = Vector2(-72, 1976)
 rotation = 1.5707964
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade14" unique_id=1502419064]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+position = Vector2(0, -1.0315781)
+rotation = 3.1415927
+scale = Vector2(1, 0.43552637)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade14" unique_id=1672965217]
 shape = ExtResource("25_3bhyt")
@@ -1269,11 +1302,13 @@ position = Vector2(-184, 1976)
 rotation = 1.5707964
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade15" unique_id=612987527]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+position = Vector2(-4.7683716e-07, -0.19999647)
+scale = Vector2(1, 0.5124998)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade15" unique_id=480780100]
 shape = ExtResource("25_3bhyt")
@@ -1306,11 +1341,14 @@ position = Vector2(-232, 1976)
 rotation = 1.5707964
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade16" unique_id=933766223]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+position = Vector2(0, -0.62106323)
+rotation = -3.1415927
+scale = Vector2(1, 0.46118355)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade16" unique_id=1689293894]
 shape = ExtResource("25_3bhyt")
@@ -1343,11 +1381,14 @@ position = Vector2(-232, 1912)
 rotation = 1.5707964
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade17" unique_id=883642548]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+position = Vector2(0, -1.647377)
+rotation = -3.1415927
+scale = Vector2(1, 0.39703894)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade17" unique_id=762354224]
 shape = ExtResource("25_3bhyt")
@@ -1380,11 +1421,14 @@ position = Vector2(-232, 1848)
 rotation = 1.5707964
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade18" unique_id=787378696]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+position = Vector2(0, -0.6210556)
+rotation = -3.1415927
+scale = Vector2(1, 0.46118402)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade18" unique_id=174305028]
 shape = ExtResource("25_3bhyt")
@@ -1417,11 +1461,13 @@ position = Vector2(-184, 1848)
 rotation = 1.5707964
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade19" unique_id=1947466960]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("24_3bhyt")
+position = Vector2(-4.7683716e-07, -0.8157954)
+scale = Vector2(1, 0.55098724)
+texture = ExtResource("26_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade19" unique_id=1090099526]
 shape = ExtResource("25_3bhyt")
@@ -1453,11 +1499,11 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(712, 152)
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 3
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade2" unique_id=606137029]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("24_3bhyt")
+texture = ExtResource("29_xsgun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade2" unique_id=1813344693]
 shape = ExtResource("15_8vjvb")
@@ -1794,13 +1840,15 @@ script = ExtResource("23_q33y3")
 interact_activation = true
 cue = "pb1"
 compare_type = 0
+material_layer = 30
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade20" unique_id=689526260]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("24_3bhyt")
+material = ExtResource("28_pmdno")
+texture = ExtResource("29_2lijr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade20" unique_id=1958845350]
+visible = false
 shape = ExtResource("15_8vjvb")
 
 [node name="DialogueSection" type="Node" parent="Blockade20" unique_id=123369865]
@@ -2080,6 +2128,7 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 3
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="DialogueSection" type="Node" parent="hint_mannequin1" unique_id=1137443366]
@@ -2116,8 +2165,7 @@ lines = Array[String](["Nevermind"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="Sprite2D" type="Sprite2D" parent="hint_mannequin1" unique_id=531382518]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("24_3bhyt")
+texture = SubResource("AtlasTexture_y0exw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hint_mannequin1" unique_id=301929412]
 shape = ExtResource("15_8vjvb")
@@ -2128,6 +2176,7 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 15
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="DialogueSection" type="Node" parent="hint_mannequin2" unique_id=1697859742]
@@ -2164,8 +2213,7 @@ lines = Array[String](["Nevermind"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="Sprite2D" type="Sprite2D" parent="hint_mannequin2" unique_id=183572842]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("24_3bhyt")
+texture = SubResource("AtlasTexture_y0exw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hint_mannequin2" unique_id=71231974]
 shape = ExtResource("15_8vjvb")
@@ -2176,6 +2224,7 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 10
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="DialogueSection" type="Node" parent="hint_mannequin3" unique_id=1744371398]
@@ -2212,8 +2261,7 @@ lines = Array[String](["Nevermind"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="Sprite2D" type="Sprite2D" parent="hint_mannequin3" unique_id=1876231896]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("24_3bhyt")
+texture = SubResource("AtlasTexture_y0exw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hint_mannequin3" unique_id=1307758391]
 shape = ExtResource("15_8vjvb")
@@ -2224,6 +2272,7 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("23_q33y3")
 interact_activation = true
+material_layer = 19
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="DialogueSection" type="Node" parent="hint_mannequin4" unique_id=1645937339]
@@ -2260,8 +2309,7 @@ lines = Array[String](["Nevermind"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="Sprite2D" type="Sprite2D" parent="hint_mannequin4" unique_id=1597664702]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("24_3bhyt")
+texture = SubResource("AtlasTexture_y0exw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hint_mannequin4" unique_id=659226071]
 shape = ExtResource("15_8vjvb")

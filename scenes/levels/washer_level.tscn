@@ -31,9 +31,9 @@
 [ext_resource type="PackedScene" uid="uid://bmdlj6wm0xk2r" path="res://scenes/rooms/washer_end.tscn" id="29_rq2tw"]
 [ext_resource type="PackedScene" uid="uid://vgkqsy77ky76" path="res://scenes/portals/translation/default_translation.tscn" id="30_rq2tw"]
 [ext_resource type="Script" uid="uid://bwfil16152c87" path="res://scripts/dialogue_loop.gd" id="30_tahix"]
-[ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="31_bpya2"]
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="31_e3ck7"]
 [ext_resource type="Shape2D" uid="uid://dnj8iayr04pc7" path="res://resources/shapes/gate_shape.tres" id="34_cuylp"]
+[ext_resource type="Texture2D" uid="uid://bpkmc062pejs3" path="res://assets/furniture.png" id="35_i6nrj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xm21a"]
 size = Vector2(90, 93)
@@ -59,11 +59,23 @@ size = Vector2(320, 217)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tahix"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6nrj"]
+atlas = ExtResource("35_i6nrj")
+region = Rect2(96, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuylp"]
+atlas = ExtResource("35_i6nrj")
+region = Rect2(16, 48, 16, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3ck7"]
 size = Vector2(208, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuylp"]
 size = Vector2(112, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sboxu"]
+atlas = ExtResource("35_i6nrj")
+region = Rect2(48, 48, 16, 16)
 
 [node name="Level" type="Node2D" unique_id=1876574184]
 script = ExtResource("1_1w44k")
@@ -813,19 +825,19 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("4_a0l57")
 interact_activation = true
+material_layer = 14
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade19" unique_id=1873052049]
 shape = SubResource("RectangleShape2D_tahix")
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade19" unique_id=2141472666]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("31_bpya2")
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_i6nrj")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Blockade19" unique_id=1625342109]
-position = Vector2(256, 896)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("31_bpya2")
+position = Vector2(256, 888)
+texture = SubResource("AtlasTexture_i6nrj")
 
 [node name="DialogueSection" type="Node" parent="Blockade19" unique_id=731444436]
 script = ExtResource("5_tig5c")
@@ -919,14 +931,14 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("4_a0l57")
 interact_activation = true
+material_layer = 19
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade24" unique_id=332051419]
 shape = ExtResource("26_bpya2")
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade24" unique_id=145552604]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("31_bpya2")
+texture = SubResource("AtlasTexture_cuylp")
 
 [node name="DialogueSection" type="Node" parent="Blockade24" unique_id=1693578820]
 script = ExtResource("5_tig5c")
@@ -1174,6 +1186,7 @@ interact_activation = true
 cue = "show_note"
 value = 1
 compare_type = 0
+material_layer = 31
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blockade23" unique_id=545428793]
@@ -1206,8 +1219,7 @@ lines = Array[String](["Do not"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="Sprite2D" type="Sprite2D" parent="Blockade23" unique_id=587088782]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("31_bpya2")
+texture = SubResource("AtlasTexture_sboxu")
 
 [node name="InteractionZone28" type="Area2D" parent="." unique_id=1351268070]
 position = Vector2(-56, -1472)

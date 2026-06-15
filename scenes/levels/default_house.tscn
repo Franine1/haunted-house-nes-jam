@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ckpkp4jh0klc8"]
+[gd_scene format=4 uid="uid://ckpkp4jh0klc8"]
 
 [ext_resource type="Script" uid="uid://56yoruxpggjg" path="res://scripts/level.gd" id="1_couku"]
 [ext_resource type="Material" uid="uid://b8jlb2n6kiqe6" path="res://resources/palettes/brownpallete.tres" id="1_u00pf"]
@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://lisfmj0ysant" path="res://scenes/layouts/hallway2_f1.tscn" id="5_c0p4i"]
 [ext_resource type="PackedScene" uid="uid://d1vo0embkmoh6" path="res://scenes/layouts/alt_dining_room.tscn" id="6_opnxm"]
 [ext_resource type="PackedScene" uid="uid://catgrcqopf85r" path="res://scenes/layouts/garage.tscn" id="6_xo5id"]
+[ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="7_lj8r7"]
 [ext_resource type="PackedScene" uid="uid://r71xuihq71kn" path="res://scenes/layouts/main_stairwell.tscn" id="7_u11u2"]
 [ext_resource type="PackedScene" uid="uid://bwb4fkp68sdne" path="res://scenes/layouts/hallway_f2.tscn" id="8_0p5e4"]
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="8_bq2no"]
 [ext_resource type="PackedScene" uid="uid://s8smev10qjsi" path="res://scenes/layouts/alt_hallway_f_1.tscn" id="8_lgvcu"]
 [ext_resource type="PackedScene" uid="uid://3upu5onjnbse" path="res://scenes/layouts/garage_hall.tscn" id="9_70hek"]
 [ext_resource type="PackedScene" uid="uid://bnp6f556tdk1b" path="res://scenes/layouts/laundry_room.tscn" id="9_gmqn6"]
@@ -42,18 +44,25 @@
 [ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="31_fyonw"]
 [ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="32_gbo60"]
 [ext_resource type="PackedScene" uid="uid://bfkkjw5qomv61" path="res://scenes/characters/lea.tscn" id="35_7mm63"]
-[ext_resource type="Material" uid="uid://b7qhrmcdja4mi" path="res://resources/palettes/bluepallete.tres" id="36_4lh72"]
-[ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="37_oahe5"]
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="37_tlc6n"]
 [ext_resource type="Script" uid="uid://bbr1g3c52vcnu" path="res://scripts/DialogueMovement.gd" id="38_oahe5"]
-[ext_resource type="Texture2D" uid="uid://xr4trdhapvev" path="res://assets/icon.svg" id="40_wahft"]
 [ext_resource type="Shape2D" uid="uid://bbvt0g7t3h4t5" path="res://resources/shapes/default_collider.tres" id="41_xovbb"]
 [ext_resource type="Script" uid="uid://2fxoxwt3c1kf" path="res://scripts/translation_portal.gd" id="42_5l7pq"]
+[ext_resource type="Material" uid="uid://cs4yt3ndhobj1" path="res://resources/palettes/lea_pallette.tres" id="43_8jmmq"]
+[ext_resource type="SpriteFrames" uid="uid://dii5o0evobfh" path="res://resources/sprite frames/lea_sprites.tres" id="44_f56w2"]
 [ext_resource type="PackedScene" uid="uid://vk0mkiy4dsq0" path="res://scenes/layouts/alt_3_hallway.tscn" id="48_4dvlw"]
+[ext_resource type="Texture2D" uid="uid://co1360mx2bw1f" path="res://resources/sprite frames/sink.tres" id="49_f56w2"]
 [ext_resource type="PackedScene" uid="uid://buaxnuy5nlg77" path="res://scenes/layouts/window.tscn" id="49_mfmey"]
 [ext_resource type="PackedScene" uid="uid://dn2g6lrf06ffa" path="res://scenes/dialogue/window_person.tscn" id="52_dfnd4"]
 [ext_resource type="Script" uid="uid://bwfil16152c87" path="res://scripts/dialogue_loop.gd" id="52_tdlnt"]
-[ext_resource type="Shape2D" uid="uid://dnj8iayr04pc7" path="res://resources/shapes/gate_shape.tres" id="54_uo0wi"]
+[ext_resource type="Texture2D" uid="uid://bpkmc062pejs3" path="res://assets/furniture.png" id="54_8jmmq"]
+[ext_resource type="Texture2D" uid="uid://h1bq4euspj6k" path="res://resources/sprite frames/washer_or_dryer.tres" id="55_v135h"]
+[ext_resource type="Texture2D" uid="uid://bs0m7w4vnpcrp" path="res://assets/toilet-1.png.png" id="57_tppa2"]
+[ext_resource type="Material" uid="uid://dt14jivc1il82" path="res://resources/palettes/object_mirror_pallette.tres" id="60_1syhu"]
+[ext_resource type="Texture2D" uid="uid://mh7mij47okx8" path="res://resources/sprite frames/fixed_mirror.tres" id="60_bq2no"]
+[ext_resource type="Shape2D" uid="uid://bcfh6at1leqh" path="res://resources/shapes/shelf_shape.tres" id="60_s74oq"]
+[ext_resource type="Texture2D" uid="uid://buuvwv2wnuljj" path="res://resources/sprite frames/shelf.tres" id="61_s74oq"]
+[ext_resource type="Texture2D" uid="uid://cbohlkm0jstpv" path="res://resources/sprite frames/bed.tres" id="63_s74oq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u00pf"]
 size = Vector2(32, 48)
@@ -97,36 +106,6 @@ size = Vector2(12, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xovbb"]
 size = Vector2(80, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wahft"]
-atlas = ExtResource("40_wahft")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xovbb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wahft")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xovbb"]
-atlas = ExtResource("40_wahft")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5l7pq"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xovbb")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5l7pq"]
 size = Vector2(96, 96.5)
 
@@ -139,17 +118,29 @@ size = Vector2(48, 193)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdlnt"]
 size = Vector2(72, 12)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v135h"]
+atlas = ExtResource("54_8jmmq")
+region = Rect2(0, 112, 80, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f56w2"]
+atlas = ExtResource("54_8jmmq")
+region = Rect2(32, 16, 16, 32)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dfnd4"]
 size = Vector2(256, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uo0wi"]
 size = Vector2(224, 112)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj8r7"]
+atlas = ExtResource("54_8jmmq")
+region = Rect2(96, 64, 16, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f56w2"]
-size = Vector2(28, 12)
+size = Vector2(28, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8jmmq"]
-size = Vector2(30, 30)
+size = Vector2(16, 30)
 
 [node name="default_house" type="Node2D" unique_id=825320048]
 script = ExtResource("1_couku")
@@ -196,6 +187,33 @@ polygon = PackedVector2Array(-16, -64, 16, -64, 16, -16, 240, -16, 240, 64, 336,
 visible = false
 position = Vector2(1024, 0)
 polygon = PackedVector2Array(-16, -64, 16, -64, 16, -16, 240, -16, 240, 64, 336, 64, 336, 112, 240, 112, 240, 128, -192, 128, -192, -224, -16, -224)
+
+[node name="Layout" type="TileMapLayer" parent="dining_room" unique_id=361132810]
+tile_map_data = PackedByteArray("AAAEAAIAAgADAAAAAAAFAAIAAgAEAAAAAAAGAAIAAgAEAAAAAAAHAAIAAgAEAAAAAAAIAAIAAgAEAAAAAAAJAAIAAgAFAAAAAAAIAAMAAgAEAAEAAAAHAAMAAgAEAAEAAAAGAAMAAgAEAAEAAAAFAAMAAgAEAAEAAAAEAAMAAgADAAEAAAAJAAMAAgAFAAEAAAAJAAQAAgAFAAIAAAAEAAQAAgADAAIAAAAIAAQAAgAEAAIAAAAHAAQAAgAEAAIAAAAGAAQAAgAEAAIAAAAFAAQAAgAEAAIAAAA=")
+tile_set = ExtResource("7_lj8r7")
+script = ExtResource("8_bq2no")
+metadata/_custom_type_script = "uid://byvdvujagvico"
+
+[node name="Layout2" type="TileMapLayer" parent="dining_room" unique_id=1969578838]
+position = Vector2(0, 512)
+tile_map_data = PackedByteArray("AAAEAAIAAgADAAAAAAAFAAIAAgAEAAAAAAAGAAIAAgAEAAAAAAAHAAIAAgAEAAAAAAAIAAIAAgAEAAAAAAAJAAIAAgAFAAAAAAAIAAMAAgAEAAEAAAAHAAMAAgAEAAEAAAAGAAMAAgAEAAEAAAAFAAMAAgAEAAEAAAAEAAMAAgADAAEAAAAJAAMAAgAFAAEAAAAJAAQAAgAFAAIAAAAEAAQAAgADAAIAAAAIAAQAAgAEAAIAAAAHAAQAAgAEAAIAAAAGAAQAAgAEAAIAAAAFAAQAAgAEAAIAAAA=")
+tile_set = ExtResource("7_lj8r7")
+script = ExtResource("8_bq2no")
+metadata/_custom_type_script = "uid://byvdvujagvico"
+
+[node name="Layout3" type="TileMapLayer" parent="dining_room" unique_id=179787091]
+position = Vector2(1024, 512)
+tile_map_data = PackedByteArray("AAAEAAIAAgADAAAAAAAFAAIAAgAEAAAAAAAGAAIAAgAEAAAAAAAHAAIAAgAEAAAAAAAIAAIAAgAEAAAAAAAJAAIAAgAFAAAAAAAIAAMAAgAEAAEAAAAHAAMAAgAEAAEAAAAGAAMAAgAEAAEAAAAFAAMAAgAEAAEAAAAEAAMAAgADAAEAAAAJAAMAAgAFAAEAAAAJAAQAAgAFAAIAAAAEAAQAAgADAAIAAAAIAAQAAgAEAAIAAAAHAAQAAgAEAAIAAAAGAAQAAgAEAAIAAAAFAAQAAgAEAAIAAAA=")
+tile_set = ExtResource("7_lj8r7")
+script = ExtResource("8_bq2no")
+metadata/_custom_type_script = "uid://byvdvujagvico"
+
+[node name="Layout4" type="TileMapLayer" parent="dining_room" unique_id=1669154367]
+position = Vector2(1024, 0)
+tile_map_data = PackedByteArray("AAAEAAIAAgADAAAAAAAFAAIAAgAEAAAAAAAGAAIAAgAEAAAAAAAHAAIAAgAEAAAAAAAIAAIAAgAEAAAAAAAJAAIAAgAFAAAAAAAIAAMAAgAEAAEAAAAHAAMAAgAEAAEAAAAGAAMAAgAEAAEAAAAFAAMAAgAEAAEAAAAEAAMAAgADAAEAAAAJAAMAAgAFAAEAAAAJAAQAAgAFAAIAAAAEAAQAAgADAAIAAAAIAAQAAgAEAAIAAAAHAAQAAgAEAAIAAAAGAAQAAgAEAAIAAAAFAAQAAgAEAAIAAAA=")
+tile_set = ExtResource("7_lj8r7")
+script = ExtResource("8_bq2no")
+metadata/_custom_type_script = "uid://byvdvujagvico"
 
 [node name="hall1F1" type="Area2D" parent="." unique_id=822867465]
 position = Vector2(256, 160)
@@ -467,6 +485,7 @@ script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="hallway_F2" parent="hallF2" unique_id=1211937003 instance=ExtResource("8_0p5e4")]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAFAAEAAAABAAEAAAAGAAAAAAABAAEAAAAGAAEAAAABAAEAAAAGAAIAAAABAAEAAAAHAAEAAAABAAEAAAD0/wEAAAABAAEAAAD1/wEAAAABAAEAAAD2/wEAAAABAAEAAAD3/wEAAAABAAEAAAD4/wEAAAABAAEAAAD5/wEAAAABAAEAAAD6/wEAAAABAAEAAAD7/wEAAAABAAEAAAD8/wEAAAABAAEAAAD9/wEAAAABAAEAAAD+/wEAAAABAAEAAAD//wEAAAABAAEAAAD0/wAAAAABAAAAAAD1/wAAAAABAAAAAAD2/wAAAAABAAAAAAD3/wAAAAABAAAAAAD4/wAAAAABAAAAAAD5/wAAAAABAAAAAAD6/wAAAAABAAAAAAD7/wAAAAABAAAAAAD8/wAAAAADAAIAAAD9/wAAAAABAAEAAAD+/wAAAAAEAAIAAAD//wAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAADAAIAAAAHAAAAAAAEAAIAAAAHAAIAAAAEAAEAAAABAAIAAAAEAAEAAAACAAIAAAABAAIAAAADAAIAAAABAAIAAAAEAAIAAAABAAIAAAAFAAIAAAADAAEAAAD0/wIAAAABAAIAAAD1/wIAAAABAAIAAAD2/wIAAAABAAIAAAD3/wIAAAABAAIAAAD4/wIAAAABAAIAAAD5/wIAAAABAAIAAAD6/wIAAAABAAIAAAD7/wIAAAABAAIAAAD8/wIAAAABAAIAAAD9/wIAAAABAAIAAAD+/wIAAAABAAIAAAD//wIAAAADAAEAAADz/wIAAAABAAIAAADy/wIAAAABAAIAAADw/wIAAAABAAEAAADz/wAAAAABAAAAAADy/wAAAAABAAAAAADw/wEAAAABAAEAAADx/wEAAAABAAEAAADy/wEAAAABAAEAAADz/wEAAAABAAEAAADx/wIAAAAGAAIAAADv/wIAAAAAAAEAAADv/wEAAAABAAEAAADv/wAAAAABAAAAAADw/wAAAAABAAAAAADx/wAAAAABAAAAAAA=")
 
 [node name="hallway_F3" parent="hallF2" unique_id=1054040191 instance=ExtResource("8_0p5e4")]
 position = Vector2(0, 512)
@@ -501,11 +520,12 @@ script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="master_bedroom" parent="master" unique_id=125640778 instance=ExtResource("15_dkw8a")]
-position = Vector2(80, -704)
+position = Vector2(80, -752)
+tile_map_data = PackedByteArray("AAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAAFAAIAAAABAAEAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAADAAIAAAABAAAAAAAEAAIAAAADAAIAAAD//wIAAAABAAAAAAAFAP//AAADAAAAAAAGAP//AAADAAAAAAAHAP//AAADAAAAAAAIAP//AAADAAAAAAAJAP//AAACAAAAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAAAAAYAAAABAAEAAAAAAAcAAAABAAEAAAABAAMAAAABAAEAAAABAAQAAAABAAEAAAABAAUAAAABAAEAAAABAAYAAAABAAEAAAABAAcAAAABAAEAAAACAAMAAAABAAEAAAACAAQAAAABAAEAAAACAAUAAAABAAEAAAACAAYAAAABAAEAAAACAAcAAAABAAEAAAADAAMAAAABAAEAAAADAAQAAAABAAEAAAADAAUAAAABAAEAAAADAAYAAAABAAEAAAADAAcAAAABAAEAAAAEAAMAAAABAAEAAAAEAAQAAAABAAEAAAAEAAUAAAABAAEAAAAEAAYAAAABAAEAAAAEAAcAAAABAAEAAAAFAAMAAAABAAEAAAAFAAQAAAABAAEAAAAFAAUAAAABAAEAAAAFAAYAAAABAAEAAAAFAAcAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAEAAAAGAAUAAAABAAEAAAAGAAYAAAABAAEAAAAGAAcAAAABAAEAAAAHAAMAAAABAAEAAAAHAAQAAAABAAEAAAAHAAUAAAABAAEAAAAHAAYAAAABAAEAAAAHAAcAAAABAAEAAAAIAAMAAAABAAEAAAAIAAQAAAABAAEAAAAIAAUAAAABAAEAAAAIAAYAAAABAAEAAAAIAAcAAAABAAEAAAAJAAMAAAACAAEAAAAJAAQAAAACAAEAAAAJAAUAAAACAAEAAAAJAAYAAAACAAEAAAAJAAcAAAACAAEAAAAGAAAAAAABAAEAAAAGAAEAAAABAAEAAAAGAAIAAAABAAEAAAAHAAAAAAABAAEAAAAHAAEAAAABAAEAAAAHAAIAAAABAAEAAAAIAAAAAAABAAEAAAAIAAEAAAABAAEAAAAIAAIAAAABAAEAAAAJAAAAAAACAAEAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAD//wMAAAABAAEAAAD//wQAAAABAAEAAAD//wUAAAABAAEAAAD//wYAAAABAAEAAAD//wcAAAABAAEAAAD//wgAAAABAAIAAAAAAAgAAAABAAIAAAABAAgAAAABAAIAAAACAAgAAAABAAIAAAADAAgAAAABAAIAAAAEAAgAAAABAAIAAAAFAAgAAAABAAIAAAAGAAgAAAABAAIAAAAHAAgAAAADAAEAAAAIAAgAAAABAAEAAAAJAAgAAAACAAEAAAD+/wIAAAABAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAEAAAAEAAEAAAAAAAEAAAD+/wMAAAABAAEAAAD+/wQAAAABAAEAAAD+/wUAAAABAAEAAAD+/wYAAAABAAEAAAD+/wcAAAABAAEAAAD+/wgAAAABAAIAAAD7/wIAAAABAAAAAAD7/wMAAAABAAEAAAD7/wQAAAABAAEAAAD7/wUAAAABAAEAAAD7/wYAAAABAAEAAAD7/wcAAAABAAEAAAD7/wgAAAABAAIAAAD8/wIAAAABAAAAAAD8/wMAAAABAAEAAAD8/wQAAAABAAEAAAD8/wUAAAABAAEAAAD8/wYAAAABAAEAAAD8/wcAAAABAAEAAAD8/wgAAAABAAIAAAD9/wIAAAABAAAAAAD9/wMAAAABAAEAAAD9/wQAAAABAAEAAAD9/wUAAAABAAEAAAD9/wYAAAABAAEAAAD9/wcAAAABAAEAAAD9/wgAAAABAAIAAAD6/wIAAAAAAAAAAAD6/wMAAAAAAAEAAAD6/wQAAAAAAAEAAAD6/wUAAAAAAAEAAAD6/wYAAAAAAAEAAAD6/wcAAAAAAAIAAAD6/wgAAAABAAIAAAAIAAkAAAABAAEAAAAIAAoAAAABAAEAAAAIAAsAAAABAAEAAAAHAAkAAAABAAIAAAAHAAoAAAABAAIAAAAHAAsAAAABAAIAAAAJAAoAAAACAAEAAAAJAAsAAAACAAEAAAAJAAkAAAACAAEAAAA=")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="master" unique_id=2011195665]
 visible = false
-polygon = PackedVector2Array(-16, -512, 384, -512, 384, -560, 240, -560, 240, -720, 144, -720, 144, -672, -16, -672)
+polygon = PackedVector2Array(-16, -512, 384, -512, 384, -560, 240, -560, 240, -768, 144, -768, 144, -720, -16, -720)
 
 [node name="linen" type="Area2D" parent="." unique_id=1287363892]
 position = Vector2(320, -528)
@@ -543,15 +563,18 @@ polygon = PackedVector2Array(-240, -64, 80, -64, 80, -16, 192, -16, 192, 112, -1
 [node name="patio2" parent="patio" unique_id=763644378 instance=ExtResource("21_v2ery")]
 
 [node name="hobby room" type="Area2D" parent="." unique_id=1364746277]
-position = Vector2(-160, -624)
+position = Vector2(-160, -672)
 script = ExtResource("2_ele82")
 metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
 
 [node name="hobby_room" parent="hobby room" unique_id=1048350017 instance=ExtResource("19_w4wor")]
+position = Vector2(0, -48)
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAAAAAEAAAAFAAMAAAAAAAIAAAAFAAQAAAAAAAMAAAAFAAQAAAAAAAQAAAAFAAQAAAAAAAUAAAAFAAQAAAAAAAYAAAAFAAQAAAAAAAcAAAAFAAQAAAAAAAgAAAAFAAQAAAAAAAkAAAAFAAQAAAABAAAAAAABAAAAAAABAAEAAAAGAAMAAAABAAIAAAAGAAQAAAABAAMAAAAGAAQAAAABAAQAAAAGAAQAAAABAAUAAAAGAAQAAAABAAYAAAAGAAQAAAABAAcAAAAGAAQAAAABAAgAAAAGAAQAAAABAAkAAAAGAAQAAAACAAAAAAADAAAAAAACAAEAAAAGAAMAAAACAAIAAAAGAAQAAAACAAMAAAAGAAQAAAACAAQAAAAGAAQAAAACAAUAAAAGAAQAAAACAAYAAAAGAAQAAAACAAcAAAAGAAQAAAACAAgAAAAGAAQAAAACAAkAAAAGAAQAAAADAAAAAAABAAAAAAADAAEAAAAGAAMAAAADAAIAAAAGAAQAAAADAAMAAAAGAAQAAAADAAQAAAAGAAQAAAADAAUAAAAGAAQAAAADAAYAAAAGAAQAAAADAAcAAAAGAAQAAAADAAgAAAAGAAQAAAADAAkAAAAGAAQAAAAEAAAAAAABAAAAAAAEAAEAAAAGAAMAAAAEAAIAAAAGAAQAAAAEAAMAAAAGAAQAAAAEAAQAAAAGAAQAAAAEAAUAAAAGAAQAAAAEAAYAAAAGAAQAAAAEAAcAAAAGAAQAAAAEAAgAAAAGAAQAAAAEAAkAAAAGAAQAAAAFAAAAAAABAAAAAAAFAAEAAAAGAAMAAAAFAAIAAAAGAAQAAAAFAAMAAAAGAAQAAAAFAAQAAAAGAAQAAAAFAAUAAAAGAAQAAAAFAAYAAAAGAAQAAAAFAAcAAAAGAAQAAAAFAAgAAAAGAAQAAAAFAAkAAAAGAAQAAAAGAAAAAAADAAAAAAAGAAEAAAAGAAMAAAAGAAIAAAAGAAQAAAAGAAMAAAAGAAQAAAAGAAQAAAAGAAQAAAAGAAUAAAAGAAQAAAAGAAYAAAAGAAQAAAAGAAcAAAAGAAQAAAAGAAgAAAAGAAQAAAAGAAkAAAAGAAQAAAAHAAAAAAABAAAAAAAHAAEAAAAGAAMAAAAHAAIAAAAGAAQAAAAHAAMAAAAGAAQAAAAHAAQAAAAGAAQAAAAHAAUAAAAGAAQAAAAHAAYAAAAGAAQAAAAHAAcAAAAGAAQAAAAHAAgAAAAGAAQAAAAHAAkAAAAGAAQAAAAIAAAAAAABAAAAAAAIAAEAAAAHAAMAAAAIAAIAAAAHAAQAAAAIAAMAAAAHAAQAAAAIAAQAAAAHAAQAAAAIAAUAAAAHAAQAAAAIAAYAAAAHAAQAAAAIAAcAAAAHAAQAAAAIAAgAAAAHAAQAAAAIAAkAAAAHAAQAAAAJAAAAAAACAAAAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAAJAAMAAAACAAEAAAAJAAQAAAACAAEAAAAJAAUAAAACAAEAAAAJAAYAAAACAAEAAAAJAAcAAAACAAEAAAAJAAgAAAACAAEAAAAJAAkAAAACAAEAAAD//wAAAAAAAAAAAAD//wEAAAAAAAEAAAD//wIAAAAAAAEAAAD//wMAAAAAAAEAAAD//wQAAAAAAAEAAAD//wUAAAAAAAEAAAD//wYAAAAAAAEAAAD//wcAAAAAAAEAAAD//wgAAAAAAAEAAAD//wkAAAAAAAEAAAAAAAoAAAAFAAQAAAAAAAsAAAAFAAUAAAABAAoAAAAGAAQAAAABAAsAAAAGAAUAAAACAAoAAAAGAAQAAAACAAsAAAAGAAUAAAADAAoAAAAGAAQAAAADAAsAAAAGAAUAAAAEAAoAAAAGAAQAAAAEAAsAAAAGAAUAAAAFAAoAAAAGAAQAAAAFAAsAAAAGAAUAAAAGAAoAAAAGAAQAAAAGAAsAAAAGAAUAAAAHAAoAAAAGAAQAAAAHAAsAAAAGAAUAAAAIAAoAAAAHAAQAAAAIAAsAAAAHAAUAAAAJAAoAAAACAAEAAAAJAAsAAAACAAEAAAD//woAAAAAAAEAAAD//wsAAAAAAAIAAAD//wwAAAABAAIAAAAAAAwAAAABAAIAAAABAAwAAAABAAIAAAACAAwAAAABAAIAAAADAAwAAAABAAIAAAAEAAwAAAABAAIAAAAFAAwAAAABAAIAAAAGAAwAAAABAAIAAAAHAAwAAAAAAAEAAAAIAAwAAAABAAEAAAAJAAwAAAACAAEAAAAIAA0AAAABAAEAAAAIAA4AAAABAAEAAAAIAA8AAAABAAEAAAAIABAAAAABAAEAAAAIABEAAAABAAEAAAAJABEAAAABAAEAAAAJAA0AAAACAAEAAAAJAA4AAAACAAEAAAAJAA8AAAACAAEAAAAJABAAAAABAAAAAAAHAA0AAAAAAAEAAAAHAA4AAAAAAAEAAAAHAA8AAAAAAAEAAAAHABAAAAAAAAEAAAAHABEAAAAAAAIAAAAHABIAAAABAAIAAAAIABIAAAABAAIAAAAJABIAAAABAAIAAAA=")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="hobby room" unique_id=1903180130]
 visible = false
-polygon = PackedVector2Array(560, 208, 560, 160, 160, 160, 160, 0, -16, 0, -16, 208, 160, 208, 160, 288, 208, 288, 208, 208)
+position = Vector2(0, 48)
+polygon = PackedVector2Array(560, 208, 560, 160, 160, 160, 161, -103, -19, -101, -16, 208, 160, 208, 160, 288, 208, 288, 208, 208)
 
 [node name="hall_guest" type="Area2D" parent="." unique_id=1495108025]
 position = Vector2(32, -544)
@@ -796,9 +819,9 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 position = Vector2(-1424, 80)
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="npc1" unique_id=256701549]
-material = ExtResource("36_4lh72")
+material = ExtResource("43_8jmmq")
 position = Vector2(0, 512)
-sprite_frames = ExtResource("37_oahe5")
+sprite_frames = ExtResource("44_f56w2")
 animation = &"down"
 
 [node name="DialogueSection" type="Node" parent="npc1" unique_id=1145369358]
@@ -1176,25 +1199,6 @@ script = ExtResource("31_fyonw")
 lines = Array[String](["A table."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="table" unique_id=634275327]
-scale = Vector2(0.7, 0.3)
-sprite_frames = SubResource("SpriteFrames_xovbb")
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="table" unique_id=1379189618]
-position = Vector2(1024, 0)
-scale = Vector2(0.7, 0.3)
-sprite_frames = SubResource("SpriteFrames_xovbb")
-
-[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="table" unique_id=1392506704]
-position = Vector2(1024, 512)
-scale = Vector2(0.7, 0.3)
-sprite_frames = SubResource("SpriteFrames_xovbb")
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="table" unique_id=1792440201]
-position = Vector2(0, 512)
-scale = Vector2(0.7, 0.3)
-sprite_frames = SubResource("SpriteFrames_5l7pq")
-
 [node name="InteractionZone4" type="Area2D" parent="." unique_id=495982584]
 position = Vector2(-8, 152)
 script = ExtResource("26_tyelw")
@@ -1235,7 +1239,7 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
-material_layer = 4
+material_layer = 3
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="sink" unique_id=1858999059]
@@ -1359,13 +1363,12 @@ lines = Array[String](["Do not"])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="Sprite2D" type="Sprite2D" parent="sink" unique_id=486318938]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("40_wahft")
+position = Vector2(0, -1)
+texture = ExtResource("49_f56w2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="sink" unique_id=911634621]
-position = Vector2(1024, 0)
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("40_wahft")
+position = Vector2(1024, -1)
+texture = ExtResource("49_f56w2")
 
 [node name="bathroom_sink" type="StaticBody2D" parent="." unique_id=551919688]
 position = Vector2(424, -488)
@@ -1489,8 +1492,8 @@ lines = Array[String](["Leave it", "You leave the key in the drain."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="Sprite2D" type="Sprite2D" parent="bathroom_sink" unique_id=502124095]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("40_wahft")
+position = Vector2(0, -2)
+texture = ExtResource("49_f56w2")
 
 [node name="InteractionZone5" type="Area2D" parent="." unique_id=1195400103]
 position = Vector2(1040, 96)
@@ -1929,21 +1932,19 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 3
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="washers" unique_id=2029067634]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+texture = ExtResource("55_v135h")
 
 [node name="Sprite2D2" type="Sprite2D" parent="washers" unique_id=802239034]
 position = Vector2(48, 0)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+texture = ExtResource("55_v135h")
 
 [node name="Sprite2D3" type="Sprite2D" parent="washers" unique_id=1698004501]
 position = Vector2(1440, 144)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+texture = ExtResource("55_v135h")
 
 [node name="DialogueLines" type="Node" parent="washers" unique_id=678089040]
 script = ExtResource("31_fyonw")
@@ -1967,26 +1968,23 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 23
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="dryer" unique_id=1787586993]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+texture = ExtResource("55_v135h")
 
 [node name="Sprite2D2" type="Sprite2D" parent="dryer" unique_id=2090491404]
 position = Vector2(48, 0)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+texture = ExtResource("55_v135h")
 
 [node name="Sprite2D3" type="Sprite2D" parent="dryer" unique_id=393637505]
 position = Vector2(1440, 144)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+texture = ExtResource("55_v135h")
 
 [node name="Sprite2D4" type="Sprite2D" parent="dryer" unique_id=168690801]
 position = Vector2(1488, 144)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+texture = ExtResource("55_v135h")
 
 [node name="DialogueLines" type="Node" parent="dryer" unique_id=1935423883]
 script = ExtResource("31_fyonw")
@@ -2014,14 +2012,14 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 24
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="evil_washer" unique_id=372653680]
 shape = ExtResource("41_xovbb")
 
 [node name="Sprite2D" type="Sprite2D" parent="evil_washer" unique_id=394193261]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+texture = ExtResource("55_v135h")
 
 [node name="DialogueSection" type="Node" parent="evil_washer" unique_id=1771943037]
 script = ExtResource("27_o1ess")
@@ -2201,14 +2199,14 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 3
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="toilet" unique_id=2120672609]
 shape = ExtResource("41_xovbb")
 
 [node name="Sprite2D" type="Sprite2D" parent="toilet" unique_id=1505694436]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+texture = ExtResource("57_tppa2")
 
 [node name="DialogueLines" type="Node" parent="toilet" unique_id=812681411]
 script = ExtResource("31_fyonw")
@@ -2277,12 +2275,14 @@ cue = "forced"
 value = -9
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="painting" type="Area2D" parent="." unique_id=1872805641]
+[node name="painting" type="StaticBody2D" parent="." unique_id=1181669471]
 position = Vector2(200, -120)
-collision_layer = 40
+collision_layer = 33
 collision_mask = 3
-script = ExtResource("26_tyelw")
-metadata/_custom_type_script = "uid://ba0su3md4q0wh"
+script = ExtResource("27_e8k17")
+interact_activation = true
+material_layer = 25
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="painting" unique_id=1055628469]
 shape = SubResource("RectangleShape2D_tdlnt")
@@ -2292,13 +2292,11 @@ position = Vector2(1248, 0)
 shape = SubResource("RectangleShape2D_tdlnt")
 
 [node name="Sprite2D" type="Sprite2D" parent="painting" unique_id=216783911]
-scale = Vector2(0.625, 0.125)
-texture = ExtResource("40_wahft")
+texture = SubResource("AtlasTexture_v135h")
 
 [node name="Sprite2D2" type="Sprite2D" parent="painting" unique_id=1874472593]
 position = Vector2(1248, 0)
-scale = Vector2(0.625, 0.125)
-texture = ExtResource("40_wahft")
+texture = SubResource("AtlasTexture_v135h")
 
 [node name="DialogueSection" type="Node" parent="painting" unique_id=2012660937]
 script = ExtResource("27_o1ess")
@@ -2438,6 +2436,7 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="clock" unique_id=1730786989]
@@ -2457,23 +2456,20 @@ lines = Array[String](["It's a grandfather clock."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="Sprite2D" type="Sprite2D" parent="clock" unique_id=1923938396]
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_f56w2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="clock" unique_id=1123628007]
-position = Vector2(1024, 0)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(1024, -8)
+texture = SubResource("AtlasTexture_f56w2")
 
 [node name="Sprite2D3" type="Sprite2D" parent="clock" unique_id=118502945]
-position = Vector2(0, 512)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(0, 504)
+texture = SubResource("AtlasTexture_f56w2")
 
 [node name="Sprite2D4" type="Sprite2D" parent="clock" unique_id=1015048190]
-position = Vector2(1024, 512)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(1024, 504)
+texture = SubResource("AtlasTexture_f56w2")
 
 [node name="top" type="Area2D" parent="." unique_id=303916711]
 position = Vector2(1048, 72)
@@ -2686,37 +2682,17 @@ cue = "knock"
 value = 3
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
-[node name="mirror" type="StaticBody2D" parent="." unique_id=2069648418]
-position = Vector2(184, -568)
-collision_layer = 33
-collision_mask = 3
-script = ExtResource("27_e8k17")
-interact_activation = true
-metadata/_custom_type_script = "uid://ckgko44c6nyac"
-
-[node name="Sprite2D" type="Sprite2D" parent="mirror" unique_id=997211403]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("40_wahft")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mirror" unique_id=1784494919]
-shape = ExtResource("41_xovbb")
-
-[node name="DialogueLines" type="Node" parent="mirror" unique_id=1241437999]
-script = ExtResource("31_fyonw")
-lines = Array[String](["It's a mirror.", "You're not sure why there's three of them."])
-metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
-
 [node name="nightstand" type="StaticBody2D" parent="." unique_id=333005205]
-position = Vector2(24, -520)
+position = Vector2(24, -568)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="nightstand" unique_id=370839530]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("40_wahft")
+texture = SubResource("AtlasTexture_lj8r7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nightstand" unique_id=1196121817]
 shape = ExtResource("41_xovbb")
@@ -2732,11 +2708,11 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="nightstand2" unique_id=676046504]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("40_wahft")
+texture = SubResource("AtlasTexture_lj8r7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nightstand2" unique_id=2145192593]
 shape = ExtResource("41_xovbb")
@@ -2752,11 +2728,11 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="nightstand3" unique_id=2024662280]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("40_wahft")
+texture = SubResource("AtlasTexture_lj8r7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nightstand3" unique_id=712626607]
 shape = ExtResource("41_xovbb")
@@ -2767,18 +2743,20 @@ lines = Array[String](["A tiny little nightstand."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="dresser" type="StaticBody2D" parent="." unique_id=1053103392]
-position = Vector2(144, -552)
+position = Vector2(144, -600)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="dresser" unique_id=1592859585]
-scale = Vector2(0.25, 0.12)
-texture = ExtResource("40_wahft")
+position = Vector2(0, -8)
+texture = ExtResource("61_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dresser" unique_id=1068908176]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_f56w2")
 
 [node name="DialogueLines" type="Node" parent="dresser" unique_id=228397464]
@@ -2787,7 +2765,7 @@ lines = Array[String](["It's a dresser. There's an outfit already prepared, neat
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="bookshelf" type="StaticBody2D" parent="." unique_id=195416781]
-position = Vector2(-120, -584)
+position = Vector2(-120, -664)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -2795,11 +2773,12 @@ interact_activation = true
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="bookshelf" unique_id=1614792509]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(-8, -8)
+texture = ExtResource("61_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf" unique_id=449906583]
-shape = ExtResource("54_uo0wi")
+position = Vector2(-8, -8)
+shape = ExtResource("60_s74oq")
 
 [node name="DialogueLines" type="Node" parent="bookshelf" unique_id=1245397738]
 script = ExtResource("31_fyonw")
@@ -2807,7 +2786,7 @@ lines = Array[String](["It's a bookshelf. Although you yourself are a reader, yo
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="bookshelf2" type="StaticBody2D" parent="." unique_id=84666312]
-position = Vector2(-56, -584)
+position = Vector2(-56, -664)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -2815,11 +2794,12 @@ interact_activation = true
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="bookshelf2" unique_id=1875391291]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(-8, -8)
+texture = ExtResource("61_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf2" unique_id=136581210]
-shape = ExtResource("54_uo0wi")
+position = Vector2(-8, -8)
+shape = ExtResource("60_s74oq")
 
 [node name="DialogueLines" type="Node" parent="bookshelf2" unique_id=1765002699]
 script = ExtResource("31_fyonw")
@@ -2827,7 +2807,7 @@ lines = Array[String](["It's a bookshelf. Although you yourself are a reader, yo
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="bookshelf3" type="StaticBody2D" parent="." unique_id=631151268]
-position = Vector2(-120, -536)
+position = Vector2(-120, -616)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -2835,11 +2815,12 @@ interact_activation = true
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="bookshelf3" unique_id=1249434555]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(-8, -8)
+texture = ExtResource("61_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf3" unique_id=527275328]
-shape = ExtResource("54_uo0wi")
+position = Vector2(-8, -8)
+shape = ExtResource("60_s74oq")
 
 [node name="DialogueLines" type="Node" parent="bookshelf3" unique_id=516800566]
 script = ExtResource("31_fyonw")
@@ -2847,7 +2828,7 @@ lines = Array[String](["It's a bookshelf. Although you yourself are a reader, yo
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="bookshelf4" type="StaticBody2D" parent="." unique_id=1202725966]
-position = Vector2(-56, -536)
+position = Vector2(-56, -616)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -2855,11 +2836,12 @@ interact_activation = true
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="bookshelf4" unique_id=1438969263]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(-8, -8)
+texture = ExtResource("61_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf4" unique_id=775675599]
-shape = ExtResource("54_uo0wi")
+position = Vector2(-8, -8)
+shape = ExtResource("60_s74oq")
 
 [node name="DialogueLines" type="Node" parent="bookshelf4" unique_id=875556592]
 script = ExtResource("31_fyonw")
@@ -2867,7 +2849,7 @@ lines = Array[String](["It's a bookshelf. Although you yourself are a reader, yo
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="bookshelf5" type="StaticBody2D" parent="." unique_id=60437299]
-position = Vector2(-120, -488)
+position = Vector2(-120, -568)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -2875,11 +2857,12 @@ interact_activation = true
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="bookshelf5" unique_id=703606451]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(-8, -8)
+texture = ExtResource("61_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf5" unique_id=1758700948]
-shape = ExtResource("54_uo0wi")
+position = Vector2(-8, -8)
+shape = ExtResource("60_s74oq")
 
 [node name="DialogueLines" type="Node" parent="bookshelf5" unique_id=228046347]
 script = ExtResource("31_fyonw")
@@ -2887,7 +2870,7 @@ lines = Array[String](["It's a bookshelf. Although you yourself are a reader, yo
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="bookshelf6" type="StaticBody2D" parent="." unique_id=573140501]
-position = Vector2(-56, -488)
+position = Vector2(-56, -568)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
@@ -2895,11 +2878,12 @@ interact_activation = true
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="bookshelf6" unique_id=744117303]
-scale = Vector2(0.375, 0.125)
-texture = ExtResource("40_wahft")
+position = Vector2(-8, -8)
+texture = ExtResource("61_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bookshelf6" unique_id=1469665259]
-shape = ExtResource("54_uo0wi")
+position = Vector2(-8, -8)
+shape = ExtResource("60_s74oq")
 
 [node name="DialogueLines" type="Node" parent="bookshelf6" unique_id=729316432]
 script = ExtResource("31_fyonw")
@@ -2912,13 +2896,15 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="dresser2" unique_id=70105791]
-scale = Vector2(0.25, 0.12)
-texture = ExtResource("40_wahft")
+position = Vector2(0, -11)
+texture = ExtResource("61_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dresser2" unique_id=786458353]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_f56w2")
 
 [node name="DialogueLines" type="Node" parent="dresser2" unique_id=1060213627]
@@ -2932,13 +2918,15 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 13
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="dresser3" unique_id=1245107033]
-scale = Vector2(0.25, 0.12)
-texture = ExtResource("40_wahft")
+position = Vector2(0, -11)
+texture = ExtResource("61_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dresser3" unique_id=431785931]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_f56w2")
 
 [node name="DialogueLines" type="Node" parent="dresser3" unique_id=1188739833]
@@ -2946,17 +2934,39 @@ script = ExtResource("31_fyonw")
 lines = Array[String](["It's a dresser. The drawers are all empty."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
-[node name="mirror2" type="StaticBody2D" parent="." unique_id=1949014943]
-position = Vector2(216, -584)
+[node name="mirror" type="StaticBody2D" parent="." unique_id=2069648418]
+position = Vector2(184, -616)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 26
+metadata/_custom_type_script = "uid://ckgko44c6nyac"
+
+[node name="Sprite2D" type="Sprite2D" parent="mirror" unique_id=997211403]
+material = ExtResource("60_1syhu")
+texture = ExtResource("60_bq2no")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mirror" unique_id=1784494919]
+shape = ExtResource("41_xovbb")
+
+[node name="DialogueLines" type="Node" parent="mirror" unique_id=1241437999]
+script = ExtResource("31_fyonw")
+lines = Array[String](["It's a mirror.", "You're not sure why there's three of them."])
+metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
+
+[node name="mirror2" type="StaticBody2D" parent="." unique_id=1949014943]
+position = Vector2(216, -632)
+collision_layer = 33
+collision_mask = 3
+script = ExtResource("27_e8k17")
+interact_activation = true
+material_layer = 26
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="mirror2" unique_id=1084524320]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("40_wahft")
+material = ExtResource("60_1syhu")
+texture = ExtResource("60_bq2no")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mirror2" unique_id=1424300664]
 shape = ExtResource("41_xovbb")
@@ -2967,16 +2977,17 @@ lines = Array[String](["It's a mirror.", "You're not sure why there's three of t
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="mirror3" type="StaticBody2D" parent="." unique_id=1649783643]
-position = Vector2(232, -568)
+position = Vector2(232, -616)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 26
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="mirror3" unique_id=1092843561]
-scale = Vector2(0.12, 0.12)
-texture = ExtResource("40_wahft")
+material = ExtResource("60_1syhu")
+texture = ExtResource("60_bq2no")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mirror3" unique_id=1414970435]
 shape = ExtResource("41_xovbb")
@@ -2987,18 +2998,21 @@ lines = Array[String](["It's a mirror.", "You're not sure why there's three of t
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="bed" type="StaticBody2D" parent="." unique_id=1222766109]
-position = Vector2(32, -544)
+position = Vector2(32, -592)
 collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 10
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="bed" unique_id=139126537]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("40_wahft")
+position = Vector2(-8, 0)
+texture = ExtResource("63_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bed" unique_id=1811925381]
+position = Vector2(-8, 0)
+rotation = 0.005884525
 shape = SubResource("RectangleShape2D_8jmmq")
 
 [node name="DialogueLines" type="Node" parent="bed" unique_id=1250794888]
@@ -3012,13 +3026,15 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 10
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="bed2" unique_id=303189519]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("40_wahft")
+position = Vector2(8, 0)
+texture = ExtResource("63_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bed2" unique_id=2109522199]
+position = Vector2(7, 0)
 shape = SubResource("RectangleShape2D_8jmmq")
 
 [node name="DialogueLines" type="Node" parent="bed2" unique_id=953574878]
@@ -3032,13 +3048,15 @@ collision_layer = 33
 collision_mask = 3
 script = ExtResource("27_e8k17")
 interact_activation = true
+material_layer = 10
 metadata/_custom_type_script = "uid://ckgko44c6nyac"
 
 [node name="Sprite2D" type="Sprite2D" parent="bed3" unique_id=1234864167]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("40_wahft")
+position = Vector2(-8, 0)
+texture = ExtResource("63_s74oq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bed3" unique_id=524430918]
+position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_8jmmq")
 
 [node name="DialogueLines" type="Node" parent="bed3" unique_id=2030597643]
