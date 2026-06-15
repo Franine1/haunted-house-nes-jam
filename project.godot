@@ -10,10 +10,13 @@ config_version=5
 
 [application]
 
-config/name="haunted house NES jam"
+config/name="Close Your Eyes"
 run/main_scene="uid://nrl32a5tkx60"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://assets/icon.svg"
+boot_splash/image="uid://bmi71l44ia1mj"
+config/icon="uid://bdomsappyve77"
+config/macos_native_icon="res://assets/eyecloselogo.icns"
+config/windows_native_icon="res://assets/eyecloselogo.ico"
 
 [display]
 
