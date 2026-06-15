@@ -107,18 +107,13 @@ const tooltips: Array[Array] = [
 	,["2 / 4"]
 	,["3 / 4"]
 	,["4 / 4"]
-	,["~1 / 5"]
-	,["~2 / 5"]
-	,["~3 / 5"]
-	,["~4 / 5"]
-	,["~5 / 5"]
-	,["~1 / 6"]
+	,["1 / 5"]
+	,["2 / 5"]
+	,["3 / 5"]
+	,["4 / 5"]
+	,["5 / 5"]
+	,["~Interact with the mirror"]
 	,["You cannot astral project at this time"]
-	,["~2 / 6"]
-	,["~3 / 6"]
-	,["~4 / 6"]
-	,["~5 / 6"]
-	,["~6 / 6"]
 ]
 
 
@@ -315,8 +310,10 @@ func load_game(slot: int) -> bool:
 		for key in sub.keys():
 			data[key] = sub[key]
 	
-	data_change.emit("music",data["music"])
-	data_change.emit("volume",data["volume"])
+	if data.has("music"):
+		data_change.emit("music",data["music"])
+	if data.has("volume"):
+		data_change.emit("volume",data["volume"])
 	
 	return true
 

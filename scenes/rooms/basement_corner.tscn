@@ -1,0 +1,35 @@
+[gd_scene format=4 uid="uid://ctcl8hbbp0kuc"]
+
+[ext_resource type="Script" uid="uid://cbdgnpkftp5pr" path="res://scripts/room.gd" id="1_sl3sk"]
+[ext_resource type="Material" uid="uid://byt04t2u17fhq" path="res://resources/palettes/moldy_pallette.tres" id="2_gc524"]
+[ext_resource type="TileSet" uid="uid://dvamrjtlhl2hi" path="res://resources/tileset resources/default_tileset.tres" id="3_kybv7"]
+[ext_resource type="Script" uid="uid://byvdvujagvico" path="res://scripts/layout.gd" id="4_inbd3"]
+[ext_resource type="Material" uid="uid://bkjva04iciql3" path="res://resources/palettes/basement_pallette.tres" id="5_qas6n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl3sk"]
+size = Vector2(320, 288)
+
+[node name="Room" type="Area2D" unique_id=1241818221]
+script = ExtResource("1_sl3sk")
+metadata/_custom_type_script = "uid://cbdgnpkftp5pr"
+
+[node name="Layout" type="TileMapLayer" parent="." unique_id=1064438711]
+material = ExtResource("2_gc524")
+tile_map_data = PackedByteArray("AAAAAAcAAAAGAAUAAAABAAcAAAAGAAUAAAACAAcAAAAHAAUAAAACAAYAAAAHAAMAAAABAAYAAAAGAAMAAAAAAAYAAAAGAAMAAAACAAUAAAABAAAAAAABAAUAAAABAAAAAAAAAAUAAAABAAAAAAACAAgAAAABAAIAAAABAAgAAAABAAIAAAAAAAgAAAABAAIAAAADAAUAAAACAAAAAAADAAYAAAACAAEAAAADAAcAAAACAAIAAAADAAgAAAABAAIAAAA=")
+tile_set = ExtResource("3_kybv7")
+script = ExtResource("4_inbd3")
+material_layer = 15
+metadata/_custom_type_script = "uid://byvdvujagvico"
+
+[node name="Layout2" type="TileMapLayer" parent="." unique_id=1046810625]
+material = ExtResource("5_qas6n")
+tile_map_data = PackedByteArray("AAAPAAYAAAAEAAMAAAAOAAYAAAAEAAMAAAAOAAcAAAAEAAMAAAANAAcAAAAEAAMAAAAPAAcAAAAEAAMAAAANAAYAAAAEAAMAAAAMAAcAAAAEAAMAAAALAAcAAAAEAAMAAAAKAAcAAAAEAAMAAAAJAAcAAAAEAAMAAAAIAAcAAAAEAAMAAAAHAAcAAAAEAAMAAAAHAAYAAAAEAAMAAAAIAAYAAAAEAAMAAAAJAAYAAAAEAAMAAAAKAAYAAAAEAAMAAAALAAYAAAAEAAMAAAAMAAYAAAAEAAMAAAAHAAUAAAAEAAMAAAAIAAQAAAAEAAMAAAAIAAMAAAAEAAMAAAAIAAIAAAAEAAMAAAAIAAEAAAAEAAMAAAAHAAEAAAAEAAMAAAAHAAAAAAAEAAMAAAAIAAAAAAAEAAMAAAAHAAIAAAAEAAMAAAAHAAMAAAAEAAMAAAAHAAQAAAAEAAMAAAAIAAUAAAAEAAMAAAAJAAUAAAABAAAAAAAKAAUAAAABAAAAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAANAAUAAAABAAAAAAAOAAUAAAABAAAAAAAPAAUAAAABAAAAAAAGAAAAAAAAAAEAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAEAAAAGAAMAAAAAAAEAAAAGAAQAAAAAAAEAAAAGAAUAAAAAAAEAAAAGAAYAAAAAAAEAAAAGAAcAAAAAAAEAAAAGAAgAAAABAAIAAAAHAAgAAAABAAIAAAAIAAgAAAABAAIAAAAJAAgAAAABAAIAAAAKAAgAAAABAAIAAAALAAgAAAABAAIAAAAMAAgAAAABAAIAAAANAAgAAAABAAIAAAAOAAgAAAABAAIAAAAPAAgAAAABAAIAAAAJAAAAAAACAAEAAAAJAAEAAAACAAEAAAAJAAIAAAACAAEAAAAJAAMAAAACAAEAAAAJAAQAAAACAAEAAAA=")
+tile_set = ExtResource("3_kybv7")
+script = ExtResource("4_inbd3")
+material_layer = 22
+metadata/_custom_type_script = "uid://byvdvujagvico"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1842476457]
+visible = false
+position = Vector2(128, 112)
+shape = SubResource("RectangleShape2D_sl3sk")

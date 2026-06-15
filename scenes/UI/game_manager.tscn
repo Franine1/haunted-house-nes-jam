@@ -501,6 +501,17 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="title_header" type="RichTextLabel" parent="pause_menu/HBoxContainer/pause_all" unique_id=1000111399]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_tl5mg")
+text = "CLOSE YOUR EYES
+"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="pause_textbox" type="VBoxContainer" parent="pause_menu/HBoxContainer/pause_all" unique_id=2292972]
 unique_name_in_owner = true
 layout_mode = 2

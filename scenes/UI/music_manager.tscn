@@ -4,8 +4,9 @@
 [ext_resource type="AudioStream" uid="uid://dc1fyndkvtnql" path="res://resources/music/muted.wav" id="2_2nvdm"]
 [ext_resource type="AudioStream" uid="uid://b47n8y2f2t5la" path="res://resources/music/freedom.wav" id="3_tbk5f"]
 [ext_resource type="AudioStream" uid="uid://01gtok52n3iw" path="res://resources/music/objective.wav" id="3_xd1le"]
-[ext_resource type="AudioStream" uid="uid://bgrh4c7kktaoi" path="res://resources/music/when i close my eyes.wav" id="4_8jmwk"]
+[ext_resource type="AudioStream" uid="uid://bgrh4c7kktaoi" path="res://resources/music/if you close your eyes.wav" id="4_8jmwk"]
 [ext_resource type="AudioStream" uid="uid://cwtq1syf353qc" path="res://resources/music/rooms are moving.wav" id="4_t0b4g"]
+[ext_resource type="AudioStream" uid="uid://6qqvm0fg3ukk" path="res://resources/music/when i open my eyes.wav" id="5_gpyor"]
 [ext_resource type="AudioStream" uid="uid://do1jq1l3x2r4r" path="res://resources/music/draining.wav" id="5_vqhc5"]
 [ext_resource type="AudioStream" uid="uid://dr4vav87ki58r" path="res://resources/music/veiled iris.wav" id="6_tbk5f"]
 [ext_resource type="AudioStream" uid="uid://big2cdsx3qeag" path="res://resources/music/three mirrors.wav" id="7_8jmwk"]
@@ -15,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://ccbxtj1cmbllq" path="res://resources/music/doppelganger.wav" id="9_vqhc5"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_gpyor"]
-clip_count = 12
+clip_count = 13
 clip_0/name = &"Observed"
 clip_0/stream = ExtResource("1_ocg0u")
 clip_0/auto_advance = 0
@@ -49,9 +50,12 @@ clip_9/auto_advance = 0
 clip_10/name = &"Freedom"
 clip_10/stream = ExtResource("3_tbk5f")
 clip_10/auto_advance = 0
-clip_11/name = &"When I Close My Eyes"
+clip_11/name = &"If You Close Your Eyes"
 clip_11/stream = ExtResource("4_8jmwk")
 clip_11/auto_advance = 0
+clip_12/name = &"When I Open My Eyes"
+clip_12/stream = ExtResource("5_gpyor")
+clip_12/auto_advance = 0
 _transitions = {
 Vector2i(-1, -1): {
 "fade_beats": 1.0,
@@ -94,6 +98,18 @@ Vector2i(11, 10): {
 "fade_mode": 4,
 "from_time": 2,
 "to_time": 1
+},
+Vector2i(11, 12): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
+},
+Vector2i(12, 11): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 0,
+"to_time": 0
 }
 }
 

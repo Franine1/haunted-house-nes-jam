@@ -13,7 +13,6 @@ config_version=5
 config/name="Close Your Eyes"
 run/main_scene="uid://nrl32a5tkx60"
 config/features=PackedStringArray("4.6", "Forward Plus")
-boot_splash/image="uid://bmi71l44ia1mj"
 config/icon="uid://bdomsappyve77"
 config/macos_native_icon="res://assets/eyecloselogo.icns"
 config/windows_native_icon="res://assets/eyecloselogo.ico"

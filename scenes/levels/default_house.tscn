@@ -2385,7 +2385,7 @@ metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="DialogueLines" type="Node" parent="painting/DialogueSection/DialogueToggle5" unique_id=2094138934]
 script = ExtResource("31_fyonw")
-lines = Array[String](["You notice from the perspective of the painting, the observer would have to be floating midair.", "You wonnder how they got that angle."])
+lines = Array[String](["You notice from the perspective of the painting, the observer would have to be floating midair.", "You wonder how they got that angle."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueCue2" type="Node" parent="painting/DialogueSection/DialogueToggle5" unique_id=1800615660]

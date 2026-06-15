@@ -2337,11 +2337,14 @@ metadata/_custom_type_script = "uid://xhrymkbacnrg"
 [node name="RestartZone5" type="Area2D" parent="." unique_id=1659635811]
 position = Vector2(1408, -1992)
 script = ExtResource("43_l1oju")
+warp_screen = Vector2i(9, 5)
+warp_tile = Vector2i(7, 6)
 ghost_warp_screen = Vector2i(1, 1)
 ghost_warp_tile = Vector2i(-2, -1)
 metadata/_custom_type_script = "uid://cpock2di8p6cc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RestartZone5" unique_id=1658913921]
+visible = false
 shape = ExtResource("34_c2aab")
 
 [node name="path to lvl7" type="StaticBody2D" parent="." unique_id=1381833480]
@@ -2377,7 +2380,7 @@ metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueCue" type="Node" parent="path to lvl7/DialogueSection/DialogueOption/DialogueSection" unique_id=1467428681]
 script = ExtResource("16_dpnb0")
-cue = "restart_ghost"
+cue = "restart"
 value = 1
 delay = 0.1
 metadata/_custom_type_script = "uid://xhrymkbacnrg"

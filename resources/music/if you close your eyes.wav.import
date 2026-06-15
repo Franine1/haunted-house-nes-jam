@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bgrh4c7kktaoi"
+path="res://.godot/imported/if you close your eyes.wav-165b9dd1efe97f71bba757b52aa9515e.sample"
+
+[deps]
+
+source_file="res://resources/music/if you close your eyes.wav"
+dest_files=["res://.godot/imported/if you close your eyes.wav-165b9dd1efe97f71bba757b52aa9515e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

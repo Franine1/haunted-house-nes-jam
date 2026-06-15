@@ -45,18 +45,24 @@ func enforce_distances(_player_container: PlayerContainer, active_player: Player
 	
 	active_player.global_position += final * 16
 	
-	var path: CutscenePath = CutscenePath.compile([Vector2i(active_player.facing_direction())],active_player.default_speed)
+	var plr_spd: float = active_player.default_speed
+	
+	var path: CutscenePath = CutscenePath.compile([Vector2i(active_player.facing_direction())],plr_spd)
 	
 	set_input_allowed(active_player,false)
 	
-	if !active_player.finished_movement.is_connected(player_set_input_allowed):
-		active_player.finished_movement.connect(player_set_input_allowed.bind(active_player,true))
+	
+	
+	get_tree().create_timer(1.0 / plr_spd).timeout.connect(player_set_input_allowed.bind(active_player,true))
 	
 	game_data.queue_movement(path,-1)
 
 
+
 func set_input_allowed(target: Player, value: bool) -> void:
 	target.input_allowed = value
+
+
 
 func player_set_input_allowed(target: Player, value: bool) -> void:
 	set_input_allowed(target, value)
