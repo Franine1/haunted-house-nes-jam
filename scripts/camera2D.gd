@@ -52,7 +52,7 @@ func warp(t: Vector2 = target) -> void:
 	target = t
 	arrived = true
 
-## modifies its pposition and target to combine cleanly with player teleports
+## modifies its position and target to combine cleanly with player teleports
 func shift(t: Vector2) -> void:
 	global_position += t
 	target += t

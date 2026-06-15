@@ -11,7 +11,7 @@
 [ext_resource type="Material" uid="uid://ysky6ytwaasr" path="res://resources/palettes/transition_pallette_2.tres" id="8_77tku"]
 [ext_resource type="Material" uid="uid://fdknrie3lpxi" path="res://resources/palettes/redpallete.tres" id="9_l6lwf"]
 [ext_resource type="Material" uid="uid://c4622cq2dcvnb" path="res://resources/palettes/mirror_pallette.tres" id="10_t3pyi"]
-[ext_resource type="PackedScene" uid="uid://bfkkjw5qomv61" path="res://scenes/characters/npc_1.tscn" id="12_sfk2x"]
+[ext_resource type="PackedScene" uid="uid://bfkkjw5qomv61" path="res://scenes/characters/lea.tscn" id="12_sfk2x"]
 [ext_resource type="Script" uid="uid://ba0su3md4q0wh" path="res://scripts/interaction_zone.gd" id="14_g7nnd"]
 [ext_resource type="Shape2D" uid="uid://bbvt0g7t3h4t5" path="res://resources/shapes/default_collider.tres" id="15_s2aj0"]
 [ext_resource type="Script" uid="uid://xhrymkbacnrg" path="res://scripts/dialogueCue.gd" id="16_dpnb0"]
@@ -1725,7 +1725,14 @@ position = Vector2(1304, -648)
 [node name="restart button2" parent="." unique_id=1025606951 instance=ExtResource("42_uqy7f")]
 position = Vector2(1448, -504)
 
-[node name="DialogueCue" type="Node" parent="restart button2" unique_id=1972374286]
+[node name="DialogueToggle" type="Node" parent="restart button2" unique_id=2099411664]
+script = ExtResource("20_21doy")
+cue = "pressed"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="restart button2/DialogueToggle" unique_id=1972374286]
 script = ExtResource("16_dpnb0")
 cue = "color"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
@@ -1747,6 +1754,18 @@ position = Vector2(1480, -456)
 
 [node name="restart button4" parent="." unique_id=881020500 instance=ExtResource("42_uqy7f")]
 position = Vector2(1368, -504)
+
+[node name="DialogueToggle" type="Node" parent="restart button4" unique_id=860112251]
+script = ExtResource("20_21doy")
+cue = "pressed"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="restart button4/DialogueToggle" unique_id=1142754928]
+script = ExtResource("16_dpnb0")
+cue = "color"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
 [node name="Blockade64" parent="." unique_id=549344578 instance=ExtResource("40_ebtjj")]
 position = Vector2(1328, -568)
@@ -1814,6 +1833,19 @@ metadata/_custom_type_script = "uid://cpock2di8p6cc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RestartZone4" unique_id=1697575255]
 visible = false
+position = Vector2(108, 112)
+shape = SubResource("RectangleShape2D_u5x53")
+
+[node name="RestartZone6" type="Area2D" parent="." unique_id=1870921397]
+position = Vector2(1832, -896)
+script = ExtResource("43_l1oju")
+warp_screen = Vector2i(7, -3)
+warp_tile = Vector2i(2, -3)
+ghost_warp_screen = Vector2i(0, 2)
+ghost_warp_tile = Vector2i(7, 6)
+metadata/_custom_type_script = "uid://cpock2di8p6cc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestartZone6" unique_id=1837314011]
 position = Vector2(108, 112)
 shape = SubResource("RectangleShape2D_u5x53")
 
@@ -2302,6 +2334,16 @@ script = ExtResource("16_dpnb0")
 cue = "camera_lock"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
+[node name="RestartZone5" type="Area2D" parent="." unique_id=1659635811]
+position = Vector2(1408, -1992)
+script = ExtResource("43_l1oju")
+ghost_warp_screen = Vector2i(1, 1)
+ghost_warp_tile = Vector2i(-2, -1)
+metadata/_custom_type_script = "uid://cpock2di8p6cc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestartZone5" unique_id=1658913921]
+shape = ExtResource("34_c2aab")
+
 [node name="path to lvl7" type="StaticBody2D" parent="." unique_id=1381833480]
 position = Vector2(1408, -1992)
 script = ExtResource("19_dpnb0")
@@ -2334,6 +2376,13 @@ lines = Array[String](["Knock", "The door swings open on its own."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="DialogueCue" type="Node" parent="path to lvl7/DialogueSection/DialogueOption/DialogueSection" unique_id=1467428681]
+script = ExtResource("16_dpnb0")
+cue = "restart_ghost"
+value = 1
+delay = 0.1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="DialogueCue2" type="Node" parent="path to lvl7/DialogueSection/DialogueOption/DialogueSection" unique_id=774428724]
 script = ExtResource("16_dpnb0")
 cue = "level"
 value = 7
@@ -2376,3 +2425,33 @@ position = Vector2(1800, -712)
 
 [node name="InteractionZone56" parent="." unique_id=1168872795 instance=ExtResource("27_84r03")]
 position = Vector2(1960, -680)
+
+[node name="restart button9" parent="." unique_id=67584590 instance=ExtResource("42_uqy7f")]
+position = Vector2(1864, -712)
+
+[node name="DialogueToggle" type="Node" parent="restart button9" unique_id=1162265859]
+script = ExtResource("20_21doy")
+cue = "pressed"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="restart button9/DialogueToggle" unique_id=1228907270]
+script = ExtResource("16_dpnb0")
+cue = "color"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
+[node name="restart button10" parent="." unique_id=1922643746 instance=ExtResource("42_uqy7f")]
+position = Vector2(1944, -712)
+
+[node name="DialogueToggle" type="Node" parent="restart button10" unique_id=99327813]
+script = ExtResource("20_21doy")
+cue = "pressed"
+value = 1
+compare_type = 0
+metadata/_custom_type_script = "uid://4joi47i6a3tx"
+
+[node name="DialogueCue" type="Node" parent="restart button10/DialogueToggle" unique_id=1589232179]
+script = ExtResource("16_dpnb0")
+cue = "color"
+metadata/_custom_type_script = "uid://xhrymkbacnrg"

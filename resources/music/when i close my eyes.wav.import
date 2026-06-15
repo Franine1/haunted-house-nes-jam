@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bgrh4c7kktaoi"
+path="res://.godot/imported/when i close my eyes.wav-61cc575f74a26a8d63036a0b24ed6456.sample"
+
+[deps]
+
+source_file="res://resources/music/when i close my eyes.wav"
+dest_files=["res://.godot/imported/when i close my eyes.wav-61cc575f74a26a8d63036a0b24ed6456.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

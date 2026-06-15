@@ -41,7 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://lnva3dskhrkq" path="res://scenes/dialogue/its_locked.tscn" id="29_o1ess"]
 [ext_resource type="Script" uid="uid://cqejfq3mk4wi8" path="res://scripts/dialogue_lines.gd" id="31_fyonw"]
 [ext_resource type="Script" uid="uid://4joi47i6a3tx" path="res://scripts/dialogue_toggle.gd" id="32_gbo60"]
-[ext_resource type="PackedScene" uid="uid://bfkkjw5qomv61" path="res://scenes/characters/npc_1.tscn" id="35_7mm63"]
+[ext_resource type="PackedScene" uid="uid://bfkkjw5qomv61" path="res://scenes/characters/lea.tscn" id="35_7mm63"]
 [ext_resource type="Material" uid="uid://b7qhrmcdja4mi" path="res://resources/palettes/bluepallete.tres" id="36_4lh72"]
 [ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="37_oahe5"]
 [ext_resource type="Script" uid="uid://djmjjs20dmaub" path="res://scripts/dialogue_option.gd" id="37_tlc6n"]
@@ -3023,7 +3023,7 @@ shape = SubResource("RectangleShape2D_8jmmq")
 
 [node name="DialogueLines" type="Node" parent="bed2" unique_id=953574878]
 script = ExtResource("31_fyonw")
-lines = Array[String](["It's a twin-size bed."])
+lines = Array[String](["It's a queen-size bed."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"
 
 [node name="bed3" type="StaticBody2D" parent="." unique_id=1932422352]
@@ -3043,5 +3043,5 @@ shape = SubResource("RectangleShape2D_8jmmq")
 
 [node name="DialogueLines" type="Node" parent="bed3" unique_id=2030597643]
 script = ExtResource("31_fyonw")
-lines = Array[String](["It's a twin-size bed."])
+lines = Array[String](["It's a queen-size bed."])
 metadata/_custom_type_script = "uid://cqejfq3mk4wi8"

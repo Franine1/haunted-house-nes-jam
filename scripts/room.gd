@@ -14,6 +14,8 @@ extends Area2D
 func _ready() -> void:
 	replace_area(self)
 	
+	visible = true
+	
 	collision_layer = 2
 	collision_mask = 60
 	z_index = show_layer

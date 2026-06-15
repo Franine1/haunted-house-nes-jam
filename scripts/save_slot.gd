@@ -11,6 +11,7 @@ const level_names: Array[String] = [
 	,"Backyard"
 	,"Second Floor"
 	,"Master Bedroom"
+	,"Otherside"
 ]
 
 
@@ -33,6 +34,15 @@ func display(slot_id: int) -> void:
 	if data.has("level") and data["level"] >= 0 and data["level"] < level_names.size():
 		new_game.hide()
 		level.text = level_names[data["level"]]
+		
+		match data["level"]:
+			7: 
+				if data.has("forced") and data["forced"] <= -11:
+					level.text = "Basement"
+			6:
+				if data.has("break_mirror") and data["break_mirror"] <= -11:
+					level.text = "Otherside"
+				
 		level.show()
 	
 	

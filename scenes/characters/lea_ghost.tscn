@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dph5pmw7shjb4"]
+
+[ext_resource type="Script" uid="uid://cfjnigs2opyra" path="res://scripts/npc_host.gd" id="1_a4ohs"]
+[ext_resource type="Material" uid="uid://c1ydoochtrh0j" path="res://resources/palettes/phantom_pallette.tres" id="2_a4ohs"]
+[ext_resource type="SpriteFrames" uid="uid://d4gntfwgidc8k" path="res://resources/sprite frames/player sprites.tres" id="3_1yhgs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qp0r"]
+size = Vector2(12, 12)
+
+[node name="npc1" type="CharacterBody2D" unique_id=1242705272]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_a4ohs")
+opacity_max = 0.6
+metadata/_custom_type_script = "uid://wqtobb22r6fk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=256194414]
+shape = SubResource("RectangleShape2D_2qp0r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1632868858]
+material = ExtResource("2_a4ohs")
+sprite_frames = ExtResource("3_1yhgs")
+animation = &"down"

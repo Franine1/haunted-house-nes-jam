@@ -4,7 +4,7 @@ extends NPC
 
 var cue: GameCue
 
-
+@export_range(0.0,1.0) var opacity_max: float = 1.0
 
 func ready_behavior() -> void:
 	cue = GameCue.new()
@@ -39,3 +39,29 @@ func interact(by: Player) -> void:
 	if interact_allowed:
 		movement_queue.append(CutscenePath.compile_look_direction(by.global_position - global_position))
 		send_dialogue()
+
+
+
+func progress_animation(delta: float, opacity: float = -1.0) -> void:
+	
+	var do_opacity: bool = opacity >= 0.0
+	var result_opacity: float = opacity if do_opacity else 1.0
+	
+	result_opacity *= opacity_max
+	
+	# ensure the character is visible
+	for sprite in sprites:
+		if sprite.material is ShaderMaterial:
+			sprite.material.set_shader_parameter("opacity",result_opacity)
+			sprite.material.set_shader_parameter("opacity_enabled",do_opacity)
+	
+	# determine the correct frame in our animation
+	if walk_time <= 0.0:
+		walk_time = 0.0
+		for sprite in sprites:
+			sprite.frame = 0
+	else:
+		walk_time -= delta
+		const anim_speed = 0.9
+		for sprite in sprites:
+			sprite.frame = (floori((initial_walk_time - walk_time)*speed_scale * anim_speed) % 2) + 1

@@ -29,6 +29,7 @@ enum astral {
 	DEFAULT
 	,POLTERGEIST
 	,MIRRORS
+	,POSSESSION
 }
 
 const game_data: GameData = preload("res://resources/game data/gameData.tres")
@@ -159,6 +160,7 @@ func adjust_player_distances(input: Vector2 = astral_offset) -> void:
 
 func _process(_delta: float) -> void:
 	#astral_version = clamp(game_data.get_data("version"),0,astral.keys().size()-1)
+	
 	
 	var ans: Player.astral = Player.astral.values()[astral_version]
 	

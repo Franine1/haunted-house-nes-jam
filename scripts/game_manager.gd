@@ -43,6 +43,7 @@ const levels: Array[PackedScene] = [
 	,preload("res://scenes/levels/backyard.tscn")
 	,preload("res://scenes/levels/second_floor.tscn")
 	,preload("res://scenes/levels/master_bedroom.tscn")
+	,preload("res://scenes/levels/dimension_fragment.tscn")
 ]
 ## Current dialogue script
 var dialogue_script: Dialogue = null
@@ -92,6 +93,7 @@ var current_pallete: Dictionary[int,ShaderMaterial] = {
 	,19: preload("res://resources/palettes/bizarre_pallette.tres")
 	,20: preload("res://resources/palettes/mirror_pallette.tres")
 	,21: preload("res://resources/palettes/gloomy_pallette.tres")
+	,22: preload("res://resources/palettes/basement_pallette.tres")
 }
 
 ## The allowed game states

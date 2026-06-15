@@ -112,8 +112,13 @@ const tooltips: Array[Array] = [
 	,["~3 / 5"]
 	,["~4 / 5"]
 	,["~5 / 5"]
-	,[""]
+	,["~1 / 6"]
 	,["You cannot astral project at this time"]
+	,["~2 / 6"]
+	,["~3 / 6"]
+	,["~4 / 6"]
+	,["~5 / 6"]
+	,["~6 / 6"]
 ]
 
 
