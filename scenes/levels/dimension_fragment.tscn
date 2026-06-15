@@ -140,7 +140,7 @@ size = Vector2(240, 80)
 size = Vector2(560, 240)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mrn0g"]
-radius = 24.0
+radius = 176.18172
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uvq1"]
 size = Vector2(584, 748)
@@ -1888,6 +1888,12 @@ script = ExtResource("12_7ce22")
 cue = "camera_lock"
 metadata/_custom_type_script = "uid://xhrymkbacnrg"
 
+[node name="DialogueCue2" type="Node" parent="InteractionZone19" unique_id=847243040]
+script = ExtResource("12_7ce22")
+cue = "restart_player"
+value = 1
+metadata/_custom_type_script = "uid://xhrymkbacnrg"
+
 [node name="ScreenLoop4" type="Area2D" parent="." unique_id=1910617410]
 position = Vector2(2176, 1680)
 script = ExtResource("43_8xblt")
@@ -2078,6 +2084,7 @@ entry_activation = true
 metadata/_custom_type_script = "uid://ba0su3md4q0wh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone20" unique_id=1295263145]
+visible = false
 shape = ExtResource("5_0o15m")
 
 [node name="DialogueToggle" type="Node" parent="InteractionZone20" unique_id=1286508712]
@@ -2373,6 +2380,16 @@ ghost_warp_tile = Vector2i(7, 7)
 metadata/_custom_type_script = "uid://cpock2di8p6cc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RestartZone2" unique_id=1139664105]
+shape = ExtResource("5_0o15m")
+
+[node name="RestartZone3" type="Area2D" parent="." unique_id=2079945891]
+position = Vector2(2432, 1456)
+script = ExtResource("44_27mgg")
+warp_screen = Vector2i(9, 5)
+warp_tile = Vector2i(7, 6)
+metadata/_custom_type_script = "uid://cpock2di8p6cc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RestartZone3" unique_id=1279211585]
 visible = false
 shape = ExtResource("5_0o15m")
 

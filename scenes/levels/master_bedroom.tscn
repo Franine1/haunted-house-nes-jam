@@ -2374,7 +2374,6 @@ ghost_warp_tile = Vector2i(-2, -1)
 metadata/_custom_type_script = "uid://cpock2di8p6cc"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RestartZone5" unique_id=1658913921]
-visible = false
 shape = ExtResource("34_c2aab")
 
 [node name="path to lvl7" type="StaticBody2D" parent="." unique_id=1381833480]
